@@ -1,23 +1,24 @@
 footer{
     background-color: rgba(0, 0, 0, 0.851);
-    height: 40vh;
+    height: 20vh;
     color: white;
     img{
         width: 15%;
         height: 15%;
     }
-    h1,h3{
+    h3{
         padding-left: 3rem;
-    }
-    ol{
-        list-style: none;
-
+        text-align: right;
+        padding-right: 4.5rem;
+        padding-top: 2.5rem;
     }
     ul{
         list-style: none;
         display:flex;
+        justify-content: flex-end;
+        padding-right: 2rem;
     }
     li{
         padding: 0 0.5rem;
-    }
+            }
 }

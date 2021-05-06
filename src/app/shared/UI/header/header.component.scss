@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8vw;
+    background-color: rgba(0, 0, 0, 0.851);
+    color: #fff;
+    .logoHeader {
+        width: 20%;
+    }
+    ul {
+        list-style: none;
+        display: flex;
+    }
+    li {
+        padding: 0 0.5rem;
+    }
+}

@@ -11,6 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { ArtistasGridComponent } from './artistas/artistas-grid/artistas-grid.component';
 import { AnuncioPymeComponent } from './artistas/artista-single/anuncio-pyme/anuncio-pyme.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { CompradorFormComponent } from './comprador/comprador-form/comprador-for
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

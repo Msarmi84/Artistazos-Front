@@ -14,7 +14,7 @@ import { CompradorFormComponent } from './comprador/comprador-form/comprador-for
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // MATERIAL MODULES
 import { MatIconModule } from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({

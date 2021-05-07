@@ -12,8 +12,9 @@ import { ArtistasGridComponent } from './artistas/artistas-grid/artistas-grid.co
 import { AnuncioPymeComponent } from './artistas/artista-single/anuncio-pyme/anuncio-pyme.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+// MATERIAL MODULES
 import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

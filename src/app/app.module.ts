@@ -38,7 +38,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatIconModule,
     MatButtonModule,
   ],
-  providers: [],
+  // providers: [{
+  //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }
+  // }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

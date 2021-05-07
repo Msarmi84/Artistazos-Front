@@ -15,6 +15,7 @@ import { CompradorFormComponent } from './comprador/comprador-form/comprador-for
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
     ArtistasGridComponent,
     AnuncioPymeComponent,
     CompradorFormComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
   ],
-  providers: [],
+  // providers: [{
+  //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }
+  // }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,7 @@
 }
 
 .container-artista {
-    margin: 50px 0px 30px 200px;
+    margin: 50px 0px 30px 100px;
     width: 65%;
     .avatar-name {
         display: flex;
@@ -89,4 +89,8 @@
     button {
         margin-top: 0;
     }
+}
+
+.fa-cloud-upload-alt {
+    margin-left: 10px;
 }

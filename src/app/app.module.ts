@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    MatCardModule,
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

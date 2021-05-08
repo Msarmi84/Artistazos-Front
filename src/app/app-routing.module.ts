@@ -6,6 +6,7 @@ import { ArtistasGridComponent } from './artistas/artistas-grid/artistas-grid.co
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
+
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent,
@@ -14,7 +15,7 @@ const routes: Routes = [
     path: 'artista/:id', component: ArtistaSingleComponent,
   },
   {
-    path: 'artistas-grid', component: ArtistasGridComponent,
+    path: 'artistas', component: ArtistasGridComponent,
   },
   {
     path: 'artistas-form', component: ArtistasFormComponent,
@@ -23,7 +24,7 @@ const routes: Routes = [
     path: 'comprador-form', component: CompradorFormComponent,
   },
   {
-    path: '', component: HomePageComponent
+    path: '', component: HomePageComponent,
   }
 ];
 

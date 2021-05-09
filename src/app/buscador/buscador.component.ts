@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../artists/user.service';
 import { Disciplines } from '../models/disciplines';
-import { IdName } from '../models/id-name';
 import { User } from '../models/user';
 
 import { UserSearch } from '../models/UserSearch';

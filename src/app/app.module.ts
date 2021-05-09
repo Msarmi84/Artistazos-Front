@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/UI/header/header.component';
 import { FooterComponent } from './shared/UI/footer/footer.component';
-import { ArtistaSingleComponent } from './artistas/artista-single/artista-single.component';
-import { ArtistasFormComponent } from './artistas/artistas-form/artistas-form.component';
+import { ArtistSingleComponent } from './artists/artist-single/artist-single.component';
+import { ArtistasFormComponent } from './artists/artistas-form/artistas-form.component';
 import { LoginComponent } from './login/login.component';
-import { ArtistasGridComponent } from './artistas/artistas-grid/artistas-grid.component';
-import { AnuncioPymeComponent } from './artistas/artista-single/anuncio-pyme/anuncio-pyme.component';
+import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
+import { AdvertisementComponent } from './artists/artist-single/advertisement/advertisement.component';
+
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 // MATERIAL MODULES
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,11 +27,11 @@ import { BuscadorComponent } from './buscador/buscador.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ArtistaSingleComponent,
+    ArtistSingleComponent,
     ArtistasFormComponent,
     LoginComponent,
-    ArtistasGridComponent,
-    AnuncioPymeComponent,
+    ArtistsGridComponent,
+    AdvertisementComponent,
     CompradorFormComponent,
     HomePageComponent,
     AllProductsComponent,

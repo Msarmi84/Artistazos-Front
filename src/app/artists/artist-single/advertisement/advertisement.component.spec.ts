@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArtistaSingleComponent } from './artista-single.component';
+import { AdvertisementComponent } from './advertisement.component';
 
-describe('ArtistaSingleComponent', () => {
-  let component: ArtistaSingleComponent;
-  let fixture: ComponentFixture<ArtistaSingleComponent>;
+describe('AdvertisementComponent', () => {
+  let component: AdvertisementComponent;
+  let fixture: ComponentFixture<AdvertisementComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArtistaSingleComponent ]
+      declarations: [ AdvertisementComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArtistaSingleComponent);
+    fixture = TestBed.createComponent(AdvertisementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

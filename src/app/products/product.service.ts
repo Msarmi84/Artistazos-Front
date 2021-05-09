@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { BuscadorProducto } from '../models/buscador-producto';
+import { SearcherProduct } from '../models/searcher-product';
 import { ProductCategory } from '../models/enums/product-category.enum';
 import { IdName } from '../models/id-name';
 import { Product } from '../models/product';
@@ -46,9 +46,9 @@ export class ProductService {
     )
   }
 
-  searchProduct(filter: BuscadorProducto): Observable<Product[]> {
+  searchProduct(filter: SearcherProduct): Observable<Product[]> {
     return this.http.post<Product[]>(`${this.URL}/search`, filter).pipe(
       map(x => x.map(product => new Product(product)))
-    )
+    );
   }
 }

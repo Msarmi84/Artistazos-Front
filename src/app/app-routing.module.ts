@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArtistSingleComponent } from './artistas/artist-single/artist-single.component';
-import { ArtistasFormComponent } from './artistas/artistas-form/artistas-form.component';
-import { ArtistsGridComponent } from './artistas/artists-grid/artists-grid.component';
+import { ArtistSingleComponent } from './artists/artist-single/artist-single.component';
+import { ArtistasFormComponent } from './artists/artistas-form/artistas-form.component';
+import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'artista/:id', component: ArtistSingleComponent,
   },
   {
-    path: 'artists-grid', component: ArtistsGridComponent,
+    path: 'artistas', component: ArtistsGridComponent,
   },
   {
     path: 'artistas-form', component: ArtistasFormComponent,

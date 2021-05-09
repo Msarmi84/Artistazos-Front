@@ -20,6 +20,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AllProductsComponent } from './productos/all-products/all-products.component';
 import { BuscadorComponent } from './productos/all-products/buscador/buscador.component';
 import { ArtistsComponent } from './artists/artists.component';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 
@@ -47,6 +48,7 @@ import { ArtistsComponent } from './artists/artists.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

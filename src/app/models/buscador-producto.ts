@@ -1,9 +1,9 @@
-import { ProductCategory } from "./enums/product-category.enum";
+import { ProductCategory } from './enums/product-category.enum';
 
 export interface BuscadorProducto{
     name: string;
-    category: ProductCategory;    
+    category: ProductCategory;
     artist: string;
     minPrice: number;
-    maxPrice:number;
+    maxPrice: number;
 }

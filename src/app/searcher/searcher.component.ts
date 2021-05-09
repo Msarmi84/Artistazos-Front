@@ -5,18 +5,18 @@ import { Disciplines } from '../models/disciplines';
 import { IdName } from '../models/id-name';
 import { User } from '../models/user';
 
-import { UserSearch } from '../models/UserSearch';
+import { UserSearch } from '../models/userSearch';
 
 @Component({
-  selector: 'app-buscador',
-  templateUrl: './buscador.component.html',
-  styleUrls: ['./buscador.component.scss']
+  selector: 'app-searcher',
+  templateUrl: './searcher.component.html',
+  styleUrls: ['./searcher.component.scss']
 })
-export class BuscadorComponent implements OnInit {
+export class SearcherComponent implements OnInit {
 
   filterForm: FormGroup;
-  disciplines: Disciplines[] = []
-  users: User[] = []
+  disciplines: Disciplines[] = [];
+  users: User[] = [];
 
 
   constructor(fb: FormBuilder, private service: UserService) {

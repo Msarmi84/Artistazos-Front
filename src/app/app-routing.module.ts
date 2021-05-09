@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArtistaSingleComponent } from './artistas/artista-single/artista-single.component';
+import { ArtistSingleComponent } from './artistas/artist-single/artist-single.component';
 import { ArtistasFormComponent } from './artistas/artistas-form/artistas-form.component';
 import { ArtistsGridComponent } from './artistas/artists-grid/artists-grid.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent,
   },
   {
-    path: 'artista/:id', component: ArtistaSingleComponent,
+    path: 'artista/:id', component: ArtistSingleComponent,
   },
   {
     path: 'artists-grid', component: ArtistsGridComponent,

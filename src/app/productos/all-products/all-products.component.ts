@@ -13,23 +13,19 @@ export class AllProductsComponent implements OnInit {
   products: Product[] = [];
 
   constructor(private productService: ProductService) {
-    
-   }
+
+  }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(x => {
       this.products = x;
-      console.log(this.products)
-    })
+      console.log(this.products);
+    });
   }
 
   searchProduct(filter: BuscadorProducto): void {
     this.productService.searchProduct(filter).subscribe(x => {
       this.products = x;
-    })
+    });
   }
-
-  
-  
-
 }

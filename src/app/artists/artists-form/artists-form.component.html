@@ -8,33 +8,29 @@
                     <input type="text" formControlName="artistic_name" placeholder="NOMBRE ARTISTICO" />
                 </div>
                 <div class="center formPadding">
-                    <input type="text" formControlName="name" placeholder="NOMBRE" class="input"/>
-                </div>
-                <div class="center formPadding">
-                    
-                    <input type="text" formControlName="last_name" placeholder="APELLIDOS"/>
+                    <!-- <select [(ngModel)]="artistic_discipline">
+                        <option class="purple" *ngFor="let discipline of disciplines" [ngValue]="discipline"></option>
+                    </select> -->
                 </div>
             </div>
             <div class="centerRows formPadding">
-                    <div class="center formPadding">
-                        <label class="label">FECHA DE NACIMIENTO</label>
-                    <input type="date" formControlName="date_of_birth"/>
+                <div class="center formPadding">
+                    <input type="text" formControlName="name" placeholder="NOMBRE" class="input"/>
                 </div>
+                <div class="center formPadding">
+                    <input type="text" formControlName="last_name" placeholder="APELLIDOS"/>
+                </div>
+                <div class="center formPadding">
+                    <label class="label">FECHA DE NACIMIENTO</label>
+                <input type="date" formControlName="date_of_birth"/>
+                </div>
+            </div>
+            <div class="centerRows formPadding">
                 <div class="center formPadding">
                     <input type="text" formControlName="city" placeholder="PROVINCIA"/>
                 </div>
                 <div class="center formPadding">
                     <input type="textarea" formControlName="presentation" placeholder="BIOGRAFIA"/>
-                </div>
-            </div>
-            <div class="centerRows formPadding">
-                <div class="center formPadding">
-                    <!-- <select [(ngModel)]="artistic_discipline">
-                        <option class="purple" *ngFor="let discipline of disciplines" [ngValue]="discipline"></option>
-                    </select> -->
-                </div>
-                <div class="center formPadding">
-                    <input class="custom-file-input" type="file" formControlName="cv"/>
                 </div>
             </div>
             <div class="centerRows formPadding">
@@ -45,31 +41,40 @@
                         <div *ngIf="loginForm.email.errors.email">Debe ser un email válido</div>
                     </div>
                 </div>
-                <div class="center">
+                <div class="center formPadding">
                     <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }" placeholder="CONTRASEÑA"/>
                     <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
                         <div *ngIf="loginForm.password.errors.required">Inserta Contraseña</div>
                         <div *ngIf="loginForm.password.errors.minlength">Mínimo 6 caracteres</div>
                     </div>
                 </div>
+                <div class="center formPadding">
+                    <input type="password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && loginForm.confirmPassword.errors }" placeholder="REPITE CONTRASEÑA"/>
+                    <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
+                        <div *ngIf="loginForm.confirmPassword.errors.required">Repita contraseña</div>
+                        <div *ngIf="loginForm.confirmPassword.errors.mustMatch">Debe coincidir</div>
+                    </div>
+                </div>
             </div>
 
             <div class="centerRows formPadding">
-
-                <div class="formPadding" >
-                    <button mat-raised-button>
-                        SUBIR FOTO DE PERFIL
-                    </button>
+                <div class="center formPadding">
+                    <input class="custom-file-input" type="file" formControlName="artistic_cv"/>
                 </div>
-                <div class="formPadding" >
-                    <button mat-raised-button>
-                        SUBIR ARCHIVOS
-                    </button>
+            </div>
+            <div class="centerRows formPadding">
+                <div class="center formPadding">
+                    <input class="custom-file-input2" type="file" formControlName="avatar"/>
+                </div>
+            </div>
+            <div class="centerRows formPadding">
+                <div class="center formPadding">
+                    <input class="custom-file-input3" type="file" formControlName="artwork"/>
                 </div>
             </div>
             <div class="formPadding" >
                 <button mat-raised-button>
-                    REGISTRARSE
+                    REGISTRATE
                   </button>
             </div>
         </form>

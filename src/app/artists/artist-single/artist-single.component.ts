@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { ArtistasFormComponent } from '../artistas-form/artistas-form.component';
+import { ArtistsFormComponent } from '../artists-form/artists-form.component';
 import { InfoComponent } from 'src/app/shared/UI/info/info.component';
 
 
@@ -46,12 +46,12 @@ export class ArtistSingleComponent implements OnInit {
       }
 
       this.userService.deleteUser(this.user.user_id).subscribe(res => {
-        this.router.navigateByUrl('/artistas-form');
+        this.router.navigateByUrl('/artists-form');
       });
     });
   }
   updateUser(): void {
-    const dialogRef = this.dialog.open(ArtistasFormComponent, {
+    const dialogRef = this.dialog.open(ArtistsFormComponent, {
       data: this.user,
       width: '80%'
     });

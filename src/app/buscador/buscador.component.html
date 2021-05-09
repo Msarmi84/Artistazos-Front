@@ -2,18 +2,18 @@
 <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
     <div class="grid">
         <div class="form-group">
-            <label>Nombre artístico</label>
-            <input type="text" formControlName="artistic_name">
+            <label>Nombre</label>
+            <input type="text" formControlName="user_name">
           </div>
          
         <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" formControlName="name">
+          <label>Apellido</label>
+          <input type="text" formControlName="user_name">
         </div>    
         <div class="form-group">
-          <label>Categoría</label>
+          <label>Disciplina</label>
           <select name="" id=""  formControlName="productCategory">
-              <option *ngFor="let item of productCategory" ngValue="item.id">{{item.name}}</option>   
+              <option *ngFor="let item of discipline" ngValue="item.id">{{item.name}}</option>   
           </select>
         </div>
         <div class="form-group">
@@ -28,4 +28,5 @@
     </div>
     <button type="submit"> Buscar</button>
 </form> 
+
 

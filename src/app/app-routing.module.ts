@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArtistSingleComponent } from './artists/artist-single/artist-single.component';
 import { ArtistasFormComponent } from './artists/artistas-form/artistas-form.component';
 import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
+import { BuscadorComponent } from './buscador/buscador.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
@@ -28,7 +29,10 @@ const routes: Routes = [
     path: '', component: HomePageComponent,
   },
   {
-    path: 'productos', component: AllProductsComponent
+    path: 'productos', component: AllProductsComponent,
+  },
+  {
+    path: 'buscar', component: BuscadorComponent
   }
 ];
 

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { environment } from 'src/environments/environment';
+
+
 
 
 @Component({
@@ -7,6 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artist-single.component.scss']
 })
 export class ArtistSingleComponent implements OnInit {
+
+  user: User;
+  imageUrl = environment.baseUrl + 'images/';
+  defaultImage = 'assets/images/logonofoto.png';
+
 
   constructor() { }
 

@@ -1,0 +1,31 @@
+@import "/src/app/login/login.component.scss";
+@import "/src/app/artists/artists-grid/artists-grid.component.scss";
+
+form {
+    color: white;
+    .grid{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    input {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 3px solid #ca63e2;
+        color: white;
+      }
+    
+    select {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 3px solid #ca63e2;
+        color: white;
+        width: 170px;
+    }
+    button {
+        margin-bottom: 50px;
+    }
+}

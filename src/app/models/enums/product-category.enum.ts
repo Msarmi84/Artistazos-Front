@@ -5,5 +5,5 @@ export enum ProductCategory {
     video = 3,
     libro = 4,
     pintura = 5,
-    escultura = 6 
+    escultura = 6
 }

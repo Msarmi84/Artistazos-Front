@@ -1,32 +1,29 @@
 
 <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
     <div class="grid">
-        <div class="form-group">
-            <label>Nombre</label>
+        <div class="formPadding">
+            <label class="formPadding">Nombre:</label>
             <input type="text" formControlName="user_name">
           </div>
          
-        <div class="form-group">
-          <label>Apellido</label>
-          <input type="text" formControlName="user_name">
+        <div class="formPadding">
+          <label class="formPadding">Apellido:</label>
+          <input type="text" formControlName="last_name">
         </div>    
-        <div class="form-group">
-          <label>Disciplina</label>
-          <select name="" id=""  formControlName="productCategory">
-              <option *ngFor="let item of discipline" ngValue="item.id">{{item.name}}</option>   
+        <div class="formPadding">
+          <label class="formPadding">Disciplina:</label>
+          <select name="" id=""  formControlName="discipline">
+              <option *ngFor="let item of disciplines" ngValue="item.id">{{item.name}}</option>   
           </select>
         </div>
-        <div class="form-group">
-            <label>Artista</label>
-            <input type="text" formControlName="artist">
-        </div>
-        <div class="form-group">
-            <label>Rango de precios</label>
-            <input type="number" min="0" formControlName="minPrice">
-            <input type="number" min="0" formControlName="maxPrice">
+        <div class="formPadding">
+            <label class="formPadding">Palabra clave:</label>
+            <input type="text" formControlName="tag">
         </div>
     </div>
-    <button type="submit"> Buscar</button>
+    <div class="grid">
+        <button class="mat-raised-button" type="submit"> Buscar</button>
+    </div>
 </form> 
 
 

@@ -1,0 +1,30 @@
+.grid-artistas {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
+    gap: 1rem;
+    align-self: center;
+    width: 80%;
+}
+
+.header-artistas {
+    color: white;
+    text-align: center;
+}
+
+.card {
+    border-radius: 6px;
+    box-shadow: 0 0 4px 1px #23232350;
+    padding: 1rem;
+    background-color: #fff;
+    img {
+        width: 100%;
+    }
+}
+
+.mat-raised-button {
+    background-color: #ca63e2;
+    margin-top: 0.5rem;
+    border: none;
+    color: white;
+}

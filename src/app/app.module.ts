@@ -9,7 +9,7 @@ import { ArtistSingleComponent } from './artists/artist-single/artist-single.com
 import { ArtistasFormComponent } from './artists/artistas-form/artistas-form.component';
 import { LoginComponent } from './login/login.component';
 import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
-import { AdvertisementComponent } from './artists/artist-single/advertisement/advertisement.component';
+import { AdvertisementComponent } from './artists/advertisement/advertisement.component';
 
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 // MATERIAL MODULES

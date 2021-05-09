@@ -23,6 +23,7 @@ import { AllProductsComponent } from './productos/all-products/all-products.comp
 import { BuscadorComponent } from './buscador/buscador.component';
 
 import { ArtistsComponent } from './artists/artists.component';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 
@@ -52,6 +53,7 @@ import { ArtistsComponent } from './artists/artists.component';
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
+    MatDialogModule,
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

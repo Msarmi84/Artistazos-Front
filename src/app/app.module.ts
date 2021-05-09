@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AllProductsComponent } from './productos/all-products/all-products.component';
-import { BuscadorComponent } from './productos/all-products/buscador/buscador.component';
+import { BuscadorComponent } from './buscador/buscador.component';
 
 
 

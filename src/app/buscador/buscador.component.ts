@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BuscadorProducto } from 'src/app/models/buscador-producto';
 import { IdName } from 'src/app/models/id-name';
-import { ProductService } from '../../product.service';
+import { ProductService } from '../productos/product.service';
 
 @Component({
   selector: 'app-buscador',

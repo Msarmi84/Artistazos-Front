@@ -7,90 +7,17 @@
 </div>
 
 <div class="grid-artistas">
-    <div class="parallelogram">
+    <div class="parallelogram" *ngFor="let user of users">
         <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
+            <img [src]="user.avatar ? imageUrl + user.avatar : defaultImg" alt="">
+            <h3>{{ user.user_name }}</h3>
+            <p>{{ user.discipline_id }}</p>
+            <p></p>
             <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-            <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
+            <button [routerLink]="['/artista', user.user_id]" mat-raised-button>VER MÁS</button>
         </div>
     </div>
 
-    <div class="parallelogram">
-        <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-            <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
-        </div>
-    </div>
-
-    <div class="parallelogram">
-        <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-            <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
-        </div>
-    </div>
-    <div class="parallelogram">
-        <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-            <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
-        </div>
-    </div>
-
-    <div class="parallelogram">
-        <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-            <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
-        </div>
-    </div>
-
-    <div class="parallelogram">
-        <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-            <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
-        </div>
-    </div>
-    <div class="parallelogram">
-        <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-            <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
-        </div>
-    </div>
-
-    <div class="parallelogram">
-        <div class="card">
-            <img src="../../../assets/images/logonofoto.png" alt="">
-            <h3>MARC FILCH</h3>
-            <p>CANTANTE</p>
-            <p>Bajista y percusionista</p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
-        </div>
-    </div>
 
 
 </div>

@@ -9,8 +9,8 @@ export class User {
   biography: string;
   location: string;
   password: string;
-  avatar: File; // Para subir el avatar
-  artistic_cv: File; // Para subir el cv artistico
+  avatar: string; // Para subir el avatar
+  artistic_cv: string; // Para subir el cv artistico
   type: string;
   mail: string;
   discipline_id: number;
@@ -19,7 +19,8 @@ export class User {
   constructor(item?: any) {
     this.date_of_birth = item.date_of_birth || '';
     this.last_name = item.last_name || '';
-    this.user_name = item.name || '';
+    this.user_id = item?.user_id || null;
+    this.user_name = item.user_name || '';
     this.artistic_name = item.artistic_name || '';
     this.biography = item.biography || '';
     this.location = item.location || '';
@@ -27,6 +28,6 @@ export class User {
     this.type = item.type || '';
     this.mail = item.mail || '';
     this.discipline_id = item.discipline_id || 0;
-    this.tags = item.tags || [];
+    this.avatar = item.avatar || null;
   }
 }

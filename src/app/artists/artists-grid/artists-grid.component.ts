@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/user';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -13,11 +14,14 @@ export class ArtistsGridComponent implements OnInit {
   defaultImg = 'assets/images/logonofoto.png';
   imageUrl = environment.baseUrl + 'images/';
 
-  @Input() users: User[] = [];
+  users: User[] = [];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUsers().subscribe(users => this.users = users);
+    console.log(this.users + 'aaaa');
   }
+
 
 }

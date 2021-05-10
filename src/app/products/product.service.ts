@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -56,7 +56,7 @@ export class ProductService {
     
     if (product.id) {
       // PUT 
-      return this.http.put<Product>(`${this.URL}/saveProduct/${product.id}`, product).pipe(
+      return this.http.put<Product>(`${this.URL}/updateProduct/${product.id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
         })
@@ -64,7 +64,7 @@ export class ProductService {
 
     } else {
       // POST 
-      return this.http.post<Product>('http://localhost:3000/viajes/', product).pipe(
+      return this.http.post<Product>(`${this.URL}/saveProduct/${product.id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
         })
@@ -73,8 +73,8 @@ export class ProductService {
 
   }
 
-  borrarViaje( viaje: Viaje): Observable<Boolean>{
-    return this.http.delete<boolean>('http://localhost:3000/viajes/'+ viaje.id, { observe: 'response' }).pipe(
+  deleteProduct( product: Product): Observable<Boolean>{
+    return this.http.delete<boolean>(`${this.URL}/deleteProduct/${product.id}`, { observe: 'response' }).pipe(
       map((x: HttpResponse<any>) => {
         return x.ok
       })

@@ -5,49 +5,41 @@
                 <img src="../../../assets/images/artista1.jpg" alt="" />
             </div>
             <div class="datos-single">
-                <h1>{{ user.user_name }}<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button>
+                <h1>{{ user.user_name }}
                     <i class="fab fa-linkedin-in"></i><i class="fab fa-facebook"></i></h1>
-                <p>{{ user.discipline_id }}
-                    <button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button>
-                </p>
-
+                <p>{{ user.discipline_id }}</p>
             </div>
         </div>
         <div class="description-single">
-            <p>{{ user.biography }}<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button></p>
-            <button mat-raised-button (click)="seeEditProfile()">{{ txtBoton }}</button>
-            <button mat-raised-button (click)="deleteUser()" class="buttonDeleteUser">DELETE</button>
+            <p>{{ user.biography }}</p>
+            <button mat-raised-button (click)="seeEditProfile()">EDITAR</button>
+            <button mat-raised-button (click)="deleteUser()" class="buttonDeleteUser">BORRAR</button>
 
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto1.jpeg">
-                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto2.jpg">
-                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto3.png">
-                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto4.jpg">
-                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto5.jpg">
-                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto6.jpeg">
-                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
+                    <!-- <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button> -->
                 </div>
             </div>
             <div class="button-add">
-                <button mat-raised-button *ngIf="seeEditArtist === false">
+                <button mat-raised-button>
                AÑADIR PRODUCTOS</button>
                 <input type="file" #inputFile (change)="onImageChanged($event)">
 

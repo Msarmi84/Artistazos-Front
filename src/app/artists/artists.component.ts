@@ -24,4 +24,5 @@ export class ArtistsComponent implements OnInit {
     this.userService.saveUser(user).subscribe(() => this.getUsers());
   }
 
+
 }

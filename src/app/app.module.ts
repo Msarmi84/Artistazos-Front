@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/UI/header/header.component';
 import { FooterComponent } from './shared/UI/footer/footer.component';
 import { ArtistSingleComponent } from './artists/artist-single/artist-single.component';
-import { ArtistasFormComponent } from './artists/artistas-form/artistas-form.component';
+import { ArtistsFormComponent } from './artists/artists-form/artists-form.component';
 import { LoginComponent } from './login/login.component';
 import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
@@ -33,7 +33,7 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
     HeaderComponent,
     FooterComponent,
     ArtistSingleComponent,
-    ArtistasFormComponent,
+    ArtistsFormComponent,
     LoginComponent,
     ArtistsGridComponent,
     CompradorFormComponent,

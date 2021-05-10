@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
+import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
 
 
 
@@ -44,7 +45,8 @@ import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artist
     SearcherComponent,
     ArtistsComponent,
     AdvertisementComponent,
-    ArtistsFormUpdateComponent
+    ArtistsFormUpdateComponent,
+    ProductsFormUpdateComponent
 
   ],
   imports: [

@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="grid">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" formControlName="user_name">
+            <p *ngIf="form.controls.user_name?.errors?.required && form.controls.user_name.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Descripcion</label>
+            <input type="text" min="0" formControlName="biography">
+            <p *ngIf="form.controls.biography?.errors?.required && form.controls.biography.touched">*Campo obligatorio</p>
+        </div>
+        <!-- <div class="form-group">
+            <label>Avatar</label>
+            <input type="file" formControlName="avatar">
+            <p *ngIf="form.controls.avatar?.errors?.required && form.controls.avatar.touched">*Campo obligatorio</p>
+        </div> -->
+        <div class="form-group">
+            <label>Tags</label>
+            <input type="text" min="0" formControlName="tag">
+            <p *ngIf="form.controls.tag?.errors?.required && form.controls.tag.touched">*Campo obligatorio</p>
+        </div>
+    </div>
+
+    <input type="file" #inputFile (change)="onImageChanged($event)">
+    <label>EDITAR AVATAR</label>
+    <div class="flex-between">
+        <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+        <button mat-raised-button [mat-dialog-close]="generateFormData()">GUARDAR</button>
+    </div>
+
+</form>

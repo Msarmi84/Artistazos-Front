@@ -51,4 +51,33 @@ export class ProductService {
       map(x => x.map(product => new Product(product)))
     );
   }
+
+  saveProduct( product: Product): Observable<Product> {
+    
+    if (product.id) {
+      // PUT 
+      return this.http.put<Product>(`${this.URL}/saveProduct/${product.id}`, product).pipe(
+        map((x: any) => {
+          return new Product(x)
+        })
+      )
+
+    } else {
+      // POST 
+      return this.http.post<Product>('http://localhost:3000/viajes/', product).pipe(
+        map((x: any) => {
+          return new Product(x)
+        })
+      )
+    }
+
+  }
+
+  borrarViaje( viaje: Viaje): Observable<Boolean>{
+    return this.http.delete<boolean>('http://localhost:3000/viajes/'+ viaje.id, { observe: 'response' }).pipe(
+      map((x: HttpResponse<any>) => {
+        return x.ok
+      })
+    )
+  }
 }

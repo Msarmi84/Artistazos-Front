@@ -7,6 +7,7 @@ export class Product {
     description: string;
     photo: string;
     price: number;
+    tag:string[];
 
     constructor(item?: any) {
         this.id = item?.id || null;
@@ -15,5 +16,6 @@ export class Product {
         this.description = item?.description || 0;
         this.photo = item?.photo || '';
         this.price = item?.price || 0;
+        this.tag = item?.tag || [''];
     }
 }

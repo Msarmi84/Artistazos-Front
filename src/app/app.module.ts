@@ -16,6 +16,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { SearcherComponent } from './searcher/searcher.component';
+import { FormsModule } from '@angular/forms';
 
 
 // MATERIAL MODULES
@@ -55,6 +56,7 @@ import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artist
     MatButtonModule,
     HttpClientModule,
     MatDialogModule,
+    FormsModule,
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

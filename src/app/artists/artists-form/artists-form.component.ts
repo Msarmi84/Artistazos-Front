@@ -22,6 +22,10 @@ export class ArtistsFormComponent implements OnInit {
     'Danza',
     'Teatro'
   ]
+
+  seleccionados:string[]=[];
+  
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -40,6 +44,8 @@ export class ArtistsFormComponent implements OnInit {
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
+
+    
   }
 
   get loginForm() { return this.registerForm.controls; }

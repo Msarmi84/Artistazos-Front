@@ -5,16 +5,16 @@
                 <img src="../../../assets/images/artista1.jpg" alt="" />
             </div>
             <div class="datos-single">
-                <h1>MARC FILCH<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button>
+                <h1>{{ user.user_name }}<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button>
                     <i class="fab fa-linkedin-in"></i><i class="fab fa-facebook"></i></h1>
-                <p>Cantante y bajistas
+                <p>{{ user.discipline_id }}
                     <button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button>
                 </p>
 
             </div>
         </div>
         <div class="description-single">
-            <p>Cantante y bajista con años de trayectoria he actuado en diferentes escenarios creador del grupo Batmans, actualmente actúo en solitario y estoy contento de presentaros mi primer single.<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button></p>
+            <p>{{ user.biography }}<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button></p>
             <button mat-raised-button (click)="seeEditProfile()">{{ txtBoton }}
 
             </button>
@@ -47,14 +47,18 @@
                 </div>
             </div>
             <div class="button-add">
-                <button mat-raised-button>
+                <button mat-raised-button *ngIf="seeEditArtist === true">
               AÑADIR PRODUCTOS
+              <input type="file" #inputFile (change)="onImageChanged($event)">
+
             </button>
+
             </div>
         </div>
     </div>
     <div class="container-publish">
         <app-advertisement></app-advertisement>
     </div>
+    <app-artists-form-update *ngIf="editProfile"></app-artists-form-update>
 
 </div>

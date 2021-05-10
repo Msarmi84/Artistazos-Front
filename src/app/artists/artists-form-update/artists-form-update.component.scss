@@ -1,0 +1,58 @@
+:host {
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 0 11px 1px #ca63e2;
+    ;
+    background-color: transparent;
+    display: block;
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-gap: 1rem;
+    }
+    label {
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+    input {
+        display: block;
+        width: 100%;
+        border-radius: 6px;
+        border: none;
+        padding: 0.3rem 0.5rem;
+        box-shadow: 0 0 0 1px rgba(#ca63e2, 0.2);
+        // si estas dos cosas se cumplen, me aplicas el estilo
+        &.ng-invalid.ng-touched {
+            box-shadow: 0 0 0 3px rgba(red, 0.2);
+        }
+    }
+    .form-group {
+        margin-bottom: 1rem;
+        p {
+            color: red;
+            font-size: 11px;
+            position: absolute;
+            margin-top: 0.3rem;
+        }
+    }
+    img {
+        max-height: 150px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    input[type="file"] {
+        display: none;
+    }
+    .flex-between {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .mat-raised-button {
+        background-color: #ca63e2;
+        margin-top: 0.5rem;
+        border: none;
+        color: white;
+    }
+}

@@ -6,6 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { ArtistsFormComponent } from '../artists-form/artists-form.component';
 import { InfoComponent } from 'src/app/shared/UI/info/info.component';
+import { ArtistsFormUpdateComponent } from '../artists-form-update/artists-form-update.component';
+
+
 
 
 @Component({
@@ -18,13 +21,15 @@ export class ArtistSingleComponent implements OnInit {
   user: User;
   imageUrl = environment.baseUrl + 'images/';
   defaultImage = 'assets/images/logonofoto.png';
+  imageFile: File;
+  imgPreview = 'assets/images/logonofoto.png';
 
 
-  seeEditArtist = false; // propiedad  booleano
+  seeEditArtist = false;
   txtBoton = 'EDITAR PERFIL';
 
 
-  @Output()editProfile = new EventEmitter();
+  editProfile: boolean = false ;
 
 
 
@@ -72,15 +77,31 @@ export class ArtistSingleComponent implements OnInit {
     this.seeEditArtist = !this.seeEditArtist;
   }
 
-  editProfileClick(): void {
-    this.editProfile.emit();
-  }
+  // editProfileClick(): void {
+  //   this.editProfile = true;
+  // }
 
 
   seeEditProfile() {
-    this.seeEditArtist = !this.seeEditArtist;
-    this.txtBoton = this.seeEditArtist ?  'GUARDAR' : 'EDITAR PERFIL';
+    // this.editProfile = true;
+    const dialogRef = this.dialog.open(ArtistsFormUpdateComponent, {
+      data: this.user,
+      width: '80%'
+    });
 
+    dialogRef.afterClosed().subscribe(user => {
+      this.userService.updateUser(user, this.user.user_id)
+        .subscribe(seeEditProfile => this.user = seeEditProfile);
+    });
+
+  }
+  onImageChanged(event: InputEvent): void {
+    const inputTarget = event.target as HTMLInputElement;
+    const file = inputTarget.files[0];
+    this.imageFile = file;
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => this.imgPreview = fileReader.result as string;
   }
 
 

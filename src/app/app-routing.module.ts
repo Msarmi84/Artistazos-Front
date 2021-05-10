@@ -8,16 +8,17 @@ import { CompradorFormComponent } from './comprador/comprador-form/comprador-for
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent,
   },
   {
-    path: 'artista/:id', component: ArtistSingleComponent,
+    path: 'artista/:id', component: ArtistSingleComponent , canActivate: [AuthGuard]
   },
   {
-    path: 'artistas', component: ArtistsGridComponent,
+    path: 'artistas', component: ArtistsGridComponent, canActivate: [AuthGuard]
   },
   {
     path: 'artists-form', component: ArtistsFormComponent,

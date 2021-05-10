@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { UserSearch } from '../models/UserSearch';
+import { UserSearch } from '../models/userSearch';
 import { environment } from '../../environments/environment';
 import { Disciplines } from '../models/disciplines';
 import { Observable } from 'rxjs';
@@ -36,8 +36,8 @@ export class UserService {
   updateUser(user: FormData, id: number): Observable<User> {
     return this.http.put<User>(`${this.URL}/${id}`, user);
   }
-  
-  
+
+
   getDisciplines(): Observable<Disciplines[]> {
 
     return this.http.get<Disciplines[]>(`${this.URL}/disciplinas`).pipe(
@@ -46,13 +46,13 @@ export class UserService {
   }
 
   searchUsers( filtro:UserSearch): Observable<User[]> {
-    
+
     return this.http.post<User[]>(`${this.URL}/buscar`, filtro).pipe(
         map(x => x.map(user => new User(user)))
-      )  
+      )
   }
-  
-  
-  
+
+
+
 }
 

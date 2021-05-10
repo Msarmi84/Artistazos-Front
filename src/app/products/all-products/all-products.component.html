@@ -1,4 +1,4 @@
-<app-buscador (filter)="searchProduct($event)"></app-buscador>
+<app-searcher (filter)="searchProduct($event)"></app-searcher>
 <p>aaaaaaaaaaa</p>
 <div class="grid">
     <div class="card-product" *ngFor="let product of products">
@@ -6,4 +6,3 @@
         <p>{{product.name}}</p>
     </div>
 </div>
-

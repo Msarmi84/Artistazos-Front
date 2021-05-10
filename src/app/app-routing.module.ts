@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArtistSingleComponent } from './artists/artist-single/artist-single.component';
-import { ArtistasFormComponent } from './artists/artistas-form/artistas-form.component';
+import { ArtistsFormComponent } from './artists/artists-form/artists-form.component';
 import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
-import { BuscadorComponent } from './buscador/buscador.component';
+import { SearcherComponent } from './searcher/searcher.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
-import { AllProductsComponent } from './productos/all-products/all-products.component';
+import { AllProductsComponent } from './products/all-products/all-products.component';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'artistas', component: ArtistsGridComponent,
   },
   {
-    path: 'artistas-form', component: ArtistasFormComponent,
+    path: 'artists-form', component: ArtistsFormComponent,
   },
   {
     path: 'comprador-form', component: CompradorFormComponent,
@@ -29,10 +29,10 @@ const routes: Routes = [
     path: '', component: HomePageComponent,
   },
   {
-    path: 'productos', component: AllProductsComponent,
+    path: 'products', component: AllProductsComponent,
   },
   {
-    path: 'buscar', component: BuscadorComponent
+    path: 'buscar', component: SearcherComponent
   }
 ];
 

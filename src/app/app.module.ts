@@ -7,22 +7,21 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/UI/header/header.component';
 import { FooterComponent } from './shared/UI/footer/footer.component';
 import { ArtistSingleComponent } from './artists/artist-single/artist-single.component';
-import { ArtistasFormComponent } from './artists/artistas-form/artistas-form.component';
+import { ArtistsFormComponent } from './artists/artists-form/artists-form.component';
 import { LoginComponent } from './login/login.component';
 import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
 import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 import { AdvertisementComponent } from './artists/advertisement/advertisement.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AllProductsComponent } from './products/all-products/all-products.component';
+import { ArtistsComponent } from './artists/artists.component';
+import { SearcherComponent } from './searcher/searcher.component';
+
 
 // MATERIAL MODULES
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { HomePageComponent } from './home-page/home-page.component';
-import { AllProductsComponent } from './productos/all-products/all-products.component';
-
-import { BuscadorComponent } from './buscador/buscador.component';
-
-import { ArtistsComponent } from './artists/artists.component';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
@@ -34,13 +33,13 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
     HeaderComponent,
     FooterComponent,
     ArtistSingleComponent,
-    ArtistasFormComponent,
+    ArtistsFormComponent,
     LoginComponent,
     ArtistsGridComponent,
     CompradorFormComponent,
     HomePageComponent,
     AllProductsComponent,
-    BuscadorComponent,
+    SearcherComponent,
     ArtistsComponent,
     AdvertisementComponent
 

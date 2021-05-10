@@ -5,43 +5,45 @@
                 <img src="../../../assets/images/artista1.jpg" alt="" />
             </div>
             <div class="datos-single">
-                <h1>MARC FILCH<button class="fa fa-feather-alt"></button>
+                <h1>MARC FILCH<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button>
                     <i class="fab fa-linkedin-in"></i><i class="fab fa-facebook"></i></h1>
-                <p>Cantante y bajistas<button class="fa fa-feather-alt"></button></p>
+                <p>Cantante y bajistas
+                    <button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button>
+                </p>
 
             </div>
         </div>
         <div class="description-single">
-            <p>Cantante y bajista con años de trayectoria he actuado en diferentes escenarios creador del grupo Batmans, actualmente actúo en solitario y estoy contento de presentaros mi primer single.<button class="fa fa-feather-alt"></button></p>
-            <button mat-raised-button>
-              EDITAR PERFIL
+            <p>Cantante y bajista con años de trayectoria he actuado en diferentes escenarios creador del grupo Batmans, actualmente actúo en solitario y estoy contento de presentaros mi primer single.<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button></p>
+            <button mat-raised-button (click)="seeEditProfile()">{{ txtBoton }}
+
             </button>
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto1.jpeg">
-                    <button class="fa fa-feather-alt edit-product"></button>
+                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto2.jpg">
-                    <button class="fa fa-feather-alt edit-product"></button>
+                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto3.png">
-                    <button class="fa fa-feather-alt edit-product"></button>
+                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto4.jpg">
-                    <button class="fa fa-feather-alt edit-product"></button>
+                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto5.jpg">
-                    <button class="fa fa-feather-alt edit-product"></button>
+                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
                 <div class="product-single">
                     <img src="../../../assets/images/proyecto6.jpeg">
-                    <button class="fa fa-feather-alt edit-product"></button>
+                    <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button>
                 </div>
             </div>
             <div class="button-add">
@@ -51,6 +53,8 @@
             </div>
         </div>
     </div>
-    <app-advertisement></app-advertisement>
+    <div class="container-publish">
+        <app-advertisement></app-advertisement>
+    </div>
 
 </div>

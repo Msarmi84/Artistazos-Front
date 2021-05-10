@@ -1,6 +1,6 @@
 import { ProductCategory } from './enums/product-category.enum';
 
-export interface BuscadorProducto{
+export interface SearcherProduct{
     name: string;
     category: ProductCategory;
     artist: string;

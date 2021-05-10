@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { ArtistasFormComponent } from '../artistas-form/artistas-form.component';
+import { ArtistsFormComponent } from '../artists-form/artists-form.component';
 import { InfoComponent } from 'src/app/shared/UI/info/info.component';
-
 
 
 @Component({
@@ -19,6 +18,14 @@ export class ArtistSingleComponent implements OnInit {
   user: User;
   imageUrl = environment.baseUrl + 'images/';
   defaultImage = 'assets/images/logonofoto.png';
+
+
+  seeEditArtist = false; // propiedad  booleano
+  txtBoton = 'EDITAR PERFIL';
+
+
+  @Output()editProfile = new EventEmitter();
+
 
 
   constructor(
@@ -46,12 +53,12 @@ export class ArtistSingleComponent implements OnInit {
       }
 
       this.userService.deleteUser(this.user.user_id).subscribe(res => {
-        this.router.navigateByUrl('/artistas-form');
+        this.router.navigateByUrl('/artists-form');
       });
     });
   }
   updateUser(): void {
-    const dialogRef = this.dialog.open(ArtistasFormComponent, {
+    const dialogRef = this.dialog.open(ArtistsFormComponent, {
       data: this.user,
       width: '80%'
     });
@@ -61,6 +68,21 @@ export class ArtistSingleComponent implements OnInit {
         .subscribe(updatedUser => this.user = updatedUser);
     });
   }
+  changeToArtist(): void {
+    this.seeEditArtist = !this.seeEditArtist;
+  }
+
+  editProfileClick(): void {
+    this.editProfile.emit();
+  }
+
+
+  seeEditProfile() {
+    this.seeEditArtist = !this.seeEditArtist;
+    this.txtBoton = this.seeEditArtist ?  'GUARDAR' : 'EDITAR PERFIL';
+
+  }
+
 
 
 }

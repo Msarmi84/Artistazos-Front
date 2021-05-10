@@ -4,11 +4,11 @@ import { MustMatch } from 'src/app/_helpers/must-match.validator';
 
 
 @Component({
-  selector: 'app-artistas-form',
-  templateUrl: './artistas-form.component.html',
-  styleUrls: ['./artistas-form.component.scss']
+  selector: 'app-artists-form',
+  templateUrl: './artists-form.component.html',
+  styleUrls: ['./artists-form.component.scss']
 })
-export class ArtistasFormComponent implements OnInit {
+export class ArtistsFormComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted: boolean = false;

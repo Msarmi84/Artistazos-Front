@@ -15,9 +15,9 @@
         </div>
         <div class="description-single">
             <p>{{ user.biography }}<button class="fa fa-feather-alt" *ngIf="seeEditArtist === true"></button></p>
-            <button mat-raised-button (click)="seeEditProfile()">{{ txtBoton }}
+            <button mat-raised-button (click)="seeEditProfile()">{{ txtBoton }}</button>
+            <button mat-raised-button (click)="deleteUser()" class="buttonDeleteUser">DELETE</button>
 
-            </button>
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
@@ -47,11 +47,10 @@
                 </div>
             </div>
             <div class="button-add">
-                <button mat-raised-button *ngIf="seeEditArtist === true">
-              AÑADIR PRODUCTOS
-              <input type="file" #inputFile (change)="onImageChanged($event)">
+                <button mat-raised-button *ngIf="seeEditArtist === false">
+               AÑADIR PRODUCTOS</button>
+                <input type="file" #inputFile (change)="onImageChanged($event)">
 
-            </button>
 
             </div>
         </div>

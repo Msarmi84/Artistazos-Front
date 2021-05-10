@@ -86,6 +86,9 @@
 
 .button-add {
     margin-top: 0;
+    display: flex;
+    align-items: center;
+    color: white;
     button {
         margin-top: 0;
     }
@@ -93,4 +96,8 @@
 
 .container-publish {
     width: 35%;
+}
+
+.buttonDeleteUser {
+    margin-left: 10px;
 }

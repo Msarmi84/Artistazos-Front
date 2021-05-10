@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
     });
 
   }
@@ -35,6 +35,6 @@ export class LoginComponent implements OnInit {
 
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
     }
- 
+
 
 }

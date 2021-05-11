@@ -1,0 +1,37 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="grid">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" formControlName="name">
+            <p *ngIf="productForm.controls.name?.errors?.required && productForm.controls.user_name.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Categoría</label>
+            <input type="text" min="0" formControlName="category">
+            <p *ngIf="productForm.controls.category?.errors?.required && productForm.controls.category?.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" min="0" formControlName="description">
+            <!-- <p *ngIf="productForm.controls.tag?.errors?.required && productForm.controls.tag.touched">*Campo obligatorio</p> -->
+        </div>
+        <div class="form-group">
+            <label>Tags</label>
+            <input type="text" min="0" formControlName="tag">
+            <p *ngIf="productForm.controls.tag?.errors?.required && productForm.controls.tag.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="text" min="0" formControlName="price">
+            <!-- <p *ngIf="productForm.controls.tag?.errors?.required && productForm.controls.tag.touched">*Campo obligatorio</p> -->
+        </div>
+    </div>
+
+    <input type="file" #inputFile (change)="onImageChanged($event)">
+    <label>EDITAR AVATAR</label>
+    <div class="flex-between">
+        <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+        <button mat-raised-button [mat-dialog-close]="generateFormData()">GUARDAR</button>
+    </div>
+
+</form>

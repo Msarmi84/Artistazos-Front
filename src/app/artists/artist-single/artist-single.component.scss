@@ -82,6 +82,16 @@
     .edit-product {
         margin-top: 0.5rem;
     }
+
+    .icon-edit {
+        color:#ca63e2;
+        position: absolute;
+        bottom:8em;
+        right:-1em;
+        padding:1em 1.5em;
+        cursor: pointer;
+    }
+
 }
 
 .button-add {
@@ -100,4 +110,9 @@
 
 .buttonDeleteUser {
     margin-left: 10px;
+}
+
+.cajaProducto {
+    display:inline-block;
+    position:relative;  
 }

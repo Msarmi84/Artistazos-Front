@@ -34,6 +34,7 @@ export class ArtistsFormComponent implements OnInit {
       name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
       date_of_birth: ['', [Validators.pattern(this.dateReg)]],
+
       city: ['', [Validators.required]],
       presentation: ['', [Validators.required]],
       artistic_discipline: ['', [Validators.required]],

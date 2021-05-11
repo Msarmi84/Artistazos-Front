@@ -12,31 +12,15 @@
         </div>
         <div class="description-single">
             <p>{{ user.biography }}</p>
-            <button mat-raised-button (click)="seeEditProfile(false)">EDITAR</button>
+            <button mat-raised-button (click)="seeEditProfile('')">EDITAR</button>
             <button mat-raised-button (click)="deleteUser()" class="buttonDeleteUser">BORRAR</button>
 
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
-                <div class="product-single cajaProducto">
-                    <img src="../../../assets/images/proyecto1.jpeg">
-                    <mat-icon *ngIf="iconEdit" class="icon-edit" (click)="seeEditProfile(true)"> border_color</mat-icon>
-                </div>
-                <div class="product-single">
-                    <img src="../../../assets/images/proyecto2.jpg">
-                </div>
-                <div class="product-single">
-                    <img src="../../../assets/images/proyecto3.png">
-                </div>
-                <div class="product-single">
-                    <img src="../../../assets/images/proyecto4.jpg">
-                </div>
-                <div class="product-single">
-                    <img src="../../../assets/images/proyecto5.jpg">
-                </div>
-                <div class="product-single">
-                    <img src="../../../assets/images/proyecto6.jpeg">
-                    <!-- <button class="fa fa-feather-alt edit-product" *ngIf="seeEditArtist === true"></button> -->
+                <div class="product-single cajaProducto" *ngFor="let product of products">
+                    <img src="../../../assets/images/{{product.product_photo}}">
+                    <mat-icon *ngIf="iconEdit" class="icon-edit" (click)="seeEditProfile(product)"> border_color</mat-icon>
                 </div>
             </div>
             <div class="button-add">
@@ -56,7 +40,6 @@
     <div class="container-publish">
         <app-advertisement></app-advertisement>
     </div>
-    <!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
-    <app-products-form-update *ngIf="editProfile"></app-products-form-update>
+    <!-- <app-products-form-update (formSubmitted)="saveProduct($event)"></app-products-form-update> -->
 
 </div>

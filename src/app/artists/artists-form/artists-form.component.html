@@ -9,7 +9,7 @@
                 </div>
                 <div class="center formPadding">
                     <label class="label">DISCIPLINA ARTISTICA</label>
-                    <select [(ngModel)]="seleccionados" multiple="multiple">
+                    <select formControlName="disciplines" multiple="multiple">
                         <option *ngFor="let discipline of disciplines" [value]="discipline">
                             {{discipline}}
                         </option>
@@ -75,11 +75,11 @@
                     <input class="custom-file-input2" type="file" formControlName="avatar"/>
                 </div>
             </div>
-            <div class="centerRows formPadding">
+            <!-- <div class="centerRows formPadding">
                 <div class="center formPadding">
                     <input class="custom-file-input3" type="file" formControlName="artwork"/>
                 </div>
-            </div>
+            </div> -->
             <div class="formPadding" >
                 <button mat-raised-button>
                     REGISTRATE

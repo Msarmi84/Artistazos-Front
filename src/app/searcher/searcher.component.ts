@@ -23,6 +23,7 @@ export class SearcherComponent implements OnInit {
     this.filterForm = fb.group({
       user_name: [''],
       last_name: [''],
+      artistic_name:[''],
       location: [''],
       discipline_id: [null],
       tags: [''],

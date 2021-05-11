@@ -1,6 +1,6 @@
 @import "/src/app/login/login.component.scss";
 .grid-artistas {
-    margin-top: 10px;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(4, minmax(240px, 1fr));
     gap: 1rem;

@@ -34,13 +34,16 @@ export class ArtistsFormComponent implements OnInit {
       name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
       date_of_birth: ['', [Validators.pattern(this.dateReg)]],
-      // location: ['', [Validators.required]],
-      // biography: ['', [Validators.required]],
-      // artistic_discipline: ['', [Validators.required]],
-      // cv: ['', [Validators.required]],
+
+      city: ['', [Validators.required]],
+      presentation: ['', [Validators.required]],
+      artistic_discipline: ['', [Validators.required]],
+      artistic_cv: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      disciplines:[[]],
+      avatar:['']
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
@@ -51,6 +54,8 @@ export class ArtistsFormComponent implements OnInit {
   get loginForm() { return this.registerForm.controls; }
 
   onSubmit() {
+console.log(this.registerForm.value)
+
       this.submitted = true;
 
       // stop here if form is invalid

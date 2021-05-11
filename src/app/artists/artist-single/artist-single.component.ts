@@ -22,6 +22,7 @@ import { ProductService } from 'src/app/products/product.service';
 export class ArtistSingleComponent implements OnInit {
 
   user: User;
+  userId: number;
   product: Product;
   products: Product[];
   imageUrl = environment.baseUrl + 'images/';
@@ -51,15 +52,22 @@ export class ArtistSingleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.getUser(params.id));
-
-    // para obtener todos los productos de este artista
-    // this.productService.getProductsById(id).subscribe(x => {
-    //   this.products = x;
-    // });
+    // this.route.params.subscribe(params => this.getUser(params.id));
+    this.route.params.subscribe(params => this.userId = params.id);
+    this.getUser(this.userId);
+    this.getProducts(this.userId); 
   }
-  getUser(id: string): void {
+
+  getUser(id: number): void {
     this.userService.getUserById(id).subscribe(user => this.user = user);
+  }
+
+  getProducts(id: number): void {
+    this.productService.getProductsByUserId(id).subscribe(x => {
+      this.products = x;
+
+      console.log(this.product)
+    });
   }
 
   deleteUser(): void {
@@ -71,17 +79,13 @@ export class ArtistSingleComponent implements OnInit {
     console.log(dialogRef);
     dialogRef.afterClosed().subscribe(isConfirmed => {
       if (!isConfirmed) {
-
         return;
       }
-
       this.userService.deleteUser(this.user.user_id).subscribe(res => {
         this.router.navigateByUrl('/artists-form');
       });
     });
   }
-
-
 
   updateUser(): void {
     // para abrir el formulario de editar producto
@@ -103,15 +107,16 @@ export class ArtistSingleComponent implements OnInit {
     this.seeEditArtist = !this.seeEditArtist;
   }
 
-  // editProfileClick(): void {
-  //   this.editProfile = true;
-  // };
 
-  seeEditProfile(event) {
+  seeEditProfile(product) {
+console.log(product )
+    this.product = product;
+    console.log(this.product)
 
-    if (event === true){
+
+    if (this.product){
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {
-        data: this.user,
+        data: this.product,
         width: '80%'
       });
 
@@ -119,19 +124,23 @@ export class ArtistSingleComponent implements OnInit {
         this.productService.saveProduct(this.product)
           .subscribe(updatedProduct => this.product = updatedProduct);
       });
+      this.product = null;
+ 
+    } else {
+      const dialogRef = this.dialog.open(ArtistsFormUpdateComponent, {
+        data: this.user,
+        width: '80%'
+      });
+  
+      dialogRef.afterClosed().subscribe(user => {
+        this.userService.updateUser(user, this.user.user_id)
+          .subscribe(seeEditProfile => this.user = seeEditProfile);
+      });
     }
-    // this.editProfile = true;
-    const dialogRef = this.dialog.open(ArtistsFormUpdateComponent, {
-      data: this.user,
-      width: '80%'
-    });
-
-    dialogRef.afterClosed().subscribe(user => {
-      this.userService.updateUser(user, this.user.user_id)
-        .subscribe(seeEditProfile => this.user = seeEditProfile);
-    });
 
   }
+
+
   onImageChanged(event: InputEvent): void {
     const inputTarget = event.target as HTMLInputElement;
     const file = inputTarget.files[0];
@@ -145,9 +154,11 @@ export class ArtistSingleComponent implements OnInit {
     this.iconEdit = !this.iconEdit;
   }
 
-  openModelEdit(): void {
-    this.openModel = !this.openModel;
-  }
+
+
+  // saveProduct(product:FormData): void {
+  //   this.productService.saveProduct(product).subscribe(() => this.getProducts(product.id));
+  // }
 
 
 

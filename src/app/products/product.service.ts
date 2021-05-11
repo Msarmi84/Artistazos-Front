@@ -46,6 +46,12 @@ export class ProductService {
     )
   }
 
+  getProductsByUserId(user_id:number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.URL}/allProducts/${user_id}`).pipe(
+      map(x => x.map(product => new Product(product)))
+    )
+  }
+
   searchProduct(filter: SearcherProduct): Observable<Product[]> {
     return this.http.post<Product[]>(`${this.URL}/search`, filter).pipe(
       map(x => x.map(product => new Product(product)))
@@ -53,10 +59,10 @@ export class ProductService {
   }
 
   saveProduct( product: Product): Observable<Product> {
-    
-    if (product.id) {
+    console.log(product + '----------------')
+    if (product.product_id) {
       // PUT 
-      return this.http.put<Product>(`${this.URL}/updateProduct/${product.id}`, product).pipe(
+      return this.http.put<Product>(`${this.URL}/updateProduct/${product.product_id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
         })
@@ -64,7 +70,7 @@ export class ProductService {
 
     } else {
       // POST 
-      return this.http.post<Product>(`${this.URL}/saveProduct/${product.id}`, product).pipe(
+      return this.http.post<Product>(`${this.URL}/saveProduct/${product.product_id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
         })
@@ -74,7 +80,7 @@ export class ProductService {
   }
 
   deleteProduct( product: Product): Observable<Boolean>{
-    return this.http.delete<boolean>(`${this.URL}/deleteProduct/${product.id}`, { observe: 'response' }).pipe(
+    return this.http.delete<boolean>(`${this.URL}/deleteProduct/${product.product_id}`, { observe: 'response' }).pipe(
       map((x: HttpResponse<any>) => {
         return x.ok
       })

@@ -15,14 +15,14 @@ import { UserService } from '../user.service';
 export class ArtistsFormComponent implements OnInit {
 
   registerForm: FormGroup;
-  submitted: boolean = false;
+  submitted: Boolean = false;
   dateReg: RegExp = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
   disciplines: Disciplines[];
 
-  seleccionados:string[]=[];
-  
+  seleccionados: string[] = [];
 
-  constructor(formBuilder: FormBuilder, private userService: UserService, private router:Router) {
+
+  constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.registerForm = formBuilder.group({
       artistic_name: ['', Validators.required],
       user_name: ['', Validators.required],
@@ -45,7 +45,7 @@ export class ArtistsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDisciplines();
-    
+
   }
 
   getDisciplines(): void {
@@ -54,16 +54,16 @@ export class ArtistsFormComponent implements OnInit {
 
   get loginForm() { return this.registerForm.controls; }
 
-  onSubmit(obj: any) : void {
+  onSubmit(obj: any): void {
 
     this.submitted = true;
-  
+
     if (this.registerForm.valid) {
       this.userService.saveUser(this.registerForm.value).subscribe(x => {
         if (x) {
           this.router.navigate(['artists-grid']);
         }
-      })
+      });
     }
   }
 // console.log(this.registerForm.value)

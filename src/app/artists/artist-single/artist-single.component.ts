@@ -10,8 +10,10 @@ import { ArtistsFormUpdateComponent } from '../artists-form-update/artists-form-
 import { ProductsFormUpdateComponent } from 'src/app/products/products-form-update/products-form-update.component';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/products/product.service';
+import { Disciplines } from 'src/app/models/disciplines';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+
 
 
 @Component({
@@ -24,6 +26,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   userId: number;
   product: Product;
   products: Product[];
+  disciplines: Disciplines[]
   imageUrl = environment.baseUrl + 'images/';
   defaultImage = 'assets/images/logonofoto.png';
   imageFile: File;
@@ -52,7 +55,9 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     // this.route.params.subscribe(params => this.getUser(params.id));
     this.route.params.subscribe((params) => (this.userId = params.id));
     this.getUser(this.userId);
-    this.getProducts(this.userId);
+
+    this.getProducts(this.userId); 
+    this.getDisciplinesByUserId(this.userId);
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
 
   }
@@ -64,9 +69,14 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getProducts(id: number): void {
     this.productService.getProductsByUserId(id).subscribe((x) => {
       this.products = x;
-
-      console.log(this.product);
     });
+  }
+
+  //devuelve las disciplinas del usuario
+  getDisciplinesByUserId(id:number):void {
+    this.userService.getDisciplinesById(id).subscribe(disciplines => {
+       this.disciplines = disciplines;
+    })
   }
 
   deleteUser(): void {

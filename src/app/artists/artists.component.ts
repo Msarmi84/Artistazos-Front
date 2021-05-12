@@ -20,9 +20,9 @@ export class ArtistsComponent implements OnInit {
   getUsers(): void {
     this.userService.getUsers().subscribe(res => this.users = res);
   }
-  saveUser(user: FormData): void {
-    this.userService.saveUser(user).subscribe(() => this.getUsers());
-  }
+  // saveUser(user: FormData): void {
+  //   this.userService.saveUser(user).subscribe(() => this.getUsers());
+  // }
 
 
 }

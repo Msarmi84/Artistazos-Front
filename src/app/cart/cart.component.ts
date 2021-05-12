@@ -9,7 +9,7 @@ import { ProductService } from '../products/product.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-    
+
   defaultImg = 'assets/images/Imagen_por_defecto.png';
   imageUrl = environment.baseUrl + 'images/';
 
@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   products: Product[] = [];
 
   constructor(private productService: ProductService) { }
+
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(product => this.products = product);

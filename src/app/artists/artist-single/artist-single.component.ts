@@ -37,6 +37,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   openModel: boolean = false;
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
+  page: number;
 
   constructor(
     private router: Router,

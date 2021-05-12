@@ -17,6 +17,7 @@ import { AllProductsComponent } from './products/all-products/all-products.compo
 import { ArtistsComponent } from './artists/artists.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -28,7 +29,6 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
 import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
 import { CartComponent } from './cart/cart.component';
-
 
 
 
@@ -64,6 +64,7 @@ import { CartComponent } from './cart/cart.component';
     HttpClientModule,
     MatDialogModule,
     FormsModule,
+    NgxPaginationModule
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

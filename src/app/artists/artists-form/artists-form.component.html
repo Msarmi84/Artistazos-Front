@@ -1,4 +1,3 @@
-
 <div class="center white">
     <h3>BIENVENIDO A TU COMUNIDAD ARTISTICA</h3>
     <div class="parallelogram">
@@ -16,29 +15,29 @@
                     </select>
                     <ul>
                         <li class="white" *ngFor="let seleccion of seleccionados">
-                          {{seleccion}}
+                            {{seleccion}}
                         </li>
-                      </ul>
+                    </ul>
                 </div>
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
-                    <input type="text" formControlName="name" placeholder="NOMBRE" class="input"/>
+                    <input type="text" formControlName="name" placeholder="NOMBRE" class="input" />
                 </div>
                 <div class="center formPadding">
-                    <input type="text" formControlName="last_name" placeholder="APELLIDOS"/>
+                    <input type="text" formControlName="last_name" placeholder="APELLIDOS" />
                 </div>
                 <div class="center formPadding">
                     <label class="label">FECHA DE NACIMIENTO</label>
-                <input type="date" formControlName="date_of_birth"/>
+                    <input type="date" formControlName="date_of_birth" />
                 </div>
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
-                    <input type="text" formControlName="location" placeholder="PROVINCIA"/>
+                    <input type="text" formControlName="location" placeholder="PROVINCIA" />
                 </div>
                 <div class="center formPadding">
-                    <input type="textarea" formControlName="biography" placeholder="BIOGRAFIA"/>
+                    <input type="textarea" formControlName="biography" placeholder="BIOGRAFIA" />
                 </div>
             </div>
             <div class="centerRows formPadding">
@@ -50,14 +49,14 @@
                     </div>
                 </div>
                 <div class="center formPadding">
-                    <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }" placeholder="CONTRASEÑA"/>
+                    <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }" placeholder="CONTRASEÑA" />
                     <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
                         <div *ngIf="loginForm.password.errors.required">Inserta Contraseña</div>
                         <div *ngIf="loginForm.password.errors.minlength">Mínimo 6 caracteres</div>
                     </div>
                 </div>
                 <div class="center formPadding">
-                    <input type="password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && loginForm.confirmPassword.errors }" placeholder="REPITE CONTRASEÑA"/>
+                    <input type="password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && loginForm.confirmPassword.errors }" placeholder="REPITE CONTRASEÑA" />
                     <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
                         <div *ngIf="loginForm.confirmPassword.errors.required">Repita contraseña</div>
                         <div *ngIf="loginForm.confirmPassword.errors.mustMatch">Debe coincidir</div>
@@ -75,12 +74,12 @@
                     <input class="custom-file-input2" type="file" formControlName="avatar"/>
                 </div>
             </div>
-            <!-- <div class="centerRows formPadding">
+           <div class="centerRows formPadding">
                 <div class="center formPadding">
                     <input class="custom-file-input3" type="file" formControlName="artwork"/>
                 </div>
             </div> -->
-            <div class="formPadding" >
+            <div class="formPadding">
                 <button mat-raised-button>
                     REGISTRATE
                   </button>
@@ -88,6 +87,3 @@
         </form>
     </div>
 </div>
-
-
-

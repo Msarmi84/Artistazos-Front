@@ -56,16 +56,20 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params) => (this.userId = params.id));
     this.getUser(this.userId);
 
-    this.getProducts(this.userId); 
+    this.getProducts(this.userId);
     this.getDisciplinesByUserId(this.userId);
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
 
   }
 
   getUser(id: number): void {
+<<<<<<< HEAD
+    this.userService.getUserById(id).subscribe(user => this.user = user);
+=======
     this.userService.getUserById(id).subscribe((x) => {
       this.user = x;
   });
+>>>>>>> 771f9bc92371a9279b2b88a98008097c9738dc73
   }
 
   getProducts(id: number): void {
@@ -75,7 +79,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   //devuelve las disciplinas del usuario
-  getDisciplinesByUserId(id:number):void {
+  getDisciplinesByUserId(id: number):void {
     this.userService.getDisciplinesById(id).subscribe(disciplines => {
        this.disciplines = disciplines;
     })

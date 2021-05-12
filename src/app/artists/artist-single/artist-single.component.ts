@@ -63,13 +63,9 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   getUser(id: number): void {
-<<<<<<< HEAD
-    this.userService.getUserById(id).subscribe(user => this.user = user);
-=======
     this.userService.getUserById(id).subscribe((x) => {
       this.user = x;
   });
->>>>>>> 771f9bc92371a9279b2b88a98008097c9738dc73
   }
 
   getProducts(id: number): void {
@@ -110,7 +106,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
   seeEditProfile(product) {
     this.product = product;
-  
+
 
     if (this.product) {
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {

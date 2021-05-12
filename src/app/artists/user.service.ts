@@ -15,13 +15,19 @@ export class UserService {
   URL = environment.baseUrl + 'users';
   constructor(private http: HttpClient) { }
 
+  
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.URL)
       .pipe(map(users => users.map(user => new User(user))));
   }
 
-  saveUser(user: FormData): Observable<void> {
-    return this.http.post<void>(this.URL, user);
+  saveUser(user: User): Observable<User> {
+    console.log('console del service')
+    return this.http.post<User>(`${this.URL}/createUser`, user).pipe(
+      map((x: any) => {
+        return new User(x)
+      })
+    )
   }
 
   getUserById(id: number): Observable<User> {
@@ -43,6 +49,12 @@ export class UserService {
     return this.http.get<Disciplines[]>(`${this.URL}/disciplines`).pipe(
       map(x => x.map(discipline => new Disciplines(discipline)))
     )
+  }
+
+  getDisciplinesById(user_id: number): Observable<Disciplines[]> {
+    return this.http.get<Disciplines[]>(`${this.URL}/disciplines/${user_id}`)
+      .pipe(map(x => x.map(discipline => new Disciplines(discipline)))
+      )
   }
 
   searchUsers( filtro:UserSearch): Observable<User[]> {

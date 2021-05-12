@@ -11,7 +11,7 @@ import { ProductService } from '../products/product.service';
 export class CartComponent implements OnInit {
 
   defaultImg = 'assets/images/Imagen_por_defecto.png';
-  imageUrl = environment.baseUrl + 'images/';
+  imageUrl = environment.baseUrl + 'images/uploads/';
 
   @Output() deleteProduct = new EventEmitter<Product>();
   products: Product[] = [];

@@ -16,10 +16,10 @@ const routes: Routes = [
     path: 'login', component: LoginComponent,
   },
   {
-    path: 'artista/:id', component: ArtistSingleComponent , canActivate: [AuthGuard]
+    path: 'artista/:id', component: ArtistSingleComponent,
   },
   {
-    path: 'artistas', component: ArtistsGridComponent, canActivate: [AuthGuard]
+    path: 'artistas', component: ArtistsGridComponent,
   },
   {
     path: 'artists-form', component: ArtistsFormComponent,

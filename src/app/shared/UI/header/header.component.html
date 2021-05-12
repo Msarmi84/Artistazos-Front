@@ -9,7 +9,7 @@
                 <mat-icon routerLink="/artistas">search</mat-icon>
             </li>
             <li>
-                <mat-icon routerLink="/login">perm_identity</mat-icon>
+                <mat-icon *ngIf="!isLoggedIn" routerLink="/login">perm_identity</mat-icon>
             </li>
             <li>
                 <mat-icon [routerLink]="['/artists-form']">list_alt</mat-icon>
@@ -17,7 +17,11 @@
             <li>
                 <mat-icon routerLink="/cart">shopping_cart</mat-icon>
             </li>
-            
+
+            <li>
+                <mat-icon *ngIf="isLoggedIn" (click)="logout()">logout</mat-icon>
+            </li>
+
         </ul>
     </nav>
 </header>

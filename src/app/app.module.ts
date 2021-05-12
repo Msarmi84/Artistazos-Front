@@ -19,6 +19,7 @@ import { SearcherComponent } from './searcher/searcher.component';
 import { FormsModule } from '@angular/forms';
 
 
+
 // MATERIAL MODULES
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,6 +27,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
 import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
+import { CartComponent } from './cart/cart.component';
+
 
 
 
@@ -46,7 +49,9 @@ import { ProductsFormUpdateComponent } from './products/products-form-update/pro
     ArtistsComponent,
     AdvertisementComponent,
     ArtistsFormUpdateComponent,
-    ProductsFormUpdateComponent
+    ProductsFormUpdateComponent,
+    CartComponent,
+   
 
   ],
   imports: [

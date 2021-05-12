@@ -1,6 +1,5 @@
 @import "/src/app/login/login.component.scss";
-
-.centerRows{
+.centerRows {
     display: flex;
     align-items: center;
     align-content: space-between;
@@ -10,140 +9,141 @@
 // .transparent{
 //     background-color: transparent !important;
 // }
-
 input {
     border: 0;
     outline: 0;
     background: transparent;
     border-bottom: 3px solid #ca63e2;
-    color: white;
-  }
+    color: rgb(29, 29, 29);
+}
 
-  ::placeholder {
-    color: white;
-  }
+ ::placeholder {
+    color: rgb(29, 29, 29);
+}
 
-  .label{
-      font-size: 13px;
-  }
+.label {
+    font-size: 13px;
+}
 
-  .purple{
-    color: #ca63e2;  
-  }
+.purple {
+    color: rgb(29, 29, 29);
+}
 
-  @mixin inputFile {
+@mixin inputFile {
     background-color: white;
     color: #ca63e2;
-  }
-  @mixin inputBefore($cont) {
+}
+
+@mixin inputBefore($cont) {
     content: $cont;
     display: block;
-    background: #ca63e2; 
-    border-radius: 3px;
-    padding: 10px ;
-    cursor: pointer;
-  }
-  @mixin inputHoverBefore {
-    border-color: #ca63e2;
-  }
-  @mixin inputActiveBefore {
     background: #ca63e2;
-  }
+    border-radius: 3px;
+    padding: 10px;
+    cursor: pointer;
+}
 
-  @mixin customInput($class,$cont) {
-    &.#{$class}::-webkit-file-upload-button{
-      @include inputFile();
+@mixin inputHoverBefore {
+    border-color: #ca63e2;
+}
+
+@mixin inputActiveBefore {
+    background: #ca63e2;
+}
+
+@mixin customInput($class, $cont) {
+    &.#{$class}::-webkit-file-upload-button {
+        @include inputFile();
     }
     &.#{$class}::before {
-      @include inputBefore($cont)
-    };
+        @include inputBefore($cont)
+    }
+    ;
     &.#{$class}:hover::before {
-      @include inputHoverBefore()
-    };
+        @include inputHoverBefore()
+    }
+    ;
     &.#{$class}:active::before {
-      @include inputActiveBefore()
-    };
-  }
+        @include inputActiveBefore()
+    }
+    ;
+}
 
-  .custom-file-input {
-    @include customInput('custom-file-input','SUBE TU CV')
-  }
-  .custom-file-input2 {
-    @include customInput('custom-file-input2','SUBE TU AVATAR')
-  }
-  .custom-file-input3 {
-    @include customInput('custom-file-input3','SUBE TU OBRA')
-  }
+.custom-file-input {
+    @include customInput('custom-file-input', 'SUBE TU CV')
+}
 
+.custom-file-input2 {
+    @include customInput('custom-file-input2', 'SUBE TU AVATAR')
+}
 
-  // .custom-file-input {
-  //   &.custom-file-input::-webkit-file-upload-button{
-  //     @include inputFile();
-  //   }
-  //   &.custom-file-input::before {
-  //     @include inputBefore('SUBE TU CV')
-  //   };
-  //   &.custom-file-input:hover::before {
-  //     @include inputHoverBefore()
-  //   };
-  //   &.custom-file-input:active::before {
-  //     @include inputActiveBefore()
-  //   };
-  // }
+.custom-file-input3 {
+    @include customInput('custom-file-input3', 'SUBE TU OBRA')
+}
 
-  // .custom-file-input2 {
-  //   &.custom-file-input::-webkit-file-upload-button{
-  //     @include inputFile();
-  //   }
-  //   &.custom-file-input::before {
-  //     @include inputBefore('SUBE TU AVATAR')
-  //   };
-  //   &.custom-file-input:hover::before {
-  //     @include inputHoverBefore()
-  //   };
-  //   &.custom-file-input:active::before {
-  //     @include inputActiveBefore()
-  //   };
-  // }
-
-  // .custom-file-input2 {
-  //   &.custom-file-input::-webkit-file-upload-button{
-  //     @include inputFile();
-  //   }
-  //   &.custom-file-input::before {
-  //     @include inputBefore('SUBE TU AVATAR')
-  //   };
-  //   &.custom-file-input:hover::before {
-  //     @include inputHoverBefore()
-  //   };
-  //   &.custom-file-input:active::before {
-  //     @include inputActiveBefore()
-  //   };
-  // }
-
-  // .custom-file-input2::-webkit-file-upload-button {
-  //   @include inputFile();
-  // }
-  // .custom-file-input2::before {
-  //   @include inputBefore('SUBE TU AVATAR')
-  // }
-  // .custom-file-input2:hover::before {
-  //   @include inputHoverBefore()
-  // }
-  // .custom-file-input2:active::before {
-  //   @include inputActiveBefore()
-  // }
-
-  // .custom-file-input3::-webkit-file-upload-button {
-  //   @include inputFile();
-  // }
-  // .custom-file-input3::before {
-  //   @include inputBefore('SUBE TU OBRA')
-  // }
-  // .custom-file-input3:hover::before {
-  //   @include inputHoverBefore()
-  // }
-  // .custom-file-input3:active::before {
-  //   @include inputActiveBefore()
-  // }
- 
+// .custom-file-input {
+//   &.custom-file-input::-webkit-file-upload-button{
+//     @include inputFile();
+//   }
+//   &.custom-file-input::before {
+//     @include inputBefore('SUBE TU CV')
+//   };
+//   &.custom-file-input:hover::before {
+//     @include inputHoverBefore()
+//   };
+//   &.custom-file-input:active::before {
+//     @include inputActiveBefore()
+//   };
+// }
+// .custom-file-input2 {
+//   &.custom-file-input::-webkit-file-upload-button{
+//     @include inputFile();
+//   }
+//   &.custom-file-input::before {
+//     @include inputBefore('SUBE TU AVATAR')
+//   };
+//   &.custom-file-input:hover::before {
+//     @include inputHoverBefore()
+//   };
+//   &.custom-file-input:active::before {
+//     @include inputActiveBefore()
+//   };
+// }
+// .custom-file-input2 {
+//   &.custom-file-input::-webkit-file-upload-button{
+//     @include inputFile();
+//   }
+//   &.custom-file-input::before {
+//     @include inputBefore('SUBE TU AVATAR')
+//   };
+//   &.custom-file-input:hover::before {
+//     @include inputHoverBefore()
+//   };
+//   &.custom-file-input:active::before {
+//     @include inputActiveBefore()
+//   };
+// }
+// .custom-file-input2::-webkit-file-upload-button {
+//   @include inputFile();
+// }
+// .custom-file-input2::before {
+//   @include inputBefore('SUBE TU AVATAR')
+// }
+// .custom-file-input2:hover::before {
+//   @include inputHoverBefore()
+// }
+// .custom-file-input2:active::before {
+//   @include inputActiveBefore()
+// }
+// .custom-file-input3::-webkit-file-upload-button {
+//   @include inputFile();
+// }
+// .custom-file-input3::before {
+//   @include inputBefore('SUBE TU OBRA')
+// }
+// .custom-file-input3:hover::before {
+//   @include inputHoverBefore()
+// }
+// .custom-file-input3:active::before {
+//   @include inputActiveBefore()
+// }

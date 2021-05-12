@@ -1,4 +1,3 @@
-
 <div class="center white">
     <h3>BIENVENIDO A TU COMUNIDAD ARTISTICA</h3>
     <div class="parallelogram">
@@ -17,9 +16,9 @@
                     </select>
                     <ul>
                         <li class="white" *ngFor="let seleccion of seleccionados">
-                          {{seleccion}}
+                            {{seleccion}}
                         </li>
-                      </ul>
+                    </ul>
                 </div>
             </div>
             <div class="centerRows formPadding">
@@ -42,9 +41,11 @@
                     <input type="text" formControlName="location" placeholder="PROVINCIA"/>
                     <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
                 </div>
-                <!-- <div class="center formPadding">
-                    <input type="textarea" formControlName="biography" placeholder="BIOGRAFIA"/>
-                </div> -->
+                    <input type="text" formControlName="location" placeholder="PROVINCIA" />
+                </div>
+                <div class="center formPadding">
+                    <input type="textarea" formControlName="biography" placeholder="BIOGRAFIA" />
+                </div>
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
@@ -56,7 +57,7 @@
                     </div>
                 </div>
                 <div class="center formPadding">
-                    <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }" placeholder="CONTRASEÑA"/>
+                    <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }" placeholder="CONTRASEÑA" />
                     <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
                         <div *ngIf="loginForm.password.errors.required">Inserta Contraseña</div>
                         <div *ngIf="loginForm.password.errors.minlength">Mínimo 6 caracteres</div>
@@ -64,7 +65,7 @@
                     </div>
                 </div>
                 <div class="center formPadding">
-                    <input type="password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && loginForm.confirmPassword.errors }" placeholder="REPITE CONTRASEÑA"/>
+                    <input type="password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && loginForm.confirmPassword.errors }" placeholder="REPITE CONTRASEÑA" />
                     <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
                         <div *ngIf="loginForm.confirmPassword.errors.required">Repita contraseña</div>
                         <div *ngIf="loginForm.confirmPassword.errors.mustMatch">Debe coincidir</div>
@@ -83,7 +84,9 @@
                     <input class="custom-file-input2" type="file" formControlName="avatar"/>
                 </div>
             </div>
-             <div class="centerRows formPadding">
+
+           <div class="centerRows formPadding">
+
                 <div class="center formPadding">
                     <input class="custom-file-input3" type="file" formControlName="artwork"/>
                 </div>
@@ -96,6 +99,3 @@
         </form>
     </div>
 </div>
-
-
-

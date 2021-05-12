@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,17 +11,17 @@ import { ProductsFormUpdateComponent } from 'src/app/products/products-form-upda
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/products/product.service';
 import { Disciplines } from 'src/app/models/disciplines';
-
+import { Subscription } from 'rxjs';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 
 
 @Component({
   selector: 'app-artist-single',
   templateUrl: './artist-single.component.html',
-  styleUrls: ['./artist-single.component.scss']
+  styleUrls: ['./artist-single.component.scss'],
 })
-export class ArtistSingleComponent implements OnInit {
-
+export class ArtistSingleComponent implements OnInit, OnDestroy {
   user: User;
   userId: number;
   product: Product;
@@ -32,18 +32,15 @@ export class ArtistSingleComponent implements OnInit {
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
 
-
   seeEditArtist = false;
   txtBoton = 'EDITAR PERFIL';
 
-
-  editProfile: boolean = false ;
-  iconEdit: boolean = false ;
+  editProfile: boolean = false;
+  iconEdit: boolean = false;
   openModel: boolean = false;
-
-
-
-
+  isLoggedIn: boolean = false;
+  isLoggedSub: Subscription;
+  page: number;
 
   constructor(
     private router: Router,
@@ -51,24 +48,27 @@ export class ArtistSingleComponent implements OnInit {
     private userService: UserService,
     private productService: ProductService,
     private dialog: MatDialog,
-  ) { }
+    private lss: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     // this.route.params.subscribe(params => this.getUser(params.id));
-    this.route.params.subscribe(params => this.userId = params.id);
+    this.route.params.subscribe((params) => (this.userId = params.id));
     this.getUser(this.userId);
+
     this.getProducts(this.userId); 
     this.getDisciplinesByUserId(this.userId);
+    this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
+
   }
 
   getUser(id: number): void {
-    this.userService.getUserById(id).subscribe(user => this.user = user);
+    this.userService.getUserById(id).subscribe((user) => (this.user = user));
   }
 
   getProducts(id: number): void {
-    this.productService.getProductsByUserId(id).subscribe(x => {
+    this.productService.getProductsByUserId(id).subscribe((x) => {
       this.products = x;
-
     });
   }
 
@@ -83,14 +83,14 @@ export class ArtistSingleComponent implements OnInit {
     const dialogRef = this.dialog.open(InfoComponent, {
       width: '400px',
       height: '300px',
-      data: 'Estas seguro?'
-     });
+      data: 'Estas seguro?',
+    });
     console.log(dialogRef);
-    dialogRef.afterClosed().subscribe(isConfirmed => {
+    dialogRef.afterClosed().subscribe((isConfirmed) => {
       if (!isConfirmed) {
         return;
       }
-      this.userService.deleteUser(this.user.user_id).subscribe(res => {
+      this.userService.deleteUser(this.user.user_id).subscribe((res) => {
         this.router.navigateByUrl('/artists-form');
       });
     });
@@ -101,54 +101,50 @@ export class ArtistSingleComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ArtistsFormComponent, {
       data: this.product,
-      width: '80%'
+      width: '80%',
     });
 
-    dialogRef.afterClosed().subscribe(user => {
-      this.userService.updateUser(user, this.user.user_id)
-        .subscribe(updatedUser => this.user = updatedUser);
+    dialogRef.afterClosed().subscribe((user) => {
+      this.userService
+        .updateUser(user, this.user.user_id)
+        .subscribe((updatedUser) => (this.user = updatedUser));
     });
   }
-
-
 
   changeToArtist(): void {
     this.seeEditArtist = !this.seeEditArtist;
   }
 
-
   seeEditProfile(product) {
-console.log(product )
+    console.log(product);
     this.product = product;
-    console.log(this.product)
+    console.log(this.product);
 
-
-    if (this.product){
+    if (this.product) {
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {
         data: this.product,
-        width: '80%'
+        width: '80%',
       });
 
-      dialogRef.afterClosed().subscribe(user => {
-        this.productService.saveProduct(this.product)
-          .subscribe(updatedProduct => this.product = updatedProduct);
+      dialogRef.afterClosed().subscribe((user) => {
+        this.productService
+          .saveProduct(this.product)
+          .subscribe((updatedProduct) => (this.product = updatedProduct));
       });
       this.product = null;
- 
     } else {
       const dialogRef = this.dialog.open(ArtistsFormUpdateComponent, {
         data: this.user,
-        width: '80%'
+        width: '80%',
       });
-  
-      dialogRef.afterClosed().subscribe(user => {
-        this.userService.updateUser(user, this.user.user_id)
-          .subscribe(seeEditProfile => this.user = seeEditProfile);
+
+      dialogRef.afterClosed().subscribe((user) => {
+        this.userService
+          .updateUser(user, this.user.user_id)
+          .subscribe((seeEditProfile) => (this.user = seeEditProfile));
       });
     }
-
   }
-
 
   onImageChanged(event: InputEvent): void {
     const inputTarget = event.target as HTMLInputElement;
@@ -156,19 +152,22 @@ console.log(product )
     this.imageFile = file;
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-    fileReader.onload = () => this.imgPreview = fileReader.result as string;
+    fileReader.onload = () => (this.imgPreview = fileReader.result as string);
   }
 
-  editProduct(): void{
+  editProduct(): void {
     this.iconEdit = !this.iconEdit;
   }
-
-
 
   // saveProduct(product:FormData): void {
   //   this.productService.saveProduct(product).subscribe(() => this.getProducts(product.id));
   // }
 
+  logout(): void {
+    this.lss.removeUserToken();
+  }
 
-
+  ngOnDestroy(): void {
+    this.isLoggedSub.unsubscribe();
+  }
 }

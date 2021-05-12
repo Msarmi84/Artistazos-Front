@@ -1,7 +1,7 @@
 <div class="container">
     <div class="background-header">
         <div class="fondo">
-            <img src="../../../assets/images/fondoguitarra.jpg" alt="">
+            <img src="../../../assets/images/fondoguitarra.jpg" alt="" />
         </div>
         <div class="container-artista">
             <div class="avatar-name">
@@ -9,38 +9,44 @@
                     <img src="../../../assets/images/artista1.jpg" alt="" />
                 </div>
                 <div class="datos-single">
+
                     <h1>{{ user.user_name }}
                         <i class="fab fa-linkedin-in"></i><i class="fab fa-facebook"></i></h1>
                     <p *ngFor="let discipline of disciplines">{{ discipline.discipline_name }}</p>
+
+            
                 </div>
             </div>
             <div class="description-single">
                 <p>{{ user.biography }}</p>
-                <button mat-raised-button (click)="seeEditProfile(false)">EDITAR</button>
-                <button mat-raised-button (click)="deleteUser()" class="buttonDeleteUser">BORRAR</button>
-
+                <button class="button-single" *ngIf="isLoggedIn" (click)="seeEditProfile(false)">
+          EDITAR
+        </button>
+                <button class="button-single" *ngIf="isLoggedIn" (click)="deleteUser()">
+          BORRAR
+        </button>
             </div>
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
-
-                <div class="product-single cajaProducto" *ngFor="let product of products">
-                    <img src="../../../assets/images/{{product.product_photo}}">
-                    <mat-icon *ngIf="iconEdit" class="icon-edit" (click)="seeEditProfile(product)"> border_color</mat-icon>
-
+                <div class="product-single cajaProducto" *ngFor="
+            let product of products
+              | paginate: { itemsPerPage: 3, currentPage: page }
+          ">
+                    <img src="../../../assets/images/{{ product.product_photo }}" />
+                    <mat-icon *ngIf="iconEdit && isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
+                        border_color</mat-icon>
                 </div>
             </div>
-            <div class="button-add">
+            <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
 
-            </div>
-            <div class="button-add">
-                <button mat-raised-button (click)="editProduct()">
-                    EDITAR PRODUCTOS
-                </button>
-                <button mat-raised-button>
-                    AÑADIR PRODUCTOS
-                </button>
-                <input type="file" #inputFile (change)="onImageChanged($event)">
+            <div class="button-add"></div>
+            <div class="button-add" *ngIf="isLoggedIn">
+                <button class="button-single" (click)="editProduct()">
+          EDITAR PRODUCTOS
+        </button>
+                <button class="button-single">AÑADIR PRODUCTOS</button>
+                <input type="file" #inputFile (change)="onImageChanged($event)" />
             </div>
         </div>
     </div>
@@ -49,8 +55,7 @@
 
     </div>
     <app-products-form-update (formSubmitted)="saveProduct($event)"></app-products-form-update> -->
-    </div>
-    <!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
-
+</div>
+<!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
 
 <!-- </div> -->

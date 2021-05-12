@@ -19,7 +19,7 @@ interface Credentials {
 })
 export class LoginService {
   // http://localhost:3000/user/login
-  URL = environment.baseUrl + 'user/login';
+  URL = environment.baseUrl + 'users/login';
 
   constructor(private http: HttpClient, private lss: LocalStorageService) { }
 

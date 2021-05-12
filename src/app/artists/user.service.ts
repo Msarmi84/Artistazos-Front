@@ -31,7 +31,7 @@ export class UserService {
   }
 
   getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.URL}/${id}`)
+    return this.http.get<User>(`${this.URL}/userById/${id}`)
       .pipe(map(user => new User(user)));
   }
 

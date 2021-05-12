@@ -2,16 +2,17 @@
 <div class="center white">
     <h3>BIENVENIDO A TU COMUNIDAD ARTISTICA</h3>
     <div class="parallelogram">
-        <form class="center " [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form class="center " [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
             <div class="centerRows formPadding">
                 <div class="center formPadding">
                     <input type="text" formControlName="artistic_name" placeholder="NOMBRE ARTISTICO" />
+                    <p *ngIf="registerForm.controls.artistic_name?.errors?.required">*Campo obligatorio</p>
                 </div>
                 <div class="center formPadding">
                     <label class="label">DISCIPLINA ARTISTICA</label>
                     <select formControlName="disciplines" multiple="multiple">
-                        <option *ngFor="let discipline of disciplines" [value]="discipline">
-                            {{discipline}}
+                        <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_id">
+                            {{discipline.discipline_name}}
                         </option>
                     </select>
                     <ul>
@@ -23,30 +24,35 @@
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
-                    <input type="text" formControlName="name" placeholder="NOMBRE" class="input"/>
+                    <input type="text" formControlName="user_name" placeholder="NOMBRE" class="input"/>
+                    <p *ngIf="registerForm.controls.user_name?.errors?.required">*Campo obligatorio</p>
                 </div>
                 <div class="center formPadding">
                     <input type="text" formControlName="last_name" placeholder="APELLIDOS"/>
+                    <p *ngIf="registerForm.controls.last_name?.errors?.required">*Campo obligatorio</p>
                 </div>
                 <div class="center formPadding">
                     <label class="label">FECHA DE NACIMIENTO</label>
                 <input type="date" formControlName="date_of_birth"/>
+                <p *ngIf="registerForm.controls.date_of_birth?.errors?.required">*Campo obligatorio</p>
                 </div>
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
                     <input type="text" formControlName="location" placeholder="PROVINCIA"/>
+                    <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
                 </div>
-                <div class="center formPadding">
+                <!-- <div class="center formPadding">
                     <input type="textarea" formControlName="biography" placeholder="BIOGRAFIA"/>
-                </div>
+                </div> -->
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
-                    <input type="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && loginForm.email.errors }" placeholder="EMAIL" />
-                    <div class="errorColor" *ngIf="submitted && loginForm.email.errors">
-                        <div *ngIf="loginForm.email.errors.required">Introduce tu email</div>
-                        <div *ngIf="loginForm.email.errors.email">Debe ser un email válido</div>
+                    <input type="email" formControlName="mail" [ngClass]="{ 'is-invalid': submitted && loginForm.mail.errors }" placeholder="EMAIL" />
+                    <div class="errorColor" *ngIf="submitted && loginForm.mail.errors">
+                        <div *ngIf="loginForm.mail.errors.required">Introduce tu email</div>
+                        <div *ngIf="loginForm.mail.errors.mail">Debe ser un email válido</div>
+                        <p *ngIf="registerForm.controls.mail?.errors?.required">*Campo obligatorio</p>
                     </div>
                 </div>
                 <div class="center formPadding">
@@ -54,6 +60,7 @@
                     <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
                         <div *ngIf="loginForm.password.errors.required">Inserta Contraseña</div>
                         <div *ngIf="loginForm.password.errors.minlength">Mínimo 6 caracteres</div>
+                        <p *ngIf="registerForm.controls.password?.errors?.required">*Campo obligatorio</p>
                     </div>
                 </div>
                 <div class="center formPadding">
@@ -61,6 +68,7 @@
                     <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
                         <div *ngIf="loginForm.confirmPassword.errors.required">Repita contraseña</div>
                         <div *ngIf="loginForm.confirmPassword.errors.mustMatch">Debe coincidir</div>
+    
                     </div>
                 </div>
             </div>
@@ -81,7 +89,7 @@
                 </div>
             </div> -->
             <div class="formPadding" >
-                <button mat-raised-button>
+                <button mat-raised-button type="submit ">
                     REGISTRATE
                   </button>
             </div>

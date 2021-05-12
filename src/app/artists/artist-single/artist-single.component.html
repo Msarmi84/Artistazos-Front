@@ -11,7 +11,7 @@
                 <div class="datos-single">
                     <h1>{{ user.user_name }}
                         <i class="fab fa-linkedin-in"></i><i class="fab fa-facebook"></i></h1>
-                    <p>{{ user.discipline_id }}</p>
+                    <p *ngFor="let discipline of disciplines">{{ discipline.discipline_name }}</p>
                 </div>
             </div>
             <div class="description-single">

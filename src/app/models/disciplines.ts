@@ -1,11 +1,11 @@
 export class Disciplines {
-    id: number;
-    name: string;
+    discipline_id: number;
+    discipline_name: string;
    
 
     constructor(item?: any) {
-        this.id = item?.id || null;
-        this.name = item?.name || '';
+        this.discipline_id = item?.discipline_id || null;
+        this.discipline_name = item?.discipline_name || '';
         
     }
 }

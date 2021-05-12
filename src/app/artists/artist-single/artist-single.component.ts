@@ -10,6 +10,7 @@ import { ArtistsFormUpdateComponent } from '../artists-form-update/artists-form-
 import { ProductsFormUpdateComponent } from 'src/app/products/products-form-update/products-form-update.component';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/products/product.service';
+import { Disciplines } from 'src/app/models/disciplines';
 
 
 
@@ -25,6 +26,7 @@ export class ArtistSingleComponent implements OnInit {
   userId: number;
   product: Product;
   products: Product[];
+  disciplines: Disciplines[]
   imageUrl = environment.baseUrl + 'images/';
   defaultImage = 'assets/images/logonofoto.png';
   imageFile: File;
@@ -56,6 +58,7 @@ export class ArtistSingleComponent implements OnInit {
     this.route.params.subscribe(params => this.userId = params.id);
     this.getUser(this.userId);
     this.getProducts(this.userId); 
+    this.getDisciplinesByUserId(this.userId);
   }
 
   getUser(id: number): void {
@@ -66,8 +69,14 @@ export class ArtistSingleComponent implements OnInit {
     this.productService.getProductsByUserId(id).subscribe(x => {
       this.products = x;
 
-      console.log(this.product)
     });
+  }
+
+  //devuelve las disciplinas del usuario
+  getDisciplinesByUserId(id:number):void {
+    this.userService.getDisciplinesById(id).subscribe(disciplines => {
+       this.disciplines = disciplines;
+    })
   }
 
   deleteUser(): void {

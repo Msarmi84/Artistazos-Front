@@ -24,7 +24,7 @@ export class UserService {
     return this.http.post<void>(this.URL, user);
   }
 
-  getUserById(id: string): Observable<User> {
+  getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.URL}/${id}`)
       .pipe(map(user => new User(user)));
   }

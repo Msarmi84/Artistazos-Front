@@ -2,7 +2,7 @@ import { ProductCategory } from './enums/product-category.enum';
 
 export class Product {
     id: number;
-    name: string;
+    product_name: string;
     category: ProductCategory;
     description: string;
     photo: string;
@@ -11,7 +11,7 @@ export class Product {
 
     constructor(item?: any) {
         this.id = item?.id || null;
-        this.name = item?.name || '';
+        this.product_name = item?.product_name || '';
         this.category = item?.category || null;
         this.description = item?.description || 0;
         this.photo = item?.photo || '';

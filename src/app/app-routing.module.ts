@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
 import { AuthGuard } from './services/auth.guard';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,10 @@ const routes: Routes = [
     path: 'products', component: AllProductsComponent,
   },
   {
-    path: 'buscar', component: SearcherComponent
+    path: 'buscar', component: SearcherComponent,
+  },
+  {
+    path: 'cart', component: CartComponent
   }
 ];
 

@@ -19,7 +19,7 @@ export class ProductsFormUpdateComponent implements OnInit {
 
   constructor(formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) private data?: Product) {
     this.productForm = formBuilder.group({
-      name: ['', Validators.required],
+      product_name: ['', Validators.required],
       category: ['', Validators.required],
       description: ['', Validators.required],
       photo: ['', Validators.required],
@@ -29,7 +29,7 @@ export class ProductsFormUpdateComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    if (this.data?.name) {
+    if (this.data?.product_name) {
       this.productForm.patchValue(this.data);
       this.imgPreview = this.data.photo ? this.imageUrl + this.data.photo : 'assets/images/proyecto1.png';
     }
@@ -37,7 +37,7 @@ export class ProductsFormUpdateComponent implements OnInit {
 
   
   onSubmit(): void {
-    if (this.productForm.invalid || this.data.name) {
+    if (this.productForm.invalid || this.data.product_name) {
       return;
     }
     const formData = this.generateFormData();

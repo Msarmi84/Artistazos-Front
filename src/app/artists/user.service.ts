@@ -40,7 +40,7 @@ export class UserService {
 
   getDisciplines(): Observable<Disciplines[]> {
 
-    return this.http.get<Disciplines[]>(`${this.URL}/disciplinas`).pipe(
+    return this.http.get<Disciplines[]>(`${this.URL}/disciplines`).pipe(
       map(x => x.map(discipline => new Disciplines(discipline)))
     )
   }

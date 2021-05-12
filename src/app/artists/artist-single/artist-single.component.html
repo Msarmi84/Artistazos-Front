@@ -19,7 +19,7 @@
             </div>
             <div class="description-single">
                 <p>{{ user.biography }}</p>
-                <button class="button-single" *ngIf="isLoggedIn" (click)="seeEditProfile(false)" (click)="updateUser()">
+                <button class="button-single" *ngIf="isLoggedIn" (click)="seeEditProfile(false)">
           EDITAR
         </button>
                 <button class="button-single" *ngIf="isLoggedIn" (click)="deleteUser()">
@@ -29,13 +29,9 @@
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
-                <div class="product-single cajaProducto" *ngFor="
-            let product of products
-              | paginate: { itemsPerPage: 3, currentPage: page }
-          ">
+                <div class="product-single cajaProducto" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: page }">
                     <img src="../../../assets/images/{{ product.product_photo }}" />
-                    <mat-icon *ngIf="iconEdit && isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
-                        border_color</mat-icon>
+                    <mat-icon *ngIf="iconEdit && isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)"> border_color</mat-icon>
                 </div>
             </div>
             <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>

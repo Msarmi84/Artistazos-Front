@@ -23,22 +23,22 @@
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
-                    <input type="text" formControlName="user_name" placeholder="NOMBRE" class="input"/>
+                    <input type="text" formControlName="user_name" placeholder="NOMBRE" class="input" />
                     <p *ngIf="registerForm.controls.user_name?.errors?.required">*Campo obligatorio</p>
                 </div>
                 <div class="center formPadding">
-                    <input type="text" formControlName="last_name" placeholder="APELLIDOS"/>
+                    <input type="text" formControlName="last_name" placeholder="APELLIDOS" />
                     <p *ngIf="registerForm.controls.last_name?.errors?.required">*Campo obligatorio</p>
                 </div>
                 <div class="center formPadding">
                     <label class="label">FECHA DE NACIMIENTO</label>
-                <input type="date" formControlName="date_of_birth"/>
-                <p *ngIf="registerForm.controls.date_of_birth?.errors?.required">*Campo obligatorio</p>
+                    <input type="date" formControlName="date_of_birth" />
+                    <p *ngIf="registerForm.controls.date_of_birth?.errors?.required">*Campo obligatorio</p>
                 </div>
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
-                    <input type="text" formControlName="location" placeholder="PROVINCIA"/>
+                    <input type="text" formControlName="location" placeholder="PROVINCIA" />
                     <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
                 </div>
                 <div>
@@ -70,7 +70,7 @@
                     <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
                         <div *ngIf="loginForm.confirmPassword.errors.required">Repita contraseña</div>
                         <div *ngIf="loginForm.confirmPassword.errors.mustMatch">Debe coincidir</div>
-    
+
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                     <input class="custom-file-input3" type="file" formControlName="artwork"/>
                 </div>
             </div> -->
-            <div class="formPadding" >
+            <div class="formPadding">
                 <button mat-raised-button type="submit ">
                     REGISTRATE
                   </button>

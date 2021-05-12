@@ -18,7 +18,7 @@
             </div>
             <div class="description-single">
                 <p>{{ user.biography }}</p>
-                <button class="button-single" *ngIf="isLoggedIn" (click)="seeEditProfile(false)">
+                <button class="button-single" *ngIf="isLoggedIn" (click)="seeEditProfile(false)" (click)="updateUser()">
           EDITAR
         </button>
                 <button class="button-single" *ngIf="isLoggedIn" (click)="deleteUser()">

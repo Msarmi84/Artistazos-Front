@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
 import { AuthGuard } from './services/auth.guard';
 import { CartComponent } from './cart/cart.component';
+import { CompleteArtistsFormComponent } from './artists/complete-artists-form/complete-artists-form.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,10 @@ const routes: Routes = [
     path: 'buscar', component: SearcherComponent,
   },
   {
-    path: 'cart', component: CartComponent
+    path: 'cart', component: CartComponent,
+  },
+  {
+    path: 'complete-artists-form/:id', component: CompleteArtistsFormComponent
   }
 ];
 

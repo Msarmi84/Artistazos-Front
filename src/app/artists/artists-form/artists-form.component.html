@@ -9,11 +9,11 @@
                 </div>
                 <div class="center formPadding">
                     <label class="label">DISCIPLINA ARTISTICA</label>
-                    <select formControlName="discipline_name" multiple="multiple">
-                        <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_id">
+                    <mat-select formControlName="discipline_name" multiple >
+                        <mat-option *ngFor="let discipline of disciplines">
                             {{discipline.discipline_name}}
-                        </option>
-                    </select>
+                        </mat-option>
+                    </mat-select>
                     <ul>
                         <li class="white" *ngFor="let seleccion of seleccionados">
                             {{seleccion}}
@@ -38,8 +38,12 @@
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
-                    <input type="text" formControlName="location" placeholder="PROVINCIA" />
-                    <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
+                    <select formControlName="location">
+                        <option *ngFor="let location of locations">{{location}}</option>
+    
+                    </select>
+                    <!-- <input type="text" formControlName="location" placeholder="PROVINCIA" /> -->
+                    <!-- <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p> -->
                 </div>
             </div>
             <div class="centerRows formPadding">

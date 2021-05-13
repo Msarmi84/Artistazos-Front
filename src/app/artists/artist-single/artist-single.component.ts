@@ -31,12 +31,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   defaultImage = 'assets/images/logonofoto.png';
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
-<<<<<<< HEAD
-  defaultImg = 'assets/images/logonofoto.png';
 
-=======
-  
->>>>>>> 167fdef3ee004491a5de9fe65e5fc5452c4523e0
 
   seeEditArtist = false;
   txtBoton = 'EDITAR PERFIL';
@@ -132,7 +127,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       // });
     }
   }
-  
+
 
 
   changeToArtist(): void {

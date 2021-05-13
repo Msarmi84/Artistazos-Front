@@ -25,6 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
 import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
@@ -69,7 +70,8 @@ import { CompleteArtistsFormComponent } from './artists/complete-artists-form/co
     HttpClientModule,
     MatDialogModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

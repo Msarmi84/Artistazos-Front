@@ -17,6 +17,7 @@ export class CompleteArtistsFormComponent implements OnInit {
   imgPreview = 'assets/images/logonofoto.png';
   imageFile: File;
   imageUrl = environment.baseUrl + 'images/';
+  
 
   @Output() formSubmitted = new EventEmitter<FormData>();
 

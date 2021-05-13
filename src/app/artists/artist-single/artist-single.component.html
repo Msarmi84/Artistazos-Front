@@ -25,6 +25,10 @@
                 <button class="button-single" *ngIf="isLoggedIn" (click)="deleteUser()">
           BORRAR
         </button>
+        <!-- Editar perfil completo -->
+        <button class="button-single" *ngIf="isLoggedIn" (click)="editProfileComplete(false)">
+        EDIT PROFILE
+        </button>
             </div>
         </div>
         <div class="proyectos-edit">

@@ -29,6 +29,8 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
 import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
 import { CartComponent } from './cart/cart.component';
+import { CompleteArtistsFormComponent } from './artists/complete-artists-form/complete-artists-form.component';
+
 
 
 
@@ -51,6 +53,9 @@ import { CartComponent } from './cart/cart.component';
     ArtistsFormUpdateComponent,
     ProductsFormUpdateComponent,
     CartComponent,
+    CompleteArtistsFormComponent,
+    
+    
    
 
   ],

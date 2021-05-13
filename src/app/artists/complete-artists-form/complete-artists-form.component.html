@@ -1,0 +1,73 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="grid">
+        <div class="form-group">
+            <label>Fecha de nacimiento</label>
+            <input type="text" formControlName="date_of_birth">
+            <p *ngIf="form.controls.date_of_birth?.errors?.required && form.controls.date_of_birth.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" formControlName="user_name">
+            <p *ngIf="form.controls.user_name?.errors?.required && form.controls.user_name.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" formControlName="last_name">
+            <p *ngIf="form.controls.last_name?.errors?.required && form.controls.last_name.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Nombre artistico</label>
+            <input type="text" formControlName="artistic_name">
+            <p *ngIf="form.controls.artistic_name?.errors?.required && form.controls.artistic_name.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Descripcion</label>
+            <input type="text" min="0" formControlName="biography">
+            <p *ngIf="form.controls.biography?.errors?.required && form.controls.biography.touched">*Campo obligatorio</p>
+        </div>
+        <!-- cambiar a tipo file(no funciona) -->
+        <div class="form-group">
+            <label>CV</label>
+            <input type="text" formControlName="arartistic_cv">
+            <p *ngIf="form.controls.artistic_cv?.errors?.required && form.controls.artistic_cv.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Ciudad</label>
+            <input type="text" formControlName="location">
+            <p *ngIf="form.controls.location?.errors?.required && form.controls.location.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password">
+            <p *ngIf="form.controls.password?.errors?.required && form.controls.password.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Tipo de Artista</label>
+            <input type="number"  formControlName="type">
+            <p *ngIf="form.controls.type?.errors?.required && form.controls.type.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email"  formControlName="mail">
+            <p *ngIf="form.controls.mail?.errors?.required && form.controls.mail.touched">*Campo obligatorio</p>
+        </div>
+        <div class="form-group">
+            <label>Disciplina</label>
+            <input type="text"  formControlName="discipline_id">
+            <p *ngIf="form.controls.discipline_id?.errors?.required && form.controls.discipline_id.touched">*Campo obligatorio</p>
+        </div>
+        <!-- <div class="form-group">
+            <label>Tags</label>
+            <input type="text" min="0" formControlName="tag">
+            <p *ngIf="form.controls.tag?.errors?.required && form.controls.tag.touched">*Campo obligatorio</p>
+        </div> -->
+    </div>
+
+    <input type="file" #inputFile (change)="onImageChanged($event)">
+    <label>EDITAR AVATAR</label>
+    <div class="flex-between">
+        <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+        <button mat-raised-button [mat-dialog-close]="generateFormData()">GUARDAR</button>
+    </div>
+
+</form>

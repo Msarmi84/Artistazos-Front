@@ -39,7 +39,7 @@
             <div class="centerRows formPadding">
                 <div class="center formPadding">
                     <select formControlName="location">
-                        <option *ngFor="item of locations">{{item}}</option>
+                        <option *ngFor="let location of locations">{{location}}</option>
     
                     </select>
                     <!-- <input type="text" formControlName="location" placeholder="PROVINCIA" /> -->

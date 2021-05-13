@@ -9,7 +9,7 @@
                 </div>
                 <div class="center formPadding">
                     <label class="label">DISCIPLINA ARTISTICA</label>
-                    <select formControlName="disciplines" multiple="multiple">
+                    <select formControlName="discipline_name" multiple="multiple">
                         <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_id">
                             {{discipline.discipline_name}}
                         </option>
@@ -41,12 +41,6 @@
                     <input type="text" formControlName="location" placeholder="PROVINCIA" />
                     <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
                 </div>
-                <div>
-                    <input type="text" formControlName="location" placeholder="PROVINCIA" />
-                </div>
-                <div class="center formPadding">
-                    <input type="textarea" formControlName="biography" placeholder="BIOGRAFIA" />
-                </div>
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
@@ -62,7 +56,6 @@
                     <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
                         <div *ngIf="loginForm.password.errors.required">Inserta Contraseña</div>
                         <div *ngIf="loginForm.password.errors.minlength">Mínimo 6 caracteres</div>
-                        <p *ngIf="registerForm.controls.password?.errors?.required">*Campo obligatorio</p>
                     </div>
                 </div>
                 <div class="center formPadding">

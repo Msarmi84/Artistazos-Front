@@ -56,14 +56,16 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params) => (this.userId = params.id));
     this.getUser(this.userId);
 
-    this.getProducts(this.userId); 
+    this.getProducts(this.userId);
     this.getDisciplinesByUserId(this.userId);
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
 
   }
 
   getUser(id: number): void {
-    this.userService.getUserById(id).subscribe((user) => (this.user = user));
+    this.userService.getUserById(id).subscribe((x) => {
+      this.user = x;
+  });
   }
 
   getProducts(id: number): void {
@@ -73,7 +75,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   //devuelve las disciplinas del usuario
-  getDisciplinesByUserId(id:number):void {
+  getDisciplinesByUserId(id: number):void {
     this.userService.getDisciplinesById(id).subscribe(disciplines => {
        this.disciplines = disciplines;
     })
@@ -96,29 +98,15 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateUser(): void {
-    // para abrir el formulario de editar producto
 
-    const dialogRef = this.dialog.open(ArtistsFormComponent, {
-      data: this.product,
-      width: '80%',
-    });
-
-    dialogRef.afterClosed().subscribe((user) => {
-      this.userService
-        .updateUser(user, this.user.user_id)
-        .subscribe((updatedUser) => (this.user = updatedUser));
-    });
-  }
 
   changeToArtist(): void {
     this.seeEditArtist = !this.seeEditArtist;
   }
 
   seeEditProfile(product) {
-    console.log(product);
     this.product = product;
-    console.log(this.product);
+
 
     if (this.product) {
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {

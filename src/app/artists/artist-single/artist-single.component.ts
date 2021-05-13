@@ -31,14 +31,10 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   defaultImage = 'assets/images/logonofoto.png';
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
-<<<<<<< HEAD
-
-=======
 
   defaultImg = 'assets/images/logonofoto.png';
 
 
->>>>>>> bd6427e0656bcf369fa2493c2343cf0142024db0
 
   seeEditArtist = false;
   txtBoton = 'EDITAR PERFIL';

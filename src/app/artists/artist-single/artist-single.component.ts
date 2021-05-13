@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { ArtistsFormComponent } from '../artists-form/artists-form.component';
 import { InfoComponent } from 'src/app/shared/UI/info/info.component';
 import { ArtistsFormUpdateComponent } from '../artists-form-update/artists-form-update.component';
 import { ProductsFormUpdateComponent } from 'src/app/products/products-form-update/products-form-update.component';
@@ -13,6 +12,7 @@ import { ProductService } from 'src/app/products/product.service';
 import { Disciplines } from 'src/app/models/disciplines';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { CompleteArtistsFormComponent } from '../complete-artists-form/complete-artists-form.component';
 
 
 
@@ -31,12 +31,14 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   defaultImage = 'assets/images/logonofoto.png';
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
+
   defaultImg = 'assets/images/logonofoto.png';
+
 
 
   seeEditArtist = false;
   txtBoton = 'EDITAR PERFIL';
-
+  editprofileComplete: boolean = false;
   editProfile: boolean = false;
   iconEdit: boolean = false;
   openModel: boolean = false;
@@ -99,7 +101,36 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       });
     });
   }
+  editProfileComplete(user) {
+    this.user = user;
 
+
+    if (this.user) {
+      const dialogRef = this.dialog.open(CompleteArtistsFormComponent, {
+        data: this.user,
+        width: '80%',
+      });
+
+      dialogRef.afterClosed().subscribe((user) => {
+        this.userService
+          .saveUser(this.user)
+          .subscribe((updatedUser) => (this.user = updatedUser));
+      });
+      this.user = null;
+    } else {
+      const dialogRef = this.dialog.open(CompleteArtistsFormComponent, {
+        data: this.user,
+        width: '80%',
+      });
+
+      // dialogRef.afterClosed().subscribe((user) => {
+      //   this.userService
+      //     .updateUser(user, this.user.user_id)
+      //     .subscribe((seeEditProfile) => (this.user = seeEditProfile));
+      // });
+    }
+  }
+  
 
 
   changeToArtist(): void {

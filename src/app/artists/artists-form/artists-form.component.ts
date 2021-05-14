@@ -24,8 +24,8 @@ export class ArtistsFormComponent implements OnInit {
 'La Coruña/A Coruña','La Rioja','Las Palmas','León','Lérida/Lleida','Lugo','Madrid','Málaga','Melilla',
 'Murcia','Navarra','Orense/Ourense','Palencia','Pontevedra','Salamanca','Segovia','Sevilla','Soria',
 'Tarragona','Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya/Bizkaia','Zamora','Zaragoza'];
-  
-  
+
+
 
   seleccionados: string[] = [];
 
@@ -42,7 +42,7 @@ export class ArtistsFormComponent implements OnInit {
       discipline_name: [''],
       // artistic_cv: ['', [Validators.required]],
       mail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['', Validators.required],
       // avatar:['']
     }, {

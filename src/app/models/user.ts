@@ -16,6 +16,7 @@ export class User {
   discipline_id: number;
   tags: string[];
 
+
   constructor(item?: any) {
     this.date_of_birth = item.date_of_birth || '';
     this.last_name = item.last_name || '';
@@ -29,5 +30,6 @@ export class User {
     this.mail = item.mail || '';
     this.discipline_id = item.discipline_id || 0;
     this.avatar = item.avatar || null;
+
   }
 }

@@ -45,6 +45,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
   page: number;
+  like: number = 0;
 
   constructor(
     private router: Router,
@@ -130,7 +131,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       // });
     }
   }
-  
+
 
 
   changeToArtist(): void {
@@ -191,4 +192,5 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.isLoggedSub.unsubscribe();
   }
+
 }

@@ -1,7 +1,7 @@
 :host {
     border-radius: 6px;
     padding: 1rem;
-    box-shadow: 0 0 11px 1px #ca63e2;
+    box-shadow: 0 0 11px 1px rgb(27, 26, 26);
     ;
     background-color: transparent;
     display: block;
@@ -16,11 +16,11 @@
     }
     input {
         display: block;
-        width: 100%;
+        width: 20%;
         border-radius: 6px;
         border: none;
         padding: 0.3rem 0.5rem;
-        box-shadow: 0 0 0 1px rgba(#ca63e2, 0.2);
+        box-shadow: 0 0 0 1px rgba(rgb(27, 26, 26), 0.2);
         // si estas dos cosas se cumplen, me aplicas el estilo
         &.ng-invalid.ng-touched {
             box-shadow: 0 0 0 3px rgba(red, 0.2);
@@ -50,7 +50,7 @@
         align-items: flex-end;
     }
     .mat-raised-button {
-        background-color: #ca63e2;
+        background-color: rgb(27, 26, 26);
         margin-top: 0.5rem;
         border: none;
         color: white;

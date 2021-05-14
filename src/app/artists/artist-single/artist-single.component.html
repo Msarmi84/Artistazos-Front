@@ -25,10 +25,18 @@
                 <button class="button-single" *ngIf="isLoggedIn" (click)="deleteUser()">
           BORRAR
         </button>
+
                 <!-- Editar perfil completo -->
                 <button class="button-single" *ngIf="isLoggedIn" (click)="editProfileComplete(false)">
+
+        <!-- Editar perfil completo -->
+        <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/complete-artists-form',user.user_id]" >
+
         EDIT PROFILE
         </button>
+        <button class="button-single" *ngIf="isLoggedIn" (click)="editCredentials()">
+            EDITAR MAIL AND PASSWORD
+          </button>
             </div>
         </div>
         <div class="proyectos-edit">

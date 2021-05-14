@@ -31,6 +31,8 @@ import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artist
 import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
 import { CartComponent } from './cart/cart.component';
 import { CompleteArtistsFormComponent } from './artists/complete-artists-form/complete-artists-form.component';
+import { ValidCredentialsComponent } from './valid-credentials/valid-credentials.component';
+
 
 
 
@@ -55,6 +57,8 @@ import { CompleteArtistsFormComponent } from './artists/complete-artists-form/co
     ProductsFormUpdateComponent,
     CartComponent,
     CompleteArtistsFormComponent,
+    ValidCredentialsComponent,
+  
     
     
    

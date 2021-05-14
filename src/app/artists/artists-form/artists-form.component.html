@@ -38,8 +38,13 @@
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
+
                     <input type="text" formControlName="location" placeholder="PROVINCIA" />
                     <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
+            <select formControlName="location">
+                        <option *ngFor="let location of locations">{{location}}</option>
+                    </select>
+
                 </div>
             </div>
             <div class="centerRows formPadding">

@@ -12,7 +12,8 @@ import { ProductService } from 'src/app/products/product.service';
 import { Disciplines } from 'src/app/models/disciplines';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { CompleteArtistsFormComponent } from '../complete-artists-form/complete-artists-form.component';
+import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-credentials.component';
+
 
 
 
@@ -45,6 +46,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
   page: number;
+  like: number = 0;
 
   constructor(
     private router: Router,
@@ -101,12 +103,12 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       });
     });
   }
-  editProfileComplete(user) {
+  editCredentials(user) {
     this.user = user;
 
 
     if (this.user) {
-      const dialogRef = this.dialog.open(CompleteArtistsFormComponent, {
+      const dialogRef = this.dialog.open(ValidCredentialsComponent, {
         data: this.user,
         width: '80%',
       });
@@ -118,16 +120,16 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       });
       this.user = null;
     } else {
-      const dialogRef = this.dialog.open(CompleteArtistsFormComponent, {
+      const dialogRef = this.dialog.open(ValidCredentialsComponent, {
         data: this.user,
         width: '80%',
       });
 
-      // dialogRef.afterClosed().subscribe((user) => {
-      //   this.userService
-      //     .updateUser(user, this.user.user_id)
-      //     .subscribe((seeEditProfile) => (this.user = seeEditProfile));
-      // });
+      dialogRef.afterClosed().subscribe((user) => {
+        this.userService
+          .updateUser(user, this.user.user_id)
+          .subscribe((seeEditProfile) => (this.user = seeEditProfile));
+      });
     }
   }
 
@@ -191,4 +193,5 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.isLoggedSub.unsubscribe();
   }
+
 }

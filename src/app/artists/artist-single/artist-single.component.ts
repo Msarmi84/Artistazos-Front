@@ -54,6 +54,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private dialog: MatDialog,
     private lss: LocalStorageService
+
   ) {}
 
   ngOnInit(): void {

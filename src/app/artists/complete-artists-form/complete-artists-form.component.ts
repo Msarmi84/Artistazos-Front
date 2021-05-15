@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CompleteArtistsFormComponent implements OnInit {
 
-  
+
   form: FormGroup;
   imgPreview = 'assets/images/logonofoto.png';
   imageFile: File;
@@ -24,7 +24,7 @@ export class CompleteArtistsFormComponent implements OnInit {
 'La Coruña/A Coruña','La Rioja','Las Palmas','León','Lérida/Lleida','Lugo','Madrid','Málaga','Melilla',
 'Murcia','Navarra','Orense/Ourense','Palencia','Pontevedra','Salamanca','Segovia','Sevilla','Soria',
 'Tarragona','Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya/Bizkaia','Zamora','Zaragoza'];
-  
+
 
   @Output() formSubmitted = new EventEmitter<FormData>();
 
@@ -45,7 +45,7 @@ export class CompleteArtistsFormComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    if (this.data?.user_name) {
+    if (this.data?.user_id) {
       this.form.patchValue(this.data);
       this.imgPreview = this.data.avatar ? this.imageUrl + this.data.avatar : 'assets/images/logonofoto.png';
     }

@@ -17,18 +17,22 @@ import { AllProductsComponent } from './products/all-products/all-products.compo
 import { ArtistsComponent } from './artists/artists.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { InfoComponent } from './shared/UI/info/info.component';
+import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
+import { CartComponent } from './cart/cart.component';
+import { ValidCredentialsComponent } from './valid-credentials/valid-credentials.component';
 
 
 // MATERIAL MODULES
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
-import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
-import { CartComponent } from './cart/cart.component';
+
+
 
 
 
@@ -51,7 +55,8 @@ import { CartComponent } from './cart/cart.component';
     ArtistsFormUpdateComponent,
     ProductsFormUpdateComponent,
     CartComponent,
-   
+    ValidCredentialsComponent,
+    InfoComponent
 
   ],
   imports: [
@@ -64,7 +69,8 @@ import { CartComponent } from './cart/cart.component';
     HttpClientModule,
     MatDialogModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSelectModule
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

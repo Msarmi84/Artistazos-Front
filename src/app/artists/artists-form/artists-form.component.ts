@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Disciplines } from 'src/app/models/disciplines';
 import { User } from 'src/app/models/user';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
@@ -28,12 +28,13 @@ export class ArtistsFormComponent implements OnInit {
 
 
   seleccionados: string[] = [];
+  user: User;
 
-
-  constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router,  private route: ActivatedRoute) {
     this.registerForm = formBuilder.group({
       artistic_name: ['', Validators.required],
       user_name: ['', Validators.required],
+      user_id: [''],
       last_name: ['', Validators.required],
       date_of_birth: ['', Validators.required],
       // date_of_birth: ['', Validators.pattern(this.dateReg)],
@@ -53,6 +54,16 @@ export class ArtistsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDisciplines();
+    this.route.params.subscribe(params => {
+      if (params.id) {
+        this.userService.getUserById(params.id).subscribe(user => {
+          if (user) {
+            this.user = user;
+            this.registerForm.patchValue(user);
+          }
+        });
+      }
+    });
 
   }
 

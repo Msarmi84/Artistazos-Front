@@ -1,16 +1,20 @@
-<ng-container class="container" *ngIf="user">
+
+<div class="container" *ngIf="user">
+
     <div class="background-header">
         <div class="fondo">
-            <img src="../../../assets/images/fondoguitarra.jpg" alt="" />
+            <img src="http://localhost:3000/images/uploads/{{user.front}}" alt="" />
         </div>
         <div class="container-artista">
             <div class="avatar-name">
                 <div class="caja_img">
-                    <img [src]="user.avatar ? imageUrl + user.avatar : defaultImg" alt="">
+
+                    <img src="http://localhost:3000/images/uploads/{{user.avatar}}" alt="" />
+
                 </div>
                 <div class="datos-single">
 
-                    <h1>{{ user.user_name }}
+                    <h1>{{ user.artistic_name }}
                         <i class="fab fa-linkedin-in"></i><i class="fab fa-facebook"></i></h1>
                     <p *ngFor="let discipline of disciplines">{{ discipline.discipline_name }}</p>
                 </div>
@@ -26,7 +30,7 @@
 
 
                 <!-- Editar perfil completo -->
-                <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]">
+                <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]" >
         EDIT PROFILE
         </button>
                 <button class="button-single" *ngIf="isLoggedIn" (click)="editCredentials()">
@@ -37,7 +41,7 @@
         <div class="proyectos-edit">
             <div class="proyectos">
                 <div class="product-single cajaProducto" *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: page }">
-                    <img src="../../../assets/images/{{ product.product_photo }}" />
+                    <img src="http://localhost:3000/images/uploads/{{ product.product_photo }}" />
                     <mat-icon *ngIf="iconEdit && isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)"> border_color</mat-icon>
                 </div>
             </div>
@@ -48,8 +52,8 @@
                 <button class="button-single" (click)="editProduct()">
           EDITAR PRODUCTOS
         </button>
-                <button class="button-single">AÑADIR PRODUCTOS</button>
-                <input type="file" #inputFile (change)="onImageChanged($event)" />
+                <button class="button-single" (click)="seeEditProfile('add')" >AÑADIR PRODUCTOS</button>
+                <!-- <input type="file" #inputFile (change)="onImageChanged($event)" /> -->
             </div>
         </div>
     </div>
@@ -58,7 +62,7 @@
 
     </div>
     <app-products-form-update (formSubmitted)="saveProduct($event)"></app-products-form-update> -->
-</ng-container>
+
 <!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
 
 <!-- </div> -->

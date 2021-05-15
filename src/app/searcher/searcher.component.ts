@@ -26,7 +26,7 @@ export class SearcherComponent implements OnInit {
       artistic_name:[''],
       location: [''],
       discipline_name: [null],
-      tags: [''],
+      tag: [''],
     })
    }
 

@@ -58,11 +58,14 @@ export class ProductService {
     );
   }
 
-  saveProduct( product: Product): Observable<Product> {
-    console.log(product + '----------------')
-    if (product.product_id) {
+  saveProduct( product: FormData): Observable<Product> {
+    const product_id = product.get('product_id')
+    const user_id = product.get('user_id')
+    console.log('console del service')
+    console.log(product)
+    if (product_id) {
       // PUT 
-      return this.http.put<Product>(`${this.URL}/updateProduct/${product.product_id}`, product).pipe(
+      return this.http.put<Product>(`${this.URL}/${product_id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
         })
@@ -70,7 +73,7 @@ export class ProductService {
 
     } else {
       // POST 
-      return this.http.post<Product>(`${this.URL}/saveProduct/${product.product_id}`, product).pipe(
+      return this.http.post<Product>(`${this.URL}/saveProduct/${user_id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
         })

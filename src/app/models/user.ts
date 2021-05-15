@@ -13,8 +13,9 @@ export class User {
   artistic_cv: string; // Para subir el cv artistico
   type: string;
   mail: string;
-  discipline_id: number;
+  discipline_name: string;
   tags: string[];
+  front: string;
 
 
   constructor(item?: any) {
@@ -28,8 +29,9 @@ export class User {
     this.password = item.password || '';
     this.type = item.type || '';
     this.mail = item.mail || '';
-    this.discipline_id = item.discipline_id || 0;
+    this.discipline_name = item.discipline_name || 0;
     this.avatar = item.avatar || null;
+    this.front = item.front || null;
 
   }
 }

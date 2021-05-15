@@ -1,5 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form">
     <div class="grid">
+        <div class="form-group">
+            <label>Nombre Artístico</label>
+            <input type="text" formControlName="artistic_name">
+            <!-- <p *ngIf="form.controls.artistic_name?.errors?.required && form.controls.artistic_name.touched">*Campo obligatorio</p> -->
+        </div>
         <div class="form-group">
             <label>Nombre</label>
             <input type="text" formControlName="user_name">
@@ -17,16 +22,38 @@
         </div> -->
         <div class="form-group">
             <label>Tags</label>
+
+
+            <!-- <input type="text" ng-keypress = press($event) name="fname" id="elenlace"> -->
+
+
+
             <input type="text" min="0" formControlName="tag">
             <p *ngIf="form.controls.tag?.errors?.required && form.controls.tag.touched">*Campo obligatorio</p>
         </div>
+        <div class="form-group">
+            <label class="label">DISCIPLINA ARTISTICA</label>
+            <select formControlName="discipline_name" multiple="multiple">
+                <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name">
+                    {{discipline.discipline_name}}
+                </option>
+            </select>
+            <ul>
+                <li class="white" *ngFor="let seleccion of seleccionados">
+                    {{seleccion}}
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <input type="file" #inputFile (change)="onImageChanged($event)">
-    <label>EDITAR AVATAR</label>
-    <div class="flex-between">
-        <img [src]="imgPreview" alt="" (click)="inputFile.click()">
-        <button mat-raised-button [mat-dialog-close]="generateFormData()">GUARDAR</button>
+        <label>EDITAR FOTO DE PERFIL</label>
+        <div class="flex-between">
+            <input type="file" #inputFile (change)="onImageChanged($event)"  >
+            <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+        <!-- <label>EDITAR FOTO DE PORTADA</label>
+            <div class="flex-between">
+                <input type="file" #inputFile (change)="onFrontChanged($event)"  >
+                <img [src]="imgFrontPreview" alt="" (click)="inputFile.click()">
+            </div> -->
+        <button mat-raised-button [mat-dialog-close]="generateFormData()" type="submit">GUARDAR</button>
     </div>
-
 </form>

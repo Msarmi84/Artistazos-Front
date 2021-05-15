@@ -10,7 +10,7 @@
                 <div class="center formPadding">
                     <label class="label">DISCIPLINA ARTISTICA</label>
                     <select formControlName="discipline_name" multiple="multiple">
-                        <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_id">
+                        <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name">
                             {{discipline.discipline_name}}
                         </option>
                     </select>
@@ -67,24 +67,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="centerRows formPadding">
-                <div class="center formPadding">
-                    <input class="custom-file-input" type="file" formControlName="artistic_cv"/>
-                </div>
-            </div>
-            <div class="centerRows formPadding">
-                <div class="center formPadding">
-                    <input class="custom-file-input2" type="file" formControlName="avatar"/>
-                </div>
-            </div>
-
-           <div class="centerRows formPadding">
-
-                <div class="center formPadding">
-                    <input class="custom-file-input3" type="file" formControlName="artwork"/>
-                </div>
-            </div> -->
             <div class="formPadding">
                 <button mat-raised-button type="submit ">
                     REGISTRATE

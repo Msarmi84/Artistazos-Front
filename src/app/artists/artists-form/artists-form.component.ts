@@ -28,15 +28,11 @@ export class ArtistsFormComponent implements OnInit {
       user_name: ['', Validators.required],
       last_name: ['', Validators.required],
       date_of_birth: ['', Validators.required],
-      // date_of_birth: ['', Validators.pattern(this.dateReg)],
       location: ['', Validators.required],
-      // biography: ['', [Validators.required]],
       discipline_name: [[]],
-      // artistic_cv: ['', [Validators.required]],
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      // avatar:['']
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });

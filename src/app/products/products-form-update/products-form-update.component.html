@@ -1,4 +1,4 @@
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="form">
     <div class="grid">
         <div class="form-group">
             <label>Nombre</label>
@@ -27,11 +27,11 @@
         </div>
     </div>
 
-    <input type="file" #inputFile (change)="onImageChanged($event)">
-    <label>EDITAR FOTO</label>
+    <label>EDITAR FOTO DEL PRODUCTO</label>
     <div class="flex-between">
+        <input type="file" #inputFile (change)="onImageChanged($event)" >
         <img [src]="imgPreview" alt="" (click)="inputFile.click()">
-        <button mat-raised-button [mat-dialog-close]="generateFormData()">GUARDAR</button>
+        <button mat-raised-button [mat-dialog-close]="formData">GUARDAR</button>
     </div>
 
 </form>

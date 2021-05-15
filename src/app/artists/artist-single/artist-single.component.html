@@ -30,7 +30,7 @@
 
 
                 <!-- Editar perfil completo -->
-                <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]">
+                <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]" >
         EDIT PROFILE
         </button>
                 <button class="button-single" *ngIf="isLoggedIn" (click)="editCredentials()">
@@ -52,7 +52,7 @@
                 <button class="button-single" (click)="editProduct()">
           EDITAR PRODUCTOS
         </button>
-                <button class="button-single" (click)="seeEditProfile('add')">AÑADIR PRODUCTOS</button>
+                <button class="button-single" (click)="seeEditProfile('add')" >AÑADIR PRODUCTOS</button>
                 <!-- <input type="file" #inputFile (change)="onImageChanged($event)" /> -->
             </div>
         </div>
@@ -62,7 +62,7 @@
 
     </div>
     <app-products-form-update (formSubmitted)="saveProduct($event)"></app-products-form-update> -->
-</ng-container>
+
 <!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
 
 <!-- </div> -->

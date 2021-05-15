@@ -60,7 +60,9 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe((params) => (this.userId = params.id));
+    this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
+    console.log('userId')
+    console.log(this.userId)
    
     
     this.getUser(this.userId);

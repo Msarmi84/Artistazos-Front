@@ -236,7 +236,8 @@
           </div>
         </div>
       </div>
-      <button id="submit" type="submit ">Regístrate</button>
+      <button id="submit" type="submit " *ngIf="userId">Guardar</button>
+      <button id="submit" type="submit " *ngIf="!userId">Regístrate</button>
     </form>
   </div>
 </main>

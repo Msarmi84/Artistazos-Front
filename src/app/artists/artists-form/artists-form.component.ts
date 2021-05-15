@@ -29,7 +29,9 @@ export class ArtistsFormComponent implements OnInit {
 
   seleccionados: string[] = [];
   user: User;
+
   userId: Number;
+
 
   constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router,  private route: ActivatedRoute) {
     this.registerForm = formBuilder.group({
@@ -85,6 +87,8 @@ export class ArtistsFormComponent implements OnInit {
       });
     }
   }
+
+
 // console.log(this.registerForm.value)
 
 //       this.submitted = true;

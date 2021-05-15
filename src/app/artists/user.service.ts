@@ -36,7 +36,7 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.URL}/${id}`);
+    return this.http.delete<void>(`${this.URL}/delete/${id}`);
   }
 
   updateUser(user: FormData, id: number): Observable<User> {

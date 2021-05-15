@@ -17,7 +17,9 @@ import { AllProductsComponent } from './products/all-products/all-products.compo
 import { ArtistsComponent } from './artists/artists.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { InfoComponent } from './shared/UI/info/info.component';
+
 
 
 
@@ -58,10 +60,7 @@ import { ValidCredentialsComponent } from './valid-credentials/valid-credentials
     CartComponent,
     CompleteArtistsFormComponent,
     ValidCredentialsComponent,
-  
-    
-    
-   
+    InfoComponent
 
   ],
   imports: [

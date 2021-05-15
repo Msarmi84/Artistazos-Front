@@ -32,7 +32,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   defaultImage = 'assets/images/logonofoto.png';
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
-
   defaultImg = 'assets/images/logonofoto.png';
 
 
@@ -46,7 +45,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
   page: number;
-  like: number = 0;
+
 
   constructor(
     private router: Router,
@@ -98,8 +97,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       if (!isConfirmed) {
         return;
       }
-      this.userService.deleteUser(this.user.user_id).subscribe((res) => {
-        this.router.navigateByUrl('/artists-form');
+      this.userService.deleteUser(this.user.user_id).subscribe(res => {
+        this.router.navigateByUrl('/artistas');
       });
     });
   }

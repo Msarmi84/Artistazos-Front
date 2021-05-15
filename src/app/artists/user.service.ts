@@ -22,17 +22,25 @@ export class UserService {
   }
 
   saveUser(user: User): Observable<User> {
-
-    if(user.user_id){
-      return this.http.post<User>(`${this.URL}/createUser`, user).pipe(
-        map((x: any) => {
-          return new User(x);
-        })
-      );
-    }
-  
-    
+    console.log('console del service');
+    if (user.user_id) {
+    return this.http.post<User>(`${this.URL}/${user.user_id}`, user).pipe(
+      map((x: any) => {
+        return new User(x);
+      })
+    );
+    } else {
+      return this.http.post<User>(`${this.URL}/saveUser/${user.user_id}`, user).pipe(
+      map((x: any) => {
+        return new User(x);
+      })
+    );
   }
+}
+
+
+
+
 
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.URL}/userById/${id}`)
@@ -40,7 +48,7 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.URL}/${id}`);
+    return this.http.delete<void>(`${this.URL}/delete/${id}`);
   }
 
   updateUser(user: FormData, id: number): any {

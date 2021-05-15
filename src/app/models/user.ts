@@ -17,6 +17,7 @@ export class User {
   tags: string[];
   front: string;
 
+
   constructor(item?: any) {
     this.date_of_birth = item.date_of_birth || '';
     this.last_name = item.last_name || '';
@@ -31,5 +32,6 @@ export class User {
     this.discipline_name = item.discipline_name || 0;
     this.avatar = item.avatar || null;
     this.front = item.front || null;
+
   }
 }

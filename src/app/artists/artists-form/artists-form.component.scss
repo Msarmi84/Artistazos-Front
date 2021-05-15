@@ -1,149 +1,198 @@
-@import "/src/app/login/login.component.scss";
-.centerRows {
-    display: flex;
-    align-items: center;
-    align-content: space-between;
-    flex-direction: row;
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mulish&display=swap");
+
+/* background */
+
+@keyframes zoomInOut {
+    50% {
+        transform: scale(1.1);
+    }
 }
 
-// .transparent{
-//     background-color: transparent !important;
-// }
-input {
-    border: 0;
-    outline: 0;
-    background: transparent;
-    border-bottom: 3px solid #ca63e2;
-    color: rgb(29, 29, 29);
-}
-
- ::placeholder {
-    color: rgb(29, 29, 29);
-}
-
-.label {
-    font-size: 13px;
-}
-
-.purple {
-    color: rgb(29, 29, 29);
-}
-
-@mixin inputFile {
-    background-color: white;
-    color: #ca63e2;
-}
-
-@mixin inputBefore($cont) {
-    content: $cont;
-    display: block;
-    background: #ca63e2;
+.container {
+    margin: 1.5rem auto 0 auto;
+    padding: 1.5rem 1rem;
     border-radius: 3px;
-    padding: 10px;
+    background-color: rgba(34, 34, 34, 0.187);
+    box-shadow: 0 0 11px 4px #23232350;
+    max-width: 33em;
+    opacity: 0.9;
+}
+
+
+/* header */
+
+#title,
+h2 {
+    margin: 0.5rem 0;
+    padding: 0;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+#description {
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+// #sweet {
+//     transform: rotate(-4deg);
+// }
+// #retreat {
+//     transform: rotate(4deg);
+// }
+img {
+    height: 4.5rem;
+}
+
+
+/* form */
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+    width: auto;
+}
+
+#name-div,
+.first-name-div,
+.last-name-div {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    width: auto;
+}
+
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+p,
+label,
+.logo {
+    margin: 0;
+    padding: 1rem 0 0.375rem 0;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0.375rem;
+    align-self: stretch;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.checkbox-skill-div {
+    padding: 0.5rem 0;
+}
+
+.form-control {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.25rem 0.5rem;
+    color: #373338;
+    background-color: #f5f5f5;
+    border: 1px solid #6565656d;
+    border-radius: 6px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.form-control-password {
+    width: auto;
+    height: 2.5rem;
+    padding: 0.25rem 0.5rem;
+    color: #373338;
+    background-color: #f5f5f5;
+    border: 1px solid #6565656d;
+    border-radius: 6px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.errorColor {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.358);
+}
+
+.form-control:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem var(--color-dusty-rose);
+}
+
+textarea {
+    margin-bottom: 1rem;
+    min-height: 6rem;
+    resize: vertical;
+}
+
+
+/* button */
+
+#submit {
+    margin: 1rem auto;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
     cursor: pointer;
+    text-transform: uppercase;
+    background-color: rgb(40, 40, 40);
+    color: white;
+    width: auto;
+    -webkit-box-shadow: 4px 4px 3px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 4px 4px 3px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 4px 4px 3px 0px rgba(50, 50, 50, 0.75);
 }
 
-@mixin inputHoverBefore {
-    border-color: #ca63e2;
+#submit:hover {
+    transform: scale(0.95);
 }
 
-@mixin inputActiveBefore {
-    background: #ca63e2;
+#submit:focus {
+    box-shadow: 0 0 0 0.2rem var(--color-dusty-rose);
 }
 
-@mixin customInput($class, $cont) {
-    &.#{$class}::-webkit-file-upload-button {
-        @include inputFile();
+
+/* footer */
+
+
+/* media */
+
+@media (min-width: 30em) {
+    .container {
+        padding: 1.5rem 1.5rem;
     }
-    &.#{$class}::before {
-        @include inputBefore($cont)
+}
+
+@media (min-width: 38em) {
+    #name-div {
+        flex-direction: row;
+        justify-content: space-between;
     }
-    ;
-    &.#{$class}:hover::before {
-        @include inputHoverBefore()
+    .first-name-div,
+    .last-name-div {
+        width: 49%;
     }
-    ;
-    &.#{$class}:active::before {
-        @include inputActiveBefore()
+    .container {
+        padding: 1.5rem 1.725rem;
     }
-    ;
 }
-
-.custom-file-input {
-    @include customInput('custom-file-input', 'SUBE TU CV')
-}
-
-.custom-file-input2 {
-    @include customInput('custom-file-input2', 'SUBE TU AVATAR')
-}
-
-.custom-file-input3 {
-    @include customInput('custom-file-input3', 'SUBE TU OBRA')
-}
-
-// .custom-file-input {
-//   &.custom-file-input::-webkit-file-upload-button{
-//     @include inputFile();
-//   }
-//   &.custom-file-input::before {
-//     @include inputBefore('SUBE TU CV')
-//   };
-//   &.custom-file-input:hover::before {
-//     @include inputHoverBefore()
-//   };
-//   &.custom-file-input:active::before {
-//     @include inputActiveBefore()
-//   };
-// }
-// .custom-file-input2 {
-//   &.custom-file-input::-webkit-file-upload-button{
-//     @include inputFile();
-//   }
-//   &.custom-file-input::before {
-//     @include inputBefore('SUBE TU AVATAR')
-//   };
-//   &.custom-file-input:hover::before {
-//     @include inputHoverBefore()
-//   };
-//   &.custom-file-input:active::before {
-//     @include inputActiveBefore()
-//   };
-// }
-// .custom-file-input2 {
-//   &.custom-file-input::-webkit-file-upload-button{
-//     @include inputFile();
-//   }
-//   &.custom-file-input::before {
-//     @include inputBefore('SUBE TU AVATAR')
-//   };
-//   &.custom-file-input:hover::before {
-//     @include inputHoverBefore()
-//   };
-//   &.custom-file-input:active::before {
-//     @include inputActiveBefore()
-//   };
-// }
-// .custom-file-input2::-webkit-file-upload-button {
-//   @include inputFile();
-// }
-// .custom-file-input2::before {
-//   @include inputBefore('SUBE TU AVATAR')
-// }
-// .custom-file-input2:hover::before {
-//   @include inputHoverBefore()
-// }
-// .custom-file-input2:active::before {
-//   @include inputActiveBefore()
-// }
-// .custom-file-input3::-webkit-file-upload-button {
-//   @include inputFile();
-// }
-// .custom-file-input3::before {
-//   @include inputBefore('SUBE TU OBRA')
-// }
-// .custom-file-input3:hover::before {
-//   @include inputHoverBefore()
-// }
-// .custom-file-input3:active::before {
-//   @include inputActiveBefore()
-// }

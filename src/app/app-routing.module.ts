@@ -37,7 +37,10 @@ const routes: Routes = [
     path: 'buscar', component: SearcherComponent,
   },
   {
-    path: 'cart', component: CartComponent
+    path: 'cart', component: CartComponent,
+  },
+  {
+    path: 'artists-form/:id', component: ArtistsFormComponent
   }
 ];
 

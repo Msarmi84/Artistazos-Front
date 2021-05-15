@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { ArtistsFormComponent } from '../artists-form/artists-form.component';
 import { InfoComponent } from 'src/app/shared/UI/info/info.component';
 import { ArtistsFormUpdateComponent } from '../artists-form-update/artists-form-update.component';
 import { ProductsFormUpdateComponent } from 'src/app/products/products-form-update/products-form-update.component';
@@ -13,6 +12,8 @@ import { ProductService } from 'src/app/products/product.service';
 import { Disciplines } from 'src/app/models/disciplines';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-credentials.component';
+
 
 
 
@@ -31,17 +32,21 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   defaultImage = this.imageUrl + 'defaultProduct' ;
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
+  defaultImg = 'assets/images/logonofoto.png';
+
+
 
 
   seeEditArtist = false;
   txtBoton = 'EDITAR PERFIL';
-
+  editprofileComplete: boolean = false;
   editProfile: boolean = false;
   iconEdit: boolean = false;
   openModel: boolean = false;
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
   page: number;
+
 
   constructor(
     private router: Router,
@@ -50,6 +55,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private dialog: MatDialog,
     private lss: LocalStorageService
+
   ) {}
 
   ngOnInit(): void {
@@ -101,11 +107,41 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
         console.log(' no ha confirmado')
         return;
       }
-      console.log('ha confirmado')
-      this.userService.deleteUser(this.user.user_id).subscribe((res) => {
-        this.router.navigateByUrl('/artists-form');
+
+      this.userService.deleteUser(this.user.user_id).subscribe(res => {
+        this.router.navigateByUrl('/artistas');
+
       });
     });
+  }
+  editCredentials(user) {
+    this.user = user;
+
+
+    if (this.user) {
+      const dialogRef = this.dialog.open(ValidCredentialsComponent, {
+        data: this.user,
+        width: '80%',
+      });
+
+      dialogRef.afterClosed().subscribe((user) => {
+        this.userService
+          .saveUser(this.user)
+          .subscribe((updatedUser) => (this.user = updatedUser));
+      });
+      this.user = null;
+    } else {
+      const dialogRef = this.dialog.open(ValidCredentialsComponent, {
+        data: this.user,
+        width: '80%',
+      });
+
+      dialogRef.afterClosed().subscribe((user) => {
+        this.userService
+          .updateUser(user, this.user.user_id)
+          .subscribe((seeEditProfile) => (this.user = seeEditProfile));
+      });
+    }
   }
 
 
@@ -167,4 +203,5 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.isLoggedSub.unsubscribe();
   }
+
 }

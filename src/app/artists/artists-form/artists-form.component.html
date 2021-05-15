@@ -1,4 +1,4 @@
-<div class="center white">
+<!-- <div class="center white">
     <h3>BIENVENIDO A TU COMUNIDAD ARTISTICA</h3>
     <div class="parallelogram">
         <form class="center " [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
@@ -10,10 +10,10 @@
                 <div class="center formPadding">
                     <label class="label">DISCIPLINA ARTISTICA</label>
                     <select formControlName="discipline_name" multiple="multiple">
-                        <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name">
-                            {{discipline.discipline_name}}
-                        </option>
-                    </select>
+                      <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name">
+                          {{discipline.discipline_name}}
+                      </option>
+                  </select>
                     <ul>
                         <li class="white" *ngFor="let seleccion of seleccionados">
                             {{seleccion}}
@@ -38,8 +38,13 @@
             </div>
             <div class="centerRows formPadding">
                 <div class="center formPadding">
+
                     <input type="text" formControlName="location" placeholder="PROVINCIA" />
                     <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
+            <select formControlName="location">
+                        <option *ngFor="let location of locations">{{location}}</option>
+                    </select>
+
                 </div>
             </div>
             <div class="centerRows formPadding">
@@ -63,15 +68,175 @@
                     <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
                         <div *ngIf="loginForm.confirmPassword.errors.required">Repita contraseña</div>
                         <div *ngIf="loginForm.confirmPassword.errors.mustMatch">Debe coincidir</div>
-
                     </div>
                 </div>
             </div>
             <div class="formPadding">
                 <button mat-raised-button type="submit ">
-                    REGISTRATE
-                  </button>
+
+                  REGISTRATE
+                </button>
             </div>
         </form>
     </div>
 </div>
+ -->
+
+
+
+
+
+
+<main class="main">
+    <div class="container">
+        <header>
+            <h1 id="title">
+                <span class="sr-only">Artistazos </span>
+            </h1>
+            <h2>Formulario de registro</h2>
+        </header>
+        <form id="survey-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+            <div id="name-div">
+                <div class="first-name-div">
+                    <label for="name" id="name-label">Nombre artístico</label>
+                    <input type="text" id="name" name="first-name" placeholder="Nombre atístico" class="form-control" formControlName="artistic_name" />
+                    <div class="errorColor" *ngIf="submitted && loginForm.artistic_name.errors">
+                        <div *ngIf="loginForm.artistic_name.errors.required">
+                            *Campo obligatorio
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="first-name-div">
+                    <label for="name" id="name-label">Nombre </label>
+                    <input type="text" id="name" name="first-name" placeholder="Nombre " class="form-control" formControlName="user_name" />
+                    <div class="errorColor" *ngIf="submitted && loginForm.user_name.errors">
+                        <div *ngIf="loginForm.user_name.errors.required">
+                            *Campo obligatorio
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="first-name-div">
+                    <label for="name" id="name-label">Apellidos </label>
+                    <input type="text" id="name" name="first-name" placeholder="Apellidos " class="form-control" formControlName="last_name" />
+                    <div class="errorColor" *ngIf="submitted && loginForm.last_name.errors">
+                        <div *ngIf="loginForm.last_name.errors.required">
+                            *Campo obligatorio
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- siguiente linea -->
+            <div id="name-div">
+                <div class="first-name-div">
+                    <label for="name" id="name-label">Fecha de nacimiento</label>
+                    <input type="date" id="name" name="first-name" class="form-control" formControlName="date_of_birth" />
+                    <div class="errorColor" *ngIf="submitted && loginForm.date_of_birth.errors">
+                        <div *ngIf="loginForm.date_of_birth.errors.required">
+                            *Campo obligatorio
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="first-name-div">
+                    <label for="name" id="name-label">Localización</label>
+                    <select id="dropdown" class="form-control" formControlName="location">
+                        <option *ngFor="let location of locations">
+                            {{ location }}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+            <label for="email" id="email-label">Email</label>
+            <input type="email" id="email" name="email" placeholder="email@email.com" class="form-control" formControlName="mail" [ngClass]="{ 'is-invalid': submitted && loginForm.mail.errors }" placeholder="email" />
+            <div class="errorColor" *ngIf="submitted && loginForm.mail.errors">
+                <div *ngIf="loginForm.mail.errors.required">*Campo obligatorio</div>
+            </div>
+
+            <label for="dropdown" id="dropdown-label">Selecciona tus disciplinas artísticas</label
+      >
+      <mat-select
+        id="dropdown"
+        class="form-control"
+        formControlName="discipline_name"
+        multiple
+        placeholder="musician, dances, painter, writter.... "
+      >
+        <mat-option *ngFor="let discipline of disciplines">
+          {{ discipline.discipline_name }}
+        </mat-option>
+      </mat-select>
+      <ul>
+        <li class="white" *ngFor="let seleccion of seleccionados">
+          {{ seleccion }}
+        </li>
+      </ul>
+
+      <div id="name-div">
+        <div class="last-name-div">
+          <label
+            for="last-name"
+            id="last-name-label"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="last-name"
+            name="last-name"
+            placeholder="Password"
+            class="form-control"
+            formControlName="password"
+          />
+          <div
+            class="errorColor"
+            *ngIf="submitted && loginForm.password.errors"
+          >
+            <div *ngIf="loginForm.password.errors.required">
+              *Inserta Contraseña
+            </div>
+            <div *ngIf="loginForm.password.errors.minlength">
+              *Mínimo 4 caracteres
+            </div>
+          </div>
+        </div>
+
+        <div class="last-name-div">
+          <label
+            for="last-name"
+            id="last-name-label"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }"
+            >Confirma tu password</label
+          >
+          <input
+            type="password"
+            id="last-name"
+            name="last-name"
+            placeholder="Confirma tu password"
+            class="form-control-password"
+            formControlName="confirmPassword"
+          />
+          <div
+            class="errorColor"
+            *ngIf="submitted && loginForm.confirmPassword.errors"
+          >
+            <div *ngIf="loginForm.confirmPassword.errors.required">
+              *Repita contraseña
+            </div>
+            <div *ngIf="loginForm.confirmPassword.errors.mustMatch">
+              *Debe coincidir
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="submit" type="submit ">Regístrate</button>
+    </form>
+  </div>
+</main>

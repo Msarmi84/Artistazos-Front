@@ -94,7 +94,7 @@
             <div id="name-div">
                 <div class="first-name-div">
                     <label for="name" id="name-label">Nombre artístico</label>
-                    <input type="text" id="name" name="first-name" placeholder="Nombre atístico" class="form-control" formControlName="artistic_name" />
+                    <input class="uppercase" type="text" id="name" name="first-name" placeholder="Nombre atístico" class="form-control" formControlName="artistic_name" />
                     <div class="errorColor" *ngIf="submitted && loginForm.artistic_name.errors">
                         <div *ngIf="loginForm.artistic_name.errors.required">
                             *Campo obligatorio

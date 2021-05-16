@@ -24,7 +24,7 @@
             <label>Tags</label>
             <input type="text" min="0" formControlName="tag"  (keypress)="addTag($event)" id="tag">
             <div>
-                <button *ngFor="let tag of tags">{{tag}}</button>
+                <button *ngFor="let tag of tags"><button (click)="removeTag(tag)">x</button> {{tag}}</button>
 
             </div>
   

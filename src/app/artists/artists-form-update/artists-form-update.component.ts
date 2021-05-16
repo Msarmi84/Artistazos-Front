@@ -112,6 +112,11 @@ export class ArtistsFormUpdateComponent implements OnInit {
     }
     // console.log("pulso la tecla aaaaa " + KeyboardEvent.key)
   }
+
+  removeTag(tag){
+    this.tags = this.tags.filter((i) => i !== tag);
+    this.tag3 = this.tags.toString();
+  }
   
   
 }

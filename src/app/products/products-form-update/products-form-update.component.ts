@@ -68,7 +68,6 @@ export class ProductsFormUpdateComponent implements OnInit {
         formData.append(field, this.form.value[field]);
       }
     }
-  
     console.log('console del formdata')
     console.log(formData)
     return formData;

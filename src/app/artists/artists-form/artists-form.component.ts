@@ -39,9 +39,7 @@ export class ArtistsFormComponent implements OnInit {
       last_name: ['', Validators.required],
       date_of_birth: ['', Validators.required],
       location: ['', Validators.required],
-
       discipline_name: [[]],
-
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['', Validators.required],
@@ -71,7 +69,7 @@ export class ArtistsFormComponent implements OnInit {
     this.userService.getDisciplines().subscribe(discipline => this.disciplines = discipline);
   }
 
-  get loginForm() { return this.registerForm.controls; }
+  get loginForm() { return this.registerForm.controls }
 
   onSubmit(obj: any): void {
 
@@ -80,23 +78,10 @@ export class ArtistsFormComponent implements OnInit {
     if (this.registerForm.valid) {
       this.userService.saveUser(this.registerForm.value).subscribe(x => {
         if (x) {
-          this.router.navigate(['artists-grid']);
+          this.router.navigate(['artista/' + this.userId]);
         }
       });
     }
   }
-// console.log(this.registerForm.value)
-
-//       this.submitted = true;
-
-//       // stop here if form is invalid
-//       if (this.registerForm.invalid) {
-//           return;
-//       }
-
-//       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
-//     }
-
-
 
 }

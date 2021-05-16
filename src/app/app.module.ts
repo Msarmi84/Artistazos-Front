@@ -70,7 +70,7 @@ import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artist
     MatDialogModule,
     FormsModule,
     NgxPaginationModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

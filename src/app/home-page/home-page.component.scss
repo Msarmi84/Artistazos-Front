@@ -38,7 +38,7 @@ h1 {
     gap: 1rem;
     align-self: center;
     justify-content: space-between;
-    padding: 1rem 1rem;
+    padding: 1rem 8rem;
 }
 
 .header-artistas {
@@ -53,6 +53,7 @@ h1 {
     background-color: rgba(0, 0, 0, 0.879);
     color: white;
     border-radius: 6px;
+    margin: 1.5rem;
     img {
         width: 100%;
         object-fit: cover;

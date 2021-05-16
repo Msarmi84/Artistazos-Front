@@ -1,19 +1,28 @@
     .container {
         width: 100%;
         align-items: center;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+        .description-single {
+            width: auto;
+        }
     }
 
     .fondo {
         margin-top: 50px;
         margin-left: 50px;
         img {
-            width: 950px;
+            width: 132.5vh;
             height: 400px;
+            object-fit: cover;
+            object-position: center;
         }
     }
 
     .background-header {
-        width: 60%;
         color: black;
         margin-left: 0.5rem;
         .container-artista {
@@ -34,19 +43,21 @@
             .datos-single {
                 color: black;
                 margin: 0 20px 0 20px;
-                p,
                 h1 {
                     letter-spacing: 1.8px;
+                }
+                p {
+                    color: rgb(21, 21, 21);
                 }
             }
         }
         .proyectos-edit {
             .proyectos {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 gap: 2rem;
                 width: 100%;
-                padding: 60px;
+                padding: 0.5rem 0.5rem 0.5rem 3.5rem;
                 img {
                     width: 250px;
                     height: 250px;

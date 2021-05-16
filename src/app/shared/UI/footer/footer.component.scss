@@ -1,11 +1,10 @@
 footer {
     background-color: rgba(16, 16, 16, 0.995);
-    height: 30vh;
     color: white;
     margin-top: 60px;
     display: flex;
     justify-content: space-evenly;
-    img{
+    img {
         margin-top: 2rem;
     }
     ul {
@@ -25,5 +24,11 @@ footer {
     .fa-linkedin-in {
         font-size: 29px;
         margin-right: 8px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

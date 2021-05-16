@@ -63,12 +63,12 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
     console.log('userId')
     console.log(this.userId)
-   
-    
+
+
     this.getUser(this.userId);
     this.getProducts(this.userId);
     this.getDisciplinesByUserId(this.userId);
-    
+
 
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
 
@@ -157,7 +157,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.product = obj;
     console.log('console del producto')
     console.log(this.product)
-     
+
     //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
     if (this.product || obj === 'add') {
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {
@@ -182,9 +182,9 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       });
       // después de cerrarlo hacemos la petición http para  guardar el usuario modificado
       dialogRef.afterClosed().subscribe((user) => {
-        
+
         this.userService
-          .updateUser(user, this.user.user_id)
+          .updateUser(user, this.userId)
           .subscribe((editUser) => {
             this.user = editUser;
             this.getUser(this.userId);

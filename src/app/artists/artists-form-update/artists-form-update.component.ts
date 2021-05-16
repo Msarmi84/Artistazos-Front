@@ -23,14 +23,16 @@ export class ArtistsFormUpdateComponent implements OnInit {
   imageUrl = environment.baseUrl + 'images/uploads/';
   disciplines: Disciplines[];
   seleccionados: string[] = [];
-
+  tag:string
+  tags:string[]= [];
+  tag3:string
 
 
   @Output() formSubmitted = new EventEmitter<FormData>();
 
   constructor(
     formBuilder: FormBuilder,
-    private userService: UserService, 
+    private userService: UserService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) private data?: User
     ) {
@@ -41,7 +43,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
       biography: ['', Validators.required],
       avatar: ['', Validators.required],
       front: ['', Validators.required],
-      tag: ['', Validators.required],
+      tag: [[this.tag]],
       discipline:[[]]
     });
    }
@@ -53,14 +55,14 @@ export class ArtistsFormUpdateComponent implements OnInit {
       // this.imgFrontPreview = this.data.front ? this.imageUrl + this.data.front : 'assets/images/logonofoto.png';
     }
     this.getDisciplines();
-      
+
   }
 
-  //obtiene disciplinas 
+  //obtiene disciplinas
   getDisciplines(): void {
     this.userService.getDisciplines().subscribe(discipline => this.disciplines = discipline);
   }
-  
+
   generateFormData(): FormData {
     const formData = new FormData();
     for (const field in this.form.value) {
@@ -68,6 +70,10 @@ export class ArtistsFormUpdateComponent implements OnInit {
         formData.append(field, this.form.value[field]);
       }
     }
+    formData.append('tag', this.tag3)
+    console.log('console del formdata')
+    console.log(formData);
+
     formData.append('avatar', this.imageFile);
     // formData.append('front', this.imageFrontFile);
     console.log('console del formdata')
@@ -83,7 +89,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     fileReader.readAsDataURL(file);
     fileReader.onload = () => this.imgPreview = fileReader.result as string;
   }
-   
+
 
   // onFrontChanged(event: InputEvent): void {
   //   const inputTarget = event.target as HTMLInputElement;
@@ -93,14 +99,19 @@ export class ArtistsFormUpdateComponent implements OnInit {
   //   fileReader.readAsDataURL(file);
   //   fileReader.onload = () => this.imgFrontPreview = fileReader.result as string;
   // }
- 
- 
-  
-  // document.getElementById("elenlace").addEventListener('keypress', function (e) {
-  //   e.preventDefault();
-  //   if(e.keyCode == 32 || e.code == "Space") {
-  //     // Hacer tu comportamiento
-  //     console.log('Han pulsado la tecla de espacio');
-  //   }
-  // });
+
+  addTag(KeyboardEvent){
+    if (KeyboardEvent.keyCode==32 || KeyboardEvent.keyCode=='Space'){
+      this.tag = KeyboardEvent.target.value;
+      KeyboardEvent.target.value ='';
+      this.tags.push(this.tag)
+     this.tag3 = this.tags.toString();
+
+      console.log(this.tag)
+      console.log(this.tags)
+    }
+    // console.log("pulso la tecla aaaaa " + KeyboardEvent.key)
+  }
+
+
 }

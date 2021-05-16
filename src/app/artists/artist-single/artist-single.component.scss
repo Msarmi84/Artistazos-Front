@@ -2,7 +2,7 @@
         width: 100%;
         align-items: center;
     }
-    
+
     .fondo {
         margin-top: 50px;
         margin-left: 50px;
@@ -11,7 +11,7 @@
             height: 400px;
         }
     }
-    
+
     .background-header {
         width: 60%;
         color: black;
@@ -46,8 +46,7 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 2rem;
                 width: 100%;
-                padding: 30px;
-                margin-left: 50px;
+                padding: 60px;
                 img {
                     width: 250px;
                     height: 250px;
@@ -111,6 +110,7 @@
             display: flex;
             align-items: center;
             color: white;
+            margin-left: 3.7rem;
             button {
                 margin-top: 0;
             }
@@ -126,7 +126,12 @@
             position: relative;
         }
     }
-    
+
     .my-pagination .ngx-pagination .current::before {
         color: red!important;
+    }
+
+    .material-icons-outlined {
+        color: rgb(23, 23, 23);
+        margin-left: 10px;
     }

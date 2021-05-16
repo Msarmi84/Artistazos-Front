@@ -184,7 +184,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       dialogRef.afterClosed().subscribe((user) => {
         
         this.userService
-          .updateUser(user, this.user.user_id)
+          .updateUser(user, this.userId)
           .subscribe((editUser) => {
             this.user = editUser;
             this.getUser(this.userId);

@@ -24,7 +24,7 @@ export class UserService {
   saveUser(user: User): Observable<User> {
     console.log('console del service');
     if (user.user_id) {
-    return this.http.put<User>(`${this.URL}/${user.user_id}`, user).pipe(
+    return this.http.put<User>(`${this.URL}/updateUserData/${user.user_id}`, user).pipe(
       map((x: any) => {
         return new User(x);
       })

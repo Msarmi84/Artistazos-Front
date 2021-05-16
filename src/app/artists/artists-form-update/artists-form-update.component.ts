@@ -73,7 +73,6 @@ export class ArtistsFormUpdateComponent implements OnInit {
     formData.append('tag', this.tag3)
     console.log('console del formdata')
     console.log(formData);
-
     formData.append('avatar', this.imageFile);
     // formData.append('front', this.imageFrontFile);
     console.log('console del formdata')
@@ -113,5 +112,9 @@ export class ArtistsFormUpdateComponent implements OnInit {
     // console.log("pulso la tecla aaaaa " + KeyboardEvent.key)
   }
 
+  removeTag(tag){
+    this.tags = this.tags.filter((i) => i !== tag);
+    this.tag3 = this.tags.toString();
+  }
 
 }

@@ -116,6 +116,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       });
     });
   }
+
   editCredentials(user) {
     this.user = user;
 

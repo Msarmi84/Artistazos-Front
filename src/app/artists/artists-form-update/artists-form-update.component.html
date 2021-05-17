@@ -36,22 +36,17 @@
             <mat-select
               id="dropdown"
               class="form-control"
-              formControlName="discipline_name"
-              multiple
-              placeholder="musician, dances, painter, writter.... "
+              [formControl]="selectDisciplines"
+              multiple="multiple"
+              placeholder="músico, bailarín/a, pintor/a, escritor/a.... "
             >
-              <mat-option *ngFor="let discipline of disciplines">
+              <mat-option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name" (click)="clickDiscipline()" >
                 {{ discipline.discipline_name }}
               </mat-option>
             </mat-select>
-            <ul>
-              <li class="white" *ngFor="let seleccion of seleccionados">
-                {{ seleccion }}
-              </li>
-            </ul>
-
         </div>
     </div>
+
     <label>EDITAR FOTO DE PERFIL</label>
             <div class="flex-between">
                 <input type="file" #inputFile (change)="onImageChanged($event)">

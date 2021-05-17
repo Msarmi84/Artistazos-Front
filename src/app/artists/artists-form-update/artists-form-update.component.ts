@@ -1,11 +1,12 @@
 import { Component, EventEmitter, OnInit, Inject, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Disciplines } from 'src/app/models/disciplines';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../user.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 
 @Component({
@@ -22,13 +23,18 @@ export class ArtistsFormUpdateComponent implements OnInit {
   // imageFrontFile: File;
   imageUrl = environment.baseUrl + 'images/uploads/';
   disciplines: Disciplines[];
-  seleccionados: string[] = [];
+  selectDisciplines = new FormControl();
   tag:string
   tags:string[] = [];
   tag3:string
+  disciplinesValues: string[];
+  formData: FormData;
+  disciplinesString: string;
+  
 
 
   @Output() formSubmitted = new EventEmitter<FormData>();
+  disciplinesLowerCase: string;
 
   constructor(
     formBuilder: FormBuilder,
@@ -44,7 +50,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
       avatar: ['', Validators.required],
       front: ['', Validators.required],
       tag: [''],
-      discipline:[[]]
+      discipline:[['']]
     });
    }
 
@@ -64,12 +70,21 @@ export class ArtistsFormUpdateComponent implements OnInit {
   }
 
   generateFormData(): FormData {
+
+    
+
     const formData = new FormData();
     for (const field in this.form.value) {
       if (field) {
         formData.append(field, this.form.value[field]);
       }
     }
+    
+
+   console.log(this.form)
+    
+    
+    formData.append('discipline', this.disciplinesLowerCase)
     formData.append('tag', this.tag3)
     console.log('console del formdata')
     console.log(formData);
@@ -99,12 +114,12 @@ export class ArtistsFormUpdateComponent implements OnInit {
   //   fileReader.onload = () => this.imgFrontPreview = fileReader.result as string;
   // }
 
-  addTag(KeyboardEvent){
-    if (KeyboardEvent.keyCode==32 || KeyboardEvent.keyCode=='Space'){
-      this.tag = KeyboardEvent.target.value;
+  addTag(event){
+    if (event.keyCode==32 || event.keyCode=='Space'){
+      this.tag = event.target.value;
       console.log(this.tag)
 
-      KeyboardEvent.target.value ='';
+      event.target.value ='';
 
       this.tags.push(this.tag)
       console.log(this.tags)
@@ -122,6 +137,17 @@ export class ArtistsFormUpdateComponent implements OnInit {
   removeTag(tag){
     this.tags = this.tags.filter((i) => i !== tag);
     this.tag3 = this.tags.toString();
+  }
+
+  clickDiscipline(){
+    console.log('entra en click')
+    console.log(this.selectDisciplines)
+    this.disciplinesValues = this.selectDisciplines.value;
+    console.log('estas síiii')
+    console.log(this.disciplinesValues.toString())
+    this.disciplinesString = this.disciplinesValues.toString();
+    this.disciplinesLowerCase = this.disciplinesString.toLowerCase();
+    
   }
 
 }

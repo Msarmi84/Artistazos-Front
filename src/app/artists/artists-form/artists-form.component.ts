@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Disciplines } from 'src/app/models/disciplines';
 import { User } from 'src/app/models/user';
@@ -28,9 +28,13 @@ export class ArtistsFormComponent implements OnInit {
 'Murcia','Navarra','Orense/Ourense','Palencia','Pontevedra','Salamanca','Segovia','Sevilla','Soria',
 'Tarragona','Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya/Bizkaia','Zamora','Zaragoza'];
 
+selectDisciplines = new FormControl();
+disciplinesValues: string[];
+disciplinesString: string;
+disciplinesLowerCase: string;
 
 
-  seleccionados: string[] = [];
+ 
   user: User;
 
   userId: Number;
@@ -45,7 +49,7 @@ export class ArtistsFormComponent implements OnInit {
       last_name: ['', Validators.required],
       date_of_birth: ['', Validators.required],
       location: ['', Validators.required],
-      discipline_name: [[]],
+      discipline:[['']],
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['', Validators.required],
@@ -112,6 +116,17 @@ export class ArtistsFormComponent implements OnInit {
       console.log(this.token, '--------------------------------------token')
 
       }
+    }
+
+    clickDiscipline(){
+      console.log('entra en click')
+      console.log(this.selectDisciplines)
+      this.disciplinesValues = this.selectDisciplines.value;
+      console.log('estas síiii')
+      console.log(this.disciplinesValues.toString())
+      this.disciplinesString = this.disciplinesValues.toString();
+      this.disciplinesLowerCase = this.disciplinesString.toLowerCase();
+      
     }
   
 

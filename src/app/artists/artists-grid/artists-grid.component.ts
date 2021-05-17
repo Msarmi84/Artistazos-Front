@@ -36,5 +36,13 @@ export class ArtistsGridComponent implements OnInit {
     this.userService.getDisciplines().subscribe(discipline => this.disciplines = discipline);
   }
 
+  filter(filter):void {
+    console.log('este es el console de filter del artis grid');
+    
+  this.userService.searchUsers(filter).subscribe(x => {
+    this.users = x;
+  })
+  }
+
 
 }

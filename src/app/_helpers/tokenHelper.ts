@@ -6,3 +6,5 @@ export const getUserFromToken = () => {
     const decodedToken = tokenHelper.decodeToken(token);
     return decodedToken ? decodedToken.user : {};
 };
+
+export const isAdmin = (): boolean => getUserFromToken().type === 3;

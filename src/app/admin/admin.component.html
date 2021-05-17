@@ -1,1 +1,17 @@
-<p>admin works!</p>
+<div *ngIf="!admin">
+    <h1>No eres un admin</h1>
+</div>
+<div class="container" *ngIf="admin">
+    <div class="background-header">
+          <div class="container-artista">
+            <div class="avatar-name">
+                    <img src="http://localhost:3000/images/uploads/{{admin.avatar}}" alt="" />
+                <div class="datos-single">
+                    <h1>Bienvenid@ {{ admin.artistic_name }} a tu área Admin.</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

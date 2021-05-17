@@ -5,7 +5,8 @@ import { UserSearch } from '../models/userSearch';
 import { environment } from '../../environments/environment';
 import { Disciplines } from '../models/disciplines';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
 
   URL = environment.baseUrl + 'users';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private lss: LocalStorageService) { }
 
 
   getUsers(): Observable<User[]> {
@@ -21,22 +22,22 @@ export class UserService {
       .pipe(map(users => users.map(user => new User(user))));
   }
 
-  saveUser(user: User): Observable<User> {
+  saveUser(user: User): Observable<any> {
     console.log('console del service');
     if (user.user_id) {
+      console.log('entra en updateUser');
+      
     return this.http.put<User>(`${this.URL}/updateUserData/${user.user_id}`, user).pipe(
       map((x: any) => {
         return new User(x);
       })
     );
     } else {
-      return this.http.post<User>(`${this.URL}/saveUser`, user).pipe(
-      map((x: any) => {
-        return new User(x);
-      })
-    );
+      console.log('entra en guardar nuevo usuario');
+      
+      return this.http.post<User>(`${this.URL}/saveUser`, user).pipe(tap(loginResponse => this.lss.saveUserToken(loginResponse.token)))
+      }
   }
-}
 
 
 
@@ -66,6 +67,7 @@ export class UserService {
   }
 
   getDisciplinesById(user_id: number): Observable<Disciplines[]> {
+    console.log(user_id)
     return this.http.get<Disciplines[]>(`${this.URL}/disciplines/${user_id}`)
       .pipe(map(x => x.map(discipline => new Disciplines(discipline)))
       );

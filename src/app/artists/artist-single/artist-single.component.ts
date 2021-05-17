@@ -111,35 +111,35 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     });
   }
 
-  editCredentials(user) {
-    this.user = user;
+  // editCredentials(user) {
+  //   this.user = user;
 
 
-    if (this.user) {
-      const dialogRef = this.dialog.open(ValidCredentialsComponent, {
-        data: this.user,
-        width: '80%',
-      });
+  //   if (this.user) {
+  //     const dialogRef = this.dialog.open(ValidCredentialsComponent, {
+  //       data: this.user,
+  //       width: '80%',
+  //     });
 
-      dialogRef.afterClosed().subscribe((user) => {
-        this.userService
-          .saveUser(this.user)
-          .subscribe((updatedUser) => (this.user = updatedUser));
-      });
-      this.user = null;
-    } else {
-      const dialogRef = this.dialog.open(ValidCredentialsComponent, {
-        data: this.user,
-        width: '80%',
-      });
+  //     dialogRef.afterClosed().subscribe((user) => {
+  //       this.userService
+  //         .saveUser(this.user)
+  //         .subscribe((updatedUser) => (this.user = updatedUser));
+  //     });
+  //     this.user = null;
+  //   } else {
+  //     const dialogRef = this.dialog.open(ValidCredentialsComponent, {
+  //       data: this.user,
+  //       width: '80%',
+  //     });
 
-      dialogRef.afterClosed().subscribe((user) => {
-        this.userService
-          .updateUser(user, this.user.user_id)
-          .subscribe((seeEditProfile) => (this.user = seeEditProfile));
-      });
-    }
-  }
+  //     dialogRef.afterClosed().subscribe((user) => {
+  //       this.userService
+  //         .updateUser(user, this.user.user_id)
+  //         .subscribe((seeEditProfile) => (this.user = seeEditProfile));
+  //     });
+  //   }
+  // }
 
 
 

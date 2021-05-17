@@ -39,7 +39,7 @@
         <div class="proyectos-edit">
             <div class="proyectos">
                 <div class="product-single" *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: page }">
-                    <img src="http://localhost:3000/images/uploads/{{ product.product_photo }}" />
+                    <img (click)="seeEditProduct(product)"src="http://localhost:3000/images/uploads/{{ product.product_photo }}" />
                     <mat-icon *ngIf="iconEdit && isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)"> edit</mat-icon>
                     <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
 

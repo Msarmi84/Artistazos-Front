@@ -1,0 +1,24 @@
+.grid{
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 0 11px 4px #23232350;
+    background-color: transparent;
+    display: block;
+    h1{
+        padding-left: 2.5rem;
+        margin-top: 6rem;
+        color: black;
+    }
+    img{
+        width: 15rem;
+        height: 20rem;
+    }
+    .card-product{
+        display: flex;
+    }
+    p{
+        width: 30%;
+       text-align: justify;
+       padding-left: 4rem;
+    }
+}

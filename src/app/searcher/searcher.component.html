@@ -1,0 +1,56 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <div class="grid">
+        <div class="formPadding">
+            <label class="formPadding">Nombre</label>
+            <input type="text" formControlName="user_name">
+        </div>
+
+        <div class="formPadding">
+            <label class="formPadding">Apellido</label>
+            <input type="text" formControlName="last_name">
+        </div>
+        <div class="formPadding">
+            <label class="formPadding">Nombre artístico</label>
+            <input type="text" formControlName="artistic_name">
+        </div>
+        <div class="formPadding">
+        <select class="formPadding" class="form-control" formControlName="location">
+                <option *ngFor="let location of locations">
+                  {{ location }}
+                </option>
+        </select>
+        </div>
+        <div class="formPadding">
+            <label class="formPadding">Disciplina</label>
+            <select name="" id="" formControlName="discipline_name">
+              <option *ngFor="let item of disciplines" ngValue="item.id">{{item.discipline_name}}</option>
+          </select>
+        </div>
+        <mat-select
+        id="dropdown"
+        class=""
+        formControlName="discipline_name"
+        multiple
+        placeholder="músico, pintor/a, escritor.... "
+      >
+        <mat-option *ngFor="let discipline of disciplines">
+          {{ discipline.discipline_name }}
+        </mat-option>
+      </mat-select>
+      <ul>
+        <li class="white" *ngFor="let seleccion of seleccionados">
+          {{ seleccion }}
+        </li>
+      </ul>
+
+
+
+        <div class="formPadding">
+            <label class="formPadding">Palabra clave</label>
+            <input type="text" formControlName="tag">
+        </div>
+    </div>
+    <div class="grid">
+        <button class="button-search" type="submit"> BUSCAR</button>
+    </div>
+</form>

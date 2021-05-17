@@ -1,0 +1,16 @@
+.anuncios {
+    display: grid;
+    grid-template-columns: repeat(minmax(240px, 1fr));
+    gap: 2rem;
+    justify-content: flex-end;
+    padding: 0 4rem 0 0;
+    .anuncio1,
+    .anuncio2 {
+        width: 80%;
+    }
+    img {
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+    }
+}

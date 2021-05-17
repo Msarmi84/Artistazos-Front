@@ -1,70 +1,23 @@
-
-
 <div class="header-artistas">
-    <h1>ENCUENTRA A TU ARTISTA</h1>
+    <!-- <h1>ENCUENTRA A TU ARTISTA</h1> -->
+    <app-searcher (formFilter)= "filter($event)"></app-searcher>
 </div>
-<app-buscador></app-buscador>
-<div class="header-artistas">
-    <h1>TODOS NUESTROS ARTISTAS</h1>
-</div>
+
 
 <div class="grid-artistas">
-    <div class="parallelogram">
-    <div class="card" >
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button>
-    </div>
-</div>
-    <div class="card">
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button mat-raised-button>VER MÁS</button>
-    </div>
-    <div class="card">
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button mat-raised-button>VER MÁS</button>
-    </div>
-    <div class="card">
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button mat-raised-button>VER MÁS</button>
-    </div>
-    <div class="card">
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button mat-raised-button>VER MÁS</button>
-    </div>
-    <div class="card">
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button mat-raised-button>VER MÁS</button>
-    </div>
-    <div class="card">
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button mat-raised-button>VER MÁS</button>
-    </div>
-    <div class="card">
-        <img src="../../../assets/images/logonofoto.png" alt="">
-        <h3>MARC FILCH</h3>
-        <p>CANTANTE</p>
-        <p>Bajista y percusionista</p>
-        <button mat-raised-button>VER MÁS</button>
+    <div class="bucle-artistas" *ngFor="let user of users">
+
+        <div class="card">
+            <img src="http://localhost:3000/images/uploads/{{user.avatar}}">
+            <!-- <img [src]="user.avatar ? 'http://localhost:3000/images/uploads/{{user.avatar}}' : defaultImg" alt=""> -->
+            <h3><span>{{ user.artistic_name }}</span></h3>
+
+            <!-- necesitamos obtener las disciplinas de cada usuario. Para ello necesitamos que en cada vuelta de bucle enviemos
+            el user_id al método de getDisciplinesByUserId -->
+            <div class="container-p">
+                <p *ngFor="let discipline of disciplines">{{ user.discipline_name }} </p>
+            </div>
+            <button [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
+        </div>
     </div>
 </div>

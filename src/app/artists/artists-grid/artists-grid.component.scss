@@ -1,32 +1,75 @@
-@import "/src/app/login/login.component.scss";
-
 .grid-artistas {
-    margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, minmax(240px, 1fr));
-    gap: 1rem;
-    align-self: center;
-    width: 80%;
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    gap: 3rem;
+    padding: 3rem 3rem;
+    .bucle-artistas {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .header-artistas {
     color: white;
     text-align: center;
+    background-color: rgba(70, 70, 70, 0.488);
+    margin-top: 0;
 }
 
 .card {
-    border-radius: 6px;
-    box-shadow: 0 0 4px 1px #23232350;
     padding: 1rem;
-    background-color: #fff;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.865);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.879);
+    color: white;
+    border-radius: 6px;
+    max-width: 310px;
+    box-shadow: 0 0 11px 4px #23232350;
+    cursor: pointer;
     img {
-        width: 100%;
+        width: 280px;
+        height: 280px;
+        border: 160px;
+        object-fit: cover;
+    }
+    p {
+        margin-top: 1px;
+    }
+    .container-p {
+        display: flex;
+        justify-content: center;
     }
 }
 
-.mat-raised-button {
-    background-color: #ca63e2;
-    margin-top: 0.5rem;
-    border: none;
-    color: white;
+.card:hover {
+    transform: scale(1.1);
+    transition: all 0.9s;
+}
+
+.button-see-more {
+    border-radius: 20px;
+    border: 1px solid #fefefe;
+    background-color: #1f1f1f;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 32px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top: 10px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
 }

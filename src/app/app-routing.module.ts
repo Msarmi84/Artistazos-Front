@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
 import { AuthGuard } from './services/auth.guard';
 import { CartComponent } from './cart/cart.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,9 @@ const routes: Routes = [
   },
   {
     path: 'artists-form/:id', component: ArtistsFormComponent
+  },
+  {
+    path: 'admin', component: AdminComponent
   }
 ];
 

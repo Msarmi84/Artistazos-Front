@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { getUserFromToken } from '../_helpers/tokenHelper';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loginService.login(this.form.value).subscribe(
-      () => this.router.navigate(['/artistas']),
+      () => getUserFromToken().type === 3 ? this.router.navigate(['/admin']) : this.router.navigate(['/artistas']),
       (error) => this.form.setErrors({ userNotFound: error.error })
     );
   }

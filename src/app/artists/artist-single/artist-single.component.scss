@@ -1,23 +1,31 @@
     .container {
         width: 100%;
         align-items: center;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+        .description-single {
+            width: auto;
+        }
     }
-    
+
     .fondo {
         margin-top: 50px;
         margin-left: 50px;
         img {
-            width: 950px;
+            width: 132.5vh;
             height: 400px;
+            object-fit: cover;
+            object-position: center;
         }
     }
-    
+
     .background-header {
-        width: 60%;
         color: black;
         margin-left: 0.5rem;
         .container-artista {
-            width: 100%;
             margin-left: 60px;
         }
         .avatar-name {
@@ -34,20 +42,20 @@
             .datos-single {
                 color: black;
                 margin: 0 20px 0 20px;
-                p,
                 h1 {
                     letter-spacing: 1.8px;
+                }
+                p {
+                    color: rgb(21, 21, 21);
                 }
             }
         }
         .proyectos-edit {
             .proyectos {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
                 gap: 2rem;
-                width: 100%;
-                padding: 30px;
-                margin-left: 50px;
+                padding: 2rem 0.5rem 0.5rem 3.5rem;
                 img {
                     width: 250px;
                     height: 250px;
@@ -98,12 +106,10 @@
                 margin-top: 0.5rem;
             }
             .icon-edit {
-                color: #ca63e2;
-                position: absolute;
-                bottom: 8em;
-                right: -1em;
-                padding: 1em 1.5em;
+                color: #1c1c1c;
+                background-color: white;
                 cursor: pointer;
+                margin: 13px 0;
             }
         }
         .button-add {
@@ -111,13 +117,14 @@
             display: flex;
             align-items: center;
             color: white;
+            margin-left: 3.7rem;
             button {
                 margin-top: 0;
             }
         }
-        .container-publish {
-            width: 35%;
-        }
+        // .container-publish {
+        //     width: 35%;
+        // }
         .buttonDeleteUser {
             margin-left: 10px;
         }
@@ -126,7 +133,12 @@
             position: relative;
         }
     }
-    
+
     .my-pagination .ngx-pagination .current::before {
         color: red!important;
+    }
+
+    .material-icons-outlined {
+        color: rgb(23, 23, 23);
+        margin-left: 10px;
     }

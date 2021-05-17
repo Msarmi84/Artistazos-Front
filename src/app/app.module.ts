@@ -17,8 +17,11 @@ import { AllProductsComponent } from './products/all-products/all-products.compo
 import { ArtistsComponent } from './artists/artists.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { InfoComponent } from './shared/UI/info/info.component';
+import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
+import { CartComponent } from './cart/cart.component';
+import { ValidCredentialsComponent } from './valid-credentials/valid-credentials.component';
 
 
 // MATERIAL MODULES
@@ -28,10 +31,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
-import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
-import { CartComponent } from './cart/cart.component';
-import { CompleteArtistsFormComponent } from './artists/complete-artists-form/complete-artists-form.component';
-import { ValidCredentialsComponent } from './valid-credentials/valid-credentials.component';
 
 
 
@@ -56,12 +55,8 @@ import { ValidCredentialsComponent } from './valid-credentials/valid-credentials
     ArtistsFormUpdateComponent,
     ProductsFormUpdateComponent,
     CartComponent,
-    CompleteArtistsFormComponent,
     ValidCredentialsComponent,
-  
-    
-    
-   
+    InfoComponent
 
   ],
   imports: [
@@ -75,7 +70,7 @@ import { ValidCredentialsComponent } from './valid-credentials/valid-credentials
     MatDialogModule,
     FormsModule,
     NgxPaginationModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   // providers: [{
   //   provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }

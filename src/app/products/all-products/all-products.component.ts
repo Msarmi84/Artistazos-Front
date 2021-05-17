@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { SearcherProduct } from 'src/app/models/searcher-product';
+// import { SearcherProduct } from 'src/app/models/searcher-user';
 import { Product } from 'src/app/models/product';
 import { ProductService } from '../product.service';
 
@@ -23,9 +23,9 @@ export class AllProductsComponent implements OnInit {
     });
   }
 
-  searchProduct(filter: SearcherProduct): void {
-    this.productService.searchProduct(filter).subscribe(x => {
-      this.products = x;
-    });
-  }
+  // searchProduct(filter: SearcherProduct): void {
+  //   this.productService.searchProduct(filter).subscribe(x => {
+  //     this.products = x;
+  //   });
+  // }
 }

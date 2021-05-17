@@ -1,21 +1,23 @@
 <div class="header-artistas">
     <!-- <h1>ENCUENTRA A TU ARTISTA</h1> -->
-    <app-searcher></app-searcher>
+    <app-searcher (formFilter)= "filter($event)"></app-searcher>
 </div>
 
 
 <div class="grid-artistas">
-    <div class="parallelogram" *ngFor="let user of users">
+    <div class="bucle-artistas" *ngFor="let user of users">
+
         <div class="card">
-            <img [src]="user.avatar ? imageUrl + user.avatar : defaultImg" alt="">
-            <h3>{{ user.user_name }}</h3>
-            <p>{{ user.discipline_id }}</p>
-            <p></p>
-            <!-- <button [routerLink]="['/artista/:id']" mat-raised-button>VER MÁS</button> -->
+            <img src="http://localhost:3000/images/uploads/{{user.avatar}}">
+            <!-- <img [src]="user.avatar ? 'http://localhost:3000/images/uploads/{{user.avatar}}' : defaultImg" alt=""> -->
+            <h3><span>{{ user.artistic_name }}</span></h3>
+
+            <!-- necesitamos obtener las disciplinas de cada usuario. Para ello necesitamos que en cada vuelta de bucle enviemos
+            el user_id al método de getDisciplinesByUserId -->
+            <div class="container-p">
+                <p *ngFor="let discipline of disciplines">{{ user.discipline_name }} </p>
+            </div>
             <button [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
         </div>
     </div>
-
-
-
 </div>

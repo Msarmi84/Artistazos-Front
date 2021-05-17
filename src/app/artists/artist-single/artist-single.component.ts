@@ -28,12 +28,12 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   product: Product;
   products: Product[];
   disciplines: Disciplines[]
-  imageUrl = environment.baseUrl + 'images/';
-  defaultImage = 'assets/images/logonofoto.png';
+  imageUrl = environment.baseUrl + 'images/uploads/';
+  defaultImage = this.imageUrl + 'defaultProduct' ;
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
-
   defaultImg = 'assets/images/logonofoto.png';
+
 
 
 
@@ -46,7 +46,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
   page: number;
-  like: number = 0;
+
 
   constructor(
     private router: Router,
@@ -55,25 +55,29 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private dialog: MatDialog,
     private lss: LocalStorageService
+
   ) {}
 
   ngOnInit(): void {
-    // this.route.params.subscribe(params => this.getUser(params.id));
-    this.route.params.subscribe((params) => (this.userId = params.id));
-    this.getUser(this.userId);
 
+    this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
+    this.getUser(this.userId);
     this.getProducts(this.userId);
     this.getDisciplinesByUserId(this.userId);
+
+
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
 
   }
 
+  //obtiene la información del artista
   getUser(id: number): void {
     this.userService.getUserById(id).subscribe((x) => {
       this.user = x;
   });
   }
 
+  //obtiene la información de los productos de dicho artista
   getProducts(id: number): void {
     this.productService.getProductsByUserId(id).subscribe((x) => {
       this.products = x;
@@ -96,13 +100,17 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     console.log(dialogRef);
     dialogRef.afterClosed().subscribe((isConfirmed) => {
       if (!isConfirmed) {
+        console.log(' no ha confirmado')
         return;
       }
-      this.userService.deleteUser(this.user.user_id).subscribe((res) => {
-        this.router.navigateByUrl('/artists-form');
+
+      this.userService.deleteUser(this.user.user_id).subscribe(res => {
+        this.router.navigateByUrl('/artistas');
+
       });
     });
   }
+
   editCredentials(user) {
     this.user = user;
 
@@ -139,52 +147,52 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.seeEditArtist = !this.seeEditArtist;
   }
 
-  seeEditProfile(product) {
-    this.product = product;
 
+  //Abre y cierra los formularios de edición de usuario y producto
+  seeEditProfile(obj: any) {
+    this.product = obj;
+    console.log('console del producto')
+    console.log(this.product, '--------')
 
+    //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
     if (this.product) {
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {
         data: this.product,
         width: '80%',
       });
 
-      dialogRef.afterClosed().subscribe((user) => {
+      //Después de cerrarlo hacemos la petición http para guardar el producto nuevo o editado
+      dialogRef.afterClosed().subscribe((products) => {
         this.productService
-          .saveProduct(this.product)
-          .subscribe((updatedProduct) => (this.product = updatedProduct));
+          .saveProduct(products)
+          .subscribe((updatedProduct) => {
+            this.product = updatedProduct;
+            this.getProducts(this.userId);
+          });
       });
-      this.product = null;
     } else {
+      //Abre el formulario de edición de artista
       const dialogRef = this.dialog.open(ArtistsFormUpdateComponent, {
         data: this.user,
         width: '80%',
       });
-
+      // después de cerrarlo hacemos la petición http para  guardar el usuario modificado
       dialogRef.afterClosed().subscribe((user) => {
-        this.userService
-          .updateUser(user, this.user.user_id)
-          .subscribe((seeEditProfile) => (this.user = seeEditProfile));
-      });
-    }
-  }
 
-  onImageChanged(event: InputEvent): void {
-    const inputTarget = event.target as HTMLInputElement;
-    const file = inputTarget.files[0];
-    this.imageFile = file;
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => (this.imgPreview = fileReader.result as string);
+        this.userService
+          .updateUser(user, this.userId)
+          .subscribe((editUser) => {
+            this.user = editUser;
+            this.getUser(this.userId);
+            this.getDisciplinesByUserId(this.userId);
+          });
+        });
+    }
   }
 
   editProduct(): void {
     this.iconEdit = !this.iconEdit;
   }
-
-  // saveProduct(product:FormData): void {
-  //   this.productService.saveProduct(product).subscribe(() => this.getProducts(product.id));
-  // }
 
   logout(): void {
     this.lss.removeUserToken();

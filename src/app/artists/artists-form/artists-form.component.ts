@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Disciplines } from 'src/app/models/disciplines';
 import { User } from 'src/app/models/user';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
@@ -28,23 +28,23 @@ export class ArtistsFormComponent implements OnInit {
 
 
   seleccionados: string[] = [];
+  user: User;
+
+  userId: Number;
 
 
-  constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router,  private route: ActivatedRoute) {
     this.registerForm = formBuilder.group({
       artistic_name: ['', Validators.required],
       user_name: ['', Validators.required],
+      user_id: [''],
       last_name: ['', Validators.required],
       date_of_birth: ['', Validators.required],
-      // date_of_birth: ['', Validators.pattern(this.dateReg)],
       location: ['', Validators.required],
-      // biography: ['', [Validators.required]],
-      discipline_name: [''],
-      // artistic_cv: ['', [Validators.required]],
+      discipline_name: [[]],
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['', Validators.required],
-      // avatar:['']
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
@@ -53,6 +53,17 @@ export class ArtistsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDisciplines();
+    this.route.params.subscribe(params => {
+      if (params.id) {
+        this.userService.getUserById(params.id).subscribe(user => {
+          if (user) {
+            this.user = user;
+            this.registerForm.patchValue(user);
+          }
+          this.userId = params.id;
+        });
+      }
+    });
 
   }
 
@@ -60,7 +71,7 @@ export class ArtistsFormComponent implements OnInit {
     this.userService.getDisciplines().subscribe(discipline => this.disciplines = discipline);
   }
 
-  get loginForm() { return this.registerForm.controls; }
+  get loginForm() { return this.registerForm.controls }
 
   onSubmit(obj: any): void {
 
@@ -69,23 +80,11 @@ export class ArtistsFormComponent implements OnInit {
     if (this.registerForm.valid) {
       this.userService.saveUser(this.registerForm.value).subscribe(x => {
         if (x) {
-          this.router.navigate(['artists-grid']);
+          this.router.navigate(['artista/' + this.userId]);
         }
       });
     }
   }
-// console.log(this.registerForm.value)
-
-//       this.submitted = true;
-
-//       // stop here if form is invalid
-//       if (this.registerForm.invalid) {
-//           return;
-//       }
-
-//       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
-//     }
-
 
 
 }

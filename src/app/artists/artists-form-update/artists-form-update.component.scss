@@ -1,58 +1,108 @@
+@import "/src/app/artists/artist-single/artist-single.component.scss";
 :host {
     border-radius: 6px;
     padding: 1rem;
-    box-shadow: 0 0 11px 1px rgb(27, 26, 26);
-    ;
+    box-shadow: 0 0 11px 4px #23232350;
     background-color: transparent;
     display: block;
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        grid-gap: 1rem;
+    .uppercase {
+        text-transform: uppercase;
     }
-    label {
-        display: block;
-        margin-bottom: 0.3rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+input,
+.mat-select {
+    display: block;
+    width: auto;
+    border-radius: 6px;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    box-shadow: 0 0 0 1px rgba(rgb(27, 26, 26), 0.2);
+    // si estas dos cosas se cumplen, me aplicas el estilo
+    &.ng-invalid.ng-touched {
+        box-shadow: 0 0 0 3px rgba(red, 0.2);
     }
-    input {
-        display: block;
-        width: 20%;
-        border-radius: 6px;
-        border: none;
-        padding: 0.3rem 0.5rem;
-        box-shadow: 0 0 0 1px rgba(rgb(27, 26, 26), 0.2);
-        // si estas dos cosas se cumplen, me aplicas el estilo
-        &.ng-invalid.ng-touched {
-            box-shadow: 0 0 0 3px rgba(red, 0.2);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    p {
+        color: red;
+        font-size: 11px;
+        position: absolute;
+        margin-top: 0.3rem;
+    }
+}
+
+img {
+    max-height: 150px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.button-see-more {
+    border-radius: 20px;
+    border: 1px solid #fefefe;
+    background-color: #1f1f1f;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 32px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top: 10px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+.container-tags {
+    width: auto;
+    .ng-star-inserted {
+        background-color: transparent;
+        border: none!important;
+        button {
+            border: solid 1px rgb(27, 26, 26);
+            background-color: transparent;
+            margin: 0;
+            padding: 0;
+            width: auto;
         }
-    }
-    .form-group {
-        margin-bottom: 1rem;
-        p {
-            color: red;
-            font-size: 11px;
-            position: absolute;
-            margin-top: 0.3rem;
+        button:hover {
+            transform: scale(1.2);
         }
-    }
-    img {
-        max-height: 150px;
-        &:hover {
-            cursor: pointer;
-        }
-    }
-    input[type="file"] {
-        display: none;
-    }
-    .flex-between {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-    .mat-raised-button {
-        background-color: rgb(27, 26, 26);
-        margin-top: 0.5rem;
-        border: none;
-        color: white;
     }
 }

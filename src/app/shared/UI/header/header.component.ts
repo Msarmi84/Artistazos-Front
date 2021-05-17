@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Subscription } from 'rxjs';
+import { getUserFromToken } from '../../../_helpers/tokenHelper';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-
+  user = {}
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
 
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
+    this.user = getUserFromToken()
   }
 
   logout(): void {

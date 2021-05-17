@@ -21,6 +21,10 @@
             <li>
                 <mat-icon *ngIf="isLoggedIn" (click)="logout()">logout</mat-icon>
             </li>
+            <li  *ngIf="isLoggedIn" class="avatar-name tooltip">
+                <img  *ngIf="isLoggedIn" src="http://localhost:3000/images/uploads/{{user && user.avatar}}" alt="" />
+                <span class="tooltiptext">{{user && user.artistic_name}}</span>
+            </li>
 
         </ul>
     </nav>

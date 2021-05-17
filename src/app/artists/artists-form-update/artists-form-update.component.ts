@@ -24,7 +24,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
   disciplines: Disciplines[];
   seleccionados: string[] = [];
   tag:string
-  tags:string[]= [];
+  tags:string[] = [];
   tag3:string
 
 
@@ -43,7 +43,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
       biography: ['', Validators.required],
       avatar: ['', Validators.required],
       front: ['', Validators.required],
-      tag: [[this.tag]],
+      tag: [''],
       discipline:[[]]
     });
    }
@@ -102,12 +102,19 @@ export class ArtistsFormUpdateComponent implements OnInit {
   addTag(KeyboardEvent){
     if (KeyboardEvent.keyCode==32 || KeyboardEvent.keyCode=='Space'){
       this.tag = KeyboardEvent.target.value;
-      KeyboardEvent.target.value ='';
-      this.tags.push(this.tag)
-     this.tag3 = this.tags.toString();
-
       console.log(this.tag)
+
+      KeyboardEvent.target.value ='';
+
+      this.tags.push(this.tag)
       console.log(this.tags)
+
+     this.tag3 = this.tags.toString();
+     console.log(this.tag3, 'tag 3333333333')
+
+     this.tag3 = this.tag3.toLowerCase()
+     console.log(this.tag3)
+
     }
     // console.log("pulso la tecla aaaaa " + KeyboardEvent.key)
   }

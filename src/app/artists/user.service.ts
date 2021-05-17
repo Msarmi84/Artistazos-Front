@@ -73,7 +73,7 @@ export class UserService {
 
   searchUsers( filtro: UserSearch): Observable<User[]> {
 
-    return this.http.post<User[]>(`${this.URL}/buscar`, filtro).pipe(
+    return this.http.post<User[]>(`${this.URL}/find`, filtro).pipe(
         map(x => x.map(user => new User(user)))
       );
   }

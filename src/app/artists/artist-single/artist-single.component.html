@@ -50,7 +50,7 @@
 
             <div class="button-add" *ngIf="isLoggedIn">
                 <button class="button-single" (click)="editProduct()">EDITAR PRODUCTOS</button>
-                <mat-icon class="material-icons-outlined" (click)="seeEditProfile('add')">
+                <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
                     add_a_photo
                 </mat-icon>
                 <!-- <input type="file" #inputFile (change)="onImageChanged($event)" /> -->

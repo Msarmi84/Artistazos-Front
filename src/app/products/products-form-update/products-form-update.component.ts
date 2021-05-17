@@ -47,13 +47,22 @@ export class ProductsFormUpdateComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    this.route.params.subscribe((params) => (this.user_id = params.id));
-    if (this.data?.product_name) {
+    this.route.params.subscribe((params) => ( this.form.patchValue({user_id: params.id})));
+    
+    console.log(this.form);
+    
+    if (this.data?.product_id) {
       this.form.patchValue(this.data);
       this.product_id = this.data.product_id;
       this.formData = this.generateFormData()
       this.imgPreview = this.data.product_photo ? this.imageUrl + this.data.product_photo : this.defaultImg;
+    } else {
+      this.user_id = this.data;
+      this.form.patchValue({user_id: this.data})
     }
+    console.log(this.user_id)
+
+
 
     this.form.valueChanges.pipe(debounceTime(400), distinctUntilChanged()).subscribe(() => {
       this.formData = this.generateFormData()
@@ -69,7 +78,8 @@ export class ProductsFormUpdateComponent implements OnInit {
       }
     }
     console.log('console del formdata')
-    console.log(formData)
+    console.log(this.form.value)
+    
     return formData;
   }
 

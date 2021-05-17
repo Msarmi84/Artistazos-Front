@@ -61,10 +61,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
-    console.log('userId')
-    console.log(this.userId)
-
-
     this.getUser(this.userId);
     this.getProducts(this.userId);
     this.getDisciplinesByUserId(this.userId);
@@ -78,8 +74,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getUser(id: number): void {
     this.userService.getUserById(id).subscribe((x) => {
       this.user = x;
-      console.log('un usuario')
-    console.log(x)
   });
   }
 
@@ -153,23 +147,24 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.seeEditArtist = !this.seeEditArtist;
   }
 
+
   //Abre y cierra los formularios de edición de usuario y producto
   seeEditProfile(obj: any) {
     this.product = obj;
     console.log('console del producto')
-    console.log(this.product)
+    console.log(this.product, '--------')
 
     //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
-    if (this.product || obj === 'add') {
+    if (this.product) {
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {
         data: this.product,
         width: '80%',
       });
 
       //Después de cerrarlo hacemos la petición http para guardar el producto nuevo o editado
-      dialogRef.afterClosed().subscribe((product) => {
+      dialogRef.afterClosed().subscribe((products) => {
         this.productService
-          .saveProduct(product)
+          .saveProduct(products)
           .subscribe((updatedProduct) => {
             this.product = updatedProduct;
             this.getProducts(this.userId);

@@ -4,5 +4,5 @@ export const getUserFromToken = (): string => {
     const tokenHelper = new JwtHelperService();
     const token = localStorage.getItem('AP_TKN');
     const decodedToken = tokenHelper.decodeToken(token);
-    return JSON.parse(decodedToken.user)
+    return decodedToken.user;
 };

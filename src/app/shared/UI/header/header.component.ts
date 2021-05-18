@@ -19,9 +19,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private lss: LocalStorageService) { }
 
   ngOnInit(): void {
-    this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
-    this.user = getUserFromToken()
-    this.profileRoute = isAdmin() ? '/admin' : `/artista/${this.user.user_id}`
+    this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn
+      this.user = getUserFromToken()
+      this.profileRoute = isAdmin() ? '/admin' : `/artista/${this.user.user_id}`
+    });
   }
 
   logout(): void {

@@ -13,7 +13,7 @@ import { Disciplines } from 'src/app/models/disciplines';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-credentials.component';
-import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
+// import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
 
 
 
@@ -222,16 +222,16 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.iconEdit = !this.iconEdit;
   }
 //abre la descripcion,imagen y nombre en un modal del proucto
-  seeEditProduct(obj: Product) {
-    this.product = obj;
-    //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
-    if (this.product) {
-      const dialogRef = this.dialog.open(ProductsModalComponent, {
-        data: this.product,
-        width: '40%',
-      });
-    } 
-  }
+  // seeEditProduct(obj: Product) {
+  //   this.product = obj;
+  //   //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
+  //   if (this.product) {
+  //     const dialogRef = this.dialog.open(ProductsModalComponent, {
+  //       data: this.product,
+  //       width: '40%',
+  //     });
+  //   } 
+  // }
 
   logout(): void {
     this.lss.removeUserToken();

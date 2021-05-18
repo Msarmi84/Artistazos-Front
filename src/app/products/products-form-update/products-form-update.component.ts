@@ -44,7 +44,7 @@ export class ProductsFormUpdateComponent implements OnInit {
       product_id:[''],
       user_id:[''],
       product_name: ['', Validators.required],
-      category: ['', Validators.required],
+      category: [null, Validators.required],
       description: ['', Validators.required],
       product_photo: ['', Validators.required],
       price: [null, Validators.required],
@@ -58,9 +58,9 @@ export class ProductsFormUpdateComponent implements OnInit {
 
     console.log(this.categories)
     this.route.params.subscribe((params) => ( this.form.patchValue({user_id: params.id})));
-    
+
     console.log(this.form);
-    
+
     if (this.data?.product_id) {
       this.form.patchValue(this.data);
       this.product_id = this.data.product_id;
@@ -88,9 +88,11 @@ export class ProductsFormUpdateComponent implements OnInit {
       }
       formData.append('tag', this.tag3)
     }
-    console.log('console del formdata')
-    console.log(this.form.value)
-    
+    // console.log('console del formdata')
+    // console.log(this.form.value)
+    formData.append('img', this.imageFile);
+
+
     return formData;
   }
 
@@ -107,27 +109,21 @@ export class ProductsFormUpdateComponent implements OnInit {
   addTag(event){
     if (event.keyCode==32 || event.keyCode=='Space'){
       this.tag = event.target.value;
-      console.log(this.tag)
-
       event.target.value ='';
-
-      this.tags.push(this.tag)
-      console.log(this.tags)
-
-     this.tag3 = this.tags.toString();
-     console.log(this.tag3, 'tag 3333333333')
-
+      this.tags.push(this.tag);
+       this.tag3 = this.tags.toString();
      this.tag3 = this.tag3.toLowerCase()
-     console.log(this.tag3)
+
 
     }
-    // console.log("pulso la tecla aaaaa " + KeyboardEvent.key)
   }
 
   removeTag(tag){
     this.tags = this.tags.filter((i) => i !== tag);
     this.tag3 = this.tags.toString();
   }
+
+
 
 
 }

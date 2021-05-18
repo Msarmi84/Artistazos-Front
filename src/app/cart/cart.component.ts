@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/product';
 import { ProductService } from '../products/product.service';
@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
 
   defaultImg = 'assets/images/Imagen_por_defecto.png';
   imageUrl = environment.baseUrl + 'images/uploads/';
+  // @Input() product: Product;
 
   @Output() deleteProduct = new EventEmitter<Product>();
   products: Product[] = [];
@@ -22,16 +23,22 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe(product => this.products = product);
   }
-//   deleteProductClick(event: Event, product: Product): void {
-//     event.stopPropagation();
-//     if (window.confirm('Seguro que quiere eliminar el viaje')) {
-//       this.productService.deleteProduct(product).subscribe(x => {
-//         alert('Producto eliminado');
-//         this.productService.getProducts().subscribe(x => {
-//           this.products = x;
-//         })
-//       })
-//     }
-// }
+  // delete(){
+  //   delete this.product;
+  // }
+
+  // aumento(){
+  //      this.product.aumentarCantidad();
+  //      this.product.importe= this.product.calcularimporte();
+     
+  // }
+
+  // disminuir(){
+  //     if(this.product.cantidad>0){
+  //      this.product.disminuirCantidad();
+  //      this.product.importe= this.product.calcularimporte();
+  //     }
+     
+  // }
 
 }

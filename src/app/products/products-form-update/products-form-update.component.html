@@ -41,8 +41,11 @@
 
     <label>EDITAR FOTO DEL PRODUCTO</label>
     <div class="flex-between">
-        <input type="file" #inputFile (change)="onImageChanged($event)" >
-        <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+        <!-- <input type="file" #inputFile (change)="onImageChanged($event)" > -->
+        <!-- <img [src]="imgPreview" alt="" (click)="inputFile.click()"> -->
+        <img [src]="imgPreview">
+        <label>sube pdf </label>
+        <input name="pdf" type="file" accept="application/pdf"  #inputFile (change)="onImageChanged($event)" />
         <button mat-raised-button [mat-dialog-close]="formData">GUARDAR</button>
     </div>
 

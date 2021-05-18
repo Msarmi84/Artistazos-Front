@@ -1,6 +1,6 @@
 <div class="header-artistas">
     <!-- <h1>ENCUENTRA A TU ARTISTA</h1> -->
-    <app-searcher (formFilter)= "filter($event)"></app-searcher>
+    <app-searcher (formFilter)="filter($event)"></app-searcher>
 </div>
 
 
@@ -17,7 +17,8 @@
             <div class="container-p">
                 <p *ngFor="let discipline of disciplines">{{ user.discipline_name }} </p>
             </div>
-            <button [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
+            <button  [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
+            <button *ngIf="isAdmin" (click)="deleteUser(user.user_id)" class="button-see-more">BORRAR</button>
         </div>
     </div>
 </div>

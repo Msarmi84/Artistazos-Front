@@ -9,6 +9,7 @@ export class Product {
     product_photo: string;
     price: number;
     tag:string[];
+  importe: any;
 
     constructor(item?: any) {
         this.product_id = item?.product_id || null;

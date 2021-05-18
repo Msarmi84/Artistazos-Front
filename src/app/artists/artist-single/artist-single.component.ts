@@ -201,7 +201,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     if (this.product) {
       const dialogRef = this.dialog.open(ProductsModalComponent, {
         data: this.product,
-        width: '80%',
+        width: '40%',
       });
     } 
   }

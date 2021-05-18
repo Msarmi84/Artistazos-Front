@@ -35,6 +35,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,7 @@ import { ProductsModalComponent } from './products/products-modal/products-modal
     InfoComponent,
     AdminComponent,
     ProductsModalComponent
+
 
 
   ],

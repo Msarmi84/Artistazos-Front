@@ -54,8 +54,10 @@
     </div>
     <label>EDITAR FOTO DE PERFIL</label>
             <div class="flex-between">
-                <input type="file" #inputFile (change)="onImageChanged($event)">
-                <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+                <input type="file" #inputFile (change)="onImageChanged($event)" accept="video/*">
+                <img type="file" [src]="imgPreview" alt="" (click)="inputFile.click()">
+                <video type="file" [src]="imgPreview" alt="" (click)="inputFile.click()"></video>
+                <embed type="file" [src]="imgPreview" alt="" (click)="inputFile.click()">
                 <!-- <label>EDITAR FOTO DE PORTADA</label>
             <div class="flex-between">
                 <input type="file" #inputFile (change)="onFrontChanged($event)"  >

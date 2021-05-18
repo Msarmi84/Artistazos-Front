@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-credentials.component';
 import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
+import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
 
 
 
@@ -52,7 +53,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   pagePdf:number=1;
   productImg = '';
   productsImg2 = new Array();
-
+  currentUser;
+  isAdmin: boolean = false;
 
 
 
@@ -72,6 +74,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.getUser(this.userId);
     this.getProducts(this.userId);
     this.getDisciplinesByUserId(this.userId);
+    this.currentUser = getUserFromToken();
+    this.isAdmin = isAdmin();
 
 
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);

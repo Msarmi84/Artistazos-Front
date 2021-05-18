@@ -7,8 +7,9 @@
         </div>
         <div class="form-group">
             <label>Categoría</label>
-            <select name="" id="">
-                <option value="{{category.id}}" formControlName="category" *ngFor="let category of categories">{{category.name}}</option>
+            <select name="" id="" formControlName="category" >
+                <option value=""></option>
+                <option value="{{category.id}}"  *ngFor="let category of categories">{{category.name}}</option>
             </select>
             <!-- <input type="text" min="0" formControlName="category"> -->
             <!-- <p *ngIf="productForm.controls.category?.errors?.required && productForm.controls.category?.touched">*Campo obligatorio</p> -->

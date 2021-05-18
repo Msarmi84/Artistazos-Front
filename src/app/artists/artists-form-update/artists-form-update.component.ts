@@ -71,8 +71,6 @@ export class ArtistsFormUpdateComponent implements OnInit {
 
   generateFormData(): FormData {
 
-    
-
     const formData = new FormData();
     for (const field in this.form.value) {
       if (field) {

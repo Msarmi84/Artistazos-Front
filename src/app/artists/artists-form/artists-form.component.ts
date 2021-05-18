@@ -86,6 +86,7 @@ disciplinesLowerCase: string;
     this.submitted = true;
 
     if (this.registerForm.valid) {
+      this.registerForm.value.patchValue({discipline: this.disciplinesLowerCase })
       this.userService.saveUser(this.registerForm.value).subscribe(x => {
         if (x) {
           console.log('xxxxxxxxxxxxxxxxxxxxxxxx');

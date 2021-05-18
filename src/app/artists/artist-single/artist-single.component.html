@@ -48,6 +48,7 @@
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
+
                 <div class="product-single" *ngFor="
             let product of productsImg
               | paginate: { id:'paginationImage', itemsPerPage: 4, currentPage: pageImg }
@@ -57,6 +58,7 @@
             }}">
                     <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
                         edit</mat-icon>
+
                     <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
 
                 </div>

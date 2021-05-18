@@ -1,0 +1,26 @@
+.grid{
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 0 11px 4px #23232350;
+    background-color: transparent;
+    display: flex;
+    
+    h1{
+        color: black;
+    }
+    img{
+        width: 15rem;
+        height: 20rem;
+    }
+    .card-product{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    p{
+        width: 90%;
+       text-align: justify;
+       
+    }
+}

@@ -5,6 +5,9 @@ import { Disciplines } from 'src/app/models/disciplines';
 import { User } from 'src/app/models/user';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
 import { UserService } from '../user.service';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+
 
 
 @Component({
@@ -13,7 +16,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./artists-form.component.scss']
 })
 export class ArtistsFormComponent implements OnInit {
-
+  
   registerForm: FormGroup;
   submitted: Boolean = false;
   dateReg: RegExp = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
@@ -31,9 +34,10 @@ export class ArtistsFormComponent implements OnInit {
   user: User;
 
   userId: Number;
+  token: string;
 
 
-  constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router,  private route: ActivatedRoute) {
+  constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router,  private route: ActivatedRoute, private lss: LocalStorageService) {
     this.registerForm = formBuilder.group({
       artistic_name: ['', Validators.required],
       user_name: ['', Validators.required],
@@ -74,17 +78,42 @@ export class ArtistsFormComponent implements OnInit {
   get loginForm() { return this.registerForm.controls }
 
   onSubmit(obj: any): void {
-
+    console.log('-------------------------------------------------------------------------------------------------------')
     this.submitted = true;
 
     if (this.registerForm.valid) {
       this.userService.saveUser(this.registerForm.value).subscribe(x => {
         if (x) {
-          this.router.navigate(['artista/' + this.userId]);
+          console.log('xxxxxxxxxxxxxxxxxxxxxxxx');
+          
+          console.log(x);
+          
+          // const helper = new JwtHelperService();
+          // const decodedToken = helper.decodeToken(x);
+
+
+          // //instala libreria angular/jwt
+          
+          
+          // // decodificar el token
+
+
+          
+          // // sacas el id y lo pasas a la ruta
+          // console.log(decodedToken)
+          // console.log(this.userId, 'userId............')
+          // // console.log(x.user_id, 'x más user_id')
+          // this.router.navigate(['artista/' + this.userId]);
+          // // console.log(this.userId)
         }
       });
+
+      this.token = this.lss.getUserToken();
+      console.log(this.token, '--------------------------------------token')
+
+      }
     }
-  }
+  
 
 
 }

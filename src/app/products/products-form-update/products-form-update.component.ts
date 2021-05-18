@@ -29,8 +29,8 @@ export class ProductsFormUpdateComponent implements OnInit {
   @Output() formSubmitted = new EventEmitter<FormData>();
 
   constructor(
-    formBuilder: FormBuilder, 
-    private route:ActivatedRoute, 
+    formBuilder: FormBuilder,
+    private route:ActivatedRoute,
 
     @Inject(MAT_DIALOG_DATA) private data?: Product
     ) {
@@ -48,9 +48,9 @@ export class ProductsFormUpdateComponent implements OnInit {
 
    ngOnInit(): void {
     this.route.params.subscribe((params) => ( this.form.patchValue({user_id: params.id})));
-    
+
     console.log(this.form);
-    
+
     if (this.data?.product_id) {
       this.form.patchValue(this.data);
       this.product_id = this.data.product_id;
@@ -77,9 +77,11 @@ export class ProductsFormUpdateComponent implements OnInit {
         formData.append(field, this.form.value[field]);
       }
     }
-    console.log('console del formdata')
-    console.log(this.form.value)
-    
+    // console.log('console del formdata')
+    // console.log(this.form.value)
+    formData.append('img', this.imageFile);
+
+
     return formData;
   }
 
@@ -92,6 +94,8 @@ export class ProductsFormUpdateComponent implements OnInit {
     fileReader.readAsDataURL(file);
     fileReader.onload = () => this.imgPreview = fileReader.result as string;
   }
+
+
 
 
 }

@@ -28,16 +28,16 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   userId: number;
   product: Product;
   products: Product[];
-  disciplines: Disciplines[]
+  productsImg: Product[] = [];
+  productsPdf: Product[] = [];
+  productsVideo: Product[] = [];
+  productsSound: Product[] = [];
+  disciplines: Disciplines[];
   imageUrl = environment.baseUrl + 'images/uploads/';
   defaultImage = this.imageUrl + 'defaultProduct' ;
   imageFile: File;
   imgPreview = 'assets/images/logonofoto.png';
   defaultImg = 'assets/images/logonofoto.png';
-
-
-
-
   seeEditArtist = false;
   txtBoton = 'EDITAR PERFIL';
   editprofileComplete: boolean = false;
@@ -47,6 +47,13 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   isLoggedSub: Subscription;
   page: number;
+  pageImg:number=1;
+  pageVideo: number = 1;
+  pagePdf:number=1;
+  productImg = '';
+  productsImg2 = new Array();
+
+
 
 
   constructor(
@@ -82,7 +89,25 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getProducts(id: number): void {
     this.productService.getProductsByUserId(id).subscribe((x) => {
       this.products = x;
+      for(let i=0; i<this.products.length; i++) {
+        this.productImg = this.products[i].product_photo.split('.')[1];
+        // this.productsImg.push(this.productImg)
+        // console.log(this.productImg);
+        if (this.productImg === 'jpg'|| this.productImg === 'jpeg' || this.productImg === 'png') {
+          this.productsImg.push(this.products[i]);
+        }
+        else if (this.productImg === 'mp4'|| this.productImg === 'mp3') {
+          this.productsVideo.push(this.products[i]);
+        }
+        else if (this.productImg === 'pdf') {
+          this.productsPdf.push(this.products[i]);
+        }
+      }
+      console.log(this.productsImg);
     });
+
+
+
   }
 
   //devuelve las disciplinas del usuario
@@ -112,6 +137,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     });
   }
 
+
   // editCredentials(user) {
   //   this.user = user;
 
@@ -121,6 +147,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   //       data: this.user,
   //       width: '80%',
   //     });
+
 
   //     dialogRef.afterClosed().subscribe((user) => {
   //       this.userService

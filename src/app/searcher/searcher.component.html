@@ -26,22 +26,6 @@
               <option *ngFor="let item of disciplines" ngValue="item.id">{{item.discipline_name}}</option>
           </select>
         </div>
-        <mat-select
-        id="dropdown"
-        class=""
-        formControlName="discipline_name"
-        multiple
-        placeholder="músico, pintor/a, escritor.... "
-      >
-        <mat-option *ngFor="let discipline of disciplines">
-          {{ discipline.discipline_name }}
-        </mat-option>
-      </mat-select>
-      <ul>
-        <li class="white" *ngFor="let seleccion of seleccionados">
-          {{ seleccion }}
-        </li>
-      </ul>
 
 
 

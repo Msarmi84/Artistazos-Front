@@ -38,6 +38,7 @@ import { ProductsModalComponent } from './products/products-modal/products-modal
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { ProductsModalComponent } from './products/products-modal/products-modal
     CartComponent,
     ValidCredentialsComponent,
     InfoComponent,
-    ProductsModalComponent
+    ProductsModalComponent,
+ 
 
   ],
   imports: [

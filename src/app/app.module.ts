@@ -31,11 +31,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
+import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
-
-
-
-
 
 
 
@@ -59,8 +56,10 @@ import { ProductsModalComponent } from './products/products-modal/products-modal
     CartComponent,
     ValidCredentialsComponent,
     InfoComponent,
-    ProductsModalComponent,
- 
+    AdminComponent,
+    ProductsModalComponent
+
+
 
   ],
   imports: [

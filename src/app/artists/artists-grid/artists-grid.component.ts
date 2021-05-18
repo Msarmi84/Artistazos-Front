@@ -3,6 +3,8 @@ import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/user';
 import { UserService } from '../user.service';
 import { Disciplines } from 'src/app/models/disciplines';
+import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
+import { Router } from '@angular/router';
 
 
 
@@ -18,11 +20,16 @@ export class ArtistsGridComponent implements OnInit {
   disciplines: Disciplines[]
 
   users: User[] = [];
+  isAdmin: boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService, 
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(users => this.users = users);
+    this.isAdmin = isAdmin();
   
     for(let i = 0; i <this.users.length; i++){
       this.userService.getDisciplinesById(this.users[i].user_id).subscribe(discipline => this.disciplines = discipline);
@@ -42,6 +49,13 @@ export class ArtistsGridComponent implements OnInit {
   this.userService.searchUsers(filter).subscribe(x => {
     this.users = x;
   })
+  }
+
+  deleteUser(id: number): void {
+    console.log('-------',id)
+    this.userService.deleteUser(id).subscribe(res => {
+      this.router.navigateByUrl('/admin');
+    });
   }
 
 

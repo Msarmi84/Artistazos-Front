@@ -96,10 +96,13 @@
             <div class="product-single" *ngFor="
           let product of productsPdf
             | paginate: {id:'paginationPdf', itemsPerPage: 4, currentPage: page }
+
         ">
-                <embed type="file" frameborder="0" height="250px" width="250px" src="http://localhost:3000/pdf/uploads/{{
+
+        <embed src="http://localhost:3000/pdf/uploads/{{product.product_photo}}"width="250px" height="250px" />
+                <!-- <embed type="file" frameborder="0" height="250px" width="250px" src="http://localhost:3000/pdf/uploads/{{
                   product.product_photo
-                }}">
+                }}"> -->
                 <!-- <object type="application/pdf" page=1 frameborder="0" height="250px" width="250px" data="http://localhost:3000/pdf/uploads/{{ product.product_photo }}"></object> -->
                 <!-- <iframe src="http://localhost:3000/pdf/uploads/{{ product.product_photo }} ? file=http://localhost:3000/pdf/uploads/{{ product.product_photo }} " style="width:250px; height:250px;" frameborder="0"></iframe> -->
                 <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
@@ -126,3 +129,6 @@
 <!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
 
 <!-- </div> -->
+
+
+

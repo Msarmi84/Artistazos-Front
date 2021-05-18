@@ -74,6 +74,9 @@ export class UserService {
   }
 
   searchUsers( filtro: UserSearch): Observable<User[]> {
+    console.log('filtro de busqueda del service');
+    
+    console.log(filtro)
 
     return this.http.post<User[]>(`${this.URL}/find`, filtro).pipe(
         map(x => x.map(user => new User(user)))

@@ -7,9 +7,18 @@
         </div>
         <div class="form-group">
             <label>Categoría</label>
-            <input type="text" min="0" formControlName="category">
+            <select name="" id="" formControlName="category" >
+                <option value=""></option>
+                <option value="{{category.id}}"  *ngFor="let category of categories">{{category.name}}</option>
+            </select>
+            <!-- <input type="text" min="0" formControlName="category"> -->
             <!-- <p *ngIf="productForm.controls.category?.errors?.required && productForm.controls.category?.touched">*Campo obligatorio</p> -->
         </div>
+        <!-- <div class="form-group">
+            <label>Categoría</label>
+            <input type="text" min="0" formControlName="category">
+          <p *ngIf="productForm.controls.category?.errors?.required && productForm.controls.category?.touched">*Campo obligatorio</p> -->
+        <!-- </div> -->
         <div class="form-group">
             <label>Descripción</label>
             <input type="text" min="0" formControlName="description">
@@ -17,8 +26,11 @@
         </div>
         <div class="form-group">
             <label>Tags</label>
-            <input type="text" min="0" formControlName="tag">
-            <!-- <p *ngIf="productForm.controls.tag?.errors?.required && productForm.controls.tag.touched">*Campo obligatorio</p> -->
+            <input type="text" min="0" formControlName="tag" (keypress)="addTag($event)" id="tag">
+            <div class="container-tags">
+                <button *ngFor="let tag of tags"><button (click)="removeTag(tag)"><span>X</span></button><span> {{tag}}</span></button>
+
+            </div>
         </div>
         <div class="form-group">
             <label>Price</label>
@@ -29,8 +41,11 @@
 
     <label>EDITAR FOTO DEL PRODUCTO</label>
     <div class="flex-between">
-        <input type="file" #inputFile (change)="onImageChanged($event)" >
-        <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+        <!-- <input type="file" #inputFile (change)="onImageChanged($event)" > -->
+        <!-- <img [src]="imgPreview" alt="" (click)="inputFile.click()"> -->
+        <img [src]="imgPreview">
+        <label>sube pdf </label>
+        <input name="pdf" type="file" accept="application/pdf"  #inputFile (change)="onImageChanged($event)" />
         <button mat-raised-button [mat-dialog-close]="formData">GUARDAR</button>
     </div>
 

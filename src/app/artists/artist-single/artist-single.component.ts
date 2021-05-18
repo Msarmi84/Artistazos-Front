@@ -19,6 +19,7 @@ import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
 
 
 
+
 @Component({
   selector: 'app-artist-single',
   templateUrl: './artist-single.component.html',
@@ -107,7 +108,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
           this.productsPdf.push(this.products[i]);
         }
       }
-      console.log(this.productsImg);
+      console.log(this.productsPdf);
     });
 
 
@@ -226,16 +227,16 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.iconEdit = !this.iconEdit;
   }
 //abre la descripcion,imagen y nombre en un modal del proucto
-  seeEditProduct(obj: Product) {
-    this.product = obj;
-    //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
-    if (this.product) {
-      const dialogRef = this.dialog.open(ProductsModalComponent, {
-        data: this.product,
-        width: '40%',
-      });
-    } 
-  }
+  // seeEditProduct(obj: Product) {
+  //   this.product = obj;
+  //   //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
+  //   if (this.product) {
+  //     const dialogRef = this.dialog.open(ProductsModalComponent, {
+  //       data: this.product,
+  //       width: '40%',
+  //     });
+  //   } 
+  // }
 
   logout(): void {
     this.lss.removeUserToken();

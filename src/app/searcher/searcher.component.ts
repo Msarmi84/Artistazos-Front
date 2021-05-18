@@ -17,7 +17,6 @@ export class SearcherComponent implements OnInit {
   filterForm: FormGroup;
   disciplines: Disciplines[] = [];
   users: User[] = [];
-  seleccionados: string[] = [];
 
   @Output() formFilter = new EventEmitter<SearcherUser>();
 
@@ -35,7 +34,7 @@ export class SearcherComponent implements OnInit {
       last_name: [''],
       artistic_name:[''],
       location: [''],
-      discipline_name: [[]],
+      discipline_name: [''],
       tag: [''],
     })
    }
@@ -47,11 +46,8 @@ export class SearcherComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('valores del formulario');
-    
-    console.log(this.filterForm.value)
     this.formFilter.emit(this.filterForm.value);
-    
+    this.filterForm.reset()
   }
 
 }

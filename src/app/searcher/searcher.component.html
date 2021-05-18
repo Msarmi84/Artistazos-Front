@@ -14,21 +14,21 @@
             <input type="text" formControlName="artistic_name">
         </div>
         <div class="formPadding">
-        <select class="formPadding" class="form-control" formControlName="location">
-                <option *ngFor="let location of locations">
+          <label class="formPadding">Localización</label>
+        <select class="formPadding" formControlName="location">
+          <option value=""></option>
+          <option *ngFor="let location of locations" value="{{location}}">
                   {{ location }}
-                </option>
+          </option>
         </select>
         </div>
         <div class="formPadding">
             <label class="formPadding">Disciplina</label>
             <select name="" id="" formControlName="discipline_name">
-              <option *ngFor="let item of disciplines" ngValue="item.id">{{item.discipline_name}}</option>
+              <option value=""></option>
+              <option *ngFor="let item of disciplines" ngValue="{{item.discipline_name}}">{{item.discipline_name}}</option>
           </select>
         </div>
-
-
-
         <div class="formPadding">
             <label class="formPadding">Palabra clave</label>
             <input type="text" formControlName="tag">

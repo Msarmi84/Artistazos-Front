@@ -1,7 +1,9 @@
 .container {
+    width: 100%;
     align-items: center;
     display: grid;
     justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-columns: 65% 35%;
     gap: 2rem;
     margin-top: 3rem;

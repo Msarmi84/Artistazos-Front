@@ -14,8 +14,10 @@
             ><i class="fab fa-facebook"></i>
                     </h1>
                     <p>{{ user.mail }}</p>
-                    <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>
-                    <mat-icon *ngIf="isLoggedIn" (click)="deleteUser()">person_remove</mat-icon>
+                    <div *ngIf="currentUser.user_id === userId || isAdmin">
+                        <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>
+                        <mat-icon *ngIf="isLoggedIn" (click)="deleteUser()">person_remove</mat-icon>
+                    </div>
                     <p *ngFor="let discipline of disciplines">
                         {{ discipline.discipline_name }}
                     </p>
@@ -24,10 +26,10 @@
             <div class="description-single">
                 <p>{{ user.biography }}</p>
                 <!-- Editar perfil completo -->
-                <div class="modificar-icons">
+                <div *ngIf="currentUser.user_id === userId || isAdmin" class="modificar-icons">
                     <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]">
-            MODIFICAR PERFIL
-          </button>
+                        MODIFICAR PERFIL
+                    </button>
                     <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
                         add_a_photo
                     </mat-icon>

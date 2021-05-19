@@ -2,7 +2,7 @@
     <div class="container-product" *ngFor="let product of products">
         <div class="avatar-name">
             <div class="caja_img">
-                <img [src]="product.product_photo ? imageUrl + product.product_photo : defaultImg" alt="">
+                <img src="http://localhost:3000/images/uploads/{{product.product_photo}}">
 
             </div>
             <div class="datos-product">
@@ -15,6 +15,9 @@
                     </li>
                     <li>
                         <p class="precio">{{ product.price }}</p>
+                    </li>
+                    <li>
+                        <p class="cantidad">{{ product.price }}</p>
                     </li>
                 </ul>
                 <!-- <button (click)="comprarClick(product)">BUY</button> -->

@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
 
   defaultImg = 'assets/images/Imagen_por_defecto.png';
   imageUrl = environment.baseUrl + 'images/uploads/';
-  // @Input() product: Product;
+  //  
 
   @Output() deleteProduct = new EventEmitter<Product>();
   products: Product[] = [];

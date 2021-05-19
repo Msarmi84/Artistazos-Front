@@ -4,7 +4,7 @@
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 66% 29%;
     gap: 2rem;
     margin-top: 3rem;
     .description-single {
@@ -16,7 +16,7 @@
     margin-top: 50px;
     margin-left: 50px;
     img {
-        width: 132.5vh;
+        width: 100%;
         height: 400px;
         object-fit: cover;
         object-position: center;
@@ -25,9 +25,8 @@
 
 .background-header {
     color: black;
-    margin-left: 0.5rem;
     .container-artista {
-        margin-left: 60px;
+        margin-left: 30px;
     }
     .avatar-name {
         display: flex;
@@ -56,7 +55,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
-            padding: 2rem 0.5rem 0.5rem 3.5rem;
+            padding: 2rem 0.5rem 0.5rem 2.5rem;
             img {
                 width: 250px;
                 height: 250px;
@@ -141,9 +140,6 @@
             position: relative;
         }
     }
-    .container-publish {
-        width: 35%;
-    }
     .buttonDeleteUser {
         margin-left: 10px;
     }
@@ -169,4 +165,14 @@
     width: 50%;
     justify-content: space-around;
     margin-top: 41px;
+}
+
+@media (max-width: 375px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .container-publish {
+        display: block;
+    }
 }

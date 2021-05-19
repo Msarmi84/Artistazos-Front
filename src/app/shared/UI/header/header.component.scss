@@ -1,7 +1,7 @@
 header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2rem;
+    gap: 1rem;
     padding: 1rem 1rem;
     align-items: center;
     justify-content: center;
@@ -15,27 +15,23 @@ header {
         display: flex;
         justify-content: flex-start;
         margin-left: 40px;
-        img {
-            width: auto;
+        .logoHeader {
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
         }
     }
     nav {
         display: flex;
         justify-content: flex-end;
         margin-right: 40px;
-        justify-content: center;
-    }
-    .logoHeader {
-        width: 41%;
-        cursor: pointer;
     }
     ul {
         list-style: none;
         display: flex;
         padding: 0;
+        align-items: center;
     }
     li {
         padding: 0 0.5rem;
@@ -110,38 +106,12 @@ header {
     opacity: 1;
 }
 
-//     .tooltip {
-//         position: relative;
-//         display: inline-block;
-//         border-top: 1px dotted black;
-//       }
-//       .tooltip .tooltiptext {
-//         visibility: hidden;
-//         width: 120px;
-//         background-color: #555;
-//         color: #fff;
-//         text-align: center;
-//         border-radius: 6px;
-//         padding: 5px 0;
-//         position: absolute;
-//         z-index: 1;
-//         top: 100%;
-//         left: 50%;
-//         margin-left: -60px;
-//         opacity: 0;
-//         transition: opacity 0.3s;
-//       }
-// .tooltip .tooltiptext::after {
-//     content: "";
-//     position: absolute;
-//     top: 100%;
-//     left: 50%;
-//     margin-left: -5px;
-//     border-width: 5px;
-//     border-style: solid;
-//     border-color: #555 transparent transparent transparent;
-// }
-// .tooltip:hover .tooltiptext {
-//     visibility: visible;
-//     opacity: 1;
-// }
+@media (max-width: 375px) {
+    ul {
+        width: 91%;
+    }
+    .logoHeader {
+        width: 50%;
+        margin-left: 46px;
+    }
+}

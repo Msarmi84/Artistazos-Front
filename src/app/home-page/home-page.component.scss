@@ -61,32 +61,3 @@ h1 {
     transform: scale(1.1);
     transition: all 0.7s;
 }
-
-// @media (min-width: 315px) {
-//     .grid-artistas {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//     }
-//     .card {
-//         padding: 1rem;
-//         text-align: center;
-//         background-color: rgba(0, 0, 0, 0.879);
-//         color: white;
-//         border-radius: 6px;
-//         margin: 1.5rem;
-//         cursor: pointer;
-//         img {
-//             width: 100%;
-//             object-fit: cover;
-//         }
-//         h3 {
-//             font-size: small;
-//         }
-//     }
-//     .card:hover {
-//         transform: scale(1.1);
-//         transition: all 0.7s;
-//     }
-// }

@@ -15,9 +15,13 @@
             <!-- necesitamos obtener las disciplinas de cada usuario. Para ello necesitamos que en cada vuelta de bucle enviemos
             el user_id al método de getDisciplinesByUserId -->
             <div class="container-p">
-                <p *ngFor="let discipline of disciplines">{{ user.discipline_name }} </p>
+                <p>{{ user.mail}} </p>
             </div>
-            <button  [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
+            <div class="container-p">
+                <p>{{ user.location}} </p>
+            </div>
+
+            <button [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
             <button *ngIf="isAdmin" (click)="deleteUser(user.user_id)" class="button-see-more">BORRAR</button>
         </div>
     </div>

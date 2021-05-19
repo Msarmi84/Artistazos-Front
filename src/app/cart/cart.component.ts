@@ -29,14 +29,14 @@ export class CartComponent implements OnInit {
 
   // aumento(){
   //      this.product.aumentarCantidad();
-  //      this.product.importe= this.product.calcularimporte();
+  //      this.product.price= this.product.calcularimporte();
      
   // }
 
   // disminuir(){
   //     if(this.product.cantidad>0){
   //      this.product.disminuirCantidad();
-  //      this.product.importe= this.product.calcularimporte();
+  //      this.product.price= this.product.calcularimporte();
   //     }
      
   // }

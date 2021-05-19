@@ -10,12 +10,16 @@ import { Product } from 'src/app/models/product';
 export class ProductsModalComponent implements OnInit {
   product: Product;
   productService: any;
+  productType: string;
+  productsVideo: Product[] = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) private data?: Product) { }
 
   ngOnInit(): void {
     if (this.data){
       this.product = this.data;
+      this.productType = this.product.product_photo.split('.')[1];
+
     }
   }
 

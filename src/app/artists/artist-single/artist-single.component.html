@@ -1,36 +1,48 @@
 <div class="container" *ngIf="user">
-
     <div class="background-header">
         <div class="fondo">
-            <img src="http://localhost:3000/images/uploads/{{user.front}}" alt="" />
+            <img src="http://localhost:3000/images/uploads/{{ user.front }}" alt="" />
         </div>
         <div class="container-artista">
             <div class="avatar-name">
                 <div class="caja_img">
-
-                    <img src="http://localhost:3000/images/uploads/{{user.avatar}}" alt="" />
-
+                    <img src="http://localhost:3000/images/uploads/{{ user.avatar }}" alt="" />
                 </div>
                 <div class="datos-single">
-
-                    <h1>{{ user.artistic_name }}
-                        <i class="fab fa-linkedin-in"></i><i class="fab fa-facebook"></i>
+                    <h1>
+                        {{ user.artistic_name }} <i class="fab fa-linkedin-in"></i
+            ><i class="fab fa-facebook"></i>
                     </h1>
                     <p>{{ user.mail }}</p>
-                    <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>
-                    <mat-icon *ngIf="isLoggedIn" (click)="deleteUser()">person_remove</mat-icon>
-                    <p *ngFor="let discipline of disciplines">{{ discipline.discipline_name }}</p>
+                    <div *ngIf="currentUser.user_id === userId || isAdmin">
+                        <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>
+                        <mat-icon *ngIf="isLoggedIn" (click)="deleteUser()">person_remove</mat-icon>
+                    </div>
+                    <p *ngFor="let discipline of disciplines">
+                        {{ discipline.discipline_name }}
+                    </p>
                 </div>
             </div>
             <div class="description-single">
                 <p>{{ user.biography }}</p>
-                <!-- <button class="button-single" *ngIf="isLoggedIn" (click)="seeEditProfile()">
-          EDITAR
-        </button> -->
                 <!-- Editar perfil completo -->
-                <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]">
-        MODIFICAR PERFIL
-        </button>
+                <div *ngIf="currentUser.user_id === userId || isAdmin" class="modificar-icons">
+                    <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]">
+                        MODIFICAR PERFIL
+                    </button>
+                    <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
+                        add_a_photo
+                    </mat-icon>
+                    <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
+                        ondemand_video
+                    </mat-icon>
+                    <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
+                        picture_as_pdf
+                    </mat-icon>
+                    <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
+                        library_music
+                    </mat-icon>
+                </div>
                 <!-- <button class="button-single" *ngIf="isLoggedIn" (click)="editCredentials()">
             EDITAR MAIL AND PASSWORD
           </button> -->
@@ -38,24 +50,74 @@
         </div>
         <div class="proyectos-edit">
             <div class="proyectos">
-                <div class="product-single" *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: page }">
-                    <img (click)="seeEditProduct(product)"src="http://localhost:3000/images/uploads/{{ product.product_photo }}" />
-                    <mat-icon *ngIf="iconEdit && isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)"> edit</mat-icon>
+
+                <div class="product-single" *ngFor="
+            let product of productsImg
+              | paginate: { id:'paginationImage', itemsPerPage: 4, currentPage: pageImg }
+          ">
+                    <img src="http://localhost:3000/images/uploads/{{
+              product.product_photo
+            }}">
+                    <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
+                        edit</mat-icon>
+
                     <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
 
                 </div>
-            </div>
-            <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
 
-
-            <div class="button-add" *ngIf="isLoggedIn">
-                <button class="button-single" (click)="editProduct()">EDITAR PRODUCTOS</button>
-                <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
-                    add_a_photo
-                </mat-icon>
-                <!-- <input type="file" #inputFile (change)="onImageChanged($event)" /> -->
             </div>
+            <pagination-controls id="paginationImage" *ngIf="productsImg.length" class="my-pagination" (pageChange)="pageImg = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
         </div>
+
+        <!-- VIDEO -->
+        <div class="proyectos-edit">
+            <div class="proyectos">
+                <div class="product-single" *ngFor="
+            let product of productsVideo
+              | paginate: {id:'paginationVideo', itemsPerPage: 4, currentPage: pageVideo }
+          ">
+                    <video width="250px" height="250px" controls onplay="true" src="http://localhost:3000/video/uploads/{{
+              product.product_photo
+            }}" loop></video>
+                    <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
+                        edit</mat-icon>
+                    <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
+                </div>
+
+            </div>
+            <pagination-controls id="paginationVideo" *ngIf="productsVideo.length" class="my-pagination" (pageChange)="pageVideo = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
+
+        </div>
+
+
+        <!-- PDF -->
+
+        <div class="proyectos">
+            <div class="product-single" *ngFor="
+          let product of productsPdf
+            | paginate: {id:'paginationPdf', itemsPerPage: 4, currentPage: page }
+
+        ">
+
+        <embed src="http://localhost:3000/pdf/uploads/{{product.product_photo}}"width="250px" height="250px" />
+                <!-- <embed type="file" frameborder="0" height="250px" width="250px" src="http://localhost:3000/pdf/uploads/{{
+                  product.product_photo
+                }}"> -->
+                <!-- <object type="application/pdf" page=1 frameborder="0" height="250px" width="250px" data="http://localhost:3000/pdf/uploads/{{ product.product_photo }}"></object> -->
+                <!-- <iframe src="http://localhost:3000/pdf/uploads/{{ product.product_photo }} ? file=http://localhost:3000/pdf/uploads/{{ product.product_photo }} " style="width:250px; height:250px;" frameborder="0"></iframe> -->
+                <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
+                    edit</mat-icon>
+                <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
+
+            </div>
+            <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
+        </div>
+
+        <!-- SOUND -->
+
+        <div *ngFor="let product of products  | paginate: { itemsPerPage: 4, currentPage: page }"></div>
+
+
     </div>
     <div class="container-publish">
         <app-advertisement></app-advertisement>
@@ -67,3 +129,6 @@
 <!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
 
 <!-- </div> -->
+
+
+

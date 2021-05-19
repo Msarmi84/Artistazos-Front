@@ -19,7 +19,6 @@ export class ProductsModalComponent implements OnInit {
     if (this.data){
       this.product = this.data;
       this.productType = this.product.product_photo.split('.')[1];
-
     }
   }
 

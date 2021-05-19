@@ -28,7 +28,7 @@
                 <!-- Editar perfil completo -->
                 <div *ngIf="currentUser.user_id === userId || isAdmin" class="modificar-icons">
                     <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]">
-                        MODIFICAR PERFIL
+                        EDITAR DATOS DE REGISTRO
                     </button>
                     <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id)">
                         add_a_photo
@@ -55,13 +55,13 @@
             let product of productsImg
               | paginate: { id:'paginationImage', itemsPerPage: 4, currentPage: pageImg }
           ">
-                    <img src="http://localhost:3000/images/uploads/{{
+                    <img (click)="seeEditProduct()" src="http://localhost:3000/images/uploads/{{
               product.product_photo
             }}">
-                    <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
+                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product)">
                         edit</mat-icon>
 
-                    <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
+                    <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit">shopping_cart</mat-icon>
 
                 </div>
 
@@ -79,9 +79,9 @@
                     <video width="250px" height="250px" controls onplay="true" src="http://localhost:3000/video/uploads/{{
               product.product_photo
             }}" loop></video>
-                    <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
+                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product)">
                         edit</mat-icon>
-                    <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
+                    <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit">shopping_cart</mat-icon>
                 </div>
 
             </div>
@@ -96,18 +96,16 @@
             <div class="product-single" *ngFor="
           let product of productsPdf
             | paginate: {id:'paginationPdf', itemsPerPage: 4, currentPage: page }
-
         ">
-
-        <embed src="http://localhost:3000/pdf/uploads/{{product.product_photo}}"width="250px" height="250px" />
+                <embed type="application/pdf" src="http://localhost:3000/pdf/uploads/{{product.product_photo}}" width="250px" height="250px" />
                 <!-- <embed type="file" frameborder="0" height="250px" width="250px" src="http://localhost:3000/pdf/uploads/{{
                   product.product_photo
                 }}"> -->
                 <!-- <object type="application/pdf" page=1 frameborder="0" height="250px" width="250px" data="http://localhost:3000/pdf/uploads/{{ product.product_photo }}"></object> -->
                 <!-- <iframe src="http://localhost:3000/pdf/uploads/{{ product.product_photo }} ? file=http://localhost:3000/pdf/uploads/{{ product.product_photo }} " style="width:250px; height:250px;" frameborder="0"></iframe> -->
-                <mat-icon *ngIf="isLoggedIn" class="icon-edit" (click)="seeEditProfile(product)">
+                <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product)">
                     edit</mat-icon>
-                <mat-icon *ngIf="!isLoggedIn" class="icon-edit">shopping_cart</mat-icon>
+                <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit">shopping_cart</mat-icon>
 
             </div>
             <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
@@ -129,6 +127,3 @@
 <!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
 
 <!-- </div> -->
-
-
-

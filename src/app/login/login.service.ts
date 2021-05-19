@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from '../services/local-storage.service';
 
-interface LoginResponse {
+export interface TokenResponse {
   token: string;
 }
 
@@ -23,8 +23,8 @@ export class LoginService {
 
   constructor(private http: HttpClient, private lss: LocalStorageService) { }
 
-  login(credentials: Credentials): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.URL, credentials)
+  login(credentials: Credentials): Observable<TokenResponse> {
+    return this.http.post<TokenResponse>(this.URL, credentials)
       .pipe(tap(loginResponse => this.lss.saveUserToken(loginResponse.token)));
   }
 }

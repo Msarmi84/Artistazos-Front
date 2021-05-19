@@ -56,6 +56,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   productsImg2 = new Array();
   currentUser;
   isAdmin: boolean = false;
+  productCart: number;
 
 
 
@@ -215,6 +216,12 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.isLoggedSub.unsubscribe();
+  }
+
+  addProduct(product:Product):void {
+   let products = {product_id : product.product_id, amount: 1}
+    this.lss.saveProduct(products);
+    alert('Producto añadido al carrito')
   }
 
 

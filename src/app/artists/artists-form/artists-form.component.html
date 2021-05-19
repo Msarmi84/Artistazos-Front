@@ -88,7 +88,8 @@
             <h1 id="title">
                 <span class="sr-only">Artistazos </span>
             </h1>
-            <h2>Formulario de registro</h2>
+            <h2 *ngIf="!userId">Formulario de registro</h2>
+            <h2 *ngIf="userId">Modifica tus datos de registro</h2>
         </header>
         <form id="survey-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
             <div id="name-div">
@@ -101,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-          
+
 
                 <div class="first-name-div">
                     <label for="name" id="name-label">Nombre </label>
@@ -152,25 +153,15 @@
             </div>
 
             <label for="dropdown" id="dropdown-label">Selecciona tus disciplinas artísticas</label>
-              <mat-select
-                id="dropdown"
-                class="form-control"
-                [formControl]="selectDisciplines"
-                multiple="multiple"
-                placeholder="músico, bailarín/a, pintor/a, escritor/a.... "
-              >
-                <mat-option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name" (click)="clickDiscipline()" >
-                  {{ discipline.discipline_name }}
+            <mat-select id="dropdown" class="form-control" [formControl]="selectDisciplines" multiple="multiple" placeholder="músico, bailarín/a, pintor/a, escritor/a.... ">
+                <mat-option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name" (click)="clickDiscipline()">
+                    {{ discipline.discipline_name }}
                 </mat-option>
-              </mat-select>
+            </mat-select>
 
-      <div id="name-div">
-        <div class="last-name-div" *ngIf="userId">
-          <label
-            for="password"
-            id="password"
-            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }"
-            >Antigua Contraseña</label
+            <div id="name-div">
+                <div class="last-name-div" *ngIf="userId">
+                    <label for="password" id="password" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }">Antigua Contraseña</label
           >
           <input
             type="password"
@@ -193,17 +184,31 @@
           </div>
         </div>
         <div class="last-name-div">
-          <label
+          <label *ngIf="!userId"
             for="last-name"
             id="last-name-label"
             [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }"
             >Contraseña</label
           >
-          <input
+          <label *ngIf="userId"
+            for="last-name"
+            id="last-name-label"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }"
+            >Nueva contraseña</label
+          >
+          <input *ngIf="!userId"
             type="password"
             id="last-name"
             name="last-name"
             placeholder="Password"
+            class="form-control"
+            formControlName="password"
+          />
+          <input *ngIf="userId"
+            type="password"
+            id="last-name"
+            name="last-name"
+            placeholder="Nueva contraseña"
             class="form-control"
             formControlName="password"
           />
@@ -247,6 +252,19 @@
             </div>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
 
       <button *ngIf="userId" id="submit" type="submit">Guardar</button>

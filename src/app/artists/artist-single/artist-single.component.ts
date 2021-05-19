@@ -86,6 +86,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   //obtiene la información del artista
   getUser(id: number): void {
     this.userService.getUserById(id).subscribe((x) => {
+      console.log(x)
       this.user = x;
   });
   }
@@ -137,6 +138,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
       this.userService.deleteUser(this.user.user_id).subscribe(res => {
         this.router.navigateByUrl('/artistas');
+        this.lss.removeUserToken();
 
       });
     });
@@ -149,15 +151,16 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
 
   //Abre y cierra los formularios de edición de usuario y producto
-  seeEditProfile(obj: any) {
+  seeEditProfile(obj: any, type: string) {
     this.product = obj;
     console.log('console del producto')
     console.log(this.product, '--------')
 
+
     //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
     if (this.product) {
       const dialogRef = this.dialog.open(ProductsFormUpdateComponent, {
-        data: this.product,
+        data:{product: this.product, type},
         width: '80%',
       });
 
@@ -175,6 +178,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       const dialogRef = this.dialog.open(ArtistsFormUpdateComponent, {
         data: this.user,
         width: '80%',
+
       });
       // después de cerrarlo hacemos la petición http para  guardar el usuario modificado
       dialogRef.afterClosed().subscribe((user) => {

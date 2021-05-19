@@ -7,7 +7,7 @@
         </div>
         <div class="form-group">
             <label>Categoría</label>
-            <select name="" id="" formControlName="category" >
+            <select name="" id="" formControlName="category">
                 <option value=""></option>
                 <option value="{{category.id}}"  *ngFor="let category of categories">{{category.name}}</option>
             </select>
@@ -42,10 +42,19 @@
     <label>EDITAR FOTO DEL PRODUCTO</label>
     <div class="flex-between">
         <!-- <input type="file" #inputFile (change)="onImageChanged($event)" > -->
-        <!-- <img [src]="imgPreview" alt="" (click)="inputFile.click()"> -->
-        <img [src]="imgPreview">
-        <label>sube pdf </label>
-        <input name="pdf" type="file" accept="application/pdf"  #inputFile (change)="onImageChanged($event)" />
+        <!-- <img [src]="imgPreview"> -->
+        <ng-container *ngIf="product_type ==='img'">
+            <input name="image" type="file" accept="image/*" #inputFile (change)="onImageChanged($event)" />
+            <img [src]="imgPreview" alt="" (click)="inputFile.click()">
+        </ng-container>
+        <ng-container *ngIf="product_type ==='video'">
+            <input name="pdf" type="file" accept="video/*" #inputFileVideo (change)="onImageChanged($event)" />
+            <img [src]="imgPreview" alt="" (click)="inputFileVideo.click()">
+        </ng-container>
+        <ng-container *ngIf="product_type ==='pdf'">
+            <input *ngIf="product_type ==='pdf'" name="pdf" type="file" accept="application/pdf" #inputFilePdf (change)="onImageChanged($event)" />
+            <img [src]="imgPreview" alt="" (click)="inputFilePdf.click()">
+        </ng-container>
         <button mat-raised-button [mat-dialog-close]="formData">GUARDAR</button>
     </div>
 

@@ -1,5 +1,7 @@
 <header>
-    <img class="logoHeader" src="assets/images/logo.png" alt="" routerLink="/">
+    <div class="logo">
+        <img class="logoHeader" src="assets/images/logo.png" alt="" routerLink="/">
+    </div>
     <nav>
         <ul>
             <li>
@@ -8,18 +10,18 @@
             <li>
                 <mat-icon routerLink="/artistas">search</mat-icon>
             </li>
-            <li>
-                <mat-icon *ngIf="!isLoggedIn" routerLink="/login">perm_identity</mat-icon>
+            <li *ngIf="!isLoggedIn">
+                <mat-icon routerLink="/login">perm_identity</mat-icon>
             </li>
-            <li>
-                <mat-icon *ngIf="!isLoggedIn" [routerLink]="['/artists-form']">list_alt</mat-icon>
+            <li *ngIf="!isLoggedIn">
+                <mat-icon [routerLink]="['/artists-form']">list_alt</mat-icon>
             </li>
             <li>
                 <mat-icon routerLink="/cart">shopping_cart</mat-icon>
             </li>
 
-            <li>
-                <mat-icon *ngIf="isLoggedIn" (click)="logout()">logout</mat-icon>
+            <li *ngIf="isLoggedIn">
+                <mat-icon (click)="logout()">logout</mat-icon>
             </li>
             <li *ngIf="isLoggedIn" class="avatar-name tooltip">
                 <img *ngIf="isLoggedIn" src="http://localhost:3000/images/uploads/{{user && user.avatar}}" alt="" [routerLink]="[profileRoute]" />

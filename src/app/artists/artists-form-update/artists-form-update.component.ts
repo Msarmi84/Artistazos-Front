@@ -30,7 +30,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
   disciplinesValues: string[];
   formData: FormData;
   disciplinesString: string;
-  
+
 
 
   @Output() formSubmitted = new EventEmitter<FormData>();
@@ -77,11 +77,11 @@ export class ArtistsFormUpdateComponent implements OnInit {
         formData.append(field, this.form.value[field]);
       }
     }
-    
+
 
    console.log(this.form)
-    
-    
+
+
     formData.append('discipline', this.disciplinesLowerCase)
     formData.append('tag', this.tag3)
     console.log('console del formdata')
@@ -100,6 +100,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = () => this.imgPreview = fileReader.result as string;
+
   }
 
 
@@ -145,7 +146,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     console.log(this.disciplinesValues.toString())
     this.disciplinesString = this.disciplinesValues.toString();
     this.disciplinesLowerCase = this.disciplinesString.toLowerCase();
-    
+
   }
 
 }

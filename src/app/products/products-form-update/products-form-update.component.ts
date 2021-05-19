@@ -12,86 +12,95 @@ import { ProductService } from '../product.service';
 @Component({
   selector: 'app-products-form-update',
   templateUrl: './products-form-update.component.html',
-  styleUrls: ['./products-form-update.component.scss']
+  styleUrls: ['./products-form-update.component.scss'],
 })
 export class ProductsFormUpdateComponent implements OnInit {
-
-  user_id=null;
+  user_id = null;
   submitted: Boolean = false;
   form: FormGroup;
-  imgPreview =  environment.baseUrl + 'images/uploads/noProductPhoto.jpeg'
+  imgPreview = environment.baseUrl + 'images/uploads/noProductPhoto.jpeg';
 
   imageUrl = environment.baseUrl + 'images/uploads/';
   imageFile: File;
   product_id: number;
-  defaultImg = environment.baseUrl + 'images/uploads/noProductPhoto.jpeg'
+  defaultImg = environment.baseUrl + 'images/uploads/noProductPhoto.jpeg';
   categories: IdName[];
   formData: FormData;
+  product_type: string;
 
-  tag:string
-  tags:string[] = [];
-  tag3:string
+  tag: string;
+  tags: string[] = [];
+  tag3: string;
 
   @Output() formSubmitted = new EventEmitter<FormData>();
 
   constructor(
-    formBuilder: FormBuilder, 
-    private route:ActivatedRoute, 
+    formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private productService: ProductService,
-    @Inject(MAT_DIALOG_DATA) private data?: Product
-    ) {
+    @Inject(MAT_DIALOG_DATA) private data?: { product: Product; type: string }
+  ) {
     this.form = formBuilder.group({
-      product_id:[''],
-      user_id:[''],
+      product_id: [''],
+      user_id: [''],
       product_name: ['', Validators.required],
       category: [null, Validators.required],
       description: ['', Validators.required],
       product_photo: ['', Validators.required],
       price: [null, Validators.required],
-      tag: ['']
+      tag: [''],
     });
-   }
-
-   ngOnInit(): void {
-
-    this.categories = this.productService.getCategoriaDeProducto();
-
-    console.log(this.categories)
-    this.route.params.subscribe((params) => ( this.form.patchValue({user_id: params.id})));
-
-    console.log(this.form);
-
-    if (this.data?.product_id) {
-      this.form.patchValue(this.data);
-      this.product_id = this.data.product_id;
-      this.formData = this.generateFormData()
-      this.imgPreview = this.data.product_photo ? this.imageUrl + this.data.product_photo : this.defaultImg;
-    } else {
-      this.user_id = this.data;
-      this.form.patchValue({user_id: this.data})
-    }
-    console.log(this.user_id)
-
-
-
-    this.form.valueChanges.pipe(debounceTime(400), distinctUntilChanged()).subscribe(() => {
-      this.formData = this.generateFormData()
-    })
   }
 
+  ngOnInit(): void {
+    this.categories = this.productService.getCategoriaDeProducto();
+
+    console.log(this.categories);
+    this.route.params.subscribe((params) =>
+      this.form.patchValue({ user_id: params.id })
+    );
+    console.log(this.form);
+
+    if (this.data?.type){
+      this.product_type = this.data.type;
+    }
+
+
+    if (this.data?.product.product_id) {
+      this.form.patchValue(this.data.product);
+      this.product_id = this.data.product.product_id;
+      console.log(this.product_id, 'ID que llega')
+      this.formData = this.generateFormData();
+      this.imgPreview = this.data.product.product_photo
+        ? this.imageUrl + this.data.product.product_photo
+        : this.defaultImg;
+    } else {
+      this.user_id = this.data.product;
+      this.form.patchValue({ user_id: this.data.product });
+   }
+
+
+
+
+
+    this.form.valueChanges
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe(() => {
+        this.formData = this.generateFormData();
+      });
+  }
 
   generateFormData(): FormData {
     const formData = new FormData();
     for (const field in this.form.value) {
-      if (field) {
+      if(field) {
         formData.append(field, this.form.value[field]);
       }
-      formData.append('tag', this.tag3)
+      formData.append('tag', this.tag3);
     }
     // console.log('console del formdata')
     // console.log(this.form.value)
     formData.append('img', this.imageFile);
-
 
     return formData;
   }
@@ -103,27 +112,21 @@ export class ProductsFormUpdateComponent implements OnInit {
     this.formData.append('product_photo', this.imageFile);
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-    fileReader.onload = () => this.imgPreview = fileReader.result as string;
+    fileReader.onload = () => (this.imgPreview = fileReader.result as string);
   }
 
-  addTag(event){
-    if (event.keyCode==32 || event.keyCode=='Space'){
+  addTag(event) {
+    if (event.keyCode == 32 || event.keyCode == 'Space') {
       this.tag = event.target.value;
-      event.target.value ='';
+      event.target.value = '';
       this.tags.push(this.tag);
-       this.tag3 = this.tags.toString();
-     this.tag3 = this.tag3.toLowerCase()
-
-
+      this.tag3 = this.tags.toString();
+      this.tag3 = this.tag3.toLowerCase();
     }
   }
 
-  removeTag(tag){
+  removeTag(tag) {
     this.tags = this.tags.filter((i) => i !== tag);
     this.tag3 = this.tags.toString();
   }
-
-
-
-
 }

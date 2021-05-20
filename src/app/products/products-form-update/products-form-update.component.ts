@@ -63,6 +63,8 @@ export class ProductsFormUpdateComponent implements OnInit {
 
     if (this.data?.type){
       this.product_type = this.data.type;
+      console.log(this.data.type, 'tipo de input')
+     
     }
 
 

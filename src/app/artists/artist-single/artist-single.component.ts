@@ -15,6 +15,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-credentials.component';
 import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
 import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 
@@ -57,6 +58,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   currentUser;
   isAdmin: boolean = false;
   productCart: number;
+  dangerousUrl: string;
+  trustedUrl: any;
 
 
 
@@ -66,19 +69,26 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private productService: ProductService,
     private dialog: MatDialog,
-    private lss: LocalStorageService
+    private lss: LocalStorageService,
+    private sanitizer: DomSanitizer
 
-  ) {}
+    ) {
 
-  ngOnInit(): void {
-
-    this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
-    this.getUser(this.userId);
-    this.getProducts(this.userId);
-    this.getDisciplinesByUserId(this.userId);
-    this.currentUser = getUserFromToken();
-    this.isAdmin = isAdmin();
-
+      
+    }
+    
+    
+    ngOnInit(): void {
+      
+      this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
+      this.getUser(this.userId);
+      this.getProducts(this.userId);
+      this.getDisciplinesByUserId(this.userId);
+      this.currentUser = getUserFromToken();
+      this.isAdmin = isAdmin();
+      
+      this.dangerousUrl = 'http://localhost:3000/pdf/uploads/' + this.product.product_photo;
+      this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
 
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
 

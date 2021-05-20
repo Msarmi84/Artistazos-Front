@@ -7,6 +7,7 @@ import { MustMatch } from 'src/app/_helpers/must-match.validator';
 import { UserService } from '../user.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { getUserFromToken } from 'src/app/_helpers/tokenHelper';
 
 
 
@@ -82,42 +83,15 @@ disciplinesLowerCase: string;
   get loginForm() { return this.registerForm.controls }
 
   onSubmit(obj: any): void {
-    console.log('-------------------------------------------------------------------------------------------------------')
     this.submitted = true;
-
     if (this.registerForm.valid) {
       this.registerForm.patchValue({discipline: this.disciplinesLowerCase })
-      this.userService.saveUser(this.registerForm.value).subscribe(x => {
-        if (x) {
-          console.log('xxxxxxxxxxxxxxxxxxxxxxxx');
-          
-          console.log(x);
-          
-          // const helper = new JwtHelperService();
-          // const decodedToken = helper.decodeToken(x);
-
-
-          // //instala libreria angular/jwt
-          
-          
-          // // decodificar el token
-
-
-          
-          // // sacas el id y lo pasas a la ruta
-          // console.log(decodedToken)
-          // console.log(this.userId, 'userId............')
-          // // console.log(x.user_id, 'x más user_id')
-          // this.router.navigate(['artista/' + this.userId]);
-          // // console.log(this.userId)
-        }
-      });
-
-      this.token = this.lss.getUserToken();
-      console.log(this.token, '--------------------------------------token')
-
+      this.userService.saveUser(this.registerForm.value).subscribe(
+        () => this.router.navigate([`/artista/${getUserFromToken().user_id}`]),
+        (error) => this.registerForm.setErrors({ userNotFound: error.error })
+      )
       }
-    }
+    };
 
     clickDiscipline(){
       console.log('entra en click')

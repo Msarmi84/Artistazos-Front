@@ -1,6 +1,6 @@
 .grid-artistas {
     display: grid;
-    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
     padding: 3rem 3rem;
     .bucle-artistas {
@@ -76,4 +76,3 @@ button.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
 }
-

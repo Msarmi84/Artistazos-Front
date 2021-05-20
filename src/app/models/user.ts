@@ -16,6 +16,7 @@ export class User {
   discipline_name: string;
   tags: string[];
   front: string;
+  deleted: boolean;
 
 
   constructor(item?: any) {
@@ -32,6 +33,6 @@ export class User {
     this.discipline_name = item.discipline_name || 0;
     this.avatar = item.avatar || null;
     this.front = item.front || null;
-
+    this.deleted = item.deleted;
   }
 }

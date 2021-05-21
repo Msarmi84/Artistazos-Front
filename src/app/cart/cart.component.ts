@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
 
   defaultImg = 'assets/images/Imagen_por_defecto.png';
   imageUrl = environment.baseUrl + 'images/uploads/';
-  // @Input() product: Product;
+  //  
 
   @Output() deleteProduct = new EventEmitter<Product>();
   productsStorage: any[] = [];
@@ -46,14 +46,14 @@ export class CartComponent implements OnInit {
 
   // aumento(){
   //      this.product.aumentarCantidad();
-  //      this.product.importe= this.product.calcularimporte();
+  //      this.product.price= this.product.calcularimporte();
      
   // }
 
   // disminuir(){
   //     if(this.product.cantidad>0){
   //      this.product.disminuirCantidad();
-  //      this.product.importe= this.product.calcularimporte();
+  //      this.product.price= this.product.calcularimporte();
   //     }
      
   // }

@@ -18,10 +18,17 @@ export class UserService {
   constructor(private http: HttpClient, private lss: LocalStorageService) { }
 
 
-  getUsers(): Observable<User[]> {
+  getUsers(isAdmin: boolean): Observable<User[]> {
+    if(isAdmin) return this.http.get<User[]>(`${this.URL}/allUsers`)
+    .pipe(map(users => users.map(user => new User(user))));
     return this.http.get<User[]>(this.URL)
       .pipe(map(users => users.map(user => new User(user))));
   }
+  getUsersByDiscipline(discipline_id: number): Observable<User[]>{
+    return this.http.get<User[]>(`${this.URL}/usersByDisciplines/${discipline_id}`)
+    .pipe(map(users => users.map(user => new User(user))));
+  }
+  
 
   // saveUser(user: User): Observable<TokenResponse> {
   //   console.log('console del service');
@@ -54,7 +61,15 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.URL}/delete/${id}`);
+    return this.http.delete<void>(`${this.URL}/deleteByAdmin/${id}`);
+  }
+
+  hideUser(id: number): any {
+    return this.http.put<void>(`${this.URL}/hide/${id}`, null);
+  }
+  
+  showUser(id: number): any {
+    return this.http.put<void>(`${this.URL}/show/${id}`, null);
   }
 
   updateUser(user: FormData, id: number): any {

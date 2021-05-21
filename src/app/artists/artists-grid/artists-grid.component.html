@@ -7,7 +7,7 @@
 <div class="grid-artistas">
     <div class="bucle-artistas" *ngFor="let user of users">
 
-        <div class="card">
+        <div [ngClass] ="{'redCard': user.deleted === 1, 'card': user.deleted === 0}">
             <img src="http://localhost:3000/images/uploads/{{user.avatar}}">
             <!-- <img [src]="user.avatar ? 'http://localhost:3000/images/uploads/{{user.avatar}}' : defaultImg" alt=""> -->
             <h3><span>{{ user.artistic_name }}</span></h3>
@@ -23,6 +23,8 @@
 
             <button [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
             <button *ngIf="isAdmin" (click)="deleteUser(user.user_id)" class="button-see-more">BORRAR</button>
+            <button *ngIf="isAdmin && user.deleted === 0" (click)="hideUser(user.user_id)" class="button-see-more">OCULTAR</button>
+            <button *ngIf="isAdmin && user.deleted === 1" (click)="showUser(user.user_id)" class="button-see-more">MOSTRAR</button>
         </div>
     </div>
 </div>

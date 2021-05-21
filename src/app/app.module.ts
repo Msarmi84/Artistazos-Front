@@ -35,6 +35,9 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
 import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
 
+import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
+
+
 
 
 @NgModule({
@@ -59,7 +62,11 @@ import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
     InfoComponent,
     AdminComponent,
     ProductsModalComponent,
+
     safeUrlPipe
+
+    ArtistDisciplineComponent
+
 
 
 

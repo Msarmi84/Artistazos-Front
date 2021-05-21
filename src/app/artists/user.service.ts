@@ -24,6 +24,11 @@ export class UserService {
     return this.http.get<User[]>(this.URL)
       .pipe(map(users => users.map(user => new User(user))));
   }
+  getUsersByDiscipline(discipline_id: number): Observable<User[]>{
+    return this.http.get<User[]>(`${this.URL}/usersByDisciplines/${discipline_id}`)
+    .pipe(map(users => users.map(user => new User(user))));
+  }
+  
 
   // saveUser(user: User): Observable<TokenResponse> {
   //   console.log('console del service');

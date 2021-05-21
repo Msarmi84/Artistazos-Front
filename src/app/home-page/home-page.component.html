@@ -1,10 +1,10 @@
 <div class="container">
     <video class="video-artistas" controls autoplay src="../../assets/videos/videohome.mp4" loop></video>
 </div>
-<div class="grid-artistas" >
+<div class="grid-artistas">
 
-    <div class="card" *ngFor="let discipline of disciplines">
-        <img src=" ../../assets/images/artists.png " [routerLink]="[ '/artist-discipline',discipline.discipline_id] " alt=" ">
+    <div class="card" *ngFor="let discipline of disciplines ;let i = index">
+        <img src="../../assets/images/{{photos[i]}}" [routerLink]="[ '/artist-discipline',discipline.discipline_id] " alt=" ">
         <h3>{{discipline.discipline_name}}</h3>
     </div>
     

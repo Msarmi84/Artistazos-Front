@@ -10,6 +10,7 @@ import { Disciplines } from '../models/disciplines';
 })
 export class HomePageComponent implements OnInit {
   disciplines: Disciplines[] = [];
+  photos: string [] = ['artists.png','dancer.jpg','writer.jpg','guitarristas.jpeg'];
   
 
   constructor(private userService: UserService) { }

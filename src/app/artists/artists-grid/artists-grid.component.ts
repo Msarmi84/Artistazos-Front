@@ -6,8 +6,6 @@ import { Disciplines } from 'src/app/models/disciplines';
 import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-artists-grid',
   templateUrl: './artists-grid.component.html',
@@ -28,7 +26,9 @@ export class ArtistsGridComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(users => this.users = users);
+    this.userService.getUsers(isAdmin()).subscribe(users => {
+      return this.users = users
+    });
     this.isAdmin = isAdmin();
   
     for(let i = 0; i <this.users.length; i++){
@@ -45,18 +45,26 @@ export class ArtistsGridComponent implements OnInit {
 
   filter(filter):void {
     console.log('este es el console de filter del artis grid');
-    
-  this.userService.searchUsers(filter).subscribe(x => {
-    this.users = x;
-  })
+    this.userService.searchUsers(filter).subscribe(x => {
+      this.users = x;
+    })
   }
 
   deleteUser(id: number): void {
-    console.log('-------',id)
     this.userService.deleteUser(id).subscribe(res => {
       this.router.navigateByUrl('/admin');
     });
   }
-
-
+  
+  hideUser(id: number): void {
+    this.userService.hideUser(id).subscribe(res => {
+      this.router.navigateByUrl('/admin');
+    });
+  }
+  
+  showUser(id: number): void {
+    this.userService.showUser(id).subscribe(res => {
+      this.router.navigateByUrl('/admin');
+    });
+  }
 }

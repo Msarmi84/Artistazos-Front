@@ -1,8 +1,25 @@
-@import url(../artists/artist-single/artist-single.component.scss);
-
-.center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+    @import url(../artists/artist-single/artist-single.component.scss);
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0%;
+        .avatar-name {
+            img {
+                width: 145px;
+                height: 145px;
+                border-radius: 162px;
+                object-fit: cover;
+            }
+            h1 {
+                padding: 2.5rem;
+            }
+        }
+        .form[_ngcontent-roe-c97] {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(6, minmax(131px, 1fr));
+        }
+    }

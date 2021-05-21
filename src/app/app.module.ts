@@ -33,6 +33,7 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
 import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
+import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
 
 
 
@@ -57,7 +58,8 @@ import { ProductsModalComponent } from './products/products-modal/products-modal
     ValidCredentialsComponent,
     InfoComponent,
     AdminComponent,
-    ProductsModalComponent
+    ProductsModalComponent,
+    safeUrlPipe
 
 
 

@@ -15,16 +15,17 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-credentials.component';
 import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
 import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
-
-
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-artist-single',
   templateUrl: './artist-single.component.html',
   styleUrls: ['./artist-single.component.scss'],
+
+
 })
+
 export class ArtistSingleComponent implements OnInit, OnDestroy {
   user: User;
   userId: number;
@@ -66,8 +67,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private productService: ProductService,
     private dialog: MatDialog,
-    private lss: LocalStorageService
-
+    private lss: LocalStorageService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -81,7 +82,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
 
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
-
   }
 
   //obtiene la información del artista
@@ -91,6 +91,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.user = x;
   });
   }
+
+
 
   //obtiene la información de los productos de dicho artista
   getProducts(id: number): void {

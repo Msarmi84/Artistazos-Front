@@ -63,7 +63,7 @@ import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-di
     AdminComponent,
     ProductsModalComponent,
 
-    safeUrlPipe
+    safeUrlPipe,
 
     ArtistDisciplineComponent
 

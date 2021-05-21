@@ -182,21 +182,10 @@ textarea {
 //         padding: 1.5rem 1.5rem;
 //     }
 // }
-@media (max-width: 375px) {
-    #name-div {
-        .container {
-            // padding: 1.5rem 1.5rem;
-        }
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .first-name-div,
-    .last-name-div,
-    .name-div,
-    label {
-        flex-direction: row;
-    }
-    .container {
-        padding: 1.5rem 1.725rem;
-    }
+@media only screen and (max-width: 375px) {
+    .container{
+        width: 100vh;
 }
+}
+
+

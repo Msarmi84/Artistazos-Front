@@ -33,7 +33,11 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
 import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
+<<<<<<< HEAD
 import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
+=======
+import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
+>>>>>>> 553dce5447fcb182f9c771e89a2bccdcb37a88c5
 
 
 
@@ -59,7 +63,11 @@ import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
     InfoComponent,
     AdminComponent,
     ProductsModalComponent,
+<<<<<<< HEAD
     safeUrlPipe
+=======
+    ArtistDisciplineComponent
+>>>>>>> 553dce5447fcb182f9c771e89a2bccdcb37a88c5
 
 
 

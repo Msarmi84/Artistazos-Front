@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Pipe } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,9 +16,6 @@ import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-crede
 import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
 import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
 import { DomSanitizer } from '@angular/platform-browser';
-
-
-
 
 
 @Component({
@@ -63,6 +60,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
 
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -77,6 +75,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       
     }
     
+  
     
     ngOnInit(): void {
       
@@ -87,8 +86,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.currentUser = getUserFromToken();
       this.isAdmin = isAdmin();
       
-      this.dangerousUrl = 'http://localhost:3000/pdf/uploads/' + this.product.product_photo;
-      this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
+      // this.dangerousUrl = 'http://localhost:3000/pdf/uploads/' + this.product.product_photo;
+      // this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
 
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
 

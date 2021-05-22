@@ -9,6 +9,7 @@ import { Product } from '../models/product';
 export class LocalStorageService {
 
   products = [];
+  productObject:  Array<any> = [];
 
   private readonly AP_TKN = 'AP_TKN';
 
@@ -70,6 +71,31 @@ export class LocalStorageService {
 
     }
     return products;
+  }
+
+  deleteProducts(idProduct:number):void {
+    this.productObject = this.getProducts();
+    this.productObject = this.productObject.filter(x => x.product_id !== idProduct );
+    let newProducts = JSON.stringify(this.productObject);
+    sessionStorage.setItem("shoppingCart", newProducts);
+  }
+
+  updateAmount(idProduct:number, signe: string):void {
+    let products = this.getProducts();
+    for(let i = 0; i < products.length; i++){
+        if(products[i].product_id == idProduct && signe === '+'){ 
+          console.log('suma') 
+          products[i].amount++;
+        }
+        if(products[i].product_id == idProduct && signe === '-'){  
+          if(products[i].amount > 1){
+            console.log('resta')
+            products[i].amount--;
+          };
+        }
+      }
+    let jProducts = JSON.stringify(products);
+    sessionStorage.setItem("shoppingCart", jProducts); 
   }
 
   

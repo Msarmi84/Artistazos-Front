@@ -97,6 +97,12 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   //obtiene la información de los productos de dicho artista
   getProducts(id: number): void {
     this.productService.getProductsByUserId(id).subscribe((x) => {
+      // Antes de nada, limpiamos los arrays: como vamos a hacer
+      // push con los productos, y si no lo limpiamos se añaden
+      // cosas repetidas.
+      this.productsImg = [];
+      this.productsVideo = [];
+      this.productsPdf = [];
       this.products = x;
       for(let i=0; i<this.products.length; i++) {
         this.productImg = this.products[i].product_photo.split('.')[1];

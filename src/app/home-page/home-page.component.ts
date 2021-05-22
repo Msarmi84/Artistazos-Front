@@ -10,15 +10,17 @@ import { Disciplines } from '../models/disciplines';
 })
 export class HomePageComponent implements OnInit {
   disciplines: Disciplines[] = [];
-  photos: string [] = ['artists.png','dancer.jpg','writer.jpg','guitarristas.jpeg'];
-  
+  photos: string [] = ['guitarristas.jpeg', 'cantante.jpg', 'artists.png', 'dancer.jpg', 'teatro.jpeg',
+                         'writer.jpg', 'fotografia.jpeg', 'escultura.jpeg', 'artesania.jpeg'];
+
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.getDisciplines().subscribe(x => this.disciplines = x);
+    this.disciplines.pop();
     console.log(this.disciplines);
-     this.disciplines.pop();
+
   }
 
 }

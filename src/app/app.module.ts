@@ -22,6 +22,9 @@ import { InfoComponent } from './shared/UI/info/info.component';
 import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
 import { CartComponent } from './cart/cart.component';
 import { ValidCredentialsComponent } from './valid-credentials/valid-credentials.component';
+import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
+import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
+
 
 
 // MATERIAL MODULES
@@ -33,12 +36,6 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artists-form-update.component';
 import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
-<<<<<<< HEAD
-import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
-=======
-import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
->>>>>>> 553dce5447fcb182f9c771e89a2bccdcb37a88c5
-
 
 
 @NgModule({
@@ -63,11 +60,8 @@ import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-di
     InfoComponent,
     AdminComponent,
     ProductsModalComponent,
-<<<<<<< HEAD
-    safeUrlPipe
-=======
+    safeUrlPipe,
     ArtistDisciplineComponent
->>>>>>> 553dce5447fcb182f9c771e89a2bccdcb37a88c5
 
 
 

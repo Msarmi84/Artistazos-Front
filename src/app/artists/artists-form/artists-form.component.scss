@@ -1,11 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Mulish&display=swap");
-
-/* background */
-
-@keyframes zoomInOut {
-    50% {
-        transform: scale(1.1);
-    }
+.form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -35,25 +32,15 @@ h2 {
     font-size: 1.25rem;
 }
 
-// #sweet {
-//     transform: rotate(-4deg);
-// }
-// #retreat {
-//     transform: rotate(4deg);
-// }
 img {
     height: 4.5rem;
 }
-
-
-/* form */
 
 form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0.8rem;
-    width: auto;
 }
 
 #name-div,
@@ -63,7 +50,6 @@ form {
     display: flex;
     flex-direction: column;
     margin: 15px;
-    width: 700px;
 }
 
 input,
@@ -177,15 +163,28 @@ textarea {
 
 /* media */
 
-// @media (min-width: 30em) {
-//     .container {
-//         padding: 1.5rem 1.5rem;
-//     }
-// }
-@media only screen and (max-width: 375px) {
-    .container{
-        width: 100vh;
-}
+@media (min-width: 30em) {
+    .container {
+        padding: 1.5rem 1.5rem;
+    }
 }
 
+@media (min-width: 38em) {
+    #name-div {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .first-name-div,
+    .last-name-div {
+        width: 49%;
+    }
+    .container {
+        padding: 1.5rem 1.725rem;
+    }
+}
 
+@media (max-width: 375px) {
+    .container {
+        flex-direction: column;
+    }
+}

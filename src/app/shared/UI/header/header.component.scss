@@ -118,14 +118,15 @@
 
                 @media (min-width: 376px) and (max-width: 1024px) {
                     ul {
-                        width: 70%;
+                        width: 80%;
+                        padding: 0;
                         .logoHeader {
                             width: 50%;
                             margin-left: 46px;
                         }
                     }
                     .mat-icon {
-                        font-size: 37px;
+                        font-size: 28px;
                         cursor: pointer;
                         margin: 0.5rem;
                     }

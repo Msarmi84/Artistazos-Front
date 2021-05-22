@@ -81,8 +81,7 @@
     </div>
 </div>
  -->
-
-<main class="main">
+<div class="form">
     <div class="container">
         <header>
             <h1 id="title">
@@ -146,18 +145,24 @@
 
             </div>
 
-            <label for="email" id="email-label">Email</label>
-            <input type="email" id="mail" name="email" placeholder="email@email.com" class="form-control" formControlName="mail" [ngClass]="{ 'is-invalid': submitted && loginForm.mail.errors }" placeholder="email" />
-            <div class="errorColor" *ngIf="submitted && loginForm.mail.errors">
-                <div *ngIf="loginForm.mail.errors.required">*Campo obligatorio</div>
-            </div>
+            <div id="name-div">
+                <div class="first-name-div">
 
-            <label for="dropdown" id="dropdown-label">Selecciona tus disciplinas artísticas</label>
-            <mat-select id="dropdown" class="form-control" [formControl]="selectDisciplines" multiple="multiple" placeholder="músico, bailarín/a, pintor/a, escritor/a.... ">
-                <mat-option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name" (click)="clickDiscipline()">
-                    {{ discipline.discipline_name }}
-                </mat-option>
-            </mat-select>
+                    <label for="email" id="email-label">Email</label>
+                    <input type="email" id="mail" name="email" placeholder="email@email.com" class="form-control" formControlName="mail" [ngClass]="{ 'is-invalid': submitted && loginForm.mail.errors }" placeholder="email" />
+                    <div class="errorColor" *ngIf="submitted && loginForm.mail.errors">
+                        <div *ngIf="loginForm.mail.errors.required">*Campo obligatorio</div>
+                    </div>
+                </div>
+                <div class="first-name-div">
+                    <label for="dropdown" id="dropdown-label">Selecciona tus disciplinas artísticas</label>
+                    <mat-select id="dropdown" class="form-control" [formControl]="selectDisciplines" multiple="multiple" placeholder="músico, bailarín/a, pintor/a, escritor/a.... ">
+                        <mat-option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name" (click)="clickDiscipline()">
+                            {{ discipline.discipline_name }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </div>
 
             <div id="name-div">
                 <div class="last-name-div" *ngIf="userId">
@@ -272,4 +277,4 @@
 
     </form>
   </div>
-</main>
+</div>

@@ -37,6 +37,7 @@ import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artist
 import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
 import { SafeurlPipe } from './safeurl.pipe';
+import { AdvertisementFormComponent } from './advertisement-form/advertisement-form.component';
 
 
 @NgModule({
@@ -62,8 +63,7 @@ import { SafeurlPipe } from './safeurl.pipe';
     AdminComponent,
     ProductsModalComponent,
     SafeurlPipe,
-    ArtistDisciplineComponent
-
+    AdvertisementFormComponent
 
 
 

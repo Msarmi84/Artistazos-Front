@@ -1,178 +1,213 @@
-.container {
-    width: 100%;
-    align-items: center;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-columns: 66% 29%;
-    gap: 2rem;
-    margin-top: 3rem;
-    .description-single {
-        width: auto;
-    }
-}
-
-.fondo {
-    margin-top: 50px;
-    margin-left: 50px;
-    img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        object-position: center;
-    }
-}
-
-.background-header {
-    color: black;
-    .container-artista {
-        margin-left: 2.8rem;
-    }
-    .avatar-name {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        img {
-            margin-top: -100px;
-            width: 150px;
-            height: 150px;
-            border-radius: 160px;
-            object-fit: cover;
-        }
-        .datos-single {
-            color: black;
-            margin: 0 20px 0 20px;
-            h1 {
-                letter-spacing: 1.8px;
-            }
-            p {
-                color: rgb(21, 21, 21);
-            }
-        }
-    }
-    .proyectos-edit {
-        .proyectos {
+        .container {
+            align-items: center;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            justify-content: center;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 66% 29%;
             gap: 2rem;
-            padding: 2rem 0.5rem 0.5rem 2.5rem;
+            .description-single {
+                width: auto;
+            }
+        }
+
+        .fondo {
+            margin-top: 50px;
+            margin-left: 50px;
             img {
-                width: 250px;
-                height: 250px;
+                width: 100%;
+                height: 400px;
                 object-fit: cover;
-            }
-            video {
-                width: 250px;
-                height: 250px;
-                object-fit: cover;
+                object-position: center;
             }
         }
-    }
-    .fa-feather-alt {
-        margin-left: 10px;
-        background-color: transparent;
-        border: none;
-        color: #ca63e2;
-        font-size: large;
-    }
-    .button-single {
-        border-radius: 20px;
-        border: 1px solid #1c1c1c;
-        background-color: #1c1c1c;
-        color: #FFFFFF;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 12px 45px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-    }
-    button:active {
-        transform: scale(0.95);
-    }
-    button:focus {
-        outline: none;
-    }
-    button.ghost {
-        background-color: transparent;
-        border-color: #FFFFFF;
-    }
-    .fa-facebook,
-    .fa-linkedin-in {
-        margin-left: 30px;
-        font-size: 28px;
-    }
-    .product-single {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .edit-product {
-            margin-top: 0.5rem;
+
+        .background-header {
+            color: black;
+            .container-artista {
+                margin-left: 1.8rem;
+            }
+            .avatar-name {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                img {
+                    margin-top: -100px;
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 160px;
+                    object-fit: cover;
+                }
+                .datos-single {
+                    color: black;
+                    margin: 0 20px 0 20px;
+                    h1 {
+                        letter-spacing: 1.8px;
+                    }
+                    p {
+                        color: rgb(21, 21, 21);
+                    }
+                }
+            }
+            .proyectos-edit {
+                .proyectos {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 2rem;
+                    padding: 2rem 0.5rem 0.5rem 2.5rem;
+                    img {
+                        width: 250px;
+                        height: 250px;
+                        object-fit: cover;
+                    }
+                    video {
+                        width: 250px;
+                        height: 250px;
+                        object-fit: cover;
+                    }
+                }
+            }
+            .fa-feather-alt {
+                margin-left: 10px;
+                background-color: transparent;
+                border: none;
+                color: #ca63e2;
+                font-size: large;
+            }
+            .button-single {
+                border-radius: 20px;
+                border: 1px solid #1c1c1c;
+                background-color: #1c1c1c;
+                color: #FFFFFF;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+            }
+            button:active {
+                transform: scale(0.95);
+            }
+            button:focus {
+                outline: none;
+            }
+            button.ghost {
+                background-color: transparent;
+                border-color: #FFFFFF;
+            }
+            .fa-facebook,
+            .fa-linkedin-in {
+                margin-left: 30px;
+                font-size: 28px;
+            }
+            .product-single {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .edit-product {
+                    margin-top: 0.5rem;
+                }
+                .icon-edit {
+                    color: #1c1c1c;
+                    background-color: white;
+                    cursor: pointer;
+                    margin: 13px 0;
+                }
+            }
+            .button-add {
+                margin-top: 0;
+                display: flex;
+                align-items: center;
+                color: white;
+                margin-left: 3.7rem;
+                button {
+                    margin-top: 0;
+                    display: flex;
+                    align-items: center;
+                    color: white;
+                    margin-left: 3.7rem;
+                    button {
+                        margin-top: 0;
+                    }
+                }
+                .buttonDeleteUser {
+                    margin-left: 10px;
+                }
+                .cajaProducto {
+                    display: inline-block;
+                    position: relative;
+                }
+            }
+            .buttonDeleteUser {
+                margin-left: 10px;
+            }
+            .cajaProducto {
+                display: inline-block;
+                position: relative;
+            }
         }
-        .icon-edit {
-            color: #1c1c1c;
-            background-color: white;
+
+        .my-pagination .ngx-pagination .current::before {
+            color: red!important;
+        }
+
+        .material-icons-outlined {
+            color: rgb(23, 23, 23);
+            margin-left: 10px;
             cursor: pointer;
-            margin: 13px 0;
         }
-    }
-    .button-add {
-        margin-top: 0;
-        display: flex;
-        align-items: center;
-        color: white;
-        margin-left: 3.7rem;
-        button {
-            margin-top: 0;
+
+        .modificar-icons {
             display: flex;
             align-items: center;
-            color: white;
-            margin-left: 3.7rem;
-            button {
-                margin-top: 0;
+            width: 50%;
+            justify-content: space-around;
+            margin-top: 41px;
+        }
+
+        @media (max-width: 375px) {
+            .container {
+                display: flex;
+                flex-direction: column;
+            }
+            .description-single {
+                p {
+                    padding: 0 1.5rem;
+                }
+            }
+            .background-header {
+                .container-artista {
+                    margin-left: 0
+                }
+            }
+            .container-publish {
+                display: block;
+            }
+            .background-header {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-left: 0;
+            }
+            .datos-single {
+                font-size: small;
+            }
+            .avatar-name {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+            }
+            .fondo {
+                margin-left: 0;
+                margin-right: 0;
+                img {
+                    width: 100%;
+                    height: 400px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            .proyectos {
+                padding: 0;
             }
         }
-        .buttonDeleteUser {
-            margin-left: 10px;
-        }
-        .cajaProducto {
-            display: inline-block;
-            position: relative;
-        }
-    }
-    .buttonDeleteUser {
-        margin-left: 10px;
-    }
-    .cajaProducto {
-        display: inline-block;
-        position: relative;
-    }
-}
-
-.my-pagination .ngx-pagination .current::before {
-    color: red!important;
-}
-
-.material-icons-outlined {
-    color: rgb(23, 23, 23);
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.modificar-icons {
-    display: flex;
-    align-items: center;
-    width: 50%;
-    justify-content: space-around;
-    margin-top: 41px;
-}
-
-@media (max-width: 375px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
-    .container-publish {
-        display: block;
-    }
-}

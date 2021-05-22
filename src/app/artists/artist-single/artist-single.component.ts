@@ -22,7 +22,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   selector: 'app-artist-single',
   templateUrl: './artist-single.component.html',
   styleUrls: ['./artist-single.component.scss'],
+
+
 })
+
 export class ArtistSingleComponent implements OnInit, OnDestroy {
   user: User;
   userId: number;
@@ -70,10 +73,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private lss: LocalStorageService,
     private sanitizer: DomSanitizer
 
-    ) {
 
-      
-    }
+    ) { }
     
   
     
@@ -90,7 +91,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       // this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
 
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
-
   }
 
   //obtiene la información del artista
@@ -101,9 +101,17 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   });
   }
 
+
+
   //obtiene la información de los productos de dicho artista
   getProducts(id: number): void {
     this.productService.getProductsByUserId(id).subscribe((x) => {
+      // Antes de nada, limpiamos los arrays: como vamos a hacer
+      // push con los productos, y si no lo limpiamos se añaden
+      // cosas repetidas.
+      this.productsImg = [];
+      this.productsVideo = [];
+      this.productsPdf = [];
       this.products = x;
       for(let i=0; i<this.products.length; i++) {
         this.productImg = this.products[i].product_photo.split('.')[1];

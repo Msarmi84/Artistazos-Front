@@ -18,9 +18,9 @@ export class ArtistsFormUpdateComponent implements OnInit {
 
   form: FormGroup;
   imgPreview = 'assets/images/logonofoto.png';
-  // imgFrontPreview = 'assets/images/logonofoto.png';
+  imgFrontPreview = 'assets/images/logonofoto.png';
   imageFile: File;
-  // imageFrontFile: File;
+  imageFrontFile: File;
   imageUrl = environment.baseUrl + 'images/uploads/';
   disciplines: Disciplines[];
   selectDisciplines = new FormControl();
@@ -58,7 +58,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     if (this.data?.user_name) {
       this.form.patchValue(this.data);
       this.imgPreview = this.data.avatar ? this.imageUrl + this.data.avatar : 'assets/images/logonofoto.png';
-      // this.imgFrontPreview = this.data.front ? this.imageUrl + this.data.front : 'assets/images/logonofoto.png';
+      this.imgFrontPreview = this.data.front ? this.imageUrl + this.data.front : 'assets/images/logonofoto.png';
     }
     this.getDisciplines();
 
@@ -87,7 +87,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     console.log('console del formdata')
     console.log(formData);
     formData.append('avatar', this.imageFile);
-    // formData.append('front', this.imageFrontFile);
+    formData.append('front', this.imageFrontFile);
     console.log('console del formdata')
     console.log(formData)
     return formData;
@@ -104,14 +104,14 @@ export class ArtistsFormUpdateComponent implements OnInit {
   }
 
 
-  // onFrontChanged(event: InputEvent): void {
-  //   const inputTarget = event.target as HTMLInputElement;
-  //   const file = inputTarget.files[0];
-  //   this.imageFrontFile = file;
-  //   const fileReader = new FileReader();
-  //   fileReader.readAsDataURL(file);
-  //   fileReader.onload = () => this.imgFrontPreview = fileReader.result as string;
-  // }
+  onFrontChanged(event: InputEvent): void {
+     const inputTarget = event.target as HTMLInputElement;
+     const file = inputTarget.files[0];
+     this.imageFrontFile = file;
+     const fileReader = new FileReader();
+     fileReader.readAsDataURL(file);
+     fileReader.onload = () => this.imgFrontPreview = fileReader.result as string;
+  }
 
   addTag(event){
     if (event.keyCode==32 || event.keyCode=='Space'){

@@ -170,5 +170,11 @@ h3 {
 }
 }
 
-
+@media only screen and (max-width: 375px) {
+    .container{
+        hr,h3{
+            margin-left:50rem;
+        }
+    }
+}
 

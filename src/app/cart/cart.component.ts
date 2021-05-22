@@ -71,7 +71,6 @@ export class CartComponent implements OnInit {
   }
 
 
-
   calculateAmount():void {
   //   // for(let price of this.productObject){
   //   //   console.log('holaaaaaa')

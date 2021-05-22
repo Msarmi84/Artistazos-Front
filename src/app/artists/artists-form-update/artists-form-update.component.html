@@ -45,17 +45,29 @@
               </mat-option>
             </mat-select>
         </div>
-    </div>
 
-    <label>EDITAR FOTO DE PERFIL</label>
+        <div class="form-group">
+        </div>
+        <div class="form-group">
+            <label>EDITAR FOTO DE PERFIL</label>
             <div class="flex-between">
                 <input type="file" #inputFile (change)="onImageChanged($event)" accept="image/*">
-                <img type="file" [src]="imgPreview" alt="" (click)="inputFile.click()">
-                <!-- <label>EDITAR FOTO DE PORTADA</label>
-            <div class="flex-between">
-                <input type="file" #inputFile (change)="onFrontChanged($event)"  >
-                <img [src]="imgFrontPreview" alt="" (click)="inputFile.click()">
-            </div> -->
-                <button class="button-see-more" [mat-dialog-close]="generateFormData()" type="submit">GUARDAR</button>
+
+
+
+                <img type="file" [src]="imgPreview" alt="FOTO PERFIL" (click)="inputFile.click()">
             </div>
+        </div>
+        <div class="form-group">
+            <label>EDITAR FOTO DE PORTADA</label>
+
+
+            <div class="flex-between">
+                <input type="file" #inputFrontFile (change)="onFrontChanged($event)"  >
+                <img [src]="imgFrontPreview" alt="FOTO PORTADA" (click)="inputFrontFile.click()">
+            </div>
+        </div>
+    </div>
+ 
+    <button class="button-see-more" [mat-dialog-close]="generateFormData()" type="submit">GUARDAR</button>
 </form>

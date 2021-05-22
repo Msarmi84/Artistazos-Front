@@ -22,6 +22,9 @@ import { InfoComponent } from './shared/UI/info/info.component';
 import { ProductsFormUpdateComponent } from './products/products-form-update/products-form-update.component';
 import { CartComponent } from './cart/cart.component';
 import { ValidCredentialsComponent } from './valid-credentials/valid-credentials.component';
+import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
+import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
+
 
 
 // MATERIAL MODULES
@@ -34,7 +37,6 @@ import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artist
 import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
 import { SafeurlPipe } from './safeurl.pipe';
-
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { SafeurlPipe } from './safeurl.pipe';
     InfoComponent,
     AdminComponent,
     ProductsModalComponent,
-    SafeurlPipe
+    SafeurlPipe,
+    ArtistDisciplineComponent
+
 
 
 

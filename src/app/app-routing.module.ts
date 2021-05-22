@@ -11,6 +11,7 @@ import { AllProductsComponent } from './products/all-products/all-products.compo
 import { AuthGuard } from './services/auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
+import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
 
 const routes: Routes = [
   {
@@ -45,7 +46,12 @@ const routes: Routes = [
   },
   {
     path: 'admin', component: AdminComponent
-  }
+  },
+  {
+    path: 'artist-discipline/:discipline', component: ArtistDisciplineComponent
+  },
+  
+
 ];
 
 @NgModule({

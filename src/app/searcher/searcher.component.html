@@ -1,4 +1,4 @@
-<form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="row">
+<!-- <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="row">
     <div class="grid">
         <div class="form">
             <div class="formPadding">
@@ -48,4 +48,65 @@
     <div>
         <button class="button-search" type="submit"> BUSCAR</button>
     </div>
+</form> -->
+
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <!-- nombre -->
+        <div class="form col s12">
+            <div class="input-field col s2">
+                <label class="active" for="first_name2">Nombre</label>
+                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="user_name">
+
+            </div>
+            <!-- apellido -->
+            <div class="input-field col s2">
+                <label class="active" for="first_name2">Apellidos</label>
+                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="last_name">
+            </div>
+            <!-- nombre artistico -->
+            <div class="input-field col s2">
+                <label class="active" for="first_name2">Nombre artístico</label>
+                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="artistic_name">
+            </div>
+            <!-- localizacion -->
+            <div class="input-field col s2">
+                <label class="active" for="first_name2">Provincia</label>
+                <select class="formPadding" formControlName="location">
+              <option value=""></option>
+              <option *ngFor="let location of locations" value="{{location}}">
+                      {{ location }}
+              </option>
+              </select>
+            </div>
+            <!-- disciplina -->
+            <div class="input-field col s2">
+                <label class="active" for="first_name2">Disciplina</label>
+                <select class="formPadding" formControlName="discipline_name">
+              <option value=""></option>
+              <option *ngFor="let item of disciplines" ngValue="{{item.discipline_name}}">{{item.discipline_name}}</option>
+          </select> </div>
+            <!-- tags -->
+            <div class="input-field col s2">
+                <label class="active" for="first_name2">Palabras calve</label>
+                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="tag">
+            </div>
+        </div>
+        <!-- boton -->
+        <div class="button">
+            <button class="button-search" type="submit"> BUSCAR</button>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
 </form>

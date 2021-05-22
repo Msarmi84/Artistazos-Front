@@ -18,16 +18,23 @@ export class UserService {
   constructor(private http: HttpClient, private lss: LocalStorageService) { }
 
 
-  getUsers(): Observable<User[]> {
+  getUsers(isAdmin: boolean): Observable<User[]> {
+    if(isAdmin) return this.http.get<User[]>(`${this.URL}/allUsers`)
+    .pipe(map(users => users.map(user => new User(user))));
     return this.http.get<User[]>(this.URL)
       .pipe(map(users => users.map(user => new User(user))));
   }
+  getUsersByDiscipline(discipline_id: number): Observable<User[]>{
+    return this.http.get<User[]>(`${this.URL}/usersByDisciplines/${discipline_id}`)
+    .pipe(map(users => users.map(user => new User(user))));
+  }
+
 
   // saveUser(user: User): Observable<TokenResponse> {
   //   console.log('console del service');
   //   if (user.user_id) {
   //     console.log('entra en updateUser');
-      
+
   //   return this.http.put<TokenResponse>(`${this.URL}/updateUserData/${user.user_id}`, user).pipe(
   //     map((x: any) => {
   //       return new User(x);
@@ -35,14 +42,14 @@ export class UserService {
   //   );
   //   } else {
   //     console.log('entra en guardar nuevo usuario');
-      
+
   //     return this.http.post<TokenResponse>(`${this.URL}/saveUser`, user).pipe(tap(saveResponse => {
   //       return this.lss.saveUserToken(saveResponse.token)
   //     }))
   //     }
   // }
 
-  saveUser(user: User): Observable<TokenResponse> {  
+  saveUser(user: User): Observable<TokenResponse> {
       return this.http.post<TokenResponse>(`${this.URL}/saveUser`, user).pipe(tap(saveResponse => {
         return this.lss.saveUserToken(saveResponse as unknown as string)
       }))
@@ -54,7 +61,15 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.URL}/delete/${id}`);
+    return this.http.delete<void>(`${this.URL}/deleteByAdmin/${id}`);
+  }
+
+  hideUser(id: number): any {
+    return this.http.put<void>(`${this.URL}/hide/${id}`, null);
+  }
+
+  showUser(id: number): any {
+    return this.http.put<void>(`${this.URL}/show/${id}`, null);
   }
 
   updateUser(user: FormData, id: number): any {
@@ -80,7 +95,7 @@ export class UserService {
 
   searchUsers( filtro: UserSearch): Observable<User[]> {
     console.log('filtro de busqueda del service');
-    
+
     console.log(filtro)
 
     return this.http.post<User[]>(`${this.URL}/find`, filtro).pipe(

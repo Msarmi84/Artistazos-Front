@@ -1,117 +1,132 @@
-header {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-    padding: 1rem 1rem;
-    align-items: center;
-    justify-content: center;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
-    // padding: 1rem 8vw;
-    background-color: rgba(16, 16, 16, 0.995);
-    color: #fff;
-    .logo {
-        display: flex;
-        justify-content: flex-start;
-        margin-left: 40px;
-        .logoHeader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-    }
-    nav {
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 40px;
-    }
-    ul {
-        list-style: none;
-        display: flex;
-        padding: 0;
-        align-items: center;
-    }
-    li {
-        padding: 0 0.5rem;
-    }
-}
+                header {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 1rem;
+                    padding: 1rem 1rem;
+                    align-items: center;
+                    justify-content: center;
+                    // display: flex;
+                    // justify-content: space-between;
+                    // align-items: center;
+                    // padding: 1rem 8vw;
+                    background-color: rgba(16, 16, 16, 0.995);
+                    color: #fff;
+                    .logo {
+                        display: flex;
+                        justify-content: flex-start;
+                        margin-left: 40px;
+                        .logoHeader {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                        }
+                    }
+                    nav {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-right: 40px;
+                    }
+                    ul {
+                        list-style: none;
+                        display: flex;
+                        padding: 0;
+                        align-items: center;
+                    }
+                    li {
+                        padding: 0 0.5rem;
+                    }
+                }
 
-.mat-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 28px;
-    cursor: pointer;
-}
+                .mat-icon {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 28px;
+                    cursor: pointer;
+                }
 
-.avatar-name {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    img {
-        width: 50px;
-        height: 50px;
-        border-radius: 160px;
-        object-fit: cover;
-    }
-    .datos-single {
-        color: black;
-        margin: 0 50px 0 50px;
-        h1 {
-            letter-spacing: 1.8px;
-        }
-        p {
-            color: rgb(21, 21, 21);
-        }
-    }
-}
+                .avatar-name {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 160px;
+                        object-fit: cover;
+                    }
+                    .datos-single {
+                        color: black;
+                        margin: 0 50px 0 50px;
+                        h1 {
+                            letter-spacing: 1.8px;
+                        }
+                        p {
+                            color: rgb(21, 21, 21);
+                        }
+                    }
+                }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
+                .tooltip {
+                    position: relative;
+                    display: inline-block;
+                    border-bottom: 1px dotted black;
+                }
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 105%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+                .tooltip .tooltiptext {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: #555;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px 0;
+                    position: absolute;
+                    z-index: 1;
+                    top: 105%;
+                    left: 50%;
+                    margin-left: -60px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
 
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
-}
+                .tooltip .tooltiptext::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: transparent transparent black transparent;
+                }
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
+                .tooltip:hover .tooltiptext {
+                    visibility: visible;
+                    opacity: 1;
+                }
 
-@media (max-width: 375px) {
-    ul {
-        width: 91%;
-    }
-    .logoHeader {
-        width: 50%;
-        margin-left: 46px;
-    }
-}
+                @media (max-width: 375px) {
+                    ul {
+                        width: 91%;
+                    }
+                    .logoHeader {
+                        width: 50%;
+                        margin-left: 46px;
+                    }
+                }
+
+                @media (min-width: 376px) and (max-width: 1024px) {
+                    ul {
+                        width: 70%;
+                        .logoHeader {
+                            width: 50%;
+                            margin-left: 46px;
+                        }
+                    }
+                    .mat-icon {
+                        font-size: 37px;
+                        cursor: pointer;
+                        margin: 0.5rem;
+                    }
+                }

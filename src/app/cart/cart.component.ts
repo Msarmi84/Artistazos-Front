@@ -68,7 +68,6 @@ export class CartComponent implements OnInit {
   deleteProduct(idProduct: number): void {
     this.lss.deleteProducts(idProduct);
     this.ngOnInit();
-    
   }
 
 

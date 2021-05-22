@@ -228,7 +228,9 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   addProduct(product:Product):void {
+  
    let products = {product_id : product.product_id, amount: 1}
+   console.log(products, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this.lss.saveProduct(products);
     alert('Producto añadido al carrito')
   }

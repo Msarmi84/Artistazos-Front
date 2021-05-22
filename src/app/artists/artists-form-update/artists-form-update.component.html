@@ -53,11 +53,14 @@
             <div class="flex-between">
                 <input type="file" #inputFile (change)="onImageChanged($event)" accept="image/*">
 
+
+
                 <img type="file" [src]="imgPreview" alt="FOTO PERFIL" (click)="inputFile.click()">
             </div>
         </div>
         <div class="form-group">
             <label>EDITAR FOTO DE PORTADA</label>
+
 
             <div class="flex-between">
                 <input type="file" #inputFrontFile (change)="onFrontChanged($event)"  >

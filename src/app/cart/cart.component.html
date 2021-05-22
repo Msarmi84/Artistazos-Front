@@ -1,47 +1,47 @@
-<div class="container">
-    <div class="container-product" *ngFor="let product of products">
-        <div class="avatar-name">
-            <div class="caja_img">
-                <img src="http://localhost:3000/images/uploads/{{product.product_photo}}">
-
-            </div>
-            <div class="datos-product">
-                <ul>
-                    <li>
-                        <h1>{{ product.product_name }}</h1>
-                    </li>
-                    <li>
-                        <p>{{ product.description }}</p>
-                    </li>
-                    <li>
-                        <p class="precio">{{ product.price }}</p>
-                    </li>
-                    <li>
-                        <p class="cantidad">{{ product.price }}</p>
-                    </li>
-                </ul>
-                <!-- <button (click)="comprarClick(product)">BUY</button> -->
-            </div>
+<div class="content">
+    <div class="empty_cart" *ngIf="productObject.length === 0">
+        <div>
+            <mat-icon class="cart">shopping_cart</mat-icon>
         </div>
-        <button mat-raised-button>DELETE<i class="fa fa-trash"></i></button>
+        <div class="description">
+            <p>Tu carrito está vacío</p> 
+            <p><span>En estos momentos, no tienes ningún producto añadido a tu carrito.</span></p>
+            <button routerLink="/artistas">Seguir comprando</button>
+        </div>
     </div>
-    <div>
-        <hr>
-        <h3>Total:</h3>
+    <div class="container" *ngIf="productObject.length !== 0">
+        <div class="container-product" *ngFor="let product of productObject">
+                <div class="caja_img">
+                    <img src="http://localhost:3000/images/uploads/{{product.product.product_photo}}">
+
+                </div>
+                <div class="datos-product">
+                    <ul>
+                        <li>
+                            <h2>{{ product.product.product_name }}</h2>
+                        </li>
+                        <li>
+                            <p>{{ product.product.description }}</p>
+                        </li>
+                        <li>
+                            <p class="precio">{{ product.product.price }} €</p>
+                        </li>
+                        <li class="change_amount">
+                            <button (click)="updateAmount(product.product.product_id, '-')">-</button>
+                            <p class="cantidad">{{product.amount}}</p>
+                            <button (click)="updateAmount(product.product.product_id, '+')">+</button>
+                            <button (click)="deleteProduct(product.product.product_id)" class="trash-icon"><i class="fa fa-trash"></i></button>
+                        </li>
+                    </ul>               
+                </div>
+        </div>
+        <div>
+            <hr>
+            <h3>Total: <span>{{total}} 446 €</span> </h3>
+            <p class="iva">Todos los impuestos incluídos</p>
+        </div>
+        <div>
+            <button class="buy">Finalizar compra</button>
+        </div>
     </div>
 </div>
-<!-- <td>{{producto.product_id}}</td>
-<td>{{producto.product_name | uppercase}}</td>
-<td>{{producto.description}}</td>
-<td>{{producto.product_photo}}</td>
-<td>{{producto.price}}</td>
-<td>{{producto.category}}
-    <button (click)="aumento()">Añadir Otro</button>
-    <button (click)="disminuir()">Quitar</button>
-</td>
-<td>{{producto.precioOriginal | currency:'EUR'}}
-    <div class="precioRebajado" *ngIf="producto.rebaja">{{producto.precioRebajado | currency:'EUR'}}</div> 
-     <div *ngIf="!producto.rebaja"></div>
-</td>
-<td>{{producto.importe | currency:'EUR' }}</td>
-<td><button (click)="delete()" class="borrar">Borrar Producto</button> -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Pipe } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
@@ -58,6 +58,9 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   currentUser;
   isAdmin: boolean = false;
   productCart: number;
+  dangerousUrl: string;
+  trustedUrl: any;
+
 
 
 
@@ -69,17 +72,23 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private lss: LocalStorageService,
     private sanitizer: DomSanitizer
-  ) {}
 
-  ngOnInit(): void {
 
-    this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
-    this.getUser(this.userId);
-    this.getProducts(this.userId);
-    this.getDisciplinesByUserId(this.userId);
-    this.currentUser = getUserFromToken();
-    this.isAdmin = isAdmin();
-
+    ) { }
+    
+  
+    
+    ngOnInit(): void {
+      
+      this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
+      this.getUser(this.userId);
+      this.getProducts(this.userId);
+      this.getDisciplinesByUserId(this.userId);
+      this.currentUser = getUserFromToken();
+      this.isAdmin = isAdmin();
+      
+      // this.dangerousUrl = 'http://localhost:3000/pdf/uploads/' + this.product.product_photo;
+      // this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
 
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
   }
@@ -227,7 +236,9 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   addProduct(product:Product):void {
+  
    let products = {product_id : product.product_id, amount: 1}
+   console.log(products, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this.lss.saveProduct(products);
     alert('Producto añadido al carrito')
   }

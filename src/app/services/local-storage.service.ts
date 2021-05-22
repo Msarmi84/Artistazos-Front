@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product';
+import { getUserFromToken } from '../_helpers/tokenHelper';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { Product } from '../models/product';
 export class LocalStorageService {
 
   products = [];
+  productObject:  Array<any> = [];
+  
 
   private readonly AP_TKN = 'AP_TKN';
 
@@ -43,13 +46,11 @@ export class LocalStorageService {
   }
 
   saveProduct(product) {
+    const user_id = getUserFromToken().user_id;
 
     let products = this.getProducts();
     console.log(products);
     
-    
-
-
     let findProducts = this.products.find(x => x.product_id == product.product_id)
     console.log('findProducts')
     console.log(findProducts)
@@ -58,18 +59,49 @@ export class LocalStorageService {
     }
 
     let jProducts = JSON.stringify(this.products);
-    sessionStorage.setItem("shoppingCart", jProducts);
+    console.log(jProducts, ' bbbbbbbbbbbbbbbbbbbbbbbbb');
+    
+    sessionStorage.setItem( user_id? user_id: "shoppingCart", jProducts);
   }
 
   getProducts(): any[]{
-
-    let shoppingCart = sessionStorage.getItem("shoppingCart");
+    const user_id = getUserFromToken().user_id;
+    let shoppingCart = sessionStorage.getItem(user_id? user_id: "shoppingCart");
     let products = [];
     if(shoppingCart != null){
      products = JSON.parse(shoppingCart);
 
+    } else {
+      this.products = [];
     }
     return products;
+  }
+
+  deleteProducts(idProduct:number):void {
+    const user_id = getUserFromToken().user_id;
+    this.productObject = this.getProducts();
+    this.productObject = this.productObject.filter(x => x.product_id !== idProduct );
+    let newProducts = JSON.stringify(this.productObject);
+    sessionStorage.setItem(user_id? user_id: "shoppingCart", newProducts);
+  }
+
+  updateAmount(idProduct:number, signe: string):void {
+    const user_id = getUserFromToken().user_id;
+    let products = this.getProducts();
+    for(let i = 0; i < products.length; i++){
+        if(products[i].product_id == idProduct && signe === '+'){ 
+          console.log('suma') 
+          products[i].amount++;
+        }
+        if(products[i].product_id == idProduct && signe === '-'){  
+          if(products[i].amount > 1){
+            console.log('resta')
+            products[i].amount--;
+          };
+        }
+      }
+    let jProducts = JSON.stringify(products);
+    sessionStorage.setItem(user_id? user_id: "shoppingCart", jProducts); 
   }
 
   

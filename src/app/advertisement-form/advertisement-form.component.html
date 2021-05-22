@@ -1,0 +1,53 @@
+<form [formGroup]="advertisementForm" (ngSubmit)="onSubmit()">
+
+    <div class="formGroup">
+        <label for="name" id="name-label">Nombre anuncio</label>
+        <input type="text" placeholder="Nombre anuncio" class="form-control" formControlName="name" />
+        <div *ngIf="f.get('name').invalid && (f.get('name').dirty || f.get('name').touched || submit)">
+            Debe selecionar un fichero con la información de su cuenta
+        </div>
+    </div>
+
+    <div class="formGroup">
+        <label for="link">Link:</label>
+        <input type="text" formControlName="link">
+        <div *ngIf="f.get('link').invalid && (f.get('link').dirty || f.get('link').touched || submit)">
+            Debe selecionar un fichero con la información de su cuenta
+        </div>
+    </div>
+
+    <div class="formGroup">
+        <label for="dropdown" id="dropdown-label">Selecciona tus disciplinas artísticas</label>
+        <mat-select id="dropdown" class="form-control" formControlName="selectDisciplines" multiple="multiple"
+            placeholder="músico, bailarín/a, pintor/a, escritor/a.... ">
+            <mat-option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name"
+                (click)="clickDiscipline()">
+                {{ discipline.discipline_name }}
+            </mat-option>
+        </mat-select>
+    </div>
+
+    <div class="first-name-div">
+        <label for="location" id="location-label">Localización</label>
+        <select id="dropdown" class="form-control" formControlName="location">
+            <option *ngFor="let location of locations">
+                {{ location }}
+            </option>
+        </select>
+    </div>
+
+    <div class="formGroup">
+        <label for="myPhoto">Foto:</label>
+        <input #myPhoto type="file" id="myPhoto" formControlName="myPhoto">
+        <mat-icon class="material-icons-outlined">
+            add_a_photo
+        </mat-icon>
+        <div *ngIf="f.get('myPhoto').invalid && (f.get('myPhoto').dirty || f.get('myPhoto').touched || submit)">
+            Debe selecionar un fichero con la información de su cuenta
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">ENVIAR</button>
+    </div>
+</form>

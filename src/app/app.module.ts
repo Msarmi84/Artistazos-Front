@@ -34,6 +34,7 @@ import { ArtistsFormUpdateComponent } from './artists/artists-form-update/artist
 import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
 import { SafeurlPipe } from './safeurl.pipe';
+import { AdvertisementFormComponent } from './advertisement-form/advertisement-form.component';
 
 
 
@@ -59,7 +60,8 @@ import { SafeurlPipe } from './safeurl.pipe';
     InfoComponent,
     AdminComponent,
     ProductsModalComponent,
-    SafeurlPipe
+    SafeurlPipe,
+    AdvertisementFormComponent
 
 
 

@@ -189,6 +189,11 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
           .subscribe((updatedProduct) => {
             this.product = updatedProduct;
             this.getProducts(this.userId);
+          },
+          (error) => {
+            // Si hay un error al subir el producto
+            // se muestra el mensaje
+            alert("Archivo no válido.")
           });
       });
     } else {

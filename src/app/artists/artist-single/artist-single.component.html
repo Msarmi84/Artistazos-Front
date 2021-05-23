@@ -34,13 +34,13 @@
                     <button class="button-single" *ngIf="isLoggedIn" [routerLink]="['/artists-form', user.user_id]">
                         EDITAR DATOS DE REGISTRO
                     </button>
-                    <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id, 'img')">
+                    <mat-icon *ngIf="user.type == '1' || isAdmin" class="material-icons-outlined" (click)="seeEditProfile(user.user_id, 'img')">
                         add_a_photo
                     </mat-icon>
-                    <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id, 'video')">
+                    <mat-icon *ngIf="user.type == '1' || isAdmin" class="material-icons-outlined" (click)="seeEditProfile(user.user_id, 'video')">
                         ondemand_video
                     </mat-icon>
-                    <mat-icon class="material-icons-outlined" (click)="seeEditProfile(user.user_id, 'pdf')">
+                    <mat-icon *ngIf="user.type == '1' || isAdmin" class="material-icons-outlined" (click)="seeEditProfile(user.user_id, 'pdf')">
                         picture_as_pdf
                     </mat-icon>
                 </div>

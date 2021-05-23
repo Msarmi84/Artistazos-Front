@@ -26,9 +26,7 @@ export class ArtistsGridComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUsers(isAdmin()).subscribe(users => {
-      return this.users = users
-    });
+    this.getUsers(isAdmin());
     this.isAdmin = isAdmin();
   
     for(let i = 0; i <this.users.length; i++){
@@ -36,6 +34,10 @@ export class ArtistsGridComponent implements OnInit {
     }
     
     this.getDisciplines();
+  }
+
+  getUsers(admin: boolean): void {
+    this.userService.getUsers(admin).subscribe((users) => this.users = users);
   }
 
   //  obtiene disciplinas 
@@ -51,20 +53,20 @@ export class ArtistsGridComponent implements OnInit {
   }
 
   deleteUser(id: number): void {
-    this.userService.deleteUser(id).subscribe(res => {
-      this.router.navigateByUrl('/admin');
+    this.userService.deleteUser(id).subscribe(() => {
+      this.getUsers(isAdmin());
     });
   }
   
   hideUser(id: number): void {
-    this.userService.hideUser(id).subscribe(res => {
-      this.router.navigateByUrl('/admin');
+    this.userService.hideUser(id).subscribe(() => {
+      this.getUsers(isAdmin());
     });
   }
   
   showUser(id: number): void {
-    this.userService.showUser(id).subscribe(res => {
-      this.router.navigateByUrl('/admin');
+    this.userService.showUser(id).subscribe(() => {
+      this.getUsers(isAdmin());
     });
   }
 }

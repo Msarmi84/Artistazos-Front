@@ -1,0 +1,83 @@
+@import "/src/app/login/login.component.scss";
+@import "/src/app/artists/artists-grid/artists-grid.component.scss";
+
+form {
+    display: flex;
+}
+
+label.active {
+    display: grid;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.906);
+    padding: 0.5rem;
+}
+
+.input-field {
+    padding: 1.5rem;
+}
+
+input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid rgb(36, 36, 36);
+}
+
+select {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid rgb(36, 36, 36);
+    margin-top: 1.9rem;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+}
+
+.button-search {
+    border-radius: 20px;
+    border: 1px solid #1c1c1c;
+    background-color: #1c1c1c;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+@media (max-width: 375px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 376px) {
+    .form {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(130px, 1fr));
+    }
+}

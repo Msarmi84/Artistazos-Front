@@ -3,19 +3,9 @@
         <!-- nombre -->
         <div class="form col s12">
             <div class="input-field col s2">
-                <label class="active" for="first_name2">Nombre</label>
-                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="user_name">
+                <label class="active" for="first_name2">Nombre del anuncio</label>
+                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="advertisement_name">
 
-            </div>
-            <!-- apellido -->
-            <div class="input-field col s2">
-                <label class="active" for="first_name2">Apellidos</label>
-                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="last_name">
-            </div>
-            <!-- nombre artistico -->
-            <div class="input-field col s2">
-                <label class="active" for="first_name2">Nombre artístico</label>
-                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="artistic_name">
             </div>
             <!-- localizacion -->
             <div class="input-field col s2">
@@ -35,10 +25,6 @@
               <option *ngFor="let item of disciplines" ngValue="{{item.discipline_name}}">{{item.discipline_name}}</option>
           </select> </div>
             <!-- tags -->
-            <div class="input-field col s2">
-                <label class="active" for="first_name2">Palabras calve</label>
-                <input value="Alvin" id="first_name2" type="text" class="validate" formControlName="tag">
-            </div>
         </div>
         <!-- boton -->
         <div class="button">
@@ -46,3 +32,4 @@
         </div>
     </div>
 </form>
+

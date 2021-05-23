@@ -16,6 +16,8 @@ import { ValidCredentialsComponent } from 'src/app/valid-credentials/valid-crede
 import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
 import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AdvertisementService } from 'src/app/advertisement.service';
+import { Advertisement } from 'src/app/models/advertisement';
 
 
 @Component({
@@ -60,6 +62,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   productCart: number;
   dangerousUrl: string;
   trustedUrl: any;
+  advertisementsByLocation: Advertisement[] = [];
 
 
 
@@ -71,7 +74,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private dialog: MatDialog,
     private lss: LocalStorageService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private advertisemenService: AdvertisementService
 
 
     ) { }
@@ -84,8 +88,10 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.getUser(this.userId);
       this.getProducts(this.userId);
       this.getDisciplinesByUserId(this.userId);
+      
       this.currentUser = getUserFromToken();
       this.isAdmin = isAdmin();
+
 
       // this.dangerousUrl = 'http://localhost:3000/pdf/uploads/' + this.product.product_photo;
       // this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
@@ -98,6 +104,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     this.userService.getUserById(id).subscribe((x) => {
       console.log(x)
       this.user = x;
+      this.getAdvertisementsByLocation(this.user.location);
   });
   }
 
@@ -140,6 +147,17 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
        this.disciplines = disciplines;
     })
   }
+
+  getAdvertisementsByLocation(location:string):void {
+    this.advertisemenService.getAdvertisementsByLocation(location).subscribe(x => {
+      this.advertisementsByLocation = x
+      console.log(this.advertisementsByLocation, 'anunciosss filtrados'); 
+    })
+  }
+
+  // selectAdvertisements():void {
+  //   for(let i = 0; i < this.advertise)
+  // }
 
   deleteUser(): void {
     const dialogRef = this.dialog.open(InfoComponent, {

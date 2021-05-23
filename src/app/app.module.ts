@@ -10,7 +10,6 @@ import { ArtistSingleComponent } from './artists/artist-single/artist-single.com
 import { ArtistsFormComponent } from './artists/artists-form/artists-form.component';
 import { LoginComponent } from './login/login.component';
 import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
-import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
 import { AdvertisementComponent } from './artists/advertisement/advertisement.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
@@ -24,6 +23,7 @@ import { CartComponent } from './cart/cart.component';
 import { ValidCredentialsComponent } from './valid-credentials/valid-credentials.component';
 import { safeUrlPipe } from './safeurl.pipe.ts.pipe';
 import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
+import { PurchaserFormComponent } from './purchaser-form/purchaser-form.component';
 
 
 
@@ -49,7 +49,6 @@ import { AdvertisementFormComponent } from './advertisement-form/advertisement-f
     ArtistsFormComponent,
     LoginComponent,
     ArtistsGridComponent,
-    CompradorFormComponent,
     HomePageComponent,
     AllProductsComponent,
     SearcherComponent,
@@ -63,7 +62,8 @@ import { AdvertisementFormComponent } from './advertisement-form/advertisement-f
     AdminComponent,
     ProductsModalComponent,
     SafeurlPipe,
-    AdvertisementFormComponent
+    AdvertisementFormComponent,
+    PurchaserFormComponent
 
 
 

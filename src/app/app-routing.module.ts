@@ -4,7 +4,7 @@ import { ArtistSingleComponent } from './artists/artist-single/artist-single.com
 import { ArtistsFormComponent } from './artists/artists-form/artists-form.component';
 import { ArtistsGridComponent } from './artists/artists-grid/artists-grid.component';
 import { SearcherComponent } from './searcher/searcher.component';
-import { CompradorFormComponent } from './comprador/comprador-form/comprador-form.component';
+import { PurchaserFormComponent } from './purchaser-form/purchaser-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
     path: 'artists-form', component: ArtistsFormComponent,
   },
   {
-    path: 'comprador-form', component: CompradorFormComponent,
+    path: 'purchaser-form', component: PurchaserFormComponent,
   },
   {
     path: '', component: HomePageComponent,

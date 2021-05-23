@@ -1,0 +1,130 @@
+<main class="main">
+  <div class="container">
+    <header>
+      <h1 id="title">
+        <span class="sr-only">Artistazos </span>
+      </h1>
+      <h2 *ngIf="!userId">Formulario de registro de comprador</h2>
+      <h2 *ngIf="userId">Modifica tus datos de registro</h2>
+    </header>
+    <form id="survey-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <div id="name-div">
+
+
+        <div class="first-name-div">
+          <label for="name" id="name-label">Nombre </label>
+          <input type="text" id="user_name" name="first-name" placeholder="Nombre " class="form-control"
+            formControlName="user_name" />
+          <div class="errorColor" *ngIf="submitted && loginForm.user_name.errors">
+            <div *ngIf="loginForm.user_name.errors.required">
+              *Campo obligatorio
+            </div>
+          </div>
+        </div>
+        <div class="first-name-div">
+          <label for="name" id="name-label">Apellidos </label>
+          <input type="text" id="last_name" name="last-name" placeholder="Apellidos " class="form-control"
+            formControlName="last_name" />
+          <div class="errorColor" *ngIf="submitted && loginForm.last_name.errors">
+            <div *ngIf="loginForm.last_name.errors.required">
+              *Campo obligatorio
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- siguiente linea -->
+      <div id="name-div">
+        <div class="first-name-div">
+          <label for="name" id="name-label">Fecha de nacimiento</label>
+          <input type="date" id="date_of_birth" name="first-name" class="form-control"
+            formControlName="date_of_birth" />
+          <div class="errorColor" *ngIf="submitted && loginForm.date_of_birth.errors">
+            <div *ngIf="loginForm.date_of_birth.errors.required">
+              *Campo obligatorio
+            </div>
+          </div>
+        </div>
+
+        <div class="first-name-div">
+          <label for="location" id="location-label">Localización</label>
+          <select id="dropdown" class="form-control" formControlName="location">
+            <option *ngFor="let location of locations">
+              {{ location }}
+            </option>
+          </select>
+        </div>
+
+      </div>
+
+      <label for="email" id="email-label">Email</label>
+      <input type="email" id="mail" name="email" placeholder="email@email.com" class="form-control"
+        formControlName="mail" [ngClass]="{ 'is-invalid': submitted && loginForm.mail.errors }" placeholder="email" />
+      <div class="errorColor" *ngIf="submitted && loginForm.mail.errors">
+        <div *ngIf="loginForm.mail.errors.required">*Campo obligatorio</div>
+      </div>
+
+      <label for="dropdown" id="dropdown-label">Selecciona tus intereses artísticos</label>
+      <mat-select id="dropdown" class="form-control" [formControl]="selectDisciplines" multiple="multiple"
+        placeholder="músico, bailarín/a, pintor/a, escritor/a.... ">
+        <mat-option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name"
+          (click)="clickDiscipline()">
+          {{ discipline.discipline_name }}
+        </mat-option>
+      </mat-select>
+
+      <div id="name-div">
+        <div class="last-name-div" *ngIf="userId">
+          <label for="password" id="password"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }">Antigua Contraseña</label>
+          <input type="password" id="last-name" name="last-name" placeholder="Password" class="form-control"
+            formControlName="password" />
+          <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
+            <div *ngIf="loginForm.password.errors.required && userId">
+              *Inserta Contraseña
+            </div>
+            <div *ngIf="loginForm.password.errors.minlength">
+              *Mínimo 4 caracteres
+            </div>
+          </div>
+        </div>
+        <div class="last-name-div">
+          <label *ngIf="!userId" for="last-name" id="last-name-label"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }">Contraseña</label>
+          <label *ngIf="userId" for="last-name" id="last-name-label"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }">Nueva contraseña</label>
+          <input *ngIf="!userId" type="password" id="last-name" name="last-name" placeholder="Password"
+            class="form-control" formControlName="password" />
+          <input *ngIf="userId" type="password" id="last-name" name="last-name" placeholder="Nueva contraseña"
+            class="form-control" formControlName="password" />
+          <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
+            <div *ngIf="loginForm.password.errors.required">
+              *Inserta Contraseña
+            </div>
+            <div *ngIf="loginForm.password.errors.minlength">
+              *Mínimo 4 caracteres
+            </div>
+          </div>
+        </div>
+
+        <div class="last-name-div">
+          <label for="last-name" id="password"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }">Confirma tu contraseña</label>
+          <input type="password" id="last-name" name="last-name" placeholder="Confirma tu password"
+            class="form-control-password" formControlName="confirmPassword" />
+          <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
+            <div *ngIf="loginForm.confirmPassword.errors.required">
+              *Repita contraseña
+            </div>
+            <div *ngIf="loginForm.confirmPassword.errors.mustMatch">
+              *Debe coincidir
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button *ngIf="userId" id="submit" type="submit">Guardar</button>
+      <button *ngIf="!userId" id="submit" type="submit">Registrate</button>
+
+    </form>
+  </div>
+</main>

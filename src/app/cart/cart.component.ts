@@ -1,5 +1,6 @@
 import { isNgContent } from '@angular/compiler';
 import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/product';
@@ -18,13 +19,17 @@ export class CartComponent implements OnInit {
   productObject:  Array<any> = [];
   subscriptions: Subscription;
   total: number;
- 
+  isLoggedIn: boolean = false;
+  isLoggedSub: Subscription;
 
-
-  constructor(private productService: ProductService, private lss: LocalStorageService) { }
+  constructor(
+    private router: Router,
+    private productService: ProductService, 
+    private lss: LocalStorageService) { }
 
 
   ngOnInit(): void {
+    this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
     this.productsStorage = this.lss.getProducts();
     this.productObject = this.getProducts();
     console.log(this.productObject,'productObject');
@@ -104,5 +109,14 @@ export class CartComponent implements OnInit {
     // }
       // this.total += this.productObject.amount;
     
+  }
+
+  comprarClick() {
+    if (!this.isLoggedIn) {
+      // Si no esta logueado, lo llevamos a que se registre como comprador
+      this.router.navigateByUrl('/purchaser-form');
+    } else {
+      // Realizar compra
+    }
   }
 }

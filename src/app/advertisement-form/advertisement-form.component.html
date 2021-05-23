@@ -37,11 +37,12 @@
     </div>
 
     <div class="formGroup">
-        <label for="myPhoto">Foto:</label>
-        <input #myPhoto type="file" id="myPhoto" formControlName="myPhoto">
-        <mat-icon class="material-icons-outlined">
-            add_a_photo
-        </mat-icon>
+        <label for="myPhoto">Foto:
+            <input #myPhoto type="file" id="myPhoto" formControlName="myPhoto">
+            <mat-icon class="material-icons-outlined">
+                add_a_photo
+            </mat-icon>
+        </label>
         <div *ngIf="f.get('myPhoto').invalid && (f.get('myPhoto').dirty || f.get('myPhoto').touched || submit)">
             Debe selecionar un fichero con la información de su cuenta
         </div>

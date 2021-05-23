@@ -200,7 +200,11 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       });
       // después de cerrarlo hacemos la petición http para  guardar el usuario modificado
       dialogRef.afterClosed().subscribe((user) => {
-
+        if (!user) {
+          // Se ha cerrado el modal sin guardar, no hacemos nada
+          // para que no salga como undefined
+          return;
+        }
         this.userService
           .updateUser(user, this.userId)
           .subscribe((editUser) => {

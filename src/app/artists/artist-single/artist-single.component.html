@@ -59,11 +59,13 @@
                     <img (click)="seeEditProduct()" src="http://localhost:3000/images/uploads/{{
               product.product_photo
             }}">
-                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product, 'img')">
-                        edit</mat-icon>
+                    <div class="container-icons">
+                        <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product, 'img')">
+                            edit</mat-icon>
+                        <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="deleteProduct(product.product_id)">delete</mat-icon>
 
-                    <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
-
+                        <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
+                    </div>
                 </div>
 
             </div>
@@ -80,9 +82,13 @@
                     <video width="250px" height="250px" controls onplay="true" src="http://localhost:3000/video/uploads/{{
               product.product_photo
             }}" loop></video>
-                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product,'video')">
-                        edit</mat-icon>
-                    <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
+                    <div class="container-icons">
+                        <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product,'video')">
+                            edit</mat-icon>
+                        <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="deleteProduct(product.product_id)">delete</mat-icon>
+
+                        <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
+                    </div>
                 </div>
 
             </div>
@@ -100,18 +106,20 @@
         ">
 
                 <embed type="application/pdf" [src]="'http://localhost:3000/pdf/uploads/' + product.product_photo | safeurl" width="250px" height="250px" />
+                <div class="container-icons">
 
+                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="deleteProduct(product.product_id)">delete</mat-icon>
 
-                <!-- <embed type="file" frameborder="0" height="250px" width="250px" src="http://localhost:3000/pdf/uploads/{{
+                    <!-- <embed type="file" frameborder="0" height="250px" width="250px" src="http://localhost:3000/pdf/uploads/{{
                   product.product_photo
                 }}"> -->
-                <!-- <object type="application/pdf" page=1 frameborder="0" height="250px" width="250px" data="http://localhost:3000/pdf/uploads/{{ product.product_photo }}"></object> -->
-                <!-- <iframe src="http://localhost:3000/pdf/uploads/{{ product.product_photo }} ? file=http://localhost:3000/pdf/uploads/{{ product.product_photo }} " style="width:250px; height:250px;" frameborder="0"></iframe> -->
-                <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product, 'pdf')">
-                    edit</mat-icon>
+                    <!-- <object type="application/pdf" page=1 frameborder="0" height="250px" width="250px" data="http://localhost:3000/pdf/uploads/{{ product.product_photo }}"></object> -->
+                    <!-- <iframe src="http://localhost:3000/pdf/uploads/{{ product.product_photo }} ? file=http://localhost:3000/pdf/uploads/{{ product.product_photo }} " style="width:250px; height:250px;" frameborder="0"></iframe> -->
+                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product, 'pdf')">
+                        edit</mat-icon>
 
-                <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
-
+                    <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
+                </div>
 
             </div>
             <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>

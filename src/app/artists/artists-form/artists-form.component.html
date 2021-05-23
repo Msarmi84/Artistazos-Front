@@ -1,88 +1,6 @@
-<!-- <div class="center white">
-    <h3>BIENVENIDO A TU COMUNIDAD ARTISTICA</h3>
-    <div class="parallelogram">
-        <form class="center " [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-            <div class="centerRows formPadding">
-                <div class="center formPadding">
-                    <input type="text" formControlName="artistic_name" placeholder="NOMBRE ARTISTICO" />
-                    <p *ngIf="registerForm.controls.artistic_name?.errors?.required">*Campo obligatorio</p>
-                </div>
-                <div class="center formPadding">
-                    <label class="label">DISCIPLINA ARTISTICA</label>
-                    <select formControlName="discipline_name" multiple="multiple">
-                      <option *ngFor="let discipline of disciplines" [value]="discipline.discipline_name">
-                          {{discipline.discipline_name}}
-                      </option>
-                  </select>
-                    <ul>
-                        <li class="white" *ngFor="let seleccion of seleccionados">
-                            {{seleccion}}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="centerRows formPadding">
-                <div class="center formPadding">
-                    <input type="text" formControlName="user_name" placeholder="NOMBRE" class="input" />
-                    <p *ngIf="registerForm.controls.user_name?.errors?.required">*Campo obligatorio</p>
-                </div>
-                <div class="center formPadding">
-                    <input type="text" formControlName="last_name" placeholder="APELLIDOS" />
-                    <p *ngIf="registerForm.controls.last_name?.errors?.required">*Campo obligatorio</p>
-                </div>
-                <div class="center formPadding">
-                    <label class="label">FECHA DE NACIMIENTO</label>
-                    <input type="date" formControlName="date_of_birth" />
-                    <p *ngIf="registerForm.controls.date_of_birth?.errors?.required">*Campo obligatorio</p>
-                </div>
-            </div>
-            <div class="centerRows formPadding">
-                <div class="center formPadding">
+<div class="container">
+    <div class="form">
 
-                    <input type="text" formControlName="location" placeholder="PROVINCIA" />
-                    <p *ngIf="registerForm.controls.location?.errors?.required ">*Campo obligatorio</p>
-            <select formControlName="location">
-                        <option *ngFor="let location of locations">{{location}}</option>
-                    </select>
-
-                </div>
-            </div>
-            <div class="centerRows formPadding">
-                <div class="center formPadding">
-                    <input type="email" formControlName="mail" [ngClass]="{ 'is-invalid': submitted && loginForm.mail.errors }" placeholder="EMAIL" />
-                    <div class="errorColor" *ngIf="submitted && loginForm.mail.errors">
-                        <div *ngIf="loginForm.mail.errors.required">Introduce tu email</div>
-                        <div *ngIf="loginForm.mail.errors.mail">Debe ser un email válido</div>
-                        <p *ngIf="registerForm.controls.mail?.errors?.required">*Campo obligatorio</p>
-                    </div>
-                </div>
-                <div class="center formPadding">
-                    <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.password.errors }" placeholder="CONTRASEÑA" />
-                    <div class="errorColor" *ngIf="submitted && loginForm.password.errors">
-                        <div *ngIf="loginForm.password.errors.required">Inserta Contraseña</div>
-                        <div *ngIf="loginForm.password.errors.minlength">Mínimo 6 caracteres</div>
-                    </div>
-                </div>
-                <div class="center formPadding">
-                    <input type="password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && loginForm.confirmPassword.errors }" placeholder="REPITE CONTRASEÑA" />
-                    <div class="errorColor" *ngIf="submitted && loginForm.confirmPassword.errors">
-                        <div *ngIf="loginForm.confirmPassword.errors.required">Repita contraseña</div>
-                        <div *ngIf="loginForm.confirmPassword.errors.mustMatch">Debe coincidir</div>
-                    </div>
-                </div>
-            </div>
-            <div class="formPadding">
-                <button mat-raised-button type="submit ">
-
-                  REGISTRATE
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
- -->
-<div class="form">
-    <div class="container">
         <header>
             <h1 id="title">
                 <span class="sr-only">Artistazos </span>
@@ -257,24 +175,9 @@
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
-
       <button *ngIf="userId" id="submit" type="submit">Guardar</button>
       <button *ngIf="!userId" id="submit" type="submit">Registrate</button>
-
     </form>
   </div>
 </div>

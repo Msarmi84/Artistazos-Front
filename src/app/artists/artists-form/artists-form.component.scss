@@ -1,8 +1,8 @@
 .form {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .container {
@@ -180,11 +180,18 @@ textarea {
     }
     .container {
         padding: 1.5rem 1.725rem;
+        height: 100vh;
     }
 }
 
 @media (max-width: 375px) {
     .container {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 1024px)and (min-width: 376px) {
+    .form {
+        margin-top: 14rem;
     }
 }

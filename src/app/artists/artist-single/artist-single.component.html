@@ -9,10 +9,14 @@
                     <img src="http://localhost:3000/images/uploads/{{ user.avatar }}" alt="" />
                 </div>
                 <div class="datos-single">
-                    <h1>
+
+                    <!-- Nombre usuario para artistas -->
+                    <h1 *ngIf="user.type == '1'">
                         {{ user.artistic_name }} <i class="fab fa-linkedin-in"></i
             ><i class="fab fa-facebook"></i>
                     </h1>
+                    <!-- Nombre usuario para compradores -->
+                    <h1 *ngIf="user.type == '2'">{{ user.user_name }}</h1>
                     <p>{{ user.mail }}</p>
                     <div *ngIf="currentUser.user_id === userId || isAdmin">
                         <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>

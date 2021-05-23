@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
         for (let j = 0; j < this.productsStorage.length; j++) {
           if (product2[i].product_id == this.productsStorage[j].product_id) {
 
-            newArray[i]= ({ product: product[i], amount: this.productsStorage[j].amount });
+            this.productObject.push({ product: product[i], amount: this.productsStorage[j].amount });
             console.log(newArray, 'primer log');
             
           }
@@ -57,7 +57,7 @@ export class CartComponent implements OnInit {
     });
     console.log(newArray[0],' newArray');
     
-    return newArray;
+    return this.productObject;
     // this.calculateAmount();
   }
 
@@ -67,12 +67,16 @@ export class CartComponent implements OnInit {
 
   updateAmount(idProduct: number, signe: string): void {
     this.lss.updateAmount(idProduct, signe);
+    this.productObject = [];
     this.ngOnInit();
+  
   }
 
   deleteProduct(idProduct: number): void {
     this.lss.deleteProducts(idProduct);
+    this.productObject = [];
     this.ngOnInit();
+ 
   }
 
 

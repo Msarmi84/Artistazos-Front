@@ -68,6 +68,7 @@ export class LocalStorageService {
     const user_id = getUserFromToken().user_id;
     let shoppingCart = sessionStorage.getItem(user_id? user_id: "shoppingCart");
     let products = [];
+    console.log(shoppingCart,'shoppingCart vacioooooooooooo')
     if(shoppingCart != null){
      products = JSON.parse(shoppingCart);
 

@@ -32,6 +32,7 @@ export class AdvertisementService {
     return this.http.post<string>(`${this.URL}`, formData);
   }
 
+
   searchAdvertisements( filtro: AdvertisementSearcher): Observable<Advertisement[]> {
     console.log('filtro de busqueda del service de anuncios');
 
@@ -45,6 +46,7 @@ export class AdvertisementService {
   deleteAdvertisement(id: number): Observable<void> {
     return this.http.delete<void>(`${this.URL}/${id}`);
   }
+
 
 
 }

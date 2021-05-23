@@ -79,11 +79,11 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
 
 
     ) { }
-    
-  
-    
+
+
+
     ngOnInit(): void {
-      
+
       this.route.params.subscribe((params) => (this.userId = parseInt(params.id)));
       this.getUser(this.userId);
       this.getProducts(this.userId);
@@ -92,7 +92,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.currentUser = getUserFromToken();
       this.isAdmin = isAdmin();
 
-      
+
       // this.dangerousUrl = 'http://localhost:3000/pdf/uploads/' + this.product.product_photo;
       // this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
 
@@ -163,7 +163,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(InfoComponent, {
       width: '400px',
       height: '300px',
-      data: 'Estas seguro?',
+      data: 'Seguro que quieres eliminar tu perfil?',
     });
     console.log(dialogRef);
     dialogRef.afterClosed().subscribe((isConfirmed) => {
@@ -176,6 +176,24 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/artistas');
         this.lss.removeUserToken();
 
+      });
+    });
+  }
+  deleteProduct (product_id): void {
+    const dialogRef = this.dialog.open(InfoComponent, {
+      width: '400px',
+      height: '300px',
+      data: 'Seguro que quieres eliminar este producto?',
+    });
+    console.log(dialogRef);
+    dialogRef.afterClosed().subscribe((isConfirmed) => {
+      if (!isConfirmed) {
+        console.log(' no ha confirmado');
+        return;
+      }
+
+      this.productService.deleteProduct(product_id).subscribe(res => {
+        this.getProducts(this.userId);
       });
     });
   }
@@ -207,6 +225,11 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
           .subscribe((updatedProduct) => {
             this.product = updatedProduct;
             this.getProducts(this.userId);
+          },
+          (error) => {
+            // Si hay un error al subir el producto
+            // se muestra el mensaje
+            alert("Archivo no válido.")
           });
       });
     } else {
@@ -218,7 +241,11 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       });
       // después de cerrarlo hacemos la petición http para  guardar el usuario modificado
       dialogRef.afterClosed().subscribe((user) => {
-
+        if (!user) {
+          // Se ha cerrado el modal sin guardar, no hacemos nada
+          // para que no salga como undefined
+          return;
+        }
         this.userService
           .updateUser(user, this.userId)
           .subscribe((editUser) => {
@@ -254,7 +281,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   addProduct(product:Product):void {
-  
+
    let products = {product_id : product.product_id, amount: 1}
    console.log(products, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this.lss.saveProduct(products);

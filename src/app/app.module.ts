@@ -26,7 +26,6 @@ import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-di
 import { PurchaserFormComponent } from './purchaser-form/purchaser-form.component';
 
 
-
 // MATERIAL MODULES
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';

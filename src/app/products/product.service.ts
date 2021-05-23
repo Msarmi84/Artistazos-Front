@@ -29,7 +29,7 @@ export class ProductService {
       { id: ProductCategory.escultura, name: 'Escultura' }
     ];
   }
- 
+
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.URL}`).pipe(
@@ -56,7 +56,7 @@ export class ProductService {
     console.log(product.get('user_id'))
     console.log(product)
     if (product_id) {
-      // PUT 
+      // PUT
       return this.http.put<Product>(`${this.URL}/${product_id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
@@ -64,7 +64,7 @@ export class ProductService {
       )
 
     } else {
-      // POST 
+      // POST
       return this.http.post<Product>(`${this.URL}/saveProduct/${user_id}`, product).pipe(
         map((x: any) => {
           return new Product(x)
@@ -74,8 +74,8 @@ export class ProductService {
 
   }
 
-  deleteProduct( product: Product): Observable<Boolean>{
-    return this.http.delete<boolean>(`${this.URL}/${product.product_id}`, { observe: 'response' }).pipe(
+  deleteProduct( productId: number): Observable<Boolean>{
+    return this.http.delete<boolean>(`${this.URL}/${productId}`, { observe: 'response' }).pipe(
       map((x: HttpResponse<any>) => {
         return x.ok
       })

@@ -40,7 +40,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    @Inject(MAT_DIALOG_DATA) private data?: User
+    @Inject(MAT_DIALOG_DATA) public data?: User
     ) {
     this.form = formBuilder.group({
       user_id:[''],
@@ -69,6 +69,10 @@ export class ArtistsFormUpdateComponent implements OnInit {
     this.userService.getDisciplines().subscribe(discipline => this.disciplines = discipline);
   }
 
+  closeFormData() {
+    return;
+  }
+
   generateFormData(): FormData {
 
     const formData = new FormData();
@@ -79,8 +83,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     }
 
 
-   console.log(this.form)
-
+   console.log(this.form);
 
     formData.append('discipline', this.disciplinesLowerCase)
     formData.append('tag', this.tag3)
@@ -90,6 +93,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     formData.append('front', this.imageFrontFile);
     console.log('console del formdata')
     console.log(formData)
+    
     return formData;
   }
 

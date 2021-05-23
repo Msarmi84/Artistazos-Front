@@ -21,10 +21,11 @@
                 <p>{{ user.location}} </p>
             </div>
 
-            <button [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
+            <button *ngIf="user.deleted === 0" [routerLink]="['/artista', user.user_id]" class="button-see-more">VER MÁS</button>
             <button *ngIf="isAdmin" (click)="deleteUser(user.user_id)" class="button-see-more">BORRAR</button>
             <button *ngIf="isAdmin && user.deleted === 0" (click)="hideUser(user.user_id)" class="button-see-more">OCULTAR</button>
             <button *ngIf="isAdmin && user.deleted === 1" (click)="showUser(user.user_id)" class="button-see-more">MOSTRAR</button>
         </div>
     </div>
 </div>
+

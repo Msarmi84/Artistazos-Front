@@ -31,34 +31,27 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
     this.productsStorage = this.lss.getProducts();
-    this.productObject = this.getProducts();
-    console.log(this.productObject,'productObject');
-    
-    
-}
-  private getProducts(): Array<any> {
-    let newArray: Array<any> = [];
-   this.subscriptions = this.productService.getProducts().subscribe(product => {
+    this.getCartProducts();
+    this.calculateAmount(this.productObject);
+    console.log(this.productObject,'productObject');  
+  }
 
-      let product2 = product;
-
-      console.log(product, 'productt');
-      
-      for (let i = 0; i < product2.length; i++) {
-        for (let j = 0; j < this.productsStorage.length; j++) {
-          if (product2[i].product_id == this.productsStorage[j].product_id) {
-
-            newArray[i]= ({ product: product[i], amount: this.productsStorage[j].amount });
-            console.log(newArray, 'primer log');
-            
-          }
-        }
+  private getCartProducts(): void {
+    this.subscriptions = this.productService.getProducts().subscribe(products => {
+      this.productObject = [];
+      // Map with product as key
+      let productMap = {}
+      for (let product of products) {
+        productMap[product.product_id] = product;
       }
+
+      console.log(productMap, 'productMap');
+      for (let j = 0; j < this.productsStorage.length; j++) {
+        const productId = this.productsStorage[j].product_id
+        this.productObject.push({ product: productMap[productId], amount: this.productsStorage[j].amount });          
+      }
+      this.calculateAmount(this.productObject);
     });
-    console.log(newArray[0],' newArray');
-    
-    return newArray;
-    // this.calculateAmount();
   }
 
   ngOnDestroy(): void {
@@ -76,38 +69,10 @@ export class CartComponent implements OnInit {
   }
 
 
-  calculateAmount():void {
-  //   // for(let price of this.productObject){
-  //   //   console.log('holaaaaaa')
-      
-  //   //   this.total += (price.amount * price.product.price);
-  //   //   console.log(this.total);
-  //   // }
-    console.log( this.productObject);
+  calculateAmount(productObject: any):void {
     
-    const prices = this.productObject.map(x => x.product.price )
-    this.total = prices[0];
-     console.log(prices, 'pricessssssssss');
-      console.log(this.total, 'segundoooooooo');
-      
-      
-      
-    //   {
-    //   let precios = x.product.price * x.amount ;
-    //   console.log(precios)
-    // }) 
-    
-    // for(let i = 0; i < this.productObject.length; i++){
-    //   console.log('holaaaaaaaaaaaaaaa');
-    //   console.log(this.productObject);
-      
-    //   console.log(this.productObject.length)
-    //   if(i == 0){
-    //   this.total += this.productObject[i].amount * this.productObject[i].product.price;
-    //   console.log(this.total)
-    // }
-    // }
-      // this.total += this.productObject.amount;
+    this.total = productObject.map(x => x.product.price * x.amount )
+      .reduce((price1, price2) => price1 + price2, 0);
     
   }
 

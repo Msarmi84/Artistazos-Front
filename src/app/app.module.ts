@@ -38,6 +38,8 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
 import { SafeurlPipe } from './safeurl.pipe';
 import { AdvertisementFormComponent } from './advertisement-form/advertisement-form.component';
+import { AdvertisementGridComponent } from './advertisement-grid/advertisement-grid.component';
+import { AdvertisementSearcherComponent } from './advertisement-searcher/advertisement-searcher.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { AdvertisementFormComponent } from './advertisement-form/advertisement-f
     ProductsModalComponent,
     SafeurlPipe,
     AdvertisementFormComponent,
-    PurchaserFormComponent
+    PurchaserFormComponent,
+    AdvertisementGridComponent,
+    AdvertisementSearcherComponent
 
 
 

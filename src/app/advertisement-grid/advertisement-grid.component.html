@@ -1,0 +1,18 @@
+<app-advertisement-searcher (formFilter)="filter($event)"></app-advertisement-searcher>
+<div class="grid-artistas">
+    <div class="bucle-artistas" *ngFor="let item of advertisement">
+
+        <div [ngClass] ="{'redCard': item.deleted === 1, 'card': item.deleted === 0}">
+            <img src="http://localhost:3000/images/uploads/{{item.photo}}">
+            <h3><span>{{ item.advertisement_name }}</span></h3>
+            <div class="container-p">
+                <p>{{ item.location}} </p>
+            </div>
+            <div class="container-p">
+                <p>{{ item.link}} </p>
+            </div>
+         <button (click)="deleteAdvertisement(item.advertisement_id)" class="button-see-more">BORRAR</button>
+        </div>
+    </div>
+</div>
+

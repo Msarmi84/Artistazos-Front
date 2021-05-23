@@ -1,6 +1,6 @@
 <form [formGroup]="form">
     <div class="grid">
-        <div class="form-group">
+        <div *ngIf="data.type == '1'" class="form-group">
             <label>Nombre Artístico</label>
             <input class="uppercase" type="text" formControlName="artistic_name">
             <!-- <p *ngIf="form.controls.artistic_name?.errors?.required && form.controls.artistic_name.touched">*Campo obligatorio</p> -->
@@ -31,8 +31,9 @@
             <p *ngIf="form.controls.tag?.errors?.required && form.controls.tag.touched">*Campo obligatorio</p>
         </div>
         <div class="form-group">
-            <label for="dropdown" id="dropdown-label">Selecciona tus disciplinas artísticas</label
-            >
+
+            <label *ngIf="data.type == '1'" for="dropdown" id="dropdown-label">Selecciona tus disciplinas artísticas</label>
+            <label *ngIf="data.type == '2'" for="dropdown" id="dropdown-label">Selecciona tus intereses artísticos</label>
             <mat-select
               id="dropdown"
               class="form-control"

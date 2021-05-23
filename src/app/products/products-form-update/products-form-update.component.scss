@@ -41,7 +41,7 @@
         }
     }
     input[type="file"] {
-        // display: none;
+        display: none;
     }
     .flex-between {
         display: flex;
@@ -49,16 +49,16 @@
         align-items: flex-end;
     }
     .mat-raised-button {
-    border-radius: 20px;
-    border: 1px solid #1c1c1c;
-    background-color: #1c1c1c;
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    margin-top: 20px;
+        border-radius: 20px;
+        border: 1px solid #1c1c1c;
+        background-color: #1c1c1c;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 12px 45px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+        margin-top: 20px;
     }
 }

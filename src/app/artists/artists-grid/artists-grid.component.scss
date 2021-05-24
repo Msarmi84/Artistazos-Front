@@ -126,3 +126,9 @@ button.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
 }
+
+@media (max-width: 375px) {
+    .grid-artistas {
+        padding: 3rem 0;
+    }
+}

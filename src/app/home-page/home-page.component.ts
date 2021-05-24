@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getDisciplines().subscribe(x => this.disciplines = x);
     this.disciplines.pop();
-    console.log(this.disciplines);
 
   }
 

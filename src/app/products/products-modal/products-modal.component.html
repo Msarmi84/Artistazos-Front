@@ -7,12 +7,12 @@
 
     <div class="card-product" *ngIf=" productType === 'mp3'|| productType === 'mp4'">
         <h1>{{product.product_name}}</h1>
-        <video width="250px" height="400px" controls onplay="true" src="http://localhost:3000/video/uploads/{{ product.product_photo }}"></video>
+        <video width="100%" controls onplay="true" src="http://localhost:3000/video/uploads/{{ product.product_photo }}"></video>
         <p>{{product.description}}</p>
     </div>
     <div class="card-product" *ngIf=" productType === 'pdf'">
         <h1>{{product.product_name}}</h1>
-        <embed width="250px" height="400px" controls onplay="true" src="http://localhost:3000/pdf/uploads/{{ product.product_photo }}">
+        <embed width="100%" controls onplay="true" src="http://localhost:3000/pdf/uploads/{{ product.product_photo }}">
         <p>{{product.description}}</p>
     </div>
 

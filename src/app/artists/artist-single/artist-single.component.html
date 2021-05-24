@@ -9,19 +9,24 @@
                     <img src="http://localhost:3000/images/uploads/{{ user.avatar }}" alt="" />
                 </div>
                 <div class="datos-single">
+                    <div class="artist-name">
+                        <!-- Nombre usuario para artistas -->
+                        <h1 *ngIf="user.type == '1'">
+                            {{ user.artistic_name }} </h1>
+                        <div class="icons" *ngIf="currentUser.user_id === userId || isAdmin">
+                            <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>
+                            <mat-icon *ngIf="isLoggedIn" (click)="deleteUser()">person_remove</mat-icon>
+                        </div>
 
-                    <!-- Nombre usuario para artistas -->
-                    <h1 *ngIf="user.type == '1'">
-                        {{ user.artistic_name }} <i class="fab fa-linkedin-in"></i
-            ><i class="fab fa-facebook"></i>
-                    </h1>
+
+                    </div>
                     <!-- Nombre usuario para compradores -->
                     <h1 *ngIf="user.type == '2'">{{ user.user_name }}</h1>
-                    <p>{{ user.mail }}</p>
-                    <div *ngIf="currentUser.user_id === userId || isAdmin">
+                    <h3><span>{{ user.mail }}</span></h3>
+                    <!-- <div *ngIf="currentUser.user_id === userId || isAdmin">
                         <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>
                         <mat-icon *ngIf="isLoggedIn" (click)="deleteUser()">person_remove</mat-icon>
-                    </div>
+                    </div> -->
                     <p *ngFor="let discipline of disciplines">
                         {{ discipline.discipline_name }}
                     </p>
@@ -56,7 +61,7 @@
             let product of productsImg
               | paginate: { id:'paginationImage', itemsPerPage: 4, currentPage: pageImg }
           ">
-                    <img (click)="seeEditProduct()" src="http://localhost:3000/images/uploads/{{
+                    <img (click)="seeEditProduct(product)" src="http://localhost:3000/images/uploads/{{
               product.product_photo
             }}">
                     <div class="container-icons">
@@ -79,7 +84,7 @@
             let product of productsVideo
               | paginate: {id:'paginationVideo', itemsPerPage: 4, currentPage: pageVideo }
           ">
-                    <video width="250px" height="250px" controls onplay="true" src="http://localhost:3000/video/uploads/{{
+                    <video (click)="seeEditProduct(product)" width="250px" height="250px" controls onplay="true" src="http://localhost:3000/video/uploads/{{
               product.product_photo
             }}" loop></video>
                     <div class="container-icons">
@@ -90,40 +95,30 @@
                         <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
                     </div>
                 </div>
-
             </div>
             <pagination-controls id="paginationVideo" *ngIf="productsVideo.length" class="my-pagination" (pageChange)="pageVideo = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
 
         </div>
-
-
         <!-- PDF -->
-
-        <div class="proyectos">
-            <div class="product-single" *ngFor="
+        <div class="proyectos-edit">
+            <div class="proyectos">
+                <div class="product-single" *ngFor="
           let product of productsPdf
             | paginate: {id:'paginationPdf', itemsPerPage: 4, currentPage: page }
         ">
-
-                <embed type="application/pdf" [src]="'http://localhost:3000/pdf/uploads/' + product.product_photo | safeurl" width="250px" height="250px" />
-                <div class="container-icons">
-
-                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="deleteProduct(product.product_id)">delete</mat-icon>
-
-                    <!-- <embed type="file" frameborder="0" height="250px" width="250px" src="http://localhost:3000/pdf/uploads/{{
-                  product.product_photo
-                }}"> -->
-                    <!-- <object type="application/pdf" page=1 frameborder="0" height="250px" width="250px" data="http://localhost:3000/pdf/uploads/{{ product.product_photo }}"></object> -->
-                    <!-- <iframe src="http://localhost:3000/pdf/uploads/{{ product.product_photo }} ? file=http://localhost:3000/pdf/uploads/{{ product.product_photo }} " style="width:250px; height:250px;" frameborder="0"></iframe> -->
-                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product, 'pdf')">
-                        edit</mat-icon>
-
-                    <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
+                    <embed (click)="seeEditProduct(product)" type="application/pdf" [src]="'http://localhost:3000/pdf/uploads/' + product.product_photo | safeurl" width="250px" height="250px" />
+                    <div class="container-icons">
+                        <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product, 'pdf')">
+                            edit</mat-icon>
+                        <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="deleteProduct(product.product_id)">delete</mat-icon>
+                        <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
+                    </div>
                 </div>
-
+                <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
             </div>
-            <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
         </div>
+<<<<<<< HEAD
+=======
 
 
         <div  *ngIf="isLoggedIn && currentUser.user_id === userId">
@@ -184,14 +179,9 @@
         <div *ngFor="let product of products  | paginate: { itemsPerPage: 4, currentPage: page }"></div>
 
 
+>>>>>>> 66f473ef210d8a09e921c6e514e0df8d85ecea6e
     </div>
     <div class="container-publish">
         <app-advertisement></app-advertisement>
     </div>
 </div>
-<!--
-    <app-products-form-update (formSubmitted)="saveProduct($event)"></app-products-form-update> -->
-
-<!-- <app-artists-form-update *ngIf="editProfile"></app-artists-form-update> -->
-
-<!-- </div> -->

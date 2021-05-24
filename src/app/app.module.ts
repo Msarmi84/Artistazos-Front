@@ -69,9 +69,13 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
     PurchaserFormComponent,
     AdvertisementGridComponent,
     AdvertisementSearcherComponent,
+<<<<<<< HEAD
+    ArtistDisciplineComponent
+=======
     NotFoundComponent,
     PaymentSuccessComponent,
 
+>>>>>>> 66f473ef210d8a09e921c6e514e0df8d85ecea6e
 
 
 

@@ -12,6 +12,7 @@ import { AuthGuard } from './services/auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
 import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-discipline.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path: 'artists-form', component: ArtistsFormComponent,
+  },
+  {
+    path: 'checkout/success', component: PaymentSuccessComponent,
   },
   {
     path: 'purchaser-form', component: PurchaserFormComponent,

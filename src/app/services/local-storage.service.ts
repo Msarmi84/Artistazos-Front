@@ -91,8 +91,10 @@ export class LocalStorageService {
     const user_id = getUserFromToken().user_id;
     this.productObject = this.getProducts();
     this.productObject = this.productObject.filter(x => x.product_id !== idProduct );
+    this.products = this.productObject;
     let newProducts = JSON.stringify(this.productObject);
     sessionStorage.setItem(user_id? user_id: "shoppingCart", newProducts);
+
   }
 
   updateAmount(idProduct:number, signe: string):void {

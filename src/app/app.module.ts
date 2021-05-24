@@ -39,6 +39,7 @@ import { SafeurlPipe } from './safeurl.pipe';
 import { AdvertisementFormComponent } from './advertisement-form/advertisement-form.component';
 import { AdvertisementGridComponent } from './advertisement-grid/advertisement-grid.component';
 import { AdvertisementSearcherComponent } from './advertisement-searcher/advertisement-searcher.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
@@ -68,7 +69,9 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
     PurchaserFormComponent,
     AdvertisementGridComponent,
     AdvertisementSearcherComponent,
-    PaymentSuccessComponent
+    NotFoundComponent,
+    PaymentSuccessComponent,
+
 
 
 

@@ -1,16 +1,14 @@
-
 .empty_cart {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     .description {
         text-align: center;
     }
     .mat-icon {
         font-size: 200px;
-        color:rgba(16, 16, 16, 0.995);
+        color: rgba(16, 16, 16, 0.995);
         margin: 77px;
         width: 250px;
         height: 250px;
@@ -21,7 +19,6 @@
         border-radius: 50%;
         padding: 15px 0px 0px 15px;
     }
-
     p {
         font-size: 20px;
         font-weight: bold;
@@ -29,7 +26,7 @@
     button {
         font-size: 17px;
         color: white;
-        background-color:rgba(16, 16, 16, 0.995);
+        background-color: rgba(16, 16, 16, 0.995);
         border: 2px solid rgba(16, 16, 16, 0.995);
         border-radius: 7px;
         width: 154px;
@@ -37,144 +34,140 @@
         height: 60px;
         font-family: "Quicksand", sans-serif;
         cursor: pointer;
-
     }
     button:hover {
         background-color: white;
         color: black;
     }
 }
+
 .container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 8rem;
     hr {
         width: 70vw;
     }
-       
 }
+
 .mat-raised-button {
     background-color: rgba(0, 0, 0, 0.858);
     margin-top: 0.5rem;
     border: none;
     color: white;
-.fa-trash {
-    padding-left: 1rem;
- }
+    .fa-trash {
+        padding-left: 1rem;
+    }
 }
 
 .container-product {
-    margin: 50px 0px 0px 0px;
-    width: 65%;
+    padding: 4rem;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
-    
-        img {
-            width: 10rem;
-            height: 10rem;
-            border-radius: 3px;
-            border: 2px solid rgba(0, 0, 0, 0.858);
-            object-fit: cover;
-        }
-       
-        .datos-product {
- 
-            ul{
-                list-style: none;
-                li{
-                    h2 {
-                        margin: 5px 0;
-                    }
-                    p {
-                        margin:5px;
-                    }
-                    .precio{
-                        color: darkorange;
-                    }
-                }
-                .change_amount{
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        button{
-                            width: 20px;
-                            height: 20px;
-                            text-align: center;
-                            margin: 5px;
-                            background-color: rgba(0, 0, 0, 0.842);
-                            color: white;
-                            border: none;
-                            border-radius: 2px;
-                            font-weight: bold;
-                            font-size: 15px;
-
-                        }
-                        .trash-icon{
-                            color:  rgba(0, 0, 0, 0.842);
-                            background-color: white;
-                            margin-left: 69px;
-                        }
-                        button:active{
-                            color: rgba(0, 0, 0, 0.842);
-                            background-color: white;
-                            border: 1px solid rgba(0, 0, 0, 0.842);
-                        }
-                    }
-            }
-           
-            
-        
+    img {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
     }
-
-    
+    .datos-product {
+        ul {
+            list-style: none;
+            li {
+                h2 {
+                    margin: 5px 0;
+                }
+                p {
+                    margin: 5px;
+                }
+                .precio {
+                    color: darkorange;
+                }
+            }
+            .change_amount {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                button {
+                    width: 20px;
+                    height: 20px;
+                    text-align: center;
+                    margin: 5px;
+                    background-color: rgba(0, 0, 0, 0.842);
+                    color: white;
+                    border: none;
+                    border-radius: 2px;
+                    font-weight: bold;
+                    font-size: 15px;
+                }
+                .trash-icon {
+                    color: rgba(0, 0, 0, 0.842);
+                    background-color: white;
+                    margin-left: 69px;
+                }
+                button:active {
+                    color: rgba(0, 0, 0, 0.842);
+                    background-color: white;
+                    border: 1px solid rgba(0, 0, 0, 0.842);
+                }
+            }
+        }
+    }
 }
+
 h3 {
     text-align: center;
-
     span {
         font-size: 25px;
         margin-left: 25px;
     }
 }
+
 .iva {
     text-align: center;
 }
-.buy{
+
+.buy {
     font-size: 17px;
-        color: white;
-        background-color:rgba(16, 16, 16, 0.995);
-        border: 2px solid rgba(16, 16, 16, 0.995);
-        border-radius: 7px;
-        width: 154px;
-        margin: 18% 0;
-        height: 60px;
-        font-family: "Quicksand", sans-serif;
-        cursor: pointer;
+    color: white;
+    background-color: rgba(16, 16, 16, 0.995);
+    border: 2px solid rgba(16, 16, 16, 0.995);
+    border-radius: 7px;
+    width: 154px;
+    margin: 18% 0;
+    height: 60px;
+    font-family: "Quicksand", sans-serif;
+    cursor: pointer;
 }
+
 .buy:hover {
     background-color: white;
     color: black;
 }
 
-@media (max-width: 375px){
+// @media (max-width: 375px) {
+//     .container-product {
+//         .trash-icon {
+//             margin: 0px;
+//             padding: 0;
+//         }
+//     }
+// }
+@media (max-width: 375px) {
+    .container {
+        padding: 1.5rem;
+    }
     .container-product {
-        
-     .trash-icon {
-
-        
-            margin: 0px;
-            padding: 0;
+        width: 80%;
+        padding: 2.5rem 4.5rem;
     }
-}
-}
-
-@media only screen and (max-width: 375px) {
-    .container{
-        hr,h3{
-            margin-left:50rem;
-        }
+    .caja_img {
+        width: 50%;
+    }
+    .change_amount {
+        margin-left: 0;
     }
 }
 
+@media (max-width: 376px) and (max-width: 1024px) {}

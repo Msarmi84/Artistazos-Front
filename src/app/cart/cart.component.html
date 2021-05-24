@@ -4,38 +4,38 @@
             <mat-icon class="cart">shopping_cart</mat-icon>
         </div>
         <div class="description">
-            <p>Tu carrito está vacío</p> 
+            <p>Tu carrito está vacío</p>
             <p><span>En estos momentos, no tienes ningún producto añadido a tu carrito.</span></p>
             <button routerLink="/artistas">Seguir comprando</button>
         </div>
     </div>
     <div class="container" *ngIf="productObject.length !== 0">
         <div class="container-product" *ngFor="let product of productObject">
-                <div class="caja_img">
-                    <img src="http://localhost:3000/images/uploads/{{product.product.product_photo}}">
+            <div class="caja_img">
+                <img src="http://localhost:3000/images/uploads/{{product.product.product_photo}}">
 
-                </div>
-                <div class="datos-product">
-                    <ul>
-                        <li>
-                            <h2>{{ product.product.product_name }}</h2>
-                        </li>
-                        <li>
-                            <p>{{ product.product.description }}</p>
-                        </li>
-                        <li>
-                            <p class="precio">{{ product.product.price }} €</p>
-                        </li>
-                        <li class="change_amount">
-                            <button (click)="updateAmount(product.product.product_id, '-')">-</button>
-                            <p class="cantidad">{{product.amount}}</p>
-                            <button (click)="updateAmount(product.product.product_id, '+')">+</button>
-                            <button (click)="deleteProduct(product.product.product_id)" class="trash-icon"><i class="fa fa-trash"></i></button>
-                        </li>
-                    </ul>               
-                </div>
+            </div>
+            <div class="datos-product">
+                <ul>
+                    <li>
+                        <h2>{{ product.product.product_name }}</h2>
+                    </li>
+                    <li>
+                        <p>{{ product.product.description }}</p>
+                    </li>
+                    <li>
+                        <p class="precio">{{ product.product.price }} €</p>
+                    </li>
+                    <li class="change_amount">
+                        <button (click)="updateAmount(product.product.product_id, '-')">-</button>
+                        <p class="cantidad">{{product.amount}}</p>
+                        <button (click)="updateAmount(product.product.product_id, '+')">+</button>
+                        <button (click)="deleteProduct(product.product.product_id)" class="trash-icon"><i class="fa fa-trash"></i></button>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div>
+        <div class="total">
             <hr>
             <h3>Total: <span>{{total}} €</span> </h3>
             <p class="iva">Todos los impuestos incluídos</p>

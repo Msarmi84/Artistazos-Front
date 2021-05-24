@@ -71,6 +71,7 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
     AdvertisementSearcherComponent,
     NotFoundComponent,
     PaymentSuccessComponent,
+    ArtistDisciplineComponent
 
 
 

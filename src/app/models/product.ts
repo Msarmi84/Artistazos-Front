@@ -14,7 +14,7 @@ export class Product {
     constructor(item?: any) {
         this.product_id = item?.product_id || null;
         this.user_id = item?.user_id || null;
-        this.product_name = item?.product_name || ''; ;
+        this.product_name = item?.product_name || '';
         this.category = item?.category || null;
         this.description = item?.description || 0;
         this.product_photo = item?.product_photo || 'proyecto1.jpeg';

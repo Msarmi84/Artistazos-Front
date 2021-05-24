@@ -40,7 +40,7 @@ export class ArtistsFormUpdateComponent implements OnInit {
     formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    @Inject(MAT_DIALOG_DATA) private data?: User
+    @Inject(MAT_DIALOG_DATA) public data?: User
     ) {
     this.form = formBuilder.group({
       user_id:[''],
@@ -67,6 +67,10 @@ export class ArtistsFormUpdateComponent implements OnInit {
   //obtiene disciplinas
   getDisciplines(): void {
     this.userService.getDisciplines().subscribe(discipline => this.disciplines = discipline);
+  }
+
+  closeFormData() {
+    return;
   }
 
   generateFormData(): FormData {

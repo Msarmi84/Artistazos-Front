@@ -33,7 +33,6 @@ disciplinesLowerCase: string;
 
  
   user: User;
-
   userId: Number;
   token: string;
 
@@ -42,6 +41,7 @@ disciplinesLowerCase: string;
     this.registerForm = formBuilder.group({
       user_name: ['', Validators.required],
       user_id: [''],
+      type: [ 2 ],
       last_name: ['', Validators.required],
       date_of_birth: ['', Validators.required],
       location: ['', Validators.required],
@@ -80,7 +80,9 @@ disciplinesLowerCase: string;
   onSubmit(obj: any): void {
     this.submitted = true;
     if (this.registerForm.valid) {
-      this.registerForm.patchValue({discipline: this.disciplinesLowerCase })
+      // Al registrar el usuario, le ponemos el tipo 2 (Comprador )
+      this.registerForm.patchValue({discipline: this.disciplinesLowerCase });
+      this.registerForm.patchValue({type: 2 });
       this.userService.saveUser(this.registerForm.value).subscribe(
         () => this.router.navigate([`/artista/${getUserFromToken().user_id}`]),
         (error) => this.registerForm.setErrors({ userNotFound: error.error })

@@ -39,6 +39,7 @@ import { SafeurlPipe } from './safeurl.pipe';
 import { AdvertisementFormComponent } from './advertisement-form/advertisement-form.component';
 import { AdvertisementGridComponent } from './advertisement-grid/advertisement-grid.component';
 import { AdvertisementSearcherComponent } from './advertisement-searcher/advertisement-searcher.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { AdvertisementSearcherComponent } from './advertisement-searcher/adverti
     AdvertisementFormComponent,
     PurchaserFormComponent,
     AdvertisementGridComponent,
-    AdvertisementSearcherComponent
+    AdvertisementSearcherComponent,
+    NotFoundComponent
 
 
 

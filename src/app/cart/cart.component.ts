@@ -51,28 +51,13 @@ export class CartComponent implements OnInit {
         productMap[product.product_id] = product;
       }
 
-<<<<<<< HEAD
-            this.productObject.push({ product: product[i], amount: this.productsStorage[j].amount });
-            console.log(newArray, 'primer log');
-            
-          }
-        }
-=======
       console.log(productMap, 'productMap');
       for (let j = 0; j < this.productsStorage.length; j++) {
         const productId = this.productsStorage[j].product_id
         this.productObject.push({ product: productMap[productId], amount: this.productsStorage[j].amount });          
->>>>>>> 898417cf59eb894a1f819fe8af714c577e3cbf74
       }
       this.calculateAmount(this.productObject);
     });
-<<<<<<< HEAD
-    console.log(newArray[0],' newArray');
-    
-    return this.productObject;
-    // this.calculateAmount();
-=======
->>>>>>> 898417cf59eb894a1f819fe8af714c577e3cbf74
   }
 
   ngOnDestroy(): void {

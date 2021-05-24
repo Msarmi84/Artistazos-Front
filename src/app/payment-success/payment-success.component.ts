@@ -26,9 +26,7 @@ export class PaymentSuccessComponent implements OnInit {
 
   complete(session_id: string) {
     this.paymentService.complete(session_id).subscribe(() => {
-      this.lss.getProducts().forEach(product => {
-        this.lss.deleteProducts(product.product.product_id);
-      })
+      this.lss.cleanProducts();
     })
   }
 

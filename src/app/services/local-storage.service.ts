@@ -66,15 +66,24 @@ export class LocalStorageService {
 
   getProducts(): any[]{
     const user_id = getUserFromToken().user_id;
-    let shoppingCart = sessionStorage.getItem(user_id? user_id: "shoppingCart");
+    let shoppingCart = sessionStorage.getItem(user_id ? user_id: "shoppingCart");
+    let shoppingCartGuest = sessionStorage.getItem("shoppingCart");
     let products = [];
     if(shoppingCart != null){
      products = JSON.parse(shoppingCart);
 
+    } else if (shoppingCartGuest != null) {
+      products = JSON.parse(shoppingCartGuest);
     } else {
       this.products = [];
     }
     return products;
+  }
+
+  cleanProducts():void {
+    const user_id = getUserFromToken().user_id;
+    sessionStorage.removeItem(user_id ? user_id: "shoppingCart");
+    sessionStorage.removeItem("shoppingCart");
   }
 
   deleteProducts(idProduct:number):void {

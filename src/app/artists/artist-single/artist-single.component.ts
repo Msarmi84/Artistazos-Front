@@ -95,8 +95,10 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.getUser(this.userId);
       this.getProducts(this.userId);
       this.getDisciplinesByUserId(this.userId);
+
       this.getCompras(this.userId);
       
+
       this.currentUser = getUserFromToken();
       this.isAdmin = isAdmin();
 
@@ -184,7 +186,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getAdvertisementsByLocation(location:string):void {
     this.advertisemenService.getAdvertisementsByLocation(location).subscribe(x => {
       this.advertisementsByLocation = x
-      console.log(this.advertisementsByLocation, 'anunciosss filtrados'); 
+      console.log(this.advertisementsByLocation, 'anunciosss filtrados');
     })
   }
 
@@ -195,7 +197,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   deleteUser(): void {
     const dialogRef = this.dialog.open(InfoComponent, {
       width: '400px',
-      height: '300px',
+      height: '450px',
       data: 'Seguro que quieres eliminar tu perfil?',
     });
     console.log(dialogRef);

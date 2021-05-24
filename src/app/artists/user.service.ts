@@ -73,8 +73,7 @@ export class UserService {
   }
 
   updateUser(user: FormData, id: number): any {
-    console.log('servicio user')
-    console.log(user)
+
     return this.http.put<User>(`${this.URL}/updateProfile/${id}`, user);
   }
 
@@ -87,16 +86,13 @@ export class UserService {
   }
 
   getDisciplinesById(user_id: number): Observable<Disciplines[]> {
-    console.log(user_id)
+
     return this.http.get<Disciplines[]>(`${this.URL}/disciplines/${user_id}`)
       .pipe(map(x => x.map(discipline => new Disciplines(discipline)))
       );
   }
 
   searchUsers( filtro: UserSearch): Observable<User[]> {
-    console.log('filtro de busqueda del service');
-
-    console.log(filtro)
 
     return this.http.post<User[]>(`${this.URL}/find`, filtro).pipe(
         map(x => x.map(user => new User(user)))

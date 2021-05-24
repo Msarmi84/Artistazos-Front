@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { ProductCategory } from 'src/app/models/enums/product-category.enum';
 import { IdName } from 'src/app/models/id-name';
 import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment';
@@ -16,7 +15,6 @@ import { ProductService } from '../product.service';
 })
 export class ProductsFormUpdateComponent implements OnInit {
   user_id = null;
-  submitted: Boolean = false;
   form: FormGroup;
   imgPreview = environment.baseUrl + 'images/uploads/noProductPhoto.jpeg';
 
@@ -54,24 +52,18 @@ export class ProductsFormUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories = this.productService.getCategoriaDeProducto();
-
-    console.log(this.categories);
     this.route.params.subscribe((params) =>
       this.form.patchValue({ user_id: params.id })
     );
-    console.log(this.form);
 
     if (this.data?.type){
       this.product_type = this.data.type;
-      console.log(this.data.type, 'tipo de input')
      
     }
-
 
     if (this.data?.product.product_id) {
       this.form.patchValue(this.data.product);
       this.product_id = this.data.product.product_id;
-      console.log(this.product_id, 'ID que llega')
       this.formData = this.generateFormData();
       this.imgPreview = this.data.product.product_photo
         ? this.imageUrl + this.data.product.product_photo
@@ -97,8 +89,6 @@ export class ProductsFormUpdateComponent implements OnInit {
       }
       formData.append('tag', this.tag3);
     }
-    // console.log('console del formdata')
-    // console.log(this.form.value)
     formData.append('img', this.imageFile);
 
     return formData;

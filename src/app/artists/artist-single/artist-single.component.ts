@@ -63,6 +63,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   dangerousUrl: string;
   trustedUrl: any;
   advertisementsByLocation: Advertisement[] = [];
+  isVisible: boolean = false;
 
 
 
@@ -74,7 +75,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private dialog: MatDialog,
     private lss: LocalStorageService,
-    private sanitizer: DomSanitizer,
     private advertisemenService: AdvertisementService
 
 
@@ -102,7 +102,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   //obtiene la información del artista
   getUser(id: number): void {
     this.userService.getUserById(id).subscribe((x) => {
-      console.log(x)
       this.user = x;
       this.getAdvertisementsByLocation(this.user.location);
   });
@@ -122,8 +121,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.products = x;
       for(let i=0; i<this.products.length; i++) {
         this.productImg = this.products[i].product_photo.split('.')[1];
-        // this.productsImg.push(this.productImg)
-        // console.log(this.productImg);
         if (this.productImg === 'jpg'|| this.productImg === 'jpeg' || this.productImg === 'png') {
           this.productsImg.push(this.products[i]);
         }
@@ -134,7 +131,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
           this.productsPdf.push(this.products[i]);
         }
       }
-      console.log(this.productsPdf);
     });
 
 
@@ -151,13 +147,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getAdvertisementsByLocation(location:string):void {
     this.advertisemenService.getAdvertisementsByLocation(location).subscribe(x => {
       this.advertisementsByLocation = x
-      console.log(this.advertisementsByLocation, 'anunciosss filtrados'); 
     })
   }
-
-  // selectAdvertisements():void {
-  //   for(let i = 0; i < this.advertise)
-  // }
 
   deleteUser(): void {
     const dialogRef = this.dialog.open(InfoComponent, {
@@ -168,7 +159,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     console.log(dialogRef);
     dialogRef.afterClosed().subscribe((isConfirmed) => {
       if (!isConfirmed) {
-        console.log(' no ha confirmado')
         return;
       }
 
@@ -189,8 +179,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   //Abre y cierra los formularios de edición de usuario y producto
   seeEditProfile(obj: any, type: string) {
     this.product = obj;
-    console.log('console del producto')
-    console.log(this.product, '--------')
 
 
     //Abre el formulario de edición de product en el que también se puede añadir un nuevo producto
@@ -254,12 +242,16 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   addProduct(product:Product):void {
+
   
    let products = {product_id : product.product_id, amount: 1}
-   console.log(products, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this.lss.saveProduct(products);
-    alert('Producto añadido al carrito')
+    
+    if (this.isVisible) { // if the alert is visible return
+      return;
+    } 
+    this.isVisible = true;
+    setTimeout(()=> this.isVisible = false,2500); // hide the alert after 2.5s
   }
-
 
 }

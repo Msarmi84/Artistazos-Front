@@ -57,13 +57,9 @@ export class AdvertisementFormComponent implements OnInit {
   }
 
   clickDiscipline() {
-    console.log('entra en click')
-    console.log(this.selectDisciplines)
-    this.disciplinesValues = this.selectDisciplines.value;
-    console.log('estas síiii')
-    console.log(this.disciplinesValues.toString())
-    this.disciplinesString = this.disciplinesValues.toString();
 
+    this.disciplinesValues = this.selectDisciplines.value;
+    this.disciplinesString = this.disciplinesValues.toString();
   }
 
   onSubmit() {

@@ -16,21 +16,22 @@ export class AdvertisementGridComponent implements OnInit {
     this.getAdvertisement();
   }
 
+  //Obtiene la lista de anuncios guardados en la base de datos
   getAdvertisement():void {
     this.advertisementService.getAdvertisements().subscribe(x => {
       this.advertisement = x;
     })
   }
 
+  //Obtiene un array de anuncios filtrados en el formulario
   filter(filter):void {
-    console.log('este es el console de filter del artis grid');
     this.advertisementService.searchAdvertisements(filter).subscribe(x => {
       this.advertisement = x;
     })
   }
 
+  //Realiza un borrado lógico del anuncio
   deleteAdvertisement(id: number): void {
-    console.log(id, 'id del advertisement');
     
     this.advertisementService.deleteAdvertisement(id).subscribe(() => {
       this.getAdvertisement();

@@ -5,7 +5,6 @@ import { Disciplines } from '../models/disciplines';
 import { SearcherUser } from '../models/searcher-user';
 import { User } from '../models/user';
 
-// import { UserSearch } from '../models/userSearch';
 
 @Component({
   selector: 'app-searcher',

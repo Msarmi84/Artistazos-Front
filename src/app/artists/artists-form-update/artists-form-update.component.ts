@@ -78,18 +78,11 @@ export class ArtistsFormUpdateComponent implements OnInit {
       }
     }
 
-
-   console.log(this.form)
-
-
-    formData.append('discipline', this.disciplinesLowerCase)
-    formData.append('tag', this.tag3)
-    console.log('console del formdata')
-    console.log(formData);
+    formData.append('discipline', this.disciplinesLowerCase);
+    formData.append('tag', this.tag3);
     formData.append('avatar', this.imageFile);
     formData.append('front', this.imageFrontFile);
-    console.log('console del formdata')
-    console.log(formData)
+
     return formData;
   }
 
@@ -116,21 +109,11 @@ export class ArtistsFormUpdateComponent implements OnInit {
   addTag(event){
     if (event.keyCode==32 || event.keyCode=='Space'){
       this.tag = event.target.value;
-      console.log(this.tag)
-
       event.target.value ='';
-
-      this.tags.push(this.tag)
-      console.log(this.tags)
-
-     this.tag3 = this.tags.toString();
-     console.log(this.tag3, 'tag 3333333333')
-
-     this.tag3 = this.tag3.toLowerCase()
-     console.log(this.tag3)
-
+      this.tags.push(this.tag);
+      this.tag3 = this.tags.toString();
+      this.tag3 = this.tag3.toLowerCase();
     }
-    // console.log("pulso la tecla aaaaa " + KeyboardEvent.key)
   }
 
   removeTag(tag){
@@ -139,14 +122,9 @@ export class ArtistsFormUpdateComponent implements OnInit {
   }
 
   clickDiscipline(){
-    console.log('entra en click')
-    console.log(this.selectDisciplines)
     this.disciplinesValues = this.selectDisciplines.value;
-    console.log('estas síiii')
-    console.log(this.disciplinesValues.toString())
     this.disciplinesString = this.disciplinesValues.toString();
     this.disciplinesLowerCase = this.disciplinesString.toLowerCase();
-
   }
 
 }

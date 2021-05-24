@@ -5,7 +5,6 @@ import { Disciplines } from 'src/app/models/disciplines';
 import { User } from 'src/app/models/user';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
 import { UserService } from '../user.service';
-import { JwtHelperService } from "@auth0/angular-jwt";
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { getUserFromToken } from 'src/app/_helpers/tokenHelper';
 
@@ -20,26 +19,20 @@ export class ArtistsFormComponent implements OnInit {
   
   registerForm: FormGroup;
   submitted: Boolean = false;
-  dateReg: RegExp = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
   disciplines: Disciplines[];
   locations: string [] = ['Álava/Araba','Albacete','Alicante','Asturias','Ávila','Badajoz','Baleares',
   'Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ceuta','Ciudad Real','Córdoba',
-'Cuenca','Gerona/Girona','Granada','Guadalajara','Guipúzcoa/Gipuzkoa','Huelva','Huesca','Jaén',
-'La Coruña/A Coruña','La Rioja','Las Palmas','León','Lérida/Lleida','Lugo','Madrid','Málaga','Melilla',
-'Murcia','Navarra','Orense/Ourense','Palencia','Pontevedra','Salamanca','Segovia','Sevilla','Soria',
-'Tarragona','Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya/Bizkaia','Zamora','Zaragoza'];
+  'Cuenca','Gerona/Girona','Granada','Guadalajara','Guipúzcoa/Gipuzkoa','Huelva','Huesca','Jaén',
+  'La Coruña/A Coruña','La Rioja','Las Palmas','León','Lérida/Lleida','Lugo','Madrid','Málaga','Melilla',
+  'Murcia','Navarra','Orense/Ourense','Palencia','Pontevedra','Salamanca','Segovia','Sevilla','Soria',
+  'Tarragona','Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya/Bizkaia','Zamora','Zaragoza'];
 
-selectDisciplines = new FormControl();
-disciplinesValues: string[];
-disciplinesString: string;
-disciplinesLowerCase: string;
-
-
- 
+  selectDisciplines = new FormControl();
+  disciplinesValues: string[];
+  disciplinesString: string;
+  disciplinesLowerCase: string;
   user: User;
-
   userId: Number;
-  token: string;
 
 
   constructor(formBuilder: FormBuilder, private userService: UserService, private router: Router,  private route: ActivatedRoute, private lss: LocalStorageService) {
@@ -94,16 +87,8 @@ disciplinesLowerCase: string;
     };
 
     clickDiscipline(){
-      console.log('entra en click')
-      console.log(this.selectDisciplines)
       this.disciplinesValues = this.selectDisciplines.value;
-      console.log('estas síiii')
-      console.log(this.disciplinesValues.toString())
       this.disciplinesString = this.disciplinesValues.toString();
-      this.disciplinesLowerCase = this.disciplinesString.toLowerCase();
-      
+      this.disciplinesLowerCase = this.disciplinesString.toLowerCase(); 
     }
-  
-
-
 }

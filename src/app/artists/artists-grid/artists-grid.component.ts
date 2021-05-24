@@ -15,14 +15,12 @@ export class ArtistsGridComponent implements OnInit {
 
   defaultImg = 'assets/images/logonofoto.png';
   imageUrl = environment.baseUrl + 'images/';
-  disciplines: Disciplines[]
-
+  disciplines: Disciplines[];
   users: User[] = [];
   isAdmin: boolean = false;
 
   constructor(
-    private userService: UserService, 
-    private router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +44,6 @@ export class ArtistsGridComponent implements OnInit {
   }
 
   filter(filter):void {
-    console.log('este es el console de filter del artis grid');
     this.userService.searchUsers(filter).subscribe(x => {
       this.users = x;
     })

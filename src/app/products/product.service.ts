@@ -43,18 +43,10 @@ export class ProductService {
     )
   }
 
-  // searchProduct(filter: SearcherProduct): Observable<Product[]> {
-  //   return this.http.post<Product[]>(`${this.URL}/search`, filter).pipe(
-  //     map(x => x.map(product => new Product(product)))
-  //   );
-  // }
 
   saveProduct( product: FormData): Observable<Product> {
     const product_id = product.get('product_id')
     const user_id = product.get('user_id')
-    console.log('console del service')
-    console.log(product.get('user_id'))
-    console.log(product)
     if (product_id) {
       // PUT 
       return this.http.put<Product>(`${this.URL}/${product_id}`, product).pipe(

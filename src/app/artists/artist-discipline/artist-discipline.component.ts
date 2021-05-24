@@ -29,6 +29,4 @@ export class ArtistDisciplineComponent implements OnInit {
       this.user = x;
     })
   }
-  
-
 }

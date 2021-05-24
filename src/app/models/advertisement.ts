@@ -17,4 +17,8 @@ export class Advertisement {
     this.discipline_name = item.discipline_name || 0;
     this.deleted = item.deleted;
   }
+
+
+
+
 }

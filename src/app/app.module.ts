@@ -69,6 +69,7 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
     PurchaserFormComponent,
     AdvertisementGridComponent,
     AdvertisementSearcherComponent,
+    NotFoundComponent,
     PaymentSuccessComponent,
     ArtistDisciplineComponent
 

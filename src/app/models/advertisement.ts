@@ -1,5 +1,3 @@
-
-
 export class Advertisement {
   advertisement_id: number;
   advertisement_name: string;

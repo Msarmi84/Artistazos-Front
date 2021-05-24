@@ -95,6 +95,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.getUser(this.userId);
       this.getProducts(this.userId);
       this.getDisciplinesByUserId(this.userId);
+
       this.getCompras(this.userId);
       
 

@@ -9,7 +9,7 @@
                 width: auto;
             }
         }
-        
+
         .fondo {
             margin-top: 50px;
             margin-left: 50px;
@@ -20,7 +20,7 @@
                 object-position: center;
             }
         }
-        
+
         .artist-name {
             display: flex;
             align-items: center;
@@ -28,7 +28,7 @@
                 margin-left: 20px;
             }
         }
-        
+
         .background-header {
             color: black;
             .container-artista {
@@ -157,17 +157,17 @@
                 position: relative;
             }
         }
-        
+
         .my-pagination .ngx-pagination .current::before {
             color: red!important;
         }
-        
+
         .material-icons-outlined {
             color: rgb(23, 23, 23);
             margin-left: 10px;
             cursor: pointer;
         }
-        
+
         .modificar-icons {
             display: flex;
             align-items: center;
@@ -175,7 +175,7 @@
             justify-content: space-around;
             margin-top: 41px;
         }
-        
+
         @media (max-width: 375px) {
             .container {
                 display: flex;
@@ -218,5 +218,9 @@
                     object-fit: cover;
                     object-position: center;
                 }
+            }
+            .container-product {
+                width: 77%;
+                padding: 2.5rem 2.5rem;
             }
         }

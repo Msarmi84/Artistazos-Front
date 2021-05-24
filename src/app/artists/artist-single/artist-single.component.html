@@ -23,10 +23,6 @@
                     <!-- Nombre usuario para compradores -->
                     <h1 *ngIf="user.type == '2'">{{ user.user_name }}</h1>
                     <h3><span>{{ user.mail }}</span></h3>
-                    <!-- <div *ngIf="currentUser.user_id === userId || isAdmin">
-                        <mat-icon *ngIf="isLoggedIn" (click)="seeEditProfile()">edit</mat-icon>
-                        <mat-icon *ngIf="isLoggedIn" (click)="deleteUser()">person_remove</mat-icon>
-                    </div> -->
                     <p *ngFor="let discipline of disciplines">
                         {{ discipline.discipline_name }}
                     </p>
@@ -49,9 +45,6 @@
                         picture_as_pdf
                     </mat-icon>
                 </div>
-                <!-- <button class="button-single" *ngIf="isLoggedIn" (click)="editCredentials()">
-            EDITAR MAIL AND PASSWORD
-          </button> -->
             </div>
         </div>
         <div class="proyectos-edit">
@@ -72,11 +65,9 @@
                         <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
                     </div>
                 </div>
-
             </div>
             <pagination-controls id="paginationImage" *ngIf="productsImg.length" class="my-pagination" (pageChange)="pageImg = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
         </div>
-
         <!-- VIDEO -->
         <div class="proyectos-edit">
             <div class="proyectos">
@@ -97,7 +88,6 @@
                 </div>
             </div>
             <pagination-controls id="paginationVideo" *ngIf="productsVideo.length" class="my-pagination" (pageChange)="pageVideo = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
-
         </div>
         <!-- PDF -->
         <div class="proyectos-edit">
@@ -115,6 +105,21 @@
                     </div>
                 </div>
                 <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
+            </div>
+        </div>
+        <div *ngIf="isLoggedIn && currentUser.user_id === userId">
+            <h2>Mis Compras</h2>
+            <div class="proyectos">
+
+                <div class="product-single" *ngFor="
+            let product of productsCompradosImg
+            | paginate: { id:'paginationImage', itemsPerPage: 4, currentPage: pageImg }
+        ">
+                    <img (click)="seeEditProduct()" src="http://localhost:3000/images/uploads/{{
+            product.product_photo
+            }}">
+                </div>
+                <pagination-controls id="paginationImage" *ngIf="productsImg.length" class="my-pagination" (pageChange)="pageImg = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
             </div>
         </div>
     </div>

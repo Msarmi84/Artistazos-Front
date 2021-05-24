@@ -28,7 +28,6 @@ export class AdvertisementService {
   } 
 
   create(formData: FormData): Observable<string> {
-    debugger;
     return this.http.post<string>(`${this.URL}`, formData);
   }
 

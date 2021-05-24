@@ -39,6 +39,8 @@ import { SafeurlPipe } from './safeurl.pipe';
 import { AdvertisementFormComponent } from './advertisement-form/advertisement-form.component';
 import { AdvertisementGridComponent } from './advertisement-grid/advertisement-grid.component';
 import { AdvertisementSearcherComponent } from './advertisement-searcher/advertisement-searcher.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
 @NgModule({
@@ -67,7 +69,13 @@ import { AdvertisementSearcherComponent } from './advertisement-searcher/adverti
     PurchaserFormComponent,
     AdvertisementGridComponent,
     AdvertisementSearcherComponent,
+<<<<<<< HEAD
     ArtistDisciplineComponent
+=======
+    NotFoundComponent,
+    PaymentSuccessComponent,
+
+>>>>>>> 66f473ef210d8a09e921c6e514e0df8d85ecea6e
 
 
 

@@ -117,6 +117,69 @@
                 <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+
+        <div  *ngIf="isLoggedIn && currentUser.user_id === userId">
+            <h2>Mis Compras</h2>
+            <div class="proyectos">
+
+                <div class="product-single" *ngFor="
+            let product of productsCompradosImg
+            | paginate: { id:'paginationImage', itemsPerPage: 4, currentPage: pageImg }
+        ">
+                    <img (click)="seeEditProduct()" src="http://localhost:3000/images/uploads/{{
+            product.product_photo
+            }}">
+                </div>
+
+            <pagination-controls id="paginationImage" *ngIf="productsImg.length" class="my-pagination" (pageChange)="pageImg = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
+        </div>
+
+        <!-- VIDEO -->
+        <div class="proyectos-edit">
+            <div class="proyectos">
+                <div class="product-single" *ngFor="
+            let product of productsCompradosVideo
+            | paginate: {id:'paginationVideo', itemsPerPage: 4, currentPage: pageVideo }
+        ">
+                    <video width="250px" height="250px" controls onplay="true" src="http://localhost:3000/video/uploads/{{
+            product.product_photo
+            }}" loop></video>
+                </div>
+            <pagination-controls id="paginationVideo" *ngIf="productsVideo.length" class="my-pagination" (pageChange)="pageVideo = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
+
+        </div>
+
+
+        <!-- PDF -->
+
+        <div class="proyectos">
+            <div class="product-single" *ngFor="
+        let product of productsCompradosPdf
+            | paginate: {id:'paginationPdf', itemsPerPage: 4, currentPage: page }
+        ">
+
+        <embed type="application/pdf" [src]="'http://localhost:3000/pdf/uploads/' + product.product_photo | safeurl" width="250px" height="250px" />
+        <!-- <object type="application/pdf" page=1 frameborder="0" height="250px" width="250px" data="http://localhost:3000/pdf/uploads/{{ product.product_photo }}"></object> -->
+                    <!-- <iframe src="http://localhost:3000/pdf/uploads/{{ product.product_photo }} ? file=http://localhost:3000/pdf/uploads/{{ product.product_photo }} " style="width:250px; height:250px;" frameborder="0"></iframe> -->
+                    <mat-icon *ngIf="isLoggedIn && currentUser.user_id === userId || isAdmin" class="icon-edit" (click)="seeEditProfile(product, 'pdf')">
+                        edit</mat-icon>
+
+                    <mat-icon *ngIf="currentUser.user_id != userId" class="icon-edit" (click)="addProduct(product)">shopping_cart</mat-icon>
+                </div>
+
+            <pagination-controls id="paginationPdf" *ngIf="productsPdf.length" class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true"></pagination-controls>
+        </div>
+    </div>
+
+        <!-- SOUND -->
+
+        <div *ngFor="let product of products  | paginate: { itemsPerPage: 4, currentPage: page }"></div>
+
+
+>>>>>>> 66f473ef210d8a09e921c6e514e0df8d85ecea6e
     </div>
     <div class="container-publish">
         <app-advertisement></app-advertisement>

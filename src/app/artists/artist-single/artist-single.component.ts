@@ -18,6 +18,7 @@ import { getUserFromToken, isAdmin } from '../../_helpers/tokenHelper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AdvertisementService } from 'src/app/advertisement.service';
 import { Advertisement } from 'src/app/models/advertisement';
+import { PaymentService } from 'src/app/services/payment.service';
 
 
 @Component({
@@ -64,6 +65,12 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   trustedUrl: any;
   advertisementsByLocation: Advertisement[] = [];
 
+  productsComprados: Product[] = [];
+  productsCompradosImg: Product[] = [];
+  productsCompradosPdf: Product[] = [];
+  productsCompradosVideo: Product[] = [];
+  productsCompradosSound: Product[] = [];
+
 
 
 
@@ -75,8 +82,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private lss: LocalStorageService,
     private sanitizer: DomSanitizer,
-    private advertisemenService: AdvertisementService
-
+    private advertisemenService: AdvertisementService,
+    private paymentService: PaymentService
 
     ) { }
 
@@ -88,7 +95,10 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.getUser(this.userId);
       this.getProducts(this.userId);
       this.getDisciplinesByUserId(this.userId);
+
+      this.getCompras(this.userId);
       
+
       this.currentUser = getUserFromToken();
       this.isAdmin = isAdmin();
 
@@ -137,7 +147,32 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       console.log(this.productsPdf);
     });
 
-
+  }
+  getCompras(id: number): void {
+    this.paymentService.getPurchases().subscribe((x) => {
+      // Antes de nada, limpiamos los arrays: como vamos a hacer
+      // push con los productos, y si no lo limpiamos se añaden
+      // cosas repetidas.
+      this.productsCompradosImg = [];
+      this.productsCompradosVideo = [];
+      this.productsCompradosPdf = [];
+      this.productsComprados = x;
+      for(let i=0; i<this.productsComprados.length; i++) {
+        this.productImg = this.productsComprados[i].product_photo.split('.')[1];
+        // this.productsCompradosImg.push(this.productImg)
+        // console.log(this.productImg);
+        if (this.productImg === 'jpg'|| this.productImg === 'jpeg' || this.productImg === 'png') {
+          this.productsCompradosImg.push(this.productsComprados[i]);
+        }
+        else if (this.productImg === 'mp4'|| this.productImg === 'mp3') {
+          this.productsCompradosVideo.push(this.productsComprados[i]);
+        }
+        else if (this.productImg === 'pdf') {
+          this.productsCompradosPdf.push(this.productsComprados[i]);
+        }
+      }
+      console.log(this.productsCompradosPdf);
+    });
 
   }
 
@@ -151,7 +186,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getAdvertisementsByLocation(location:string):void {
     this.advertisemenService.getAdvertisementsByLocation(location).subscribe(x => {
       this.advertisementsByLocation = x
-      console.log(this.advertisementsByLocation, 'anunciosss filtrados'); 
+      console.log(this.advertisementsByLocation, 'anunciosss filtrados');
     })
   }
 
@@ -162,7 +197,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   deleteUser(): void {
     const dialogRef = this.dialog.open(InfoComponent, {
       width: '400px',
-      height: '300px',
+      height: '450px',
       data: 'Seguro que quieres eliminar tu perfil?',
     });
     console.log(dialogRef);

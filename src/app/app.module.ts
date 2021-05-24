@@ -40,6 +40,7 @@ import { AdvertisementFormComponent } from './advertisement-form/advertisement-f
 import { AdvertisementGridComponent } from './advertisement-grid/advertisement-grid.component';
 import { AdvertisementSearcherComponent } from './advertisement-searcher/advertisement-searcher.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
 @NgModule({
@@ -68,7 +69,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PurchaserFormComponent,
     AdvertisementGridComponent,
     AdvertisementSearcherComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PaymentSuccessComponent,
+
 
 
 

@@ -6,6 +6,11 @@ import { environment } from 'src/environments/environment';
 import { Product } from '../models/product';
 import { ProductService } from '../products/product.service';
 import { LocalStorageService } from '../services/local-storage.service';
+import { PaymentService } from '../services/payment.service';
+import { loadStripe } from '@stripe/stripe-js';
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 @Component({
   selector: 'app-cart',
@@ -24,41 +29,50 @@ export class CartComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private productService: ProductService, 
+    private productService: ProductService,
+    private paymentService: PaymentService,
     private lss: LocalStorageService) { }
 
 
   ngOnInit(): void {
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
     this.productsStorage = this.lss.getProducts();
-    this.productObject = this.getProducts();
-    console.log(this.productObject,'productObject');
-    
-    
-}
-  private getProducts(): Array<any> {
-    let newArray: Array<any> = [];
-   this.subscriptions = this.productService.getProducts().subscribe(product => {
+    this.getCartProducts();
+    this.calculateAmount(this.productObject);
+    console.log(this.productObject,'productObject');  
+  }
 
-      let product2 = product;
+  private getCartProducts(): void {
+    this.subscriptions = this.productService.getProducts().subscribe(products => {
+      this.productObject = [];
+      // Map with product as key
+      let productMap = {}
+      for (let product of products) {
+        productMap[product.product_id] = product;
+      }
 
-      console.log(product, 'productt');
-      
-      for (let i = 0; i < product2.length; i++) {
-        for (let j = 0; j < this.productsStorage.length; j++) {
-          if (product2[i].product_id == this.productsStorage[j].product_id) {
-
+<<<<<<< HEAD
             this.productObject.push({ product: product[i], amount: this.productsStorage[j].amount });
             console.log(newArray, 'primer log');
             
           }
         }
+=======
+      console.log(productMap, 'productMap');
+      for (let j = 0; j < this.productsStorage.length; j++) {
+        const productId = this.productsStorage[j].product_id
+        this.productObject.push({ product: productMap[productId], amount: this.productsStorage[j].amount });          
+>>>>>>> 898417cf59eb894a1f819fe8af714c577e3cbf74
       }
+      this.calculateAmount(this.productObject);
     });
+<<<<<<< HEAD
     console.log(newArray[0],' newArray');
     
     return this.productObject;
     // this.calculateAmount();
+=======
+>>>>>>> 898417cf59eb894a1f819fe8af714c577e3cbf74
   }
 
   ngOnDestroy(): void {
@@ -80,38 +94,10 @@ export class CartComponent implements OnInit {
   }
 
 
-  calculateAmount():void {
-  //   // for(let price of this.productObject){
-  //   //   console.log('holaaaaaa')
-      
-  //   //   this.total += (price.amount * price.product.price);
-  //   //   console.log(this.total);
-  //   // }
-    console.log( this.productObject);
+  calculateAmount(productObject: any):void {
     
-    const prices = this.productObject.map(x => x.product.price )
-    this.total = prices[0];
-     console.log(prices, 'pricessssssssss');
-      console.log(this.total, 'segundoooooooo');
-      
-      
-      
-    //   {
-    //   let precios = x.product.price * x.amount ;
-    //   console.log(precios)
-    // }) 
-    
-    // for(let i = 0; i < this.productObject.length; i++){
-    //   console.log('holaaaaaaaaaaaaaaa');
-    //   console.log(this.productObject);
-      
-    //   console.log(this.productObject.length)
-    //   if(i == 0){
-    //   this.total += this.productObject[i].amount * this.productObject[i].product.price;
-    //   console.log(this.total)
-    // }
-    // }
-      // this.total += this.productObject.amount;
+    this.total = productObject.map(x => x.product.price * x.amount )
+      .reduce((price1, price2) => price1 + price2, 0);
     
   }
 
@@ -121,6 +107,13 @@ export class CartComponent implements OnInit {
       this.router.navigateByUrl('/purchaser-form');
     } else {
       // Realizar compra
+      this.paymentService.checkout(this.productObject).subscribe((session_id) => {
+        this.stripeCheckout(session_id);
+      })
     }
+  }
+
+  async stripeCheckout(session_id) {
+    return (await stripePromise).redirectToCheckout({ sessionId: session_id });
   }
 }

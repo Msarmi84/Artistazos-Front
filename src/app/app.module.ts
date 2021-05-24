@@ -26,7 +26,6 @@ import { ArtistDisciplineComponent } from './artists/artist-discipline/artist-di
 import { PurchaserFormComponent } from './purchaser-form/purchaser-form.component';
 
 
-
 // MATERIAL MODULES
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -38,6 +37,10 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductsModalComponent } from './products/products-modal/products-modal.component';
 import { SafeurlPipe } from './safeurl.pipe';
 import { AdvertisementFormComponent } from './advertisement-form/advertisement-form.component';
+import { AdvertisementGridComponent } from './advertisement-grid/advertisement-grid.component';
+import { AdvertisementSearcherComponent } from './advertisement-searcher/advertisement-searcher.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
 @NgModule({
@@ -63,7 +66,12 @@ import { AdvertisementFormComponent } from './advertisement-form/advertisement-f
     ProductsModalComponent,
     SafeurlPipe,
     AdvertisementFormComponent,
-    PurchaserFormComponent
+    PurchaserFormComponent,
+    AdvertisementGridComponent,
+    AdvertisementSearcherComponent,
+    NotFoundComponent,
+    PaymentSuccessComponent,
+
 
 
 

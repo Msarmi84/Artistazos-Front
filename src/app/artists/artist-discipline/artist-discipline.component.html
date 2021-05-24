@@ -1,6 +1,6 @@
 <div class="grid-artistas">
-    <div class="bucle-artistas" *ngFor="let user of user">
-        <div [ngClass] ="{'redCard': user.deleted === 1, 'card': user.deleted === 0}">
+    <div class="bucle-artistas" *ngFor="let user of users">
+        <div [ngClass]="{'redCard': user.deleted === 1, 'card': user.deleted === 0}">
             <img src="http://localhost:3000/images/uploads/{{user.avatar}}">
             <h3><span>{{ user.artistic_name }}</span></h3>
             <div class="container-p">

@@ -73,9 +73,9 @@ export class UserService {
   }
 
   updateUser(user: FormData, id: number): any {
-    console.log('servicio user')
-    console.log(user)
-    return this.http.put<User>(`${this.URL}/updateProfile/${id}`, user);
+    return this.http.put<User>(`${this.URL}/updateProfile/${id}`, user).pipe(tap((res: any) => {
+      return this.lss.saveUserToken(res as unknown as string)
+    }));
   }
 
 

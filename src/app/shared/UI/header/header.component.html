@@ -25,7 +25,10 @@
             </li>
             <li *ngIf="isLoggedIn" class="avatar-name tooltip">
                 <img *ngIf="isLoggedIn" src="http://localhost:3000/images/uploads/{{user && user.avatar}}" alt="" [routerLink]="[profileRoute]" />
-                <span class="tooltiptext">{{user && user.artistic_name}}</span>
+                <!-- Nombre usuario para artistas -->
+                <span class="tooltiptext" *ngIf="user && user.type == '1'">{{user && user.artistic_name}}</span>
+                <!-- Nombre usuario para compradores -->
+                <h1 *ngIf="user && user.type == '2'">{{ user && user.user_name }}</h1>
             </li>
         </ul>
     </nav>

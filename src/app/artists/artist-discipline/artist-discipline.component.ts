@@ -10,12 +10,12 @@ import { UserService } from '../user.service';
 })
 export class ArtistDisciplineComponent implements OnInit {
 
-  
-  user: User[];
+
+  users: User[];
   disciplineId: number;
 
   constructor(
-    private userService: UserService, 
+    private userService: UserService,
     private route: ActivatedRoute,
   ) { }
 
@@ -26,9 +26,8 @@ export class ArtistDisciplineComponent implements OnInit {
   }
   getUserByDiscipline(disciplineId: number): void {
     this.userService.getUsersByDiscipline(disciplineId).subscribe((x) => {
-      this.user = x;
-    })
+      this.users = x;
+    });
   }
-  
 
 }

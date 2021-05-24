@@ -1,4 +1,4 @@
-<div class="grid-artistas">
+<div class="grid-artistas" *ngIf="users?.length">
     <div class="bucle-artistas" *ngFor="let user of users">
         <div [ngClass]="{'redCard': user.deleted === 1, 'card': user.deleted === 0}">
             <img src="http://localhost:3000/images/uploads/{{user.avatar}}">

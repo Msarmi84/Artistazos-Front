@@ -182,7 +182,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   deleteProduct (product_id): void {
     const dialogRef = this.dialog.open(InfoComponent, {
       width: '400px',
-      height: '300px',
+      height: '450px',
       data: 'Seguro que quieres eliminar este producto?',
     });
     console.log(dialogRef);

@@ -66,7 +66,8 @@ import { AdvertisementSearcherComponent } from './advertisement-searcher/adverti
     AdvertisementFormComponent,
     PurchaserFormComponent,
     AdvertisementGridComponent,
-    AdvertisementSearcherComponent
+    AdvertisementSearcherComponent,
+    ArtistDisciplineComponent
 
 
 

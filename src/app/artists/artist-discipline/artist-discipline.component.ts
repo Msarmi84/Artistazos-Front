@@ -21,8 +21,9 @@ export class ArtistDisciplineComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      return this.disciplineId = parseInt(params.discipline)});
-    this.getUserByDiscipline(this.disciplineId);
+      this.disciplineId = parseInt(params.discipline)
+      this.getUserByDiscipline(this.disciplineId);
+    });
   }
   getUserByDiscipline(disciplineId: number): void {
     this.userService.getUsersByDiscipline(disciplineId).subscribe((x) => {

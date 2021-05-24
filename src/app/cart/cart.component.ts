@@ -6,6 +6,11 @@ import { environment } from 'src/environments/environment';
 import { Product } from '../models/product';
 import { ProductService } from '../products/product.service';
 import { LocalStorageService } from '../services/local-storage.service';
+import { PaymentService } from '../services/payment.service';
+import { loadStripe } from '@stripe/stripe-js';
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 @Component({
   selector: 'app-cart',
@@ -24,7 +29,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private productService: ProductService, 
+    private productService: ProductService,
+    private paymentService: PaymentService,
     private lss: LocalStorageService) { }
 
 
@@ -82,6 +88,13 @@ export class CartComponent implements OnInit {
       this.router.navigateByUrl('/purchaser-form');
     } else {
       // Realizar compra
+      this.paymentService.checkout(this.productObject).subscribe((session_id) => {
+        this.stripeCheckout(session_id);
+      })
     }
+  }
+
+  async stripeCheckout(session_id) {
+    return (await stripePromise).redirectToCheckout({ sessionId: session_id });
   }
 }

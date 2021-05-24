@@ -13,25 +13,25 @@ import { Product } from '../models/product';
 })
 export class PaymentService {
 
-  URL = environment.baseUrl + 'users';
+  URL = environment.baseUrl + 'payments';
   constructor(private http: HttpClient, private lss: LocalStorageService) { }
 
 
   getPurchases(): Observable<Product[]> {
     const user_id = getUserFromToken().user_id;
-    return this.http.get<Product[]>(this.URL)
+    return this.http.get<Product[]>(`${this.URL}/${user_id}/products`)
       .pipe(map(products => products.map(product => new Product(product))));
   }
 
   complete(session_id: string): Observable<any>{
     const user_id = getUserFromToken().user_id;
-    return this.http.post<string>(`${this.URL}/complete`, { session_id }).pipe(
+    return this.http.post<string>(`${this.URL}/success`, { session_id }).pipe(
       map(res => (res as any).session_id))
   }
 
   checkout(products: any): Observable<string> {
       const user_id = getUserFromToken().user_id;
-      return this.http.post<string>(`${this.URL}/${user_id}/checkout`, products).pipe(
+      return this.http.post<string>(`${this.URL}/${user_id}/checkout`, { products }).pipe(
         map(res => (res as any).session_id))
   }
 }

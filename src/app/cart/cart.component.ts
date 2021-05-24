@@ -38,8 +38,7 @@ export class CartComponent implements OnInit {
     this.isLoggedSub = this.lss.isLoggedIn.subscribe(loggedIn => this.isLoggedIn = loggedIn);
     this.productsStorage = this.lss.getProducts();
     this.getCartProducts();
-    this.calculateAmount(this.productObject);
-    console.log(this.productObject,'productObject');  
+    this.calculateAmount(this.productObject); 
   }
 
   private getCartProducts(): void {
@@ -50,8 +49,6 @@ export class CartComponent implements OnInit {
       for (let product of products) {
         productMap[product.product_id] = product;
       }
-
-      console.log(productMap, 'productMap');
       for (let j = 0; j < this.productsStorage.length; j++) {
         const productId = this.productsStorage[j].product_id
         this.productObject.push({ product: productMap[productId], amount: this.productsStorage[j].amount });          

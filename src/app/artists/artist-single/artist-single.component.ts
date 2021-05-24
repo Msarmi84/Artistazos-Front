@@ -112,7 +112,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   //obtiene la información del artista
   getUser(id: number): void {
     this.userService.getUserById(id).subscribe((x) => {
-      console.log(x)
       this.user = x;
       this.getAdvertisementsByLocation(this.user.location);
   });
@@ -144,7 +143,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
           this.productsPdf.push(this.products[i]);
         }
       }
-      console.log(this.productsPdf);
+      // console.log(this.productsPdf);
     });
 
   }
@@ -318,9 +317,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   addProduct(product:Product):void {
 
    let products = {product_id : product.product_id, amount: 1}
-   console.log(products, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this.lss.saveProduct(products);
-    alert('Producto añadido al carrito')
+
   }
 
 

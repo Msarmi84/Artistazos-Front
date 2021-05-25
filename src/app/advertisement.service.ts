@@ -27,6 +27,12 @@ export class AdvertisementService {
     );
   } 
 
+  getAdvertisementsByLocationAndDisciplines(location: string, disciplines: string[]): Observable<Advertisement[]> {
+    return this.http.get<Advertisement[]>(`${this.URL}/search?location=${location}&discipline_id=${disciplines.join(",")}`).pipe(
+      map(x => x.map(advertisement => new Advertisement(advertisement)))
+    );
+  } 
+
   create(formData: FormData): Observable<string> {
     return this.http.post<string>(`${this.URL}`, formData);
   }

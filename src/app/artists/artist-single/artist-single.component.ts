@@ -113,7 +113,6 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getUser(id: number): void {
     this.userService.getUserById(id).subscribe((x) => {
       this.user = x;
-      this.getAdvertisementsByLocation(this.user.location);
   });
   }
 
@@ -179,11 +178,12 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   getDisciplinesByUserId(id: number):void {
     this.userService.getDisciplinesById(id).subscribe(disciplines => {
        this.disciplines = disciplines;
+       this.getAdvertisementsByLocationAndDiscipline(this.user.location, this.disciplines.map(d => d.discipline_id.toString()));
     })
   }
 
-  getAdvertisementsByLocation(location:string):void {
-    this.advertisemenService.getAdvertisementsByLocation(location).subscribe(x => {
+  getAdvertisementsByLocationAndDiscipline(location: string, discipline: string[]):void {
+    this.advertisemenService.getAdvertisementsByLocationAndDisciplines(location, discipline).subscribe(x => {
       this.advertisementsByLocation = x
       console.log(this.advertisementsByLocation, 'anunciosss filtrados');
     })

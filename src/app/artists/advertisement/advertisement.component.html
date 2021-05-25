@@ -1,11 +1,8 @@
 <div class="anuncios">
-    <div class="anuncio1">
-        <a href="https://centrepompidou-malaga.eu/evento/dia-internacional-familias/">
-            <img src="../../../assets/images/anuncioMiro.jpg"></a>
-    </div>
-    <div class="anuncio2">
-        <a href="https://centrepompidou-malaga.eu/">
-            <img src="../../../assets/images/anuncioFamilias.jpg"></a>
+    <div class="anuncio" *ngFor="let advertisement of advertisementsByLocation">
+        {{ advertisement.name }}
+        <a [href]="advertisement.link" target="_blank">
+            <img src="http://localhost:3000/images/uploads/{{advertisement.photo}}"></a>
     </div>
 
 </div>

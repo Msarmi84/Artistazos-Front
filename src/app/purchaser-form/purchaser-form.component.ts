@@ -84,7 +84,7 @@ disciplinesLowerCase: string;
       this.registerForm.patchValue({discipline: this.disciplinesLowerCase });
       this.registerForm.patchValue({type: 2 });
       this.userService.saveUser(this.registerForm.value).subscribe(
-        () => this.router.navigate([`/artista/${getUserFromToken().user_id}`]),
+        () => this.router.navigate([`/cart`]),
         (error) => this.registerForm.setErrors({ userNotFound: error.error })
       )
       }

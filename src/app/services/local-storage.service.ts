@@ -45,31 +45,26 @@ export class LocalStorageService {
     return !!localStorage.getItem(this.AP_TKN);
   }
 
+  //Almacena los productos en el sessionStorage
   saveProduct(product) {
     const user_id = getUserFromToken().user_id;
 
     let products = this.getProducts();
-    console.log(products);
-    
+    console.log(products);   
     let findProducts = this.products.find(x => x.product_id == product.product_id)
-    console.log('findProducts')
-    console.log(findProducts)
     if(findProducts == null){
     this.products.push(product);
     }
-
-    let jProducts = JSON.stringify(this.products);
-    console.log(jProducts, ' bbbbbbbbbbbbbbbbbbbbbbbbb');
-    
+    let jProducts = JSON.stringify(this.products); 
     sessionStorage.setItem( user_id? user_id: "shoppingCart", jProducts);
   }
 
+  //Obtiene los productos del sessionStorage
   getProducts(): any[]{
     const user_id = getUserFromToken().user_id;
     let shoppingCart = sessionStorage.getItem(user_id ? user_id: "shoppingCart");
     let shoppingCartGuest = sessionStorage.getItem("shoppingCart");
     let products = [];
-    console.log(shoppingCart,'shoppingCart vacioooooooooooo')
     if(shoppingCart != null){
      products = JSON.parse(shoppingCart);
 
@@ -81,12 +76,22 @@ export class LocalStorageService {
     return products;
   }
 
+  //Elimina el carrito de aquellos usuarios no logueados
+  deleteCart():any {
+    
+      sessionStorage.removeItem("shoppingCart");
+      this.getProducts();
+    
+  }
+
+    //Elimina todos los carritos del sessionStorage
   cleanProducts():void {
     const user_id = getUserFromToken().user_id;
     sessionStorage.removeItem(user_id ? user_id: "shoppingCart");
     sessionStorage.removeItem("shoppingCart");
   }
 
+  //elimina productos del sessionStorage
   deleteProducts(idProduct:number):void {
     const user_id = getUserFromToken().user_id;
     this.productObject = this.getProducts();
@@ -97,6 +102,8 @@ export class LocalStorageService {
 
   }
 
+
+  //Aumenta o disminuye el monto total
   updateAmount(idProduct:number, signe: string):void {
     const user_id = getUserFromToken().user_id;
     let products = this.getProducts();

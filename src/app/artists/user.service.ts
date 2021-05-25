@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { LocalStorageService } from '../services/local-storage.service';
 import { TokenResponse } from '../login/login.service';
+import { IdName } from '../models/id-name';
+import { Tags } from '../models/tag';
 
 @Injectable({
   providedIn: 'root'
@@ -103,6 +105,12 @@ export class UserService {
       );
   }
 
+  getTagsByUserId(user_id: number): Observable<Tags[]> {
+    console.log(user_id)
+    return this.http.get<Tags[]>(`${this.URL}/tagsByUserId/${user_id}`)
+      .pipe(map(x => x.map(tag => new Tags(tag)))
+      );
+  }
 
 
 }

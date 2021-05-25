@@ -1,3 +1,6 @@
+<div class="alert" [class.visible]="isVisible"> 
+    Producto añadido al carrito
+  </div>
 <div class="container" *ngIf="user">
     <div class="background-header">
         <div class="fondo">
@@ -23,9 +26,9 @@
                     <!-- Nombre usuario para compradores -->
                     <h1 *ngIf="user.type == '2'">{{ user.user_name }}</h1>
                     <h3><span>{{ user.mail }}</span></h3>
-                    <p *ngFor="let discipline of disciplines">
-                        {{ discipline.discipline_name }}
-                    </p>
+                    <p><b>Disciplinas: </b><span *ngFor="let discipline of disciplines">| {{ discipline.discipline_name }} |  </span></p> 
+                    <p *ngIf="tags.length"><b>Tags: </b><span *ngFor="let tag of tags"> | {{ tag.tag_name }} |</span></p>
+                    
                 </div>
             </div>
             <div class="description-single">
@@ -127,3 +130,4 @@
         <app-advertisement></app-advertisement>
     </div>
 </div>
+

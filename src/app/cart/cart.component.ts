@@ -61,6 +61,7 @@ export class CartComponent implements OnInit {
     this.subscriptions.unsubscribe();
   }
 
+    
   updateAmount(idProduct: number, signe: string): void {
     this.lss.updateAmount(idProduct, signe);
     this.productObject = [];
@@ -68,6 +69,7 @@ export class CartComponent implements OnInit {
   
   }
 
+  //Elimina productos del carrito y sessionStorage
   deleteProduct(idProduct: number): void {
     this.lss.deleteProducts(idProduct);
     this.productObject = [];
@@ -75,7 +77,7 @@ export class CartComponent implements OnInit {
  
   }
 
-
+  //Cálculo del precio total
   calculateAmount(productObject: any):void {
     
     this.total = productObject.map(x => x.product.price * x.amount )

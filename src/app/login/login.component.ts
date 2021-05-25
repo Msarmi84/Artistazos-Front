@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../services/local-storage.service';
 import { getUserFromToken } from '../_helpers/tokenHelper';
 import { LoginService } from './login.service';
 
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
     fb: FormBuilder,
     private router: Router,
     private loginService: LoginService,
+    private lss: LocalStorageService
   ) {
     this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,5 +36,6 @@ export class LoginComponent implements OnInit {
       () => getUserFromToken().type === 3 ? this.router.navigate(['/admin']) : this.router.navigate(['/artistas']),
       (error) => this.form.setErrors({ userNotFound: error.error })
     );
+      this.lss.deleteCart();
   }
 }

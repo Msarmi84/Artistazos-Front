@@ -19,6 +19,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AdvertisementService } from 'src/app/advertisement.service';
 import { Advertisement } from 'src/app/models/advertisement';
 import { PaymentService } from 'src/app/services/payment.service';
+import { Tags } from 'src/app/models/tag';
 
 
 @Component({
@@ -70,6 +71,8 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   productsCompradosPdf: Product[] = [];
   productsCompradosVideo: Product[] = [];
   productsCompradosSound: Product[] = [];
+  isVisible: boolean = false;
+  tags: Tags[] = [];
 
 
 
@@ -95,6 +98,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
       this.getUser(this.userId);
       this.getProducts(this.userId);
       this.getDisciplinesByUserId(this.userId);
+      this.getTagsByUserId(this.userId);
 
       this.getCompras(this.userId);
       
@@ -189,10 +193,15 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
     })
   }
 
-  // selectAdvertisements():void {
-  //   for(let i = 0; i < this.advertise)
-  // }
+  getTagsByUserId(id:number):void {
+    console.log('entra en tagssssssss')
+    this.userService.getTagsByUserId(id).subscribe(tags => {
+      this.tags = tags;
+      console.log(this.tags, 'tagsssssssssssssssssssssssssss')
+   })
+  }
 
+ 
   deleteUser(): void {
     const dialogRef = this.dialog.open(InfoComponent, {
       width: '400px',
@@ -286,6 +295,7 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
             this.user = editUser;
             this.getUser(this.userId);
             this.getDisciplinesByUserId(this.userId);
+            this.getTagsByUserId(this.userId);
           });
         });
     }
@@ -315,6 +325,11 @@ export class ArtistSingleComponent implements OnInit, OnDestroy {
   }
 
   addProduct(product:Product):void {
+    if (this.isVisible) { // if the alert is visible return
+      return;
+    } 
+    this.isVisible = true;
+    setTimeout(()=> this.isVisible = false,2000); // hide the alert after 2s
 
    let products = {product_id : product.product_id, amount: 1}
     this.lss.saveProduct(products);
